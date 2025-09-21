@@ -1,0 +1,1187 @@
+{
+  "id": "us-core-allergyintolerance",
+  "name": "USCoreAllergyIntolerance",
+  "title": "US Core AllergyIntolerance Profile",
+  "description": "To promote interoperability and adoption through common implementation, this profile sets minimum expectations for the AllergyIntolerance resource to record, search, and fetch allergies/adverse reactions associated with a patient.  It identifies which core elements, extensions, vocabularies, and value sets **SHALL** be present and constrains the way the elements are used when using the profile. It provides the floor for standards development for specific use cases.",
+  "type": "profile",
+  "resourceType": "AllergyIntolerance",
+  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance",
+  "version": "6.1.0",
+  "status": "active",
+  "date": "2022-04-20",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
+  "derivation": "constraint",
+  "fhirVersion": "4.0.1",
+  "elements": [
+    {
+      "id": "AllergyIntolerance.id",
+      "path": "AllergyIntolerance.id",
+      "name": "id",
+      "short": "Logical id of this artifact",
+      "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.meta",
+      "path": "AllergyIntolerance.meta",
+      "name": "meta",
+      "short": "Metadata about the resource",
+      "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Meta",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.implicitRules",
+      "path": "AllergyIntolerance.implicitRules",
+      "name": "implicitRules",
+      "short": "A set of rules under which this content was created",
+      "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.language",
+      "path": "AllergyIntolerance.language",
+      "name": "language",
+      "short": "Language of the resource content",
+      "description": "The base language in which the resource is written.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.text",
+      "path": "AllergyIntolerance.text",
+      "name": "text",
+      "short": "Text summary of the resource, for human interpretation",
+      "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Narrative",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "Act.text?"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.contained",
+      "path": "AllergyIntolerance.contained",
+      "name": "contained",
+      "short": "Contained, inline Resources",
+      "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.extension",
+      "path": "AllergyIntolerance.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.modifierExtension",
+      "path": "AllergyIntolerance.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.identifier",
+      "path": "AllergyIntolerance.identifier",
+      "name": "identifier",
+      "short": "External ids for this item",
+      "description": "Business identifiers assigned to this AllergyIntolerance by the performer or other systems which remain constant as the resource is updated and propagates from server to server.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "v2",
+          "map": "IAM-7"
+        },
+        {
+          "identity": "rim",
+          "map": "id"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.clinicalStatus",
+      "path": "AllergyIntolerance.clinicalStatus",
+      "name": "clinicalStatus",
+      "short": "(USCDI) active | inactive | resolved",
+      "description": "The clinical status of the allergy or intolerance.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": null,
+        "valueSet": "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.status"
+        },
+        {
+          "identity": "rim",
+          "map": "Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\"clinicalStatus\", moodCode=EVN].value"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "AllergyIntolerance.status"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "AllergyIntolerance.verificationStatus",
+      "path": "AllergyIntolerance.verificationStatus",
+      "name": "verificationStatus",
+      "short": "(USCDI) unconfirmed | confirmed | refuted | entered-in-error",
+      "description": "Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": null,
+        "valueSet": "http://hl7.org/fhir/ValueSet/allergyintolerance-verification"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.status"
+        },
+        {
+          "identity": "rim",
+          "map": "Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\"verificationStatus\", moodCode=EVN].value"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "AllergyIntolerance.status"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "AllergyIntolerance.type",
+      "path": "AllergyIntolerance.type",
+      "name": "type",
+      "short": "allergy | intolerance - Underlying mechanism (if known)",
+      "description": "Identification of the underlying physiological mechanism for the reaction risk.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Identification of the underlying physiological mechanism for a Reaction Risk.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/allergy-intolerance-type|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.class"
+        },
+        {
+          "identity": "v2",
+          "map": "IAM-9"
+        },
+        {
+          "identity": "rim",
+          "map": "code"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.category",
+      "path": "AllergyIntolerance.category",
+      "name": "category",
+      "short": "food | medication | environment | biologic",
+      "description": "Category of the identified substance.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Category of an identified substance associated with allergies or intolerances.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/allergy-intolerance-category|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.class"
+        },
+        {
+          "identity": "v2",
+          "map": "AL1-2"
+        },
+        {
+          "identity": "rim",
+          "map": "value < IntoleranceValue (Agent)"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.criticality",
+      "path": "AllergyIntolerance.criticality",
+      "name": "criticality",
+      "short": "low | high | unable-to-assess",
+      "description": "Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Estimate of the potential clinical harm, or seriousness, of a reaction to an identified substance.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.grade"
+        },
+        {
+          "identity": "v2",
+          "map": "AL1-4"
+        },
+        {
+          "identity": "rim",
+          "map": "inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value <= SeverityObservation (Severity Level)]"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.code",
+      "path": "AllergyIntolerance.code",
+      "name": "code",
+      "short": "(USCDI) Code that identifies the allergy or intolerance",
+      "description": "Code for an allergy or intolerance statement (either a positive or a negated/excluded statement).  This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., \"Latex\"), an allergy or intolerance condition (e.g., \"Latex allergy\"), or a negated/excluded code for a specific substance or class (e.g., \"No latex allergy\") or a general or categorical negated statement (e.g.,  \"No known allergy\", \"No known drug allergies\").  Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.  If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": null,
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1186.8"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.what[x]"
+        },
+        {
+          "identity": "v2",
+          "map": "AL1-3 / IAM-3"
+        },
+        {
+          "identity": "rim",
+          "map": "substance/product:\r\r.participation[typeCode=CAGNT].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code <= ExposureAgentEntityType]\r\rnegated/excluded substance/product:\r\r.participation[typeCode=CAGNT, negationInd=true].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code <= ExposureAgentEntityType]\r\rpositive or negated/excluded condition/situation:\r\rObservation.code=ASSERTION; Observation.value"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "AllergyIntolerance.substance"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "AllergyIntolerance.patient",
+      "path": "AllergyIntolerance.patient",
+      "name": "patient",
+      "short": "(USCDI) Who the sensitivity is for",
+      "description": "The patient who has the allergy or intolerance.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject[x]"
+        },
+        {
+          "identity": "v2",
+          "map": "(PID-3)"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=SBJ].role[classCode=PAT]"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "AllergyIntolerance.patient"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "AllergyIntolerance.encounter",
+      "path": "AllergyIntolerance.encounter",
+      "name": "encounter",
+      "short": "Encounter when the allergy or intolerance was asserted",
+      "description": "The encounter when the allergy or intolerance was asserted.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.context"
+        },
+        {
+          "identity": "rim",
+          "map": ".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.onset[x]",
+      "path": "AllergyIntolerance.onset[x]",
+      "name": "onset[x]",
+      "short": "When allergy or intolerance was identified",
+      "description": "Estimated or actual date,  date-time, or age when allergy or intolerance was identified.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "dateTime | Age | Period | Range | string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.init"
+        },
+        {
+          "identity": "rim",
+          "map": "effectiveTime.low"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.recordedDate",
+      "path": "AllergyIntolerance.recordedDate",
+      "name": "recordedDate",
+      "short": "Date first version of the resource instance was recorded",
+      "description": "The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.recorded"
+        },
+        {
+          "identity": "v2",
+          "map": "IAM-13"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=AUT].time"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.recorder",
+      "path": "AllergyIntolerance.recorder",
+      "name": "recorder",
+      "short": "Who recorded the sensitivity",
+      "description": "Individual who recorded the record and takes responsibility for its content.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.author"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=AUT].role"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.asserter",
+      "path": "AllergyIntolerance.asserter",
+      "name": "asserter",
+      "short": "Source of the information about the allergy",
+      "description": "The source of the information about the allergy that is recorded.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.source"
+        },
+        {
+          "identity": "v2",
+          "map": "IAM-14 (if patient) / IAM-18 (if practitioner)"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=INF].role"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.lastOccurrence",
+      "path": "AllergyIntolerance.lastOccurrence",
+      "name": "lastOccurrence",
+      "short": "Date(/time) of last known occurrence of a reaction",
+      "description": "Represents the date and/or time of the last known occurrence of a reaction event.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "outBoundRelationship[typeCode=SUBJ].target[classCode=OBS, moodCode=EVN, code <= CommonClinicalObservationType, value <= ObservationValue (Reaction Type)].effectiveTime"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.note",
+      "path": "AllergyIntolerance.note",
+      "name": "note",
+      "short": "Additional text not captured in other fields",
+      "description": "Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Annotation",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "subjectOf.observationEvent[code=\"annotation\"].value"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.reaction",
+      "path": "AllergyIntolerance.reaction",
+      "name": "reaction",
+      "short": "(USCDI) Adverse Reaction Events linked to exposure to substance",
+      "description": "Details about each adverse reaction event linked to exposure to the identified substance.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "outBoundRelationship[typeCode=SUBJ].target[classCode=OBS, moodCode=EVN, code <= CommonClinicalObservationType, value <= ObservationValue (Reaction Type)]"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "AllergyIntolerance.reaction.id",
+      "path": "AllergyIntolerance.reaction.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.reaction.extension",
+      "path": "AllergyIntolerance.reaction.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.reaction.modifierExtension",
+      "path": "AllergyIntolerance.reaction.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.reaction.substance",
+      "path": "AllergyIntolerance.reaction.substance",
+      "name": "substance",
+      "short": "Specific substance or pharmaceutical product considered to be responsible for event",
+      "description": "Identification of the specific substance (or pharmaceutical product) considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.  If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "Codes defining the type of the substance (including pharmaceutical products).",
+        "valueSet": "http://hl7.org/fhir/ValueSet/substance-code"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "outBoundRelationship[typeCode=SAS].target[classCode=SBADM, code <= ExposureCode].participation[typeCode=CSM].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code <= ExposureAgentEntityType]"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.reaction.manifestation",
+      "path": "AllergyIntolerance.reaction.manifestation",
+      "name": "manifestation",
+      "short": "(USCDI) Clinical symptoms/signs associated with the Event",
+      "description": "Clinical symptoms and/or signs that are observed or associated with the adverse reaction event.",
+      "min": 1,
+      "max": "*",
+      "cardinality": "1..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "extensible",
+        "description": null,
+        "valueSet": "http://hl7.org/fhir/ValueSet/clinical-findings"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "AL1-5"
+        },
+        {
+          "identity": "rim",
+          "map": "code"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "AllergyIntolerance.reaction.description",
+      "path": "AllergyIntolerance.reaction.description",
+      "name": "description",
+      "short": "Description of the event as a whole",
+      "description": "Text description about the reaction as a whole, including details of the manifestation if required.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "text"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.reaction.onset",
+      "path": "AllergyIntolerance.reaction.onset",
+      "name": "onset",
+      "short": "Date(/time) when manifestations showed",
+      "description": "Record of the date and/or time of the onset of the Reaction.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "AL1-6"
+        },
+        {
+          "identity": "rim",
+          "map": "effectiveTime.low"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.reaction.severity",
+      "path": "AllergyIntolerance.reaction.severity",
+      "name": "severity",
+      "short": "mild | moderate | severe (of event as a whole)",
+      "description": "Clinical assessment of the severity of the reaction event as a whole, potentially considering multiple different manifestations.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "required",
+        "description": "Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different manifestations.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/reaction-event-severity|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value <= SeverityObservation (Severity Level)]"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.reaction.exposureRoute",
+      "path": "AllergyIntolerance.reaction.exposureRoute",
+      "name": "exposureRoute",
+      "short": "How the subject was exposed to the substance",
+      "description": "Identification of the route by which the subject was exposed to the substance.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/route-codes"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "outBoundRelationship[typeCode=SAS].target[classCode=SBADM, code <= ExposureCode].routeCode"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "AllergyIntolerance.reaction.note",
+      "path": "AllergyIntolerance.reaction.note",
+      "name": "note",
+      "short": "Text about event not captured in other fields",
+      "description": "Additional text about the adverse reaction event not captured in other fields.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Annotation",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "subjectOf.observationEvent[code=\"annotation\"].value"
+        }
+      ],
+      "mustSupport": false
+    }
+  ],
+  "statistics": {
+    "elementCount": 34,
+    "requiredElements": 3,
+    "optionalElements": 31,
+    "summaryElements": 13,
+    "modifierElements": 5
+  },
+  "mustSupportCount": 6
+}

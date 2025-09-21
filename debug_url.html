@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Debug Test</title>
+</head>
+<body>
+    <h1>URL Debug Test</h1>
+    <div id="results"></div>
+
+    <script>
+        function isUrl(str) {
+            try {
+                const url = new URL(str);
+                return url.protocol === 'http:' || url.protocol === 'https:';
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function extractCleanTypeName(type) {
+            // Handle Reference(ResourceType) pattern - extract the resource type
+            if (type.startsWith('Reference(')) {
+                const match = type.match(/Reference\(([^)]+)\)/);
+                if (match) {
+                    // Handle multiple resource types like Reference(Patient | Group)
+                    const referencedTypes = match[1].split(' | ');
+                    // Return the first referenced type for linking purposes
+                    return referencedTypes[0].trim();
+                }
+                return 'Reference';
+            }
+            
+            // Handle choice types [x]
+            if (type.includes('[x]')) {
+                return type.replace('[x]', '');
+            }
+            
+            // Handle array indicators
+            return type.replace(/\[\]$/, '');
+        }
+
+        // Test cases
+        const testCases = [
+            'http://hl7.org/fhirpath/System.String',
+            'Patient',
+            'Reference(Patient)',
+            'string',
+            'System.String'
+        ];
+
+        let results = '<h2>Test Results:</h2>';
+        testCases.forEach(testCase => {
+            const isUrlResult = isUrl(testCase);
+            const cleanType = extractCleanTypeName(testCase);
+            results += `<p><strong>${testCase}</strong><br>`;
+            results += `isUrl: ${isUrlResult}<br>`;
+            results += `cleanType: ${cleanType}</p>`;
+        });
+
+        document.getElementById('results').innerHTML = results;
+    </script>
+</body>
+</html>

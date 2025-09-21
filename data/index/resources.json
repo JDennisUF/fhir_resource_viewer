@@ -1,0 +1,557 @@
+{
+  "byName": {
+    "CapabilityStatement": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/CapabilityStatement.json",
+      "hash": "sha256:578bb96d709735ea",
+      "elementCount": 129,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "StructureDefinition": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/StructureDefinition.json",
+      "hash": "sha256:6394cf284d64f95c",
+      "elementCount": 55,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "ImplementationGuide": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/ImplementationGuide.json",
+      "hash": "sha256:8b196378a0685fbd",
+      "elementCount": 99,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "SearchParameter": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/SearchParameter.json",
+      "hash": "sha256:01c0edd34a8ba065",
+      "elementCount": 39,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "MessageDefinition": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/MessageDefinition.json",
+      "hash": "sha256:c09bf0274c514a81",
+      "elementCount": 44,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "OperationDefinition": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/OperationDefinition.json",
+      "hash": "sha256:9a9c79dd277aa200",
+      "elementCount": 63,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "CompartmentDefinition": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/CompartmentDefinition.json",
+      "hash": "sha256:80af2398987d80ab",
+      "elementCount": 28,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "StructureMap": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/StructureMap.json",
+      "hash": "sha256:0620e32f8e2309a8",
+      "elementCount": 92,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "GraphDefinition": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/GraphDefinition.json",
+      "hash": "sha256:5d33a6369646f9f7",
+      "elementCount": 48,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "ExampleScenario": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/ExampleScenario.json",
+      "hash": "sha256:234bdea4e9a2d486",
+      "elementCount": 85,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "CodeSystem": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/CodeSystem.json",
+      "hash": "sha256:ae92234d9824fc87",
+      "elementCount": 68,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "ValueSet": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/ValueSet.json",
+      "hash": "sha256:3031e580376c5bf0",
+      "elementCount": 84,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "ConceptMap": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/ConceptMap.json",
+      "hash": "sha256:b621224ac3f4eb22",
+      "elementCount": 64,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "NamingSystem": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/NamingSystem.json",
+      "hash": "sha256:b848b02175020d64",
+      "elementCount": 29,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "TerminologyCapabilities": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/TerminologyCapabilities.json",
+      "hash": "sha256:c7b86ae545778f2b",
+      "elementCount": 87,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "Resource": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/Resource.json",
+      "hash": "sha256:affacb5382649a91",
+      "elementCount": 4,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "Basic": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/Basic.json",
+      "hash": "sha256:c896b56a04f4a607",
+      "elementCount": 13,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "Binary": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/Binary.json",
+      "hash": "sha256:1666d59f644d12fa",
+      "elementCount": 7,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "Bundle": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/Bundle.json",
+      "hash": "sha256:e987013b397d0a75",
+      "elementCount": 47,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "Linkage": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/Linkage.json",
+      "hash": "sha256:09b3d02d4bad83aa",
+      "elementCount": 16,
+      "lastModified": "2019-11-01T09:29:23+11:00"
+    },
+    "USCoreAllergyintolerance": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "AllergyIntolerance",
+      "file": "us-core-stu6.1/profiles/USCoreAllergyintolerance.json",
+      "hash": "sha256:b3d941b195448f9c",
+      "elementCount": 34,
+      "mustSupportCount": 6,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreCareplan": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "CarePlan",
+      "file": "us-core-stu6.1/profiles/USCoreCareplan.json",
+      "hash": "sha256:0c258f0fa6ea9bc9",
+      "elementCount": 64,
+      "mustSupportCount": 8,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreCareteam": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "CareTeam",
+      "file": "us-core-stu6.1/profiles/USCoreCareteam.json",
+      "hash": "sha256:821423ce61bb4e8f",
+      "elementCount": 28,
+      "mustSupportCount": 5,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreConditionEncounterDiagnosis": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "Condition",
+      "file": "us-core-stu6.1/profiles/USCoreConditionEncounterDiagnosis.json",
+      "hash": "sha256:06890bab38d48464",
+      "elementCount": 38,
+      "mustSupportCount": 11,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreConditionProblemsHealthConcerns": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "Condition",
+      "file": "us-core-stu6.1/profiles/USCoreConditionProblemsHealthConcerns.json",
+      "hash": "sha256:4ae90334f4591606",
+      "elementCount": 39,
+      "mustSupportCount": 11,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreCoverage": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "Coverage",
+      "file": "us-core-stu6.1/profiles/USCoreCoverage.json",
+      "hash": "sha256:673916431da77421",
+      "elementCount": 65,
+      "mustSupportCount": 17,
+      "lastModified": "2022-09-24"
+    },
+    "USCoreImplantableDevice": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "Device",
+      "file": "us-core-stu6.1/profiles/USCoreImplantableDevice.json",
+      "hash": "sha256:7675a1983a2e6492",
+      "elementCount": 65,
+      "mustSupportCount": 10,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreDiagnosticreportLab": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "DiagnosticReport",
+      "file": "us-core-stu6.1/profiles/USCoreDiagnosticreportLab.json",
+      "hash": "sha256:dd21f312bd2b89f4",
+      "elementCount": 32,
+      "mustSupportCount": 9,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreDiagnosticreportNote": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "DiagnosticReport",
+      "file": "us-core-stu6.1/profiles/USCoreDiagnosticreportNote.json",
+      "hash": "sha256:42067f7f2cfb5e47",
+      "elementCount": 32,
+      "mustSupportCount": 13,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreDocumentreference": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "DocumentReference",
+      "file": "us-core-stu6.1/profiles/USCoreDocumentreference.json",
+      "hash": "sha256:855677d4871bcd20",
+      "elementCount": 55,
+      "mustSupportCount": 16,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreEncounter": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "Encounter",
+      "file": "us-core-stu6.1/profiles/USCoreEncounter.json",
+      "hash": "sha256:79776e447fcb59d6",
+      "elementCount": 80,
+      "mustSupportCount": 19,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreGoal": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "Goal",
+      "file": "us-core-stu6.1/profiles/USCoreGoal.json",
+      "hash": "sha256:5f3b8ad6987cc2ea",
+      "elementCount": 30,
+      "mustSupportCount": 6,
+      "lastModified": "2022-04-20"
+    },
+    "USCoreImmunization": {
+      "spec": "us-core-stu6.1",
+      "type": "profile",
+      "baseDefinition": "Immunization",
+      "file": "us-core-stu6.1/profiles/USCoreImmunization.json",
+      "hash": "sha256:78642fa97f63a2ac",
+      "elementCount": 62,
+      "mustSupportCount": 6,
+      "lastModified": "2022-04-20"
+    },
+    "Extension": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Extension.json",
+      "hash": "sha256:7982de722a61318c",
+      "elementCount": 3,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Period": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Period.json",
+      "hash": "sha256:5c73d1fb0f5e1f8a",
+      "elementCount": 3,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Meta": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Meta.json",
+      "hash": "sha256:fd700b791c12a954",
+      "elementCount": 7,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Identifier": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Identifier.json",
+      "hash": "sha256:8234960aaf106a91",
+      "elementCount": 7,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Reference": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Reference.json",
+      "hash": "sha256:3f91fa04c0ee32a8",
+      "elementCount": 5,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "CodeableConcept": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/CodeableConcept.json",
+      "hash": "sha256:a80b329998a8dbcb",
+      "elementCount": 3,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Coding": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Coding.json",
+      "hash": "sha256:d023c0201c0e16e3",
+      "elementCount": 6,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "ContactPoint": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/ContactPoint.json",
+      "hash": "sha256:adafc388ece47c87",
+      "elementCount": 6,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Address": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Address.json",
+      "hash": "sha256:58bbb4be4e2a2ff3",
+      "elementCount": 11,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Quantity": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Quantity.json",
+      "hash": "sha256:26b6dc7e091bda12",
+      "elementCount": 6,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Annotation": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Annotation.json",
+      "hash": "sha256:3784850f2e6f520f",
+      "elementCount": 4,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "HumanName": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/HumanName.json",
+      "hash": "sha256:7f132f94fc589335",
+      "elementCount": 8,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Range": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Range.json",
+      "hash": "sha256:4ad391ed405935af",
+      "elementCount": 3,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Attachment": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Attachment.json",
+      "hash": "sha256:60c23511de2dc775",
+      "elementCount": 9,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Ratio": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Ratio.json",
+      "hash": "sha256:91ddb239cde0fe60",
+      "elementCount": 3,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    },
+    "Element": {
+      "spec": "fhir-r4",
+      "type": "datatype",
+      "file": "fhir-r4/datatypes/Element.json",
+      "hash": "sha256:abc123def456789a",
+      "elementCount": 2,
+      "kind": "complex-type",
+      "lastModified": "manual"
+    }
+  },
+  "bySpec": {
+    "fhir-r4": [
+      "Address",
+      "Annotation",
+      "Attachment",
+      "Basic",
+      "Binary",
+      "Bundle",
+      "CapabilityStatement",
+      "CodeSystem",
+      "CodeableConcept",
+      "Coding",
+      "CompartmentDefinition",
+      "ConceptMap",
+      "ContactPoint",
+      "Element",
+      "ExampleScenario",
+      "Extension",
+      "GraphDefinition",
+      "HumanName",
+      "Identifier",
+      "ImplementationGuide",
+      "Linkage",
+      "MessageDefinition",
+      "Meta",
+      "NamingSystem",
+      "OperationDefinition",
+      "Period",
+      "Quantity",
+      "Range",
+      "Ratio",
+      "Reference",
+      "Resource",
+      "SearchParameter",
+      "StructureDefinition",
+      "StructureMap",
+      "TerminologyCapabilities",
+      "ValueSet"
+    ],
+    "us-core-stu6.1": [
+      "USCoreAllergyintolerance",
+      "USCoreCareplan",
+      "USCoreCareteam",
+      "USCoreConditionEncounterDiagnosis",
+      "USCoreConditionProblemsHealthConcerns",
+      "USCoreCoverage",
+      "USCoreImplantableDevice",
+      "USCoreDiagnosticreportLab",
+      "USCoreDiagnosticreportNote",
+      "USCoreDocumentreference",
+      "USCoreEncounter",
+      "USCoreGoal",
+      "USCoreImmunization"
+    ]
+  },
+  "byType": {
+    "resource": [
+      "CapabilityStatement",
+      "StructureDefinition",
+      "ImplementationGuide",
+      "SearchParameter",
+      "MessageDefinition",
+      "OperationDefinition",
+      "CompartmentDefinition",
+      "StructureMap",
+      "GraphDefinition",
+      "ExampleScenario",
+      "CodeSystem",
+      "ValueSet",
+      "ConceptMap",
+      "NamingSystem",
+      "TerminologyCapabilities",
+      "Resource",
+      "Basic",
+      "Binary",
+      "Bundle",
+      "Linkage"
+    ],
+    "profile": [
+      "USCoreAllergyintolerance",
+      "USCoreCareplan",
+      "USCoreCareteam",
+      "USCoreConditionEncounterDiagnosis",
+      "USCoreConditionProblemsHealthConcerns",
+      "USCoreCoverage",
+      "USCoreImplantableDevice",
+      "USCoreDiagnosticreportLab",
+      "USCoreDiagnosticreportNote",
+      "USCoreDocumentreference",
+      "USCoreEncounter",
+      "USCoreGoal",
+      "USCoreImmunization"
+    ],
+    "datatype": [
+      "Address",
+      "Annotation",
+      "Attachment",
+      "CodeableConcept",
+      "Coding",
+      "ContactPoint",
+      "Element",
+      "Extension",
+      "HumanName",
+      "Identifier",
+      "Meta",
+      "Period",
+      "Quantity",
+      "Range",
+      "Ratio",
+      "Reference"
+    ]
+  },
+  "statistics": {
+    "totalResources": 56,
+    "fhirResources": 20,
+    "usCoreProfiles": 13,
+    "totalElements": 1727,
+    "dataTypes": 16
+  }
+}

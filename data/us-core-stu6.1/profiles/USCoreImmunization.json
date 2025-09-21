@@ -1,0 +1,2200 @@
+{
+  "id": "us-core-immunization",
+  "name": "USCoreImmunizationProfile",
+  "title": "US Core Immunization Profile",
+  "description": "This profile sets minimum expectations for the Immunization resource to record, search, and fetch immunization history associated with a patient to promote interoperability and adoption through common implementation.  It identifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains the way the elements are used when using this profile.  It provides the floor for standards development for specific use cases.",
+  "type": "profile",
+  "resourceType": "Immunization",
+  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization",
+  "version": "6.1.0",
+  "status": "active",
+  "date": "2022-04-20",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Immunization",
+  "derivation": "constraint",
+  "fhirVersion": "4.0.1",
+  "elements": [
+    {
+      "id": "Immunization.id",
+      "path": "Immunization.id",
+      "name": "id",
+      "short": "Logical id of this artifact",
+      "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.meta",
+      "path": "Immunization.meta",
+      "name": "meta",
+      "short": "Metadata about the resource",
+      "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Meta",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.implicitRules",
+      "path": "Immunization.implicitRules",
+      "name": "implicitRules",
+      "short": "A set of rules under which this content was created",
+      "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.language",
+      "path": "Immunization.language",
+      "name": "language",
+      "short": "Language of the resource content",
+      "description": "The base language in which the resource is written.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.text",
+      "path": "Immunization.text",
+      "name": "text",
+      "short": "Text summary of the resource, for human interpretation",
+      "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Narrative",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "Act.text?"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.contained",
+      "path": "Immunization.contained",
+      "name": "contained",
+      "short": "Contained, inline Resources",
+      "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.extension",
+      "path": "Immunization.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.modifierExtension",
+      "path": "Immunization.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.identifier",
+      "path": "Immunization.identifier",
+      "name": "identifier",
+      "short": "Business identifier",
+      "description": "A unique identifier assigned to this immunization record.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.identifier"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "rim",
+          "map": ".id"
+        },
+        {
+          "identity": "cda",
+          "map": "ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/id"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.status",
+      "path": "Immunization.status",
+      "name": "status",
+      "short": "(USCDI) completed | entered-in-error | not-done",
+      "description": "Indicates the current status of the immunization event.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": null,
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-status"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.status"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.status"
+        },
+        {
+          "identity": "rim",
+          "map": "statusCode"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Immunization.status"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Immunization.statusReason",
+      "path": "Immunization.statusReason",
+      "name": "statusReason",
+      "short": "(USCDI) Reason not done",
+      "description": "Indicates the reason the immunization event was not performed.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": null,
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-status-reason"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.statusReason"
+        },
+        {
+          "identity": "rim",
+          "map": ".inboundRelationship[typeCode=SUBJ].source[classCode=CACT, moodCode=EVN].reasonCOde"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Immunization.wasNotGiven"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Immunization.vaccineCode",
+      "path": "Immunization.vaccineCode",
+      "name": "vaccineCode",
+      "short": "(USCDI) Vaccine Product Type (bind to CVX)",
+      "description": "Vaccine that was administered or was to be administered.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": null,
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1010.6"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.code"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.what[x]"
+        },
+        {
+          "identity": "v2",
+          "map": "RXA-5"
+        },
+        {
+          "identity": "rim",
+          "map": ".code"
+        },
+        {
+          "identity": "cda",
+          "map": "ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/consumable/manfacturedProduct/manufacturedMaterial/realmCode/code"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Immunization.vaccineCode"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Immunization.patient",
+      "path": "Immunization.patient",
+      "name": "patient",
+      "short": "(USCDI) Who was immunized",
+      "description": "The patient who either received or did not receive the immunization.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.subject"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject[x]"
+        },
+        {
+          "identity": "v2",
+          "map": "PID-3"
+        },
+        {
+          "identity": "rim",
+          "map": ".partipication[ttypeCode=].role"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Immunization.patient"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Immunization.encounter",
+      "path": "Immunization.encounter",
+      "name": "encounter",
+      "short": "Encounter immunization was part of",
+      "description": "The visit or admission or other contact between patient and health care provider the immunization was performed as part of.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.context"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.context"
+        },
+        {
+          "identity": "v2",
+          "map": "PV1-19"
+        },
+        {
+          "identity": "rim",
+          "map": "component->EncounterEvent"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.occurrence[x]",
+      "path": "Immunization.occurrence[x]",
+      "name": "occurrence[x]",
+      "short": "(USCDI) Vaccine administration date",
+      "description": "Date vaccine administered or was to be administered.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "dateTime | string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.occurrence[x]"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.done[x]"
+        },
+        {
+          "identity": "v2",
+          "map": "RXA-3"
+        },
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        },
+        {
+          "identity": "cda",
+          "map": "ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/effectiveTime/value"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Immunization.date"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Immunization.recorded",
+      "path": "Immunization.recorded",
+      "name": "recorded",
+      "short": "When the immunization was first captured in the subject's record",
+      "description": "The date the occurrence of the immunization was first captured in the record - potentially significantly after the occurrence of the event.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.recorded"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=AUT].time"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.primarySource",
+      "path": "Immunization.primarySource",
+      "name": "primarySource",
+      "short": "(USCDI) Indicates context the data was recorded in",
+      "description": "Indicates whether the data contained in the resource was captured by the individual/organization which was responsible for the administration of the vaccine rather than as 'secondary reported' data  documented by a third party. A value of 'true' means this data originated with the individual/organization which was responsible for the administration of the vaccine.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.source"
+        },
+        {
+          "identity": "v2",
+          "map": "RXA-9"
+        },
+        {
+          "identity": "rim",
+          "map": "immunization.uncertaintycode (if primary source=false, uncertainty=U)"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Immunization.reported"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Immunization.reportOrigin",
+      "path": "Immunization.reportOrigin",
+      "name": "reportOrigin",
+      "short": "Indicates the source of a secondarily reported record",
+      "description": "The source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "The source of the data for a record which is not from a primary source.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-origin"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.source"
+        },
+        {
+          "identity": "v2",
+          "map": "RXA-9"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=INF].role[classCode=PAT] (this syntax for self-reported) .participation[typeCode=INF].role[classCode=LIC] (this syntax for health care professional) .participation[typeCode=INF].role[classCode=PRS] (this syntax for family member)"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.location",
+      "path": "Immunization.location",
+      "name": "location",
+      "short": "Where immunization occurred",
+      "description": "The service delivery location where the vaccine administration occurred.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.location"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.where[x]"
+        },
+        {
+          "identity": "v2",
+          "map": "RXA-27  (or RXA-11, deprecated as of v2.7)"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=LOC].COCT_MT240000UV"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.manufacturer",
+      "path": "Immunization.manufacturer",
+      "name": "manufacturer",
+      "short": "Vaccine manufacturer",
+      "description": "Name of vaccine manufacturer.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "RXA-17"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=CSM].role[classCode=INST].scopedRole.scoper[classCode=ORG]"
+        },
+        {
+          "identity": "cda",
+          "map": "ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/consumable/manfacturedProduct/manufacuturerOrganization/name"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.lotNumber",
+      "path": "Immunization.lotNumber",
+      "name": "lotNumber",
+      "short": "Vaccine lot number",
+      "description": "Lot number of the  vaccine product.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "RXA-15"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=CSM].role[classCode=INST].scopedRole.scoper[classCode=MMAT].id"
+        },
+        {
+          "identity": "cda",
+          "map": "ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/consumable/manfacturedProduct/manufacturedMaterial/lotNumberText"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.expirationDate",
+      "path": "Immunization.expirationDate",
+      "name": "expirationDate",
+      "short": "Vaccine expiration date",
+      "description": "Date vaccine batch expires.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "date",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "RXA-16"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=CSM].role[classCode=INST].scopedRole.scoper[classCode=MMAT].expirationTime"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.site",
+      "path": "Immunization.site",
+      "name": "site",
+      "short": "Body site vaccine  was administered",
+      "description": "Body site where vaccine was administered.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "The site at which the vaccine was administered.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-site"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "RXR-2"
+        },
+        {
+          "identity": "rim",
+          "map": "observation.targetSiteCode"
+        },
+        {
+          "identity": "cda",
+          "map": "ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/approachSiteCode/code"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.route",
+      "path": "Immunization.route",
+      "name": "route",
+      "short": "How vaccine entered body",
+      "description": "The path by which the vaccine product is taken into the body.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "The route by which the vaccine was administered.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-route"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "RXR-1"
+        },
+        {
+          "identity": "rim",
+          "map": ".routeCode"
+        },
+        {
+          "identity": "cda",
+          "map": "ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/routeCode/code"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.doseQuantity",
+      "path": "Immunization.doseQuantity",
+      "name": "doseQuantity",
+      "short": "Amount of vaccine administered",
+      "description": "The quantity of vaccine product that was administered.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Quantity(SimpleQuantity)",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "RXA-6 / RXA-7"
+        },
+        {
+          "identity": "rim",
+          "map": ".doseQuantity"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.performer",
+      "path": "Immunization.performer",
+      "name": "performer",
+      "short": "Who performed event",
+      "description": "Indicates who performed the immunization event.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.performer"
+        },
+        {
+          "identity": "v2",
+          "map": "ORC-12 / RXA-10"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.performer.id",
+      "path": "Immunization.performer.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.performer.extension",
+      "path": "Immunization.performer.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.performer.modifierExtension",
+      "path": "Immunization.performer.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.performer.function",
+      "path": "Immunization.performer.function",
+      "name": "function",
+      "short": "What type of performance was done",
+      "description": "Describes the type of performance (e.g. ordering provider, administering provider, etc.).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "The role a practitioner or organization plays in the immunization event.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-function"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.performer.function"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation.functionCode"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.performer.actor",
+      "path": "Immunization.performer.actor",
+      "name": "actor",
+      "short": "Individual or organization who was performing",
+      "description": "The practitioner or organization who performed the action.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.performer.actor"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.actor"
+        },
+        {
+          "identity": "rim",
+          "map": ".player"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.note",
+      "path": "Immunization.note",
+      "name": "note",
+      "short": "Additional immunization notes",
+      "description": "Extra information about the immunization that is not conveyed by the other attributes.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Annotation",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.note"
+        },
+        {
+          "identity": "v2",
+          "map": "OBX-5 : OBX-3 = 48767-8"
+        },
+        {
+          "identity": "rim",
+          "map": "note"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.reasonCode",
+      "path": "Immunization.reasonCode",
+      "name": "reasonCode",
+      "short": "Why immunization occurred",
+      "description": "Reasons why the vaccine was administered.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "The reason why a vaccine was administered.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-reason"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.reasonCode"
+        },
+        {
+          "identity": "rim",
+          "map": "[actionNegationInd=false].reasonCode"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.reasonReference",
+      "path": "Immunization.reasonReference",
+      "name": "reasonReference",
+      "short": "Why immunization occurred",
+      "description": "Condition, Observation or DiagnosticReport that supports why the immunization was administered.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.reasonReference"
+        },
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.isSubpotent",
+      "path": "Immunization.isSubpotent",
+      "name": "isSubpotent",
+      "short": "Dose potency",
+      "description": "Indication if a dose is considered to be subpotent. By default, a dose should be considered to be potent.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "RXA-20 = PA (partial administration)"
+        },
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.subpotentReason",
+      "path": "Immunization.subpotentReason",
+      "name": "subpotentReason",
+      "short": "Reason for being subpotent",
+      "description": "Reason why a dose is considered to be subpotent.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "The reason why a dose is considered to be subpotent.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-subpotent-reason"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.education",
+      "path": "Immunization.education",
+      "name": "education",
+      "short": "Educational material presented to patient",
+      "description": "Educational material presented to the patient (or guardian) at the time of vaccine administration.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "imm-1",
+          "severity": "error",
+          "human": "One of documentType or reference SHALL be present",
+          "expression": "documentType.exists() or reference.exists()",
+          "xpath": "exists(f:documentType) or exists(f:reference)"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.education.id",
+      "path": "Immunization.education.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.education.extension",
+      "path": "Immunization.education.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.education.modifierExtension",
+      "path": "Immunization.education.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.education.documentType",
+      "path": "Immunization.education.documentType",
+      "name": "documentType",
+      "short": "Educational material document identifier",
+      "description": "Identifier of the material presented to the patient.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "OBX-5 : OBX-3 = 69764-9"
+        },
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.education.reference",
+      "path": "Immunization.education.reference",
+      "name": "reference",
+      "short": "Educational material reference pointer",
+      "description": "Reference pointer to the educational material given to the patient if the information was on line.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.education.publicationDate",
+      "path": "Immunization.education.publicationDate",
+      "name": "publicationDate",
+      "short": "Educational material publication date",
+      "description": "Date the educational material was published.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "OBX-5 : OBX-3 = 29768-9"
+        },
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.education.presentationDate",
+      "path": "Immunization.education.presentationDate",
+      "name": "presentationDate",
+      "short": "Educational material presentation date",
+      "description": "Date the educational material was given to the patient.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "OBX-5 : OBX-3 = 29769-7"
+        },
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.programEligibility",
+      "path": "Immunization.programEligibility",
+      "name": "programEligibility",
+      "short": "Patient eligibility for a vaccination program",
+      "description": "Indicates a patient's eligibility for a funding program.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "The patient's eligibility for a vaccation program.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-program-eligibility"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "OBX-5 : OBX-3 = 64994-7"
+        },
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.fundingSource",
+      "path": "Immunization.fundingSource",
+      "name": "fundingSource",
+      "short": "Funding source for the vaccine",
+      "description": "Indicates the source of the vaccine actually administered. This may be different than the patient eligibility (e.g. the patient may be eligible for a publically purchased vaccine but due to inventory issues, vaccine purchased with private funds was actually administered).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "The source of funding used to purchase the vaccine administered.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-funding-source"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.reaction",
+      "path": "Immunization.reaction",
+      "name": "reaction",
+      "short": "Details of a reaction that follows immunization",
+      "description": "Categorical data indicating that an adverse event is associated in time to an immunization.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "OBX-3"
+        },
+        {
+          "identity": "rim",
+          "map": "Observation[classCode=obs].code"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.reaction.id",
+      "path": "Immunization.reaction.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.reaction.extension",
+      "path": "Immunization.reaction.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.reaction.modifierExtension",
+      "path": "Immunization.reaction.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.reaction.date",
+      "path": "Immunization.reaction.date",
+      "name": "date",
+      "short": "When reaction started",
+      "description": "Date of reaction to the immunization.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "OBX-14 (ideally this would be reported in an IAM segment, but IAM is not part of the HL7 v2 VXU message - most likely would appear in OBX segments if at all)"
+        },
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.reaction.detail",
+      "path": "Immunization.reaction.detail",
+      "name": "detail",
+      "short": "Additional information on reaction",
+      "description": "Details of the reaction.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "OBX-5"
+        },
+        {
+          "identity": "rim",
+          "map": ".value"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.reaction.reported",
+      "path": "Immunization.reaction.reported",
+      "name": "reported",
+      "short": "Indicates self-reported reaction",
+      "description": "Self-reported indicator.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "(HL7 v2 doesn't seem to provide for this)"
+        },
+        {
+          "identity": "rim",
+          "map": ".participation[typeCode=INF].role[classCode=PAT] (this syntax for self-reported=true)"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.protocolApplied",
+      "path": "Immunization.protocolApplied",
+      "name": "protocolApplied",
+      "short": "Protocol followed by the provider",
+      "description": "The protocol (set of recommendations) being followed by the provider who administered the dose.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.protocolApplied.id",
+      "path": "Immunization.protocolApplied.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.protocolApplied.extension",
+      "path": "Immunization.protocolApplied.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.protocolApplied.modifierExtension",
+      "path": "Immunization.protocolApplied.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.protocolApplied.series",
+      "path": "Immunization.protocolApplied.series",
+      "name": "series",
+      "short": "Name of vaccine series",
+      "description": "One possible path to achieve presumed immunity against a disease - within the context of an authority.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.protocolApplied.authority",
+      "path": "Immunization.protocolApplied.authority",
+      "name": "authority",
+      "short": "Who is responsible for publishing the recommendations",
+      "description": "Indicates the authority who published the protocol (e.g. ACIP) that is being followed.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.protocolApplied.targetDisease",
+      "path": "Immunization.protocolApplied.targetDisease",
+      "name": "targetDisease",
+      "short": "Vaccine preventatable disease being targetted",
+      "description": "The vaccine preventable disease the dose is being administered against.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "The vaccine preventable disease the dose is being administered for.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/immunization-target-disease"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.protocolApplied.doseNumber[x]",
+      "path": "Immunization.protocolApplied.doseNumber[x]",
+      "name": "doseNumber[x]",
+      "short": "Dose number within series",
+      "description": "Nominal position in a series.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "positiveInt | string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Immunization.protocolApplied.seriesDoses[x]",
+      "path": "Immunization.protocolApplied.seriesDoses[x]",
+      "name": "seriesDoses[x]",
+      "short": "Recommended number of doses for immunity",
+      "description": "The recommended number of doses to achieve immunity.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "positiveInt | string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    }
+  ],
+  "statistics": {
+    "elementCount": 62,
+    "requiredElements": 6,
+    "optionalElements": 56,
+    "summaryElements": 17,
+    "modifierElements": 8
+  },
+  "mustSupportCount": 6
+}

@@ -1,0 +1,1087 @@
+{
+  "id": "Provenance",
+  "name": "Provenance",
+  "title": "",
+  "description": "Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.",
+  "type": "resource",
+  "resourceType": "Provenance",
+  "url": "http://hl7.org/fhir/StructureDefinition/Provenance",
+  "version": "4.0.1",
+  "status": "draft",
+  "date": "2019-11-01T09:29:23+11:00",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "fhirVersion": "4.0.1",
+  "elements": [
+    {
+      "id": "Provenance.id",
+      "path": "Provenance.id",
+      "name": "id",
+      "short": "Logical id of this artifact",
+      "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": []
+    },
+    {
+      "id": "Provenance.meta",
+      "path": "Provenance.meta",
+      "name": "meta",
+      "short": "Metadata about the resource",
+      "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Meta",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Provenance.implicitRules",
+      "path": "Provenance.implicitRules",
+      "name": "implicitRules",
+      "short": "A set of rules under which this content was created",
+      "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Provenance.language",
+      "path": "Provenance.language",
+      "name": "language",
+      "short": "Language of the resource content",
+      "description": "The base language in which the resource is written.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Provenance.text",
+      "path": "Provenance.text",
+      "name": "text",
+      "short": "Text summary of the resource, for human interpretation",
+      "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Narrative",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "Act.text?"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.contained",
+      "path": "Provenance.contained",
+      "name": "contained",
+      "short": "Contained, inline Resources",
+      "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.extension",
+      "path": "Provenance.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.modifierExtension",
+      "path": "Provenance.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.target",
+      "path": "Provenance.target",
+      "name": "target",
+      "short": "Target Reference(s) (usually version specific)",
+      "description": "The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.",
+      "min": 1,
+      "max": "*",
+      "cardinality": "1..*",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.what[x]"
+        },
+        {
+          "identity": "rim",
+          "map": "./outboundRelationship[isNormalActRelationship() and typeCode=SUBJ]/target  OR  ./participation[isNormalParticipation() and typeCode=SBJ]/role  OR  ./participation[isNormalParticipation() and typeCode=SBJ]/role[isNormalRole()]/player"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.entity.reference"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Entity Created/Updated"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.occurred[x]",
+      "path": "Provenance.occurred[x]",
+      "name": "occurred[x]",
+      "short": "When the activity occurred",
+      "description": "The period during which the activity occurred.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period | dateTime",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.occurred[x]"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.done[x]"
+        },
+        {
+          "identity": "rim",
+          "map": "./effectiveTime[type=IVL_TS]"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Activity.startTime & Activity.endTime"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.recorded",
+      "path": "Provenance.recorded",
+      "name": "recorded",
+      "short": "When the activity was recorded / updated",
+      "description": "The instant of time at which the activity was recorded.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "instant",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.recorded"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./participation[isNormalParticipation() and typeCode=AUT]/time[type=TS])"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.recorded"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Activity.when"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.policy",
+      "path": "Provenance.policy",
+      "name": "policy",
+      "short": "Policy or plan the activity was defined by",
+      "description": "Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "./inboundRelationship[isNormalActRelationship() and typeCode=\"SUBJ\"]/source[isNormalAct and subsumes(POLICY, classCode) and moodCode=EVN]/text[typeCode='ED'/tel"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.agent.policy"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.location",
+      "path": "Provenance.location",
+      "name": "location",
+      "short": "Where the activity occurred, if relevant",
+      "description": "Where the activity occurred, if relevant.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.location"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.where[x]"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./participation[isNormalParticipation() and typeCode=LOC]/role[isNormalRole() and subsumes(SDLOC, classCode)]/player[isNormalEntity and classCode=\"LOC\" and determinerCode=\"INST\"]"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.agent.location"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Activity.location"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.reason",
+      "path": "Provenance.reason",
+      "name": "reason",
+      "short": "Reason the activity is occurring",
+      "description": "The reason that the activity was taking place.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "extensible",
+        "description": "The reason the activity took place.",
+        "valueSet": "http://terminology.hl7.org/ValueSet/v3-PurposeOfUse"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.reasonCode"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.why[x]"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./reasonCode)"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.purposeOfEvent"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Activity.Activity"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.activity",
+      "path": "Provenance.activity",
+      "name": "activity",
+      "short": "Activity that occurred",
+      "description": "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "extensible",
+        "description": "The activity that took place.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/provenance-activity-type"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.code"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.why[x]"
+        },
+        {
+          "identity": "rim",
+          "map": "Act.code"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Activity.Activity"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.agent",
+      "path": "Provenance.agent",
+      "name": "agent",
+      "short": "Actor involved",
+      "description": "An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place.",
+      "min": 1,
+      "max": "*",
+      "cardinality": "1..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.performer"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.who"
+        },
+        {
+          "identity": "rim",
+          "map": "./participation[isNormalParticipation()]  OR  ./outboundRelationship[isNormalActRelationship() and typeCode='DRIV']"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.agent"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Agent"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.agent.id",
+      "path": "Provenance.agent.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.agent.extension",
+      "path": "Provenance.agent.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.agent.modifierExtension",
+      "path": "Provenance.agent.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.agent.type",
+      "path": "Provenance.agent.type",
+      "name": "type",
+      "short": "How the agent participated",
+      "description": "The participation the agent had with respect to the activity.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "The type of participation that a provenance agent played with respect to the activity.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/provenance-agent-type"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.performer.function"
+        },
+        {
+          "identity": "rim",
+          "map": ".role"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.agent.type"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Agent.Attribution"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.agent.role",
+      "path": "Provenance.agent.role",
+      "name": "role",
+      "short": "What the agents role was",
+      "description": "The function of the agent with respect to the activity. The security role enabling the agent with respect to the activity.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "The role that a provenance agent played with respect to the activity.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/security-role-type"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".typecode"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.agent.role"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.agent.who",
+      "path": "Provenance.agent.who",
+      "name": "who",
+      "short": "Who participated",
+      "description": "The individual, device or organization that participated in the event.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.performer.actor"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.actor"
+        },
+        {
+          "identity": "rim",
+          "map": ".id"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.agent.onBehalfOf",
+      "path": "Provenance.agent.onBehalfOf",
+      "name": "onBehalfOf",
+      "short": "Who the agent is representing",
+      "description": "The individual, device, or organization for whom the change was made.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "Person, Practitioner, Organization, Device :* .role [classCode = RoleClassMutualRelationship; role.code and * .scopes[Role](classCode=IDENT) and *.plays [Role.Code]"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.entity",
+      "path": "Provenance.entity",
+      "name": "entity",
+      "short": "An entity used in this activity",
+      "description": "An entity used in this activity.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "./subjectOf"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.entity"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Entity"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.entity.id",
+      "path": "Provenance.entity.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.entity.extension",
+      "path": "Provenance.entity.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.entity.modifierExtension",
+      "path": "Provenance.entity.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.entity.role",
+      "path": "Provenance.entity.role",
+      "name": "role",
+      "short": "derivation | revision | quotation | source | removal",
+      "description": "How the entity was used during the activity.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "How an entity was used in an activity.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/provenance-entity-role|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "./typeCode"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.entity.lifecycle"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Entity.role"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.entity.what",
+      "path": "Provenance.entity.what",
+      "name": "what",
+      "short": "Identity of entity",
+      "description": "Identity of the  Entity used. May be a logical or physical uri and maybe absolute or relative.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "./text/reference"
+        },
+        {
+          "identity": "fhirauditevent",
+          "map": "AuditEvent.entity.reference"
+        },
+        {
+          "identity": "w3c.prov",
+          "map": "Entity.Identity"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.entity.agent",
+      "path": "Provenance.entity.agent",
+      "name": "agent",
+      "short": "Entity is attributed to this agent",
+      "description": "The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "unknown",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "./author/role"
+        }
+      ]
+    },
+    {
+      "id": "Provenance.signature",
+      "path": "Provenance.signature",
+      "name": "signature",
+      "short": "Signature on target",
+      "description": "A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Signature",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "./signatureText"
+        }
+      ]
+    }
+  ],
+  "statistics": {
+    "elementCount": 31,
+    "requiredElements": 6,
+    "optionalElements": 25,
+    "summaryElements": 11,
+    "modifierElements": 4
+  }
+}

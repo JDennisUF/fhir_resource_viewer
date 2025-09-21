@@ -1,0 +1,1288 @@
+{
+  "id": "Bundle",
+  "name": "Bundle",
+  "title": "",
+  "description": "A container for a collection of resources.",
+  "type": "resource",
+  "resourceType": "Bundle",
+  "url": "http://hl7.org/fhir/StructureDefinition/Bundle",
+  "version": "4.0.1",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Resource",
+  "derivation": "specialization",
+  "fhirVersion": "4.0.1",
+  "elements": [
+    {
+      "id": "Bundle.id",
+      "path": "Bundle.id",
+      "name": "id",
+      "short": "Logical id of this artifact",
+      "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.meta",
+      "path": "Bundle.meta",
+      "name": "meta",
+      "short": "Metadata about the resource",
+      "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Meta",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.implicitRules",
+      "path": "Bundle.implicitRules",
+      "name": "implicitRules",
+      "short": "A set of rules under which this content was created",
+      "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.language",
+      "path": "Bundle.language",
+      "name": "language",
+      "short": "Language of the resource content",
+      "description": "The base language in which the resource is written.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.identifier",
+      "path": "Bundle.identifier",
+      "name": "identifier",
+      "short": "Persistent identifier for the bundle",
+      "description": "A persistent identifier for the bundle that won't change as a bundle is copied from server to server.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "cda",
+          "map": "ClinicalDocument.id"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.type",
+      "path": "Bundle.type",
+      "name": "type",
+      "short": "document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection",
+      "description": "Indicates the purpose of this bundle - how it is intended to be used.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Indicates the purpose of a bundle - how it is intended to be used.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/bundle-type|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.class"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.timestamp",
+      "path": "Bundle.timestamp",
+      "name": "timestamp",
+      "short": "When the bundle was assembled",
+      "description": "The date/time that the bundle was assembled - i.e. when the resources were placed in the bundle.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "instant",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.init"
+        },
+        {
+          "identity": "cda",
+          "map": "ClinicalDocument.effectiveTime"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.total",
+      "path": "Bundle.total",
+      "name": "total",
+      "short": "If search, the total number of matches",
+      "description": "If a set of search matches, this is the total number of entries of type 'match' across all pages in the search.  It does not include search.mode = 'include' or 'outcome' entries and it does not provide a count of the number of entries in the Bundle.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "unsignedInt",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.link",
+      "path": "Bundle.link",
+      "name": "link",
+      "short": "Links related to this Bundle",
+      "description": "A series of links that provide context to this bundle.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.link.id",
+      "path": "Bundle.link.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.link.extension",
+      "path": "Bundle.link.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.link.modifierExtension",
+      "path": "Bundle.link.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.link.relation",
+      "path": "Bundle.link.relation",
+      "name": "relation",
+      "short": "See http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1",
+      "description": "A name which details the functional use for this link - see [http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1](http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1).",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.link.url",
+      "path": "Bundle.link.url",
+      "name": "url",
+      "short": "Reference details for the link",
+      "description": "The reference details for the link.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry",
+      "path": "Bundle.entry",
+      "name": "entry",
+      "short": "Entry in the bundle - will have a resource or information",
+      "description": "An entry in a bundle resource - will either contain a resource or information about a resource (transactions and history only).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "bdl-5",
+          "severity": "error",
+          "human": "must be a resource unless there's a request or response",
+          "expression": "resource.exists() or request.exists() or response.exists()",
+          "xpath": "exists(f:resource) or exists(f:request) or exists(f:response)"
+        },
+        {
+          "key": "bdl-8",
+          "severity": "error",
+          "human": "fullUrl cannot be a version specific reference",
+          "expression": "fullUrl.contains('/_history/').not()",
+          "xpath": "not(exists(f:fullUrl[contains(string(@value), '/_history/')]))"
+        },
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.id",
+      "path": "Bundle.entry.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.extension",
+      "path": "Bundle.entry.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.modifierExtension",
+      "path": "Bundle.entry.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.link",
+      "path": "Bundle.entry.link",
+      "name": "link",
+      "short": "Links related to this entry",
+      "description": "A series of links that provide context to this entry.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "unknown",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.fullUrl",
+      "path": "Bundle.entry.fullUrl",
+      "name": "fullUrl",
+      "short": "URI for resource (Absolute URL server address or URI for UUID/OID)",
+      "description": "The Absolute URL for the resource.  The fullUrl SHALL NOT disagree with the id in the resource - i.e. if the fullUrl is not a urn:uuid, the URL shall be version-independent URL consistent with the Resource.id. The fullUrl is a version independent reference to the resource. The fullUrl element SHALL have a value except that: \n* fullUrl can be empty on a POST (although it does not need to when specifying a temporary id for reference in the bundle)\n* Results from operations might involve resources that are not identified.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.resource",
+      "path": "Bundle.entry.resource",
+      "name": "resource",
+      "short": "A resource in the bundle",
+      "description": "The Resource for the entry. The purpose/meaning of the resource is determined by the Bundle.type.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.search",
+      "path": "Bundle.entry.search",
+      "name": "search",
+      "short": "Search related information",
+      "description": "Information about the search process that lead to the creation of this entry.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.search.id",
+      "path": "Bundle.entry.search.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.search.extension",
+      "path": "Bundle.entry.search.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.search.modifierExtension",
+      "path": "Bundle.entry.search.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.search.mode",
+      "path": "Bundle.entry.search.mode",
+      "name": "mode",
+      "short": "match | include | outcome - why this is in the result set",
+      "description": "Why this entry is in the result set - whether it's included as a match or because of an _include requirement, or to convey information or warning information about the search process.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Why an entry is in the result set - whether it's included as a match or because of an _include requirement, or to convey information or warning information about the search process.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/search-entry-mode|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.search.score",
+      "path": "Bundle.entry.search.score",
+      "name": "score",
+      "short": "Search ranking (between 0 and 1)",
+      "description": "When searching, the server's search ranking score for the entry.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "decimal",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.request",
+      "path": "Bundle.entry.request",
+      "name": "request",
+      "short": "Additional execution information (transaction/batch/history)",
+      "description": "Additional information about how this entry should be processed as part of a transaction or batch.  For history, it shows how the entry was processed to create the version contained in the entry.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.request.id",
+      "path": "Bundle.entry.request.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.request.extension",
+      "path": "Bundle.entry.request.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.request.modifierExtension",
+      "path": "Bundle.entry.request.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.request.method",
+      "path": "Bundle.entry.request.method",
+      "name": "method",
+      "short": "GET | HEAD | POST | PUT | DELETE | PATCH",
+      "description": "In a transaction or batch, this is the HTTP action to be executed for this entry. In a history bundle, this indicates the HTTP action that occurred.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "HTTP verbs (in the HTTP command line). See [HTTP rfc](https://tools.ietf.org/html/rfc7231) for details.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/http-verb|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.request.url",
+      "path": "Bundle.entry.request.url",
+      "name": "url",
+      "short": "URL for HTTP equivalent of this entry",
+      "description": "The URL for this entry, relative to the root (the address to which the request is posted).",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.request.ifNoneMatch",
+      "path": "Bundle.entry.request.ifNoneMatch",
+      "name": "ifNoneMatch",
+      "short": "For managing cache currency",
+      "description": "If the ETag values match, return a 304 Not Modified status. See the API documentation for [\"Conditional Read\"](http.html#cread).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.request.ifModifiedSince",
+      "path": "Bundle.entry.request.ifModifiedSince",
+      "name": "ifModifiedSince",
+      "short": "For managing cache currency",
+      "description": "Only perform the operation if the last updated date matches. See the API documentation for [\"Conditional Read\"](http.html#cread).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "instant",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.request.ifMatch",
+      "path": "Bundle.entry.request.ifMatch",
+      "name": "ifMatch",
+      "short": "For managing update contention",
+      "description": "Only perform the operation if the Etag value matches. For more information, see the API section [\"Managing Resource Contention\"](http.html#concurrency).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.request.ifNoneExist",
+      "path": "Bundle.entry.request.ifNoneExist",
+      "name": "ifNoneExist",
+      "short": "For conditional creates",
+      "description": "Instruct the server not to perform the create if a specified resource already exists. For further information, see the API documentation for [\"Conditional Create\"](http.html#ccreate). This is just the query portion of the URL - what follows the \"?\" (not including the \"?\").",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.response",
+      "path": "Bundle.entry.response",
+      "name": "response",
+      "short": "Results of execution (transaction/batch/history)",
+      "description": "Indicates the results of processing the corresponding 'request' entry in the batch or transaction being responded to or what the results of an operation where when returning history.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.response.id",
+      "path": "Bundle.entry.response.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.response.extension",
+      "path": "Bundle.entry.response.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.response.modifierExtension",
+      "path": "Bundle.entry.response.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "Bundle.entry.response.status",
+      "path": "Bundle.entry.response.status",
+      "name": "status",
+      "short": "Status response code (text optional)",
+      "description": "The status code returned by processing this entry. The status SHALL start with a 3 digit HTTP code (e.g. 404) and may contain the standard HTTP description associated with the status code.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.response.location",
+      "path": "Bundle.entry.response.location",
+      "name": "location",
+      "short": "The location (if the operation returns a location)",
+      "description": "The location header created by processing this operation, populated if the operation returns a location.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.response.etag",
+      "path": "Bundle.entry.response.etag",
+      "name": "etag",
+      "short": "The Etag for the resource (if relevant)",
+      "description": "The Etag for the resource, if the operation for the entry produced a versioned resource (see [Resource Metadata and Versioning](http.html#versioning) and [Managing Resource Contention](http.html#concurrency)).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.response.lastModified",
+      "path": "Bundle.entry.response.lastModified",
+      "name": "lastModified",
+      "short": "Server's date time modified",
+      "description": "The date/time that the resource was modified on the server.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "instant",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.entry.response.outcome",
+      "path": "Bundle.entry.response.outcome",
+      "name": "outcome",
+      "short": "OperationOutcome with hints and warnings (for batch/transaction)",
+      "description": "An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": []
+    },
+    {
+      "id": "Bundle.signature",
+      "path": "Bundle.signature",
+      "name": "signature",
+      "short": "Digital Signature",
+      "description": "Digital Signature - base64 encoded. XML-DSig or a JWT.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Signature",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    }
+  ],
+  "statistics": {
+    "elementCount": 47,
+    "requiredElements": 6,
+    "optionalElements": 41,
+    "summaryElements": 36,
+    "modifierElements": 6
+  }
+}

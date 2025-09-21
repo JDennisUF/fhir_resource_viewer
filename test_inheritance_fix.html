@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inheritance Fix Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .test-result { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Inheritance Fix Test</h1>
+    
+    <div class="test-section">
+        <h2>Address Data Type Test</h2>
+        <div id="address-test"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Patient Resource Test</h2>
+        <div id="patient-test"></div>
+    </div>
+
+    <script>
+        // Mock Address data type elements
+        const addressElements = [
+            { name: "id", type: "string", cardinality: "0..1", description: "Unique id for the element" },
+            { name: "extension", type: "Extension", cardinality: "0..*", description: "Additional content" },
+            { name: "use", type: "code", cardinality: "0..1", description: "home | work | temp | old | billing" },
+            { name: "type", type: "code", cardinality: "0..1", description: "postal | physical | both" },
+            { name: "text", type: "string", cardinality: "0..1", description: "Text representation" },
+            { name: "line", type: "string", cardinality: "0..*", description: "Street name, number" },
+            { name: "city", type: "string", cardinality: "0..1", description: "Name of city" },
+            { name: "state", type: "string", cardinality: "0..1", description: "Sub-unit of country" },
+            { name: "postalCode", type: "string", cardinality: "0..1", description: "Postal code" },
+            { name: "country", type: "string", cardinality: "0..1", description: "Country" }
+        ];
+        
+        // Mock Patient resource elements
+        const patientElements = [
+            { name: "id", type: "id", cardinality: "0..1", description: "Logical id" },
+            { name: "meta", type: "Meta", cardinality: "0..1", description: "Metadata" },
+            { name: "extension", type: "Extension", cardinality: "0..*", description: "Additional content" },
+            { name: "modifierExtension", type: "Extension", cardinality: "0..*", description: "Modifier extensions" },
+            { name: "active", type: "boolean", cardinality: "0..1", description: "Whether patient is active" },
+            { name: "name", type: "HumanName", cardinality: "0..*", description: "A name for the patient" },
+            { name: "telecom", type: "ContactPoint", cardinality: "0..*", description: "A contact detail" },
+            { name: "gender", type: "code", cardinality: "0..1", description: "male | female | other | unknown" }
+        ];
+
+        // Test function that mimics the fixed buildElementHierarchy logic
+        function testInheritanceGrouping(elements, isDataType, resourceName) {
+            const domainResourceFields = new Set([
+                'id', 'meta', 'implicitRules', 'language', 'text', 'contained', 'extension', 'modifierExtension'
+            ]);
+            
+            const elementFields = new Set([
+                'id', 'extension'
+            ]);
+            
+            const inheritedFields = isDataType ? elementFields : domainResourceFields;
+            const inheritedElements = [];
+            const businessElements = [];
+            
+            elements.forEach(element => {
+                if (inheritedFields.has(element.name)) {
+                    inheritedElements.push(element);
+                } else {
+                    businessElements.push(element);
+                }
+            });
+            
+            const baseType = isDataType ? 'Element' : 'DomainResource';
+            
+            return {
+                inheritedElements,
+                businessElements,
+                baseType,
+                description: `Common fields inherited from ${baseType}`
+            };
+        }
+        
+        // Test Address (data type)
+        const addressResult = testInheritanceGrouping(addressElements, true, 'Address');
+        document.getElementById('address-test').innerHTML = `
+            <h3>Address Inheritance Test</h3>
+            <p><strong>Base Type:</strong> ${addressResult.baseType}</p>
+            <p><strong>Description:</strong> ${addressResult.description}</p>
+            <p><strong>Inherited Elements:</strong> ${addressResult.inheritedElements.map(e => e.name).join(', ')}</p>
+            <p><strong>Business Elements:</strong> ${addressResult.businessElements.map(e => e.name).join(', ')}</p>
+        `;
+        
+        // Test Patient (resource)
+        const patientResult = testInheritanceGrouping(patientElements, false, 'Patient');
+        document.getElementById('patient-test').innerHTML = `
+            <h3>Patient Inheritance Test</h3>
+            <p><strong>Base Type:</strong> ${patientResult.baseType}</p>
+            <p><strong>Description:</strong> ${patientResult.description}</p>
+            <p><strong>Inherited Elements:</strong> ${patientResult.inheritedElements.map(e => e.name).join(', ')}</p>
+            <p><strong>Business Elements:</strong> ${patientResult.businessElements.map(e => e.name).join(', ')}</p>
+        `;
+    </script>
+</body>
+</html>

@@ -1,0 +1,1296 @@
+{
+  "id": "MessageDefinition",
+  "name": "MessageDefinition",
+  "title": "",
+  "description": "Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.",
+  "type": "resource",
+  "resourceType": "MessageDefinition",
+  "url": "http://hl7.org/fhir/StructureDefinition/MessageDefinition",
+  "version": "4.0.1",
+  "status": "draft",
+  "date": "2019-11-01T09:29:23+11:00",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "fhirVersion": "4.0.1",
+  "elements": [
+    {
+      "id": "MessageDefinition.id",
+      "path": "MessageDefinition.id",
+      "name": "id",
+      "short": "Logical id of this artifact",
+      "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.meta",
+      "path": "MessageDefinition.meta",
+      "name": "meta",
+      "short": "Metadata about the resource",
+      "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Meta",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.implicitRules",
+      "path": "MessageDefinition.implicitRules",
+      "name": "implicitRules",
+      "short": "A set of rules under which this content was created",
+      "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.language",
+      "path": "MessageDefinition.language",
+      "name": "language",
+      "short": "Language of the resource content",
+      "description": "The base language in which the resource is written.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.text",
+      "path": "MessageDefinition.text",
+      "name": "text",
+      "short": "Text summary of the resource, for human interpretation",
+      "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Narrative",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "Act.text?"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.contained",
+      "path": "MessageDefinition.contained",
+      "name": "contained",
+      "short": "Contained, inline Resources",
+      "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.extension",
+      "path": "MessageDefinition.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.modifierExtension",
+      "path": "MessageDefinition.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.url",
+      "path": "MessageDefinition.url",
+      "name": "url",
+      "short": "Business Identifier for a given MessageDefinition",
+      "description": "The business identifier that is used to reference the MessageDefinition and *is* expected to be consistent from server to server.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.url"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.identifier",
+      "path": "MessageDefinition.identifier",
+      "name": "identifier",
+      "short": "Primary key for the message definition on a given server",
+      "description": "A formal identifier that is used to identify this message definition when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.identifier"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "objimpl",
+          "map": "no-gen-base"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.version",
+      "path": "MessageDefinition.version",
+      "name": "version",
+      "short": "Business version of the message definition",
+      "description": "The identifier that is used to identify this version of the message definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the message definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.version"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.version"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.name",
+      "path": "MessageDefinition.name",
+      "name": "name",
+      "short": "Name for this message definition (computer friendly)",
+      "description": "A natural language name identifying the message definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.title",
+      "path": "MessageDefinition.title",
+      "name": "title",
+      "short": "Name for this message definition (human friendly)",
+      "description": "A short, descriptive, user-friendly title for the message definition.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.title"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.replaces",
+      "path": "MessageDefinition.replaces",
+      "name": "replaces",
+      "short": "Takes the place of",
+      "description": "A MessageDefinition that is superseded by this definition.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "canonical",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.status",
+      "path": "MessageDefinition.status",
+      "name": "status",
+      "short": "draft | active | retired | unknown",
+      "description": "The status of this message definition. Enables tracking the life-cycle of the content.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The lifecycle status of an artifact.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/publication-status|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.status"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.status"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.experimental",
+      "path": "MessageDefinition.experimental",
+      "name": "experimental",
+      "short": "For testing purposes, not real usage",
+      "description": "A Boolean value to indicate that this message definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.experimental"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.class"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.date",
+      "path": "MessageDefinition.date",
+      "name": "date",
+      "short": "Date last changed",
+      "description": "The date  (and optionally time) when the message definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the message definition changes.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "dateTime",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.date"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.recorded"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.publisher",
+      "path": "MessageDefinition.publisher",
+      "name": "publisher",
+      "short": "Name of the publisher (organization or individual)",
+      "description": "The name of the organization or individual that published the message definition.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.publisher"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.witness"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.contact",
+      "path": "MessageDefinition.contact",
+      "name": "contact",
+      "short": "Contact details for the publisher",
+      "description": "Contact details to assist a user in finding and communicating with the publisher.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "ContactDetail",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.contact"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.description",
+      "path": "MessageDefinition.description",
+      "name": "description",
+      "short": "Natural language description of the message definition",
+      "description": "A free text natural language description of the message definition from a consumer's perspective.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "markdown",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.description"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.useContext",
+      "path": "MessageDefinition.useContext",
+      "name": "useContext",
+      "short": "The context that the content is intended to support",
+      "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate message definition instances.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "UsageContext",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.useContext"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.jurisdiction",
+      "path": "MessageDefinition.jurisdiction",
+      "name": "jurisdiction",
+      "short": "Intended jurisdiction for message definition (if applicable)",
+      "description": "A legal or geographic region in which the message definition is intended to be used.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "Countries and regions within which this artifact is targeted for use.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/jurisdiction"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.jurisdiction"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.purpose",
+      "path": "MessageDefinition.purpose",
+      "name": "purpose",
+      "short": "Why this message definition is defined",
+      "description": "Explanation of why this message definition is needed and why it has been designed as it has.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "markdown",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.purpose"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.why[x]"
+        },
+        {
+          "identity": "objimpl",
+          "map": "no-gen-base"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.copyright",
+      "path": "MessageDefinition.copyright",
+      "name": "copyright",
+      "short": "Use and/or publishing restrictions",
+      "description": "A copyright statement relating to the message definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the message definition.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "markdown",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Definition.copyright"
+        },
+        {
+          "identity": "objimpl",
+          "map": "no-gen-base"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.base",
+      "path": "MessageDefinition.base",
+      "name": "base",
+      "short": "Definition this one is based on",
+      "description": "The MessageDefinition that is the basis for the contents of this resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "canonical",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.parent",
+      "path": "MessageDefinition.parent",
+      "name": "parent",
+      "short": "Protocol/workflow this is part of",
+      "description": "Identifies a protocol or workflow that this MessageDefinition represents a step in.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "canonical",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.event[x]",
+      "path": "MessageDefinition.event[x]",
+      "name": "event[x]",
+      "short": "Event code  or link to the EventDefinition",
+      "description": "Event code or link to the EventDefinition.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Coding | uri",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "example",
+        "description": "One of the message events defined as part of this version of FHIR.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/message-events"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.category",
+      "path": "MessageDefinition.category",
+      "name": "category",
+      "short": "consequence | currency | notification",
+      "description": "The impact of the content of the message.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The impact of the content of a message.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/message-significance-category|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.focus",
+      "path": "MessageDefinition.focus",
+      "name": "focus",
+      "short": "Resource(s) that are the subject of the event",
+      "description": "Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "md-1",
+          "severity": "error",
+          "human": "Max must be postive int or *",
+          "expression": "max='*' or (max.toInteger() > 0)",
+          "xpath": "f:max/@value='*' or number(f:max/@value) > 0"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.focus.id",
+      "path": "MessageDefinition.focus.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.focus.extension",
+      "path": "MessageDefinition.focus.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.focus.modifierExtension",
+      "path": "MessageDefinition.focus.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.focus.code",
+      "path": "MessageDefinition.focus.code",
+      "name": "code",
+      "short": "Type of resource",
+      "description": "The kind of resource that must be the focus for this message.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "One of the resource types defined as part of this version of FHIR.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/resource-types|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.focus.profile",
+      "path": "MessageDefinition.focus.profile",
+      "name": "profile",
+      "short": "Profile that must be adhered to by focus",
+      "description": "A profile that reflects constraints for the focal resource (and potentially for related resources).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "canonical",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.focus.min",
+      "path": "MessageDefinition.focus.min",
+      "name": "min",
+      "short": "Minimum number of focuses of this type",
+      "description": "Identifies the minimum number of resources of this type that must be pointed to by a message in order for it to be valid against this MessageDefinition.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "unsignedInt",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.focus.max",
+      "path": "MessageDefinition.focus.max",
+      "name": "max",
+      "short": "Maximum number of focuses of this type",
+      "description": "Identifies the maximum number of resources of this type that must be pointed to by a message in order for it to be valid against this MessageDefinition.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.responseRequired",
+      "path": "MessageDefinition.responseRequired",
+      "name": "responseRequired",
+      "short": "always | on-error | never | on-success",
+      "description": "Declare at a message definition level whether a response is required or only upon error or success, or never.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "required",
+        "description": "HL7-defined table of codes which identify conditions under which acknowledgments are required to be returned in response to a message.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/messageheader-response-request|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "MSH-16"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.allowedResponse",
+      "path": "MessageDefinition.allowedResponse",
+      "name": "allowedResponse",
+      "short": "Responses to this message",
+      "description": "Indicates what types of messages may be sent as an application-level response to this message.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.allowedResponse.id",
+      "path": "MessageDefinition.allowedResponse.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.allowedResponse.extension",
+      "path": "MessageDefinition.allowedResponse.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.allowedResponse.modifierExtension",
+      "path": "MessageDefinition.allowedResponse.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "MessageDefinition.allowedResponse.message",
+      "path": "MessageDefinition.allowedResponse.message",
+      "name": "message",
+      "short": "Reference to allowed message definition response",
+      "description": "A reference to the message definition that must be adhered to by this supported response.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "canonical",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.allowedResponse.situation",
+      "path": "MessageDefinition.allowedResponse.situation",
+      "name": "situation",
+      "short": "When should this response be used",
+      "description": "Provides a description of the circumstances in which this response should be used (as opposed to one of the alternative responses).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "markdown",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "MessageDefinition.graph",
+      "path": "MessageDefinition.graph",
+      "name": "graph",
+      "short": "Canonical reference to a GraphDefinition",
+      "description": "Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "canonical",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    }
+  ],
+  "statistics": {
+    "elementCount": 44,
+    "requiredElements": 6,
+    "optionalElements": 38,
+    "summaryElements": 27,
+    "modifierElements": 5
+  }
+}

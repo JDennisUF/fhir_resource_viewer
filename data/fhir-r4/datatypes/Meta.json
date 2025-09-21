@@ -1,0 +1,68 @@
+{
+  "id": "Meta",
+  "name": "Meta",
+  "title": "Meta",
+  "description": "Metadata about a resource",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Meta",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "Meta",
+      "name": "Meta",
+      "cardinality": "0..1",
+      "type": "Element",
+      "description": "Metadata about a resource"
+    },
+    {
+      "path": "Meta.versionId",
+      "name": "versionId",
+      "cardinality": "0..1",
+      "type": "id",
+      "description": "Version specific identifier"
+    },
+    {
+      "path": "Meta.lastUpdated",
+      "name": "lastUpdated",
+      "cardinality": "0..1",
+      "type": "instant",
+      "description": "When the resource version last changed"
+    },
+    {
+      "path": "Meta.source",
+      "name": "source",
+      "cardinality": "0..1",
+      "type": "uri",
+      "description": "Identifies where the resource comes from"
+    },
+    {
+      "path": "Meta.profile",
+      "name": "profile",
+      "cardinality": "0..*",
+      "type": "canonical",
+      "description": "Profiles this resource claims to conform to"
+    },
+    {
+      "path": "Meta.security",
+      "name": "security",
+      "cardinality": "0..*",
+      "type": "Coding",
+      "description": "Security Labels applied to this resource"
+    },
+    {
+      "path": "Meta.tag",
+      "name": "tag",
+      "cardinality": "0..*",
+      "type": "Coding",
+      "description": "Tags applied to this resource"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 7,
+    "hash": "fd700b791c12a954"
+  }
+}

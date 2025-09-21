@@ -1,0 +1,1078 @@
+{
+  "id": "PractitionerRole",
+  "name": "PractitionerRole",
+  "title": "",
+  "description": "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.",
+  "type": "resource",
+  "resourceType": "PractitionerRole",
+  "url": "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
+  "version": "4.0.1",
+  "status": "draft",
+  "date": "2019-11-01T09:29:23+11:00",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "fhirVersion": "4.0.1",
+  "elements": [
+    {
+      "id": "PractitionerRole.id",
+      "path": "PractitionerRole.id",
+      "name": "id",
+      "short": "Logical id of this artifact",
+      "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": []
+    },
+    {
+      "id": "PractitionerRole.meta",
+      "path": "PractitionerRole.meta",
+      "name": "meta",
+      "short": "Metadata about the resource",
+      "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Meta",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "PractitionerRole.implicitRules",
+      "path": "PractitionerRole.implicitRules",
+      "name": "implicitRules",
+      "short": "A set of rules under which this content was created",
+      "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "PractitionerRole.language",
+      "path": "PractitionerRole.language",
+      "name": "language",
+      "short": "Language of the resource content",
+      "description": "The base language in which the resource is written.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": []
+    },
+    {
+      "id": "PractitionerRole.text",
+      "path": "PractitionerRole.text",
+      "name": "text",
+      "short": "Text summary of the resource, for human interpretation",
+      "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Narrative",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "Act.text?"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.contained",
+      "path": "PractitionerRole.contained",
+      "name": "contained",
+      "short": "Contained, inline Resources",
+      "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.extension",
+      "path": "PractitionerRole.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.modifierExtension",
+      "path": "PractitionerRole.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.identifier",
+      "path": "PractitionerRole.identifier",
+      "name": "identifier",
+      "short": "Business Identifiers that are specific to a role/location",
+      "description": "Business Identifiers that are specific to a role/location.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "v2",
+          "map": "PRD-7 (or XCN.1)"
+        },
+        {
+          "identity": "rim",
+          "map": ".id"
+        },
+        {
+          "identity": "servd",
+          "map": "./Identifiers"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.active",
+      "path": "PractitionerRole.active",
+      "name": "active",
+      "short": "Whether this practitioner role record is in active use",
+      "description": "Whether this practitioner role record is in active use.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.status"
+        },
+        {
+          "identity": "v2",
+          "map": "STF-7"
+        },
+        {
+          "identity": "rim",
+          "map": ".statusCode"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.period",
+      "path": "PractitionerRole.period",
+      "name": "period",
+      "short": "The period during which the practitioner is authorized to perform in these role(s)",
+      "description": "The period during which the person is authorized to act as a practitioner in these role(s) for the organization.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.done[x]"
+        },
+        {
+          "identity": "v2",
+          "map": "PRD-8/9 / PRA-5.4"
+        },
+        {
+          "identity": "rim",
+          "map": ".performance[@typeCode <= 'PPRF'].ActDefinitionOrEvent.effectiveTime"
+        },
+        {
+          "identity": "servd",
+          "map": "(ServD maps Practitioners and Organizations via another entity, so this concept is not available)"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.practitioner",
+      "path": "PractitionerRole.practitioner",
+      "name": "practitioner",
+      "short": "Practitioner that is able to provide the defined services for the organization",
+      "description": "Practitioner that is able to provide the defined services for the organization.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".player"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.organization",
+      "path": "PractitionerRole.organization",
+      "name": "organization",
+      "short": "Organization where the roles are available",
+      "description": "The organization where the Practitioner performs the roles associated.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".scoper"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.code",
+      "path": "PractitionerRole.code",
+      "name": "code",
+      "short": "Roles which this practitioner may perform",
+      "description": "Roles which this practitioner is authorized to perform for the organization.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "example",
+        "description": "The role a person plays representing an organization.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/practitioner-role"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PRD-1 / STF-18  / PRA-3  / PRT-4  / ROL-3 / ORC-12 / OBR-16 / PV1-7 / PV1-8 / PV1-9 / PV1-17"
+        },
+        {
+          "identity": "rim",
+          "map": ".code"
+        },
+        {
+          "identity": "servd",
+          "map": "(ServD maps Practitioners and Organizations via another entity, so this concept is not available)"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.specialty",
+      "path": "PractitionerRole.specialty",
+      "name": "specialty",
+      "short": "Specific specialty of the practitioner",
+      "description": "Specific specialty of the practitioner.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "preferred",
+        "description": "Specific specialty associated with the agency.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/c80-practice-codes"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PRA-5"
+        },
+        {
+          "identity": "rim",
+          "map": ".player.HealthCareProvider[@classCode = 'PROV'].code"
+        },
+        {
+          "identity": "servd",
+          "map": "./Specialty"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.location",
+      "path": "PractitionerRole.location",
+      "name": "location",
+      "short": "The location(s) at which this practitioner provides care",
+      "description": "The location(s) at which this practitioner provides care.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.where[x]"
+        },
+        {
+          "identity": "rim",
+          "map": ".performance.ActDefinitionOrEvent.ServiceDeliveryLocation[@classCode = 'SDLOC']"
+        },
+        {
+          "identity": "servd",
+          "map": "(ServD maps Practitioners and Organizations via another entity, so this concept is not available)<br/> However these are accessed via the Site.ServiceSite.ServiceSiteProvider record. (The Site has the location)"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.healthcareService",
+      "path": "PractitionerRole.healthcareService",
+      "name": "healthcareService",
+      "short": "The list of healthcare services that this worker provides for this role's Organization/Location(s)",
+      "description": "The list of healthcare services that this worker provides for this role's Organization/Location(s).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "EDU-2 / AFF-3"
+        },
+        {
+          "identity": "rim",
+          "map": ".player.QualifiedEntity[@classCode = 'QUAL'].code"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.telecom",
+      "path": "PractitionerRole.telecom",
+      "name": "telecom",
+      "short": "Contact details that are specific to the role/location/service",
+      "description": "Contact details that are specific to the role/location/service.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "ContactPoint",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".telecom"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.availableTime",
+      "path": "PractitionerRole.availableTime",
+      "name": "availableTime",
+      "short": "Times the Service Site is available",
+      "description": "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.availableTime.id",
+      "path": "PractitionerRole.availableTime.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.availableTime.extension",
+      "path": "PractitionerRole.availableTime.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.availableTime.modifierExtension",
+      "path": "PractitionerRole.availableTime.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.availableTime.daysOfWeek",
+      "path": "PractitionerRole.availableTime.daysOfWeek",
+      "name": "daysOfWeek",
+      "short": "mon | tue | wed | thu | fri | sat | sun",
+      "description": "Indicates which days of the week are available between the start and end Times.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "required",
+        "description": "The days of the week.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/days-of-week|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.availableTime.allDay",
+      "path": "PractitionerRole.availableTime.allDay",
+      "name": "allDay",
+      "short": "Always available? e.g. 24 hour service",
+      "description": "Is this always available? (hence times are irrelevant) e.g. 24 hour service.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.availableTime.availableStartTime",
+      "path": "PractitionerRole.availableTime.availableStartTime",
+      "name": "availableStartTime",
+      "short": "Opening time of day (ignored if allDay = true)",
+      "description": "The opening time of day. Note: If the AllDay flag is set, then this time is ignored.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "time",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.availableTime.availableEndTime",
+      "path": "PractitionerRole.availableTime.availableEndTime",
+      "name": "availableEndTime",
+      "short": "Closing time of day (ignored if allDay = true)",
+      "description": "The closing time of day. Note: If the AllDay flag is set, then this time is ignored.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "time",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.notAvailable",
+      "path": "PractitionerRole.notAvailable",
+      "name": "notAvailable",
+      "short": "Not available during this time due to provided reason",
+      "description": "The practitioner is not available or performing this role during this period of time due to the provided reason.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.notAvailable.id",
+      "path": "PractitionerRole.notAvailable.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.notAvailable.extension",
+      "path": "PractitionerRole.notAvailable.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.notAvailable.modifierExtension",
+      "path": "PractitionerRole.notAvailable.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.notAvailable.description",
+      "path": "PractitionerRole.notAvailable.description",
+      "name": "description",
+      "short": "Reason presented to the user explaining why time not available",
+      "description": "The reason that can be presented to the user as to why this time is not available.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.notAvailable.during",
+      "path": "PractitionerRole.notAvailable.during",
+      "name": "during",
+      "short": "Service not available from this date",
+      "description": "Service is not available (seasonally or for a public holiday) from this date.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.availabilityExceptions",
+      "path": "PractitionerRole.availabilityExceptions",
+      "name": "availabilityExceptions",
+      "short": "Description of availability exceptions",
+      "description": "A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".effectiveTime"
+        }
+      ]
+    },
+    {
+      "id": "PractitionerRole.endpoint",
+      "path": "PractitionerRole.endpoint",
+      "name": "endpoint",
+      "short": "Technical endpoints providing access to services operated for the practitioner with this role",
+      "description": "Technical endpoints providing access to services operated for the practitioner with this role.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ]
+    }
+  ],
+  "statistics": {
+    "elementCount": 34,
+    "requiredElements": 1,
+    "optionalElements": 33,
+    "summaryElements": 14,
+    "modifierElements": 4
+  }
+}

@@ -1,0 +1,3211 @@
+{
+  "id": "us-core-patient",
+  "name": "USCorePatientProfile",
+  "title": "US Core Patient Profile",
+  "description": "The US Core Patient Profile meets the U.S. Core Data for Interoperability (USCDI) v3 'Patient Demographics' requirements. This profile sets minimum expectations for the Patient resource to record, search, and fetch basic demographics and other administrative information about an individual patient. It identifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource when using this profile to promote interoperability and adoption through common implementation.  It identifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains the way the elements are used when using this profile.  It provides the floor for standards development for specific use cases.",
+  "type": "profile",
+  "resourceType": "Patient",
+  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+  "version": "6.1.0",
+  "status": "active",
+  "date": "2022-09-30",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Patient",
+  "derivation": "constraint",
+  "fhirVersion": "4.0.1",
+  "elements": [
+    {
+      "id": "Patient.id",
+      "path": "Patient.id",
+      "name": "id",
+      "short": "Logical id of this artifact",
+      "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.meta",
+      "path": "Patient.meta",
+      "name": "meta",
+      "short": "Metadata about the resource",
+      "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Meta",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.implicitRules",
+      "path": "Patient.implicitRules",
+      "name": "implicitRules",
+      "short": "A set of rules under which this content was created",
+      "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.language",
+      "path": "Patient.language",
+      "name": "language",
+      "short": "Language of the resource content",
+      "description": "The base language in which the resource is written.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.text",
+      "path": "Patient.text",
+      "name": "text",
+      "short": "Text summary of the resource, for human interpretation",
+      "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Narrative",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "Act.text?"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contained",
+      "path": "Patient.contained",
+      "name": "contained",
+      "short": "Contained, inline Resources",
+      "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.extension",
+      "path": "Patient.extension",
+      "name": "extension",
+      "short": "Extension",
+      "description": "An Extension",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.extension:race",
+      "path": "Patient.extension",
+      "name": "extension",
+      "short": "(USCDI) US Core Race Extension",
+      "description": "Concepts classifying the person into a named category of humans sharing common history, traits, geographical origin or nationality.  The race codes used to represent these concepts are based upon the [CDC Race and Ethnicity Code Set Version 1.0](http://www.cdc.gov/phin/resources/vocabulary/index.html) which includes over 900 concepts for representing race and ethnicity of which 921 reference race.  The race concepts are grouped by and pre-mapped to the 5 OMB race categories:\n\n   - American Indian or Alaska Native\n   - Asian\n   - Black or African American\n   - Native Hawaiian or Other Pacific Islander\n   - White.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Extension(us-core-race)",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.extension"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.extension:ethnicity",
+      "path": "Patient.extension",
+      "name": "extension",
+      "short": "(USCDI) US Core ethnicity Extension",
+      "description": "Concepts classifying the person into a named category of humans sharing common history, traits, geographical origin or nationality.  The ethnicity codes used to represent these concepts are based upon the [CDC ethnicity and Ethnicity Code Set Version 1.0](http://www.cdc.gov/phin/resources/vocabulary/index.html) which includes over 900 concepts for representing race and ethnicity of which 43 reference ethnicity.  The ethnicity concepts are grouped by and pre-mapped to the 2 OMB ethnicity categories: - Hispanic or Latino - Not Hispanic or Latino.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Extension(us-core-ethnicity)",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.extension"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.extension:tribalAffiliation",
+      "path": "Patient.extension",
+      "name": "extension",
+      "short": "(USCDI) Tribal Affiliation Extension",
+      "description": "A tribe or band with which a person associates whether or not they are an enrolled member.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension(us-core-tribal-affiliation)",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.extension:birthsex",
+      "path": "Patient.extension",
+      "name": "extension",
+      "short": "Birth Sex Extension",
+      "description": "A code classifying the person's sex assigned at birth  as specified by the [Office of the National Coordinator for Health IT (ONC)](https://www.healthit.gov/newsroom/about-onc).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Extension(us-core-birthsex)",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender"
+        },
+        {
+          "identity": "iso11179",
+          "map": ".patient.administrativeGenderCode"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.extension"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.extension:sex",
+      "path": "Patient.extension",
+      "name": "extension",
+      "short": "(USCDI) Sex Extension",
+      "description": "The US Core Sex Extension is used to reflect the documentation of a person's sex. It aligns with the C-CDA Sex Observation (LOINC 46098-0).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Extension(us-core-sex)",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.extension:genderIdentity",
+      "path": "Patient.extension",
+      "name": "extension",
+      "short": "(USCDI) The individual's gender identity",
+      "description": "An individual's personal sense of being a man, woman, boy, girl, nonbinary, or something else.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension(us-core-genderIdentity)",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.modifierExtension",
+      "path": "Patient.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.identifier",
+      "path": "Patient.identifier",
+      "name": "identifier",
+      "short": "(USCDI) An identifier for this patient",
+      "description": "An identifier for this patient.",
+      "min": 1,
+      "max": "*",
+      "cardinality": "1..*",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "v2",
+          "map": "PID-3"
+        },
+        {
+          "identity": "rim",
+          "map": "id"
+        },
+        {
+          "identity": "cda",
+          "map": ".id"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.identifier"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.identifier.id",
+      "path": "Patient.identifier.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.identifier.extension",
+      "path": "Patient.identifier.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.identifier.use",
+      "path": "Patient.identifier.use",
+      "name": "use",
+      "short": "usual | official | temp | secondary | old (If known)",
+      "description": "The purpose of this identifier.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Identifies the purpose for this identifier, if known .",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "N/A"
+        },
+        {
+          "identity": "rim",
+          "map": "Role.code or implied by context"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.identifier.type",
+      "path": "Patient.identifier.type",
+      "name": "type",
+      "short": "Description of identifier",
+      "description": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-type"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.5"
+        },
+        {
+          "identity": "rim",
+          "map": "Role.code or implied by context"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.identifier.system",
+      "path": "Patient.identifier.system",
+      "name": "system",
+      "short": "(USCDI) The namespace for the identifier value",
+      "description": "Establishes the namespace for the value - that is, a URL that describes a set values that are unique.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.4 / EI-2-4"
+        },
+        {
+          "identity": "rim",
+          "map": "II.root or Role.id.root"
+        },
+        {
+          "identity": "servd",
+          "map": "./IdentifierType"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.identifier.system"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.identifier.value",
+      "path": "Patient.identifier.value",
+      "name": "value",
+      "short": "(USCDI) The value that is unique within the system.",
+      "description": "The portion of the identifier typically relevant to the user and which is unique within the context of the system.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.1 / EI.1"
+        },
+        {
+          "identity": "rim",
+          "map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
+        },
+        {
+          "identity": "servd",
+          "map": "./Value"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.identifier.value"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.identifier.period",
+      "path": "Patient.identifier.period",
+      "name": "period",
+      "short": "Time period when id is/was valid for use",
+      "description": "Time period during which identifier is/was valid for use.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.7 + CX.8"
+        },
+        {
+          "identity": "rim",
+          "map": "Role.effectiveTime or implied by context"
+        },
+        {
+          "identity": "servd",
+          "map": "./StartDate and ./EndDate"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.identifier.assigner",
+      "path": "Patient.identifier.assigner",
+      "name": "assigner",
+      "short": "Organization that issued id (may be just text)",
+      "description": "Organization that issued/manages the identifier.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.4 / (CX.4,CX.9,CX.10)"
+        },
+        {
+          "identity": "rim",
+          "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+        },
+        {
+          "identity": "servd",
+          "map": "./IdentifierIssuingAuthority"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.active",
+      "path": "Patient.active",
+      "name": "active",
+      "short": "Whether this patient's record is in active use",
+      "description": "Whether this patient record is in active use. \nMany systems use this property to mark as non-current patients, such as those that have not been seen for a period of time based on an organization's business rules.\n\nIt is often used to filter patient lists to exclude inactive patients\n\nDeceased patients may also be marked as inactive for the same reasons, but may be active for some time after death.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.status"
+        },
+        {
+          "identity": "rim",
+          "map": "statusCode"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.name",
+      "path": "Patient.name",
+      "name": "name",
+      "short": "(USCDI) A name associated with the patient",
+      "description": "A name associated with the individual.",
+      "min": 1,
+      "max": "*",
+      "cardinality": "1..*",
+      "type": "HumanName",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "us-core-6",
+          "severity": "error",
+          "human": "At least name.given and/or name.family are present or, if neither is available, the Data Absent Reason Extension is present.",
+          "expression": "(family.exists() or given.exists()) xor extension.where(url='http://hl7.org/fhir/StructureDefinition/data-absent-reason').exists()",
+          "xpath": "(/f:extension/@url='http://hl7.org/fhir/StructureDefinition/data-absent-reason' and not(/f:family or /f:given)) or (not(/f:extension/@url='http://hl7.org/fhir/StructureDefinition/data-absent-reason') and (/f:family or /f:given))"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-5, PID-9"
+        },
+        {
+          "identity": "rim",
+          "map": "name"
+        },
+        {
+          "identity": "cda",
+          "map": ".patient.name"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.name"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.name.id",
+      "path": "Patient.name.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.name.extension",
+      "path": "Patient.name.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.name.use",
+      "path": "Patient.name.use",
+      "name": "use",
+      "short": "(USCDI) usual | official | temp | nickname | anonymous | old | maiden",
+      "description": "Identifies the purpose for this name.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The use of a human name.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/name-use|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.7, but often indicated by which field contains the name"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./use)"
+        },
+        {
+          "identity": "servd",
+          "map": "./NamePurpose"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.name.text",
+      "path": "Patient.name.text",
+      "name": "text",
+      "short": "Text representation of the full name",
+      "description": "Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "implied by XPN.11"
+        },
+        {
+          "identity": "rim",
+          "map": "./formatted"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.name.family",
+      "path": "Patient.name.family",
+      "name": "family",
+      "short": "(USCDI) Family name (often called 'Surname')",
+      "description": "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.1/FN.1"
+        },
+        {
+          "identity": "rim",
+          "map": "./part[partType = FAM]"
+        },
+        {
+          "identity": "servd",
+          "map": "./FamilyName"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.name.family"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.name.given",
+      "path": "Patient.name.given",
+      "name": "given",
+      "short": "(USCDI) Given names (not always 'first'). Includes middle names",
+      "description": "Given name.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.2 + XPN.3"
+        },
+        {
+          "identity": "rim",
+          "map": "./part[partType = GIV]"
+        },
+        {
+          "identity": "servd",
+          "map": "./GivenNames"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.name.given"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.name.prefix",
+      "path": "Patient.name.prefix",
+      "name": "prefix",
+      "short": "Parts that come before the name",
+      "description": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.5"
+        },
+        {
+          "identity": "rim",
+          "map": "./part[partType = PFX]"
+        },
+        {
+          "identity": "servd",
+          "map": "./TitleCode"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.name.suffix",
+      "path": "Patient.name.suffix",
+      "name": "suffix",
+      "short": "(USCDI) Parts that come after the name",
+      "description": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN/4"
+        },
+        {
+          "identity": "rim",
+          "map": "./part[partType = SFX]"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.name.period",
+      "path": "Patient.name.period",
+      "name": "period",
+      "short": "(USCDI) Time period when name was/is in use",
+      "description": "Indicates the period of time when this name was valid for the named person.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.13 + XPN.14"
+        },
+        {
+          "identity": "rim",
+          "map": "./usablePeriod[type=\"IVL<TS>\"]"
+        },
+        {
+          "identity": "servd",
+          "map": "./StartDate and ./EndDate"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.telecom",
+      "path": "Patient.telecom",
+      "name": "telecom",
+      "short": "(USCDI) A contact detail for the individual",
+      "description": "A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "ContactPoint",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-13, PID-14, PID-40"
+        },
+        {
+          "identity": "rim",
+          "map": "telecom"
+        },
+        {
+          "identity": "cda",
+          "map": ".telecom"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.telecom.id",
+      "path": "Patient.telecom.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.telecom.extension",
+      "path": "Patient.telecom.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.telecom.system",
+      "path": "Patient.telecom.system",
+      "name": "system",
+      "short": "(USCDI) phone | fax | email | pager | url | sms | other",
+      "description": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Telecommunications form for contact point.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XTN.3"
+        },
+        {
+          "identity": "rim",
+          "map": "./scheme"
+        },
+        {
+          "identity": "servd",
+          "map": "./ContactPointType"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.telecom.value",
+      "path": "Patient.telecom.value",
+      "name": "value",
+      "short": "(USCDI) The actual contact point details",
+      "description": "The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XTN.1 (or XTN.12)"
+        },
+        {
+          "identity": "rim",
+          "map": "./url"
+        },
+        {
+          "identity": "servd",
+          "map": "./Value"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.telecom.use",
+      "path": "Patient.telecom.use",
+      "name": "use",
+      "short": "(USCDI) home | work | temp | old | mobile - purpose of this contact point",
+      "description": "Identifies the purpose for the contact point.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": null,
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XTN.2 - but often indicated by field"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./use)"
+        },
+        {
+          "identity": "servd",
+          "map": "./ContactPointPurpose"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.telecom.rank",
+      "path": "Patient.telecom.rank",
+      "name": "rank",
+      "short": "Specify preferred order of use (1 = highest)",
+      "description": "Specifies a preferred order in which to use a set of contacts. ContactPoints with lower rank values are more preferred than those with higher rank values.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "positiveInt",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "n/a"
+        },
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.telecom.period",
+      "path": "Patient.telecom.period",
+      "name": "period",
+      "short": "Time period when the contact point was/is in use",
+      "description": "Time period when the contact point was/is in use.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "N/A"
+        },
+        {
+          "identity": "rim",
+          "map": "./usablePeriod[type=\"IVL<TS>\"]"
+        },
+        {
+          "identity": "servd",
+          "map": "./StartDate and ./EndDate"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.gender",
+      "path": "Patient.gender",
+      "name": "gender",
+      "short": "(USCDI) male | female | other | unknown",
+      "description": "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": null,
+        "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-8"
+        },
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender"
+        },
+        {
+          "identity": "cda",
+          "map": ".patient.administrativeGenderCode"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.gender"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.birthDate",
+      "path": "Patient.birthDate",
+      "name": "birthDate",
+      "short": "(USCDI) The date of birth for the individual",
+      "description": "The date of birth for the individual.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "date",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-7"
+        },
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/birthTime"
+        },
+        {
+          "identity": "cda",
+          "map": ".patient.birthTime"
+        },
+        {
+          "identity": "loinc",
+          "map": "21112-8"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.birthDate"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.deceased[x]",
+      "path": "Patient.deceased[x]",
+      "name": "deceased[x]",
+      "short": "(USCDI) Indicates if the individual is deceased or not",
+      "description": "Indicates if the individual is deceased or not.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean | dateTime",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-30  (bool) and PID-29 (datetime)"
+        },
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedInd, player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedTime"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.address",
+      "path": "Patient.address",
+      "name": "address",
+      "short": "(USCDI) An address for the individual",
+      "description": "An address for the individual.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Address",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-11"
+        },
+        {
+          "identity": "rim",
+          "map": "addr"
+        },
+        {
+          "identity": "cda",
+          "map": ".addr"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.birthDate"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.address.id",
+      "path": "Patient.address.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.address.extension",
+      "path": "Patient.address.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.address.use",
+      "path": "Patient.address.use",
+      "name": "use",
+      "short": "(USCDI) home | work | temp | old | billing - purpose of this address",
+      "description": "The purpose of this address.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The use of an address.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/address-use|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.7"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./use)"
+        },
+        {
+          "identity": "servd",
+          "map": "./AddressPurpose"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.address.type",
+      "path": "Patient.address.type",
+      "name": "type",
+      "short": "postal | physical | both",
+      "description": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The type of an address (physical / postal).",
+        "valueSet": "http://hl7.org/fhir/ValueSet/address-type|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.18"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./use)"
+        },
+        {
+          "identity": "vcard",
+          "map": "address type parameter"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.address.text",
+      "path": "Patient.address.text",
+      "name": "text",
+      "short": "Text representation of the address",
+      "description": "Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.1 + XAD.2 + XAD.3 + XAD.4 + XAD.5 + XAD.6"
+        },
+        {
+          "identity": "rim",
+          "map": "./formatted"
+        },
+        {
+          "identity": "vcard",
+          "map": "address label parameter"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.address.line",
+      "path": "Patient.address.line",
+      "name": "line",
+      "short": "(USCDI) Street name, number, direction & P.O. Box etc.",
+      "description": "This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.1 + XAD.2 (note: XAD.1 and XAD.2 have different meanings for a company address than for a person address)"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = AL]"
+        },
+        {
+          "identity": "vcard",
+          "map": "street"
+        },
+        {
+          "identity": "servd",
+          "map": "./StreetAddress (newline delimitted)"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.address.city",
+      "path": "Patient.address.city",
+      "name": "city",
+      "short": "(USCDI) Name of city, town etc.",
+      "description": "The name of the city, town, suburb, village or other community or delivery center.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.3"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = CTY]"
+        },
+        {
+          "identity": "vcard",
+          "map": "locality"
+        },
+        {
+          "identity": "servd",
+          "map": "./Jurisdiction"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.address.district",
+      "path": "Patient.address.district",
+      "name": "district",
+      "short": "District name (aka county)",
+      "description": "The name of the administrative area (county).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.9"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = CNT | CPA]"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.address.state",
+      "path": "Patient.address.state",
+      "name": "state",
+      "short": "(USCDI) Sub-unit of country (abbreviations ok)",
+      "description": "Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (e.g. US 2 letter state codes).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "Two Letter USPS alphabetic codes.",
+        "valueSet": "http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.4"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = STA]"
+        },
+        {
+          "identity": "vcard",
+          "map": "region"
+        },
+        {
+          "identity": "servd",
+          "map": "./Region"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.address.postalCode",
+      "path": "Patient.address.postalCode",
+      "name": "postalCode",
+      "short": "(USCDI) US Zip Codes",
+      "description": "A postal code designating a region defined by the postal service.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.5"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = ZIP]"
+        },
+        {
+          "identity": "vcard",
+          "map": "code"
+        },
+        {
+          "identity": "servd",
+          "map": "./PostalIdentificationCode"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.address.country",
+      "path": "Patient.address.country",
+      "name": "country",
+      "short": "Country (e.g. can be ISO 3166 2 or 3 letter code)",
+      "description": "Country - a nation as commonly understood or generally accepted.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.6"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = CNT]"
+        },
+        {
+          "identity": "vcard",
+          "map": "country"
+        },
+        {
+          "identity": "servd",
+          "map": "./Country"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.address.period",
+      "path": "Patient.address.period",
+      "name": "period",
+      "short": "(USCDI) Time period when address was/is in use",
+      "description": "Time period when address was/is in use.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.12 / XAD.13 + XAD.14"
+        },
+        {
+          "identity": "rim",
+          "map": "./usablePeriod[type=\"IVL<TS>\"]"
+        },
+        {
+          "identity": "servd",
+          "map": "./StartDate and ./EndDate"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "NA"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.maritalStatus",
+      "path": "Patient.maritalStatus",
+      "name": "maritalStatus",
+      "short": "Marital (civil) status of a patient",
+      "description": "This field contains a patient's most recent marital (civil) status.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "extensible",
+        "description": "The domestic partnership status of a person.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/marital-status"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-16"
+        },
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN]/maritalStatusCode"
+        },
+        {
+          "identity": "cda",
+          "map": ".patient.maritalStatusCode"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.multipleBirth[x]",
+      "path": "Patient.multipleBirth[x]",
+      "name": "multipleBirth[x]",
+      "short": "Whether patient is part of a multiple birth",
+      "description": "Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean | integer",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-24 (bool), PID-25 (integer)"
+        },
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/multipleBirthInd,  player[classCode=PSN|ANM and determinerCode=INSTANCE]/multipleBirthOrderNumber"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.photo",
+      "path": "Patient.photo",
+      "name": "photo",
+      "short": "Image of the patient",
+      "description": "Image of the patient.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Attachment",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "OBX-5 - needs a profile"
+        },
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/desc"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact",
+      "path": "Patient.contact",
+      "name": "contact",
+      "short": "A contact party (e.g. guardian, partner, friend) for the patient",
+      "description": "A contact party (e.g. guardian, partner, friend) for the patient.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "pat-1",
+          "severity": "error",
+          "human": "SHALL at least contain a contact's details or a reference to an organization",
+          "expression": "name.exists() or telecom.exists() or address.exists() or organization.exists()",
+          "xpath": "exists(f:name) or exists(f:telecom) or exists(f:address) or exists(f:organization)"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.id",
+      "path": "Patient.contact.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.extension",
+      "path": "Patient.contact.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.modifierExtension",
+      "path": "Patient.contact.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.relationship",
+      "path": "Patient.contact.relationship",
+      "name": "relationship",
+      "short": "The kind of relationship",
+      "description": "The nature of the relationship between the patient and the contact person.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "extensible",
+        "description": "The nature of the relationship between a patient and a contact person for that patient.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/patient-contactrelationship"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "NK1-7, NK1-3"
+        },
+        {
+          "identity": "rim",
+          "map": "code"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.name",
+      "path": "Patient.contact.name",
+      "name": "name",
+      "short": "A name associated with the contact person",
+      "description": "A name associated with the contact person.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "HumanName",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "NK1-2"
+        },
+        {
+          "identity": "rim",
+          "map": "name"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.telecom",
+      "path": "Patient.contact.telecom",
+      "name": "telecom",
+      "short": "A contact detail for the person",
+      "description": "A contact detail for the person, e.g. a telephone number or an email address.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "ContactPoint",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "NK1-5, NK1-6, NK1-40"
+        },
+        {
+          "identity": "rim",
+          "map": "telecom"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.address",
+      "path": "Patient.contact.address",
+      "name": "address",
+      "short": "Address for the contact person",
+      "description": "Address for the contact person.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Address",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "NK1-4"
+        },
+        {
+          "identity": "rim",
+          "map": "addr"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.gender",
+      "path": "Patient.contact.gender",
+      "name": "gender",
+      "short": "male | female | other | unknown",
+      "description": "Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "required",
+        "description": "The gender of a person used for administrative purposes.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "NK1-15"
+        },
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.organization",
+      "path": "Patient.contact.organization",
+      "name": "organization",
+      "short": "Organization that is associated with the contact",
+      "description": "Organization on behalf of which the contact is acting or for which the contact is working.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "NK1-13, NK1-30, NK1-31, NK1-32, NK1-41"
+        },
+        {
+          "identity": "rim",
+          "map": "scoper"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.contact.period",
+      "path": "Patient.contact.period",
+      "name": "period",
+      "short": "The period during which this contact person or organization is valid to be contacted relating to this patient",
+      "description": "The period during which this contact person or organization is valid to be contacted relating to this patient.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "effectiveTime"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.communication",
+      "path": "Patient.communication",
+      "name": "communication",
+      "short": "(USCDI) A language which may be used to communicate with the patient about his or her health",
+      "description": "A language which may be used to communicate with the patient about his or her health.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "LanguageCommunication"
+        },
+        {
+          "identity": "cda",
+          "map": "patient.languageCommunication"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.communication"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.communication.id",
+      "path": "Patient.communication.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.communication.extension",
+      "path": "Patient.communication.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.communication.modifierExtension",
+      "path": "Patient.communication.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.communication.language",
+      "path": "Patient.communication.language",
+      "name": "language",
+      "short": "(USCDI) The language which can be used to communicate with the patient about his or her health",
+      "description": "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "extensible",
+        "description": null,
+        "valueSet": "http://hl7.org/fhir/us/core/ValueSet/simple-language"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-15, LAN-2"
+        },
+        {
+          "identity": "rim",
+          "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/languageCommunication/code"
+        },
+        {
+          "identity": "cda",
+          "map": ".languageCode"
+        },
+        {
+          "identity": "argonaut-dq-dstu2",
+          "map": "Patient.communication.language"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Patient.communication.preferred",
+      "path": "Patient.communication.preferred",
+      "name": "preferred",
+      "short": "Language preference indicator",
+      "description": "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-15"
+        },
+        {
+          "identity": "rim",
+          "map": "preferenceInd"
+        },
+        {
+          "identity": "cda",
+          "map": ".preferenceInd"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.generalPractitioner",
+      "path": "Patient.generalPractitioner",
+      "name": "generalPractitioner",
+      "short": "Patient's nominated primary care provider",
+      "description": "Patient's nominated care provider.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PD1-4"
+        },
+        {
+          "identity": "rim",
+          "map": "subjectOf.CareEvent.performer.AssignedEntity"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.managingOrganization",
+      "path": "Patient.managingOrganization",
+      "name": "managingOrganization",
+      "short": "Organization that is the custodian of the patient record",
+      "description": "Organization that is the custodian of the patient record.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "scoper"
+        },
+        {
+          "identity": "cda",
+          "map": ".providerOrganization"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.link",
+      "path": "Patient.link",
+      "name": "link",
+      "short": "Link to another patient resource that concerns the same actual person",
+      "description": "Link to another patient resource that concerns the same actual patient.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "outboundLink"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.link.id",
+      "path": "Patient.link.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.link.extension",
+      "path": "Patient.link.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.link.modifierExtension",
+      "path": "Patient.link.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.link.other",
+      "path": "Patient.link.other",
+      "name": "other",
+      "short": "The other patient or related person resource that the link refers to",
+      "description": "The other patient resource that the link refers to.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-3, MRG-1"
+        },
+        {
+          "identity": "rim",
+          "map": "id"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Patient.link.type",
+      "path": "Patient.link.type",
+      "name": "type",
+      "short": "replaced-by | replaces | refer | seealso",
+      "description": "The type of link between this patient resource and another patient resource.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The type of link between this patient resource and another patient resource.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/link-type|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "typeCode"
+        },
+        {
+          "identity": "cda",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    }
+  ],
+  "statistics": {
+    "elementCount": 86,
+    "requiredElements": 10,
+    "optionalElements": 76,
+    "summaryElements": 46,
+    "modifierElements": 12
+  },
+  "mustSupportCount": 17
+}

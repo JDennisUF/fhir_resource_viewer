@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FHIR Link Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .test-result { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>FHIR Resource Link Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Cases</h2>
+        <div class="test-result">
+            <strong>Reference(Patient):</strong> 
+            <span id="test1"></span>
+        </div>
+        <div class="test-result">
+            <strong>Reference(Patient | Group):</strong> 
+            <span id="test2"></span>
+        </div>
+        <div class="test-result">
+            <strong>Observation:</strong> 
+            <span id="test3"></span>
+        </div>
+        <div class="test-result">
+            <strong>HumanName (data type):</strong> 
+            <span id="test4"></span>
+        </div>
+        <div class="test-result">
+            <strong>Narrative:</strong> 
+            <span id="test5"></span>
+        </div>
+        <div class="test-result">
+            <strong>UnknownType:</strong> 
+            <span id="test6"></span>
+        </div>
+        <div class="test-result">
+            <strong>http://hl7.org/fhirpath/System.String:</strong> 
+            <span id="test7"></span>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Create a minimal app instance for testing
+        const mockApp = {
+            createTypeLinks: function(typeString) {
+                if (!typeString) return '';
+                
+                // List of data types we have available
+                const availableDataTypes = [
+                    'Extension', 'Meta', 'Identifier', 'Coding', 'CodeableConcept', 'Period', 'Reference',
+                    'HumanName', 'Address', 'ContactPoint', 'Quantity', 'Range', 'Ratio', 'Attachment', 'Annotation', 'Element'
+                ];
+                
+                // List of FHIR R4 resources that should link to the spec
+                const fhirResources = [
+                    'Patient', 'Practitioner', 'Organization', 'Observation', 'Encounter', 'Condition', 
+                    'Procedure', 'MedicationRequest', 'AllergyIntolerance', 'DiagnosticReport', 'Immunization',
+                    'Device', 'Location', 'Group', 'RelatedPerson', 'PractitionerRole', 'Medication',
+                    'Substance', 'Specimen', 'BodyStructure', 'ImagingStudy', 'Media', 'DocumentReference',
+                    'Composition', 'Bundle', 'MessageHeader', 'OperationOutcome', 'Parameters', 'Binary',
+                    'Provenance', 'AuditEvent', 'Consent', 'Task', 'Appointment', 'AppointmentResponse',
+                    'Schedule', 'Slot', 'HealthcareService', 'Endpoint', 'CareTeam', 'CarePlan', 'Goal',
+                    'ServiceRequest', 'RiskAssessment', 'FamilyMemberHistory', 'ClinicalImpression',
+                    'DetectedIssue', 'Flag', 'List', 'EpisodeOfCare', 'Account', 'ChargeItem', 'Coverage',
+                    'CoverageEligibilityRequest', 'CoverageEligibilityResponse', 'EnrollmentRequest',
+                    'EnrollmentResponse', 'Claim', 'ClaimResponse', 'Invoice', 'PaymentNotice', 'PaymentReconciliation',
+                    'ExplanationOfBenefit', 'Contract', 'Person', 'Linkage', 'ImmunizationEvaluation',
+                    'ImmunizationRecommendation', 'ResearchStudy', 'ResearchSubject', 'ActivityDefinition',
+                    'DeviceDefinition', 'EventDefinition', 'ObservationDefinition', 'PlanDefinition',
+                    'Questionnaire', 'QuestionnaireResponse', 'Measure', 'MeasureReport', 'Library',
+                    'EffectEvidenceSynthesis', 'Evidence', 'EvidenceVariable', 'RiskEvidenceSynthesis',
+                    'Narrative'
+                ];
+                
+                // Handle complex type strings with multiple types separated by |
+                const types = typeString.split(' | ');
+                const linkedTypes = types.map(type => {
+                    const trimmedType = type.trim();
+                    
+                    // Check if this is a URL
+                    if (this.isUrl(trimmedType)) {
+                        // Handle FHIRPath system types specially
+                        if (trimmedType.startsWith('http://hl7.org/fhirpath/System.')) {
+                            const systemType = trimmedType.replace('http://hl7.org/fhirpath/System.', '');
+                            return `<span class="system-type" title="FHIRPath system type: ${trimmedType}">${systemType}</span>`;
+                        }
+                        return `<a href="${trimmedType}" target="_blank" class="url-link" title="Open ${trimmedType} in new tab">${trimmedType}</a>`;
+                    }
+                    
+                    // Clean up the type (remove Reference(...) wrappers, etc.)
+                    const cleanType = this.extractCleanTypeName(trimmedType);
+                    
+                    // Check if this is a FHIR resource that should link to R4 spec
+                    if (fhirResources.includes(cleanType)) {
+                        const fhirUrl = `https://hl7.org/fhir/R4/${cleanType.toLowerCase()}.html`;
+                        return `<a href="${fhirUrl}" target="_blank" class="fhir-resource-link" title="View ${cleanType} in FHIR R4 specification">${trimmedType}</a>`;
+                    }
+                    
+                    // Check if this is a data type we have
+                    if (availableDataTypes.includes(cleanType)) {
+                        return `<a href="#" onclick="app.selectDataType('${cleanType}')" class="datatype-link" title="View ${cleanType} definition">${trimmedType}</a>`;
+                    }
+                    
+                    return trimmedType;
+                });
+                
+                return linkedTypes.join(' | ');
+            },
+            
+            isUrl: function(str) {
+                try {
+                    const url = new URL(str);
+                    return url.protocol === 'http:' || url.protocol === 'https:';
+                } catch (e) {
+                    return false;
+                }
+            },
+            
+            extractCleanTypeName: function(type) {
+                // Handle Reference(ResourceType) pattern - extract the resource type
+                if (type.startsWith('Reference(')) {
+                    const match = type.match(/Reference\(([^)]+)\)/);
+                    if (match) {
+                        // Handle multiple resource types like Reference(Patient | Group)
+                        const referencedTypes = match[1].split(' | ');
+                        // Return the first referenced type for linking purposes
+                        return referencedTypes[0].trim();
+                    }
+                    return 'Reference';
+                }
+                
+                // Handle choice types [x]
+                if (type.includes('[x]')) {
+                    return type.replace('[x]', '');
+                }
+                
+                // Handle array indicators
+                return type.replace(/\[\]$/, '');
+            }
+        };
+        
+        // Run tests
+        document.getElementById('test1').innerHTML = mockApp.createTypeLinks('Reference(Patient)');
+        document.getElementById('test2').innerHTML = mockApp.createTypeLinks('Reference(Patient | Group)');
+        document.getElementById('test3').innerHTML = mockApp.createTypeLinks('Observation');
+        document.getElementById('test4').innerHTML = mockApp.createTypeLinks('HumanName');
+        document.getElementById('test5').innerHTML = mockApp.createTypeLinks('Narrative');
+        document.getElementById('test6').innerHTML = mockApp.createTypeLinks('UnknownType');
+        document.getElementById('test7').innerHTML = mockApp.createTypeLinks('http://hl7.org/fhirpath/System.String');
+    </script>
+</body>
+</html>

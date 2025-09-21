@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Two-Row Description Display Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        
+        /* Simulate element table styling */
+        .element-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        
+        .element-table th,
+        .element-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        .element-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+        
+        .element-description {
+            max-width: 400px;
+            line-height: 1.4;
+        }
+        
+        .status { font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>Two-Row Description Display Test</h1>
+    
+    <div class="test-section">
+        <h2>Element Descriptions with Two-Row Limit</h2>
+        
+        <table class="element-table">
+            <thead>
+                <tr>
+                    <th>Element</th>
+                    <th>Type</th>
+                    <th>Cardinality</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>active</strong></td>
+                    <td><code>boolean</code></td>
+                    <td>0..1</td>
+                    <td class="element-description">Whether this patient record is in active use</td>
+                    <td class="status">✅ No truncation</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>name</strong></td>
+                    <td><code>HumanName</code></td>
+                    <td>0..*</td>
+                    <td class="element-description">A name associated with the individual patient or contact person</td>
+                    <td class="status">✅ No truncation</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>identifier</strong></td>
+                    <td><code>Identifier</code></td>
+                    <td>0..*</td>
+                    <td class="element-description">
+                        <span title="An identifier for this patient or contact person. Identifiers are typically used when a direct URL reference to the resource is not appropriate because the referenced resource is not hosted on the same server or at all" class="truncated-description">An identifier for this patient or contact person. Identifiers are typically used when a direct URL reference to the resource is not appropriate because the...</span>
+                    </td>
+                    <td class="status">⚡ Truncated</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>extension</strong></td>
+                    <td><code>Extension</code></td>
+                    <td>0..*</td>
+                    <td class="element-description">
+                        <span title="May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." class="truncated-description">May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable,...</span>
+                    </td>
+                    <td class="status">⚡ Truncated</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>modifierExtension</strong></td>
+                    <td><code>Extension</code></td>
+                    <td>0..*</td>
+                    <td class="element-description">
+                        <span title="May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions. Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." class="truncated-description">May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element...</span>
+                    </td>
+                    <td class="status">⚡ Truncated</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="test-section">
+        <h2>Features</h2>
+        <ul>
+            <li>✅ <strong>Two-row maximum</strong>: ~160 characters (80 chars per row)</li>
+            <li>✅ <strong>Word boundaries respected</strong>: No broken words</li>
+            <li>✅ <strong>Universal truncation</strong>: Works for any element, not just extensions</li>
+            <li>✅ <strong>Smart ellipsis</strong>: Added only when needed</li>
+            <li>✅ <strong>Hover tooltips</strong>: Complete text available on hover</li>
+            <li>✅ <strong>Visual indicators</strong>: Dotted underline shows interactive descriptions</li>
+            <li>✅ <strong>Short descriptions unchanged</strong>: No unnecessary truncation</li>
+        </ul>
+        
+        <p><em>Hover over the truncated descriptions (with dotted underlines) to see the full FHIR specification text!</em></p>
+    </div>
+</body>
+</html>

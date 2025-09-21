@@ -1,0 +1,165 @@
+{
+  "USCorePatient": {
+    "name": "US Core Patient Profile",
+    "description": "The US Core Patient Profile is based upon the core FHIR Patient Resource and meets the U.S. Core Data for Interoperability (USCDI) v1 'Patient Demographics' requirements.",
+    "type": "profile",
+    "baseResource": "Patient",
+    "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+    "version": "3.1.1",
+    "status": "active",
+    "mustSupport": true,
+    "elements": [
+      {
+        "name": "identifier",
+        "type": "Identifier",
+        "cardinality": "1..*",
+        "description": "An identifier for this patient (REQUIRED in US Core)",
+        "mustSupport": true,
+        "path": "Patient.identifier",
+        "constraint": "Patient.identifier must be present"
+      },
+      {
+        "name": "name",
+        "type": "HumanName",
+        "cardinality": "1..*",
+        "description": "A name associated with the patient (REQUIRED in US Core)",
+        "mustSupport": true,
+        "path": "Patient.name",
+        "constraint": "Patient.name must be present"
+      },
+      {
+        "name": "telecom",
+        "type": "ContactPoint",
+        "cardinality": "0..*",
+        "description": "A contact detail for the individual",
+        "mustSupport": true,
+        "path": "Patient.telecom"
+      },
+      {
+        "name": "gender",
+        "type": "code",
+        "cardinality": "1..1",
+        "description": "Administrative Gender (REQUIRED in US Core)",
+        "mustSupport": true,
+        "path": "Patient.gender",
+        "constraint": "Patient.gender must be present"
+      },
+      {
+        "name": "birthDate",
+        "type": "date",
+        "cardinality": "0..1",
+        "description": "The date of birth for the individual",
+        "mustSupport": true,
+        "path": "Patient.birthDate"
+      },
+      {
+        "name": "address",
+        "type": "Address",
+        "cardinality": "0..*",
+        "description": "An address for the individual",
+        "mustSupport": true,
+        "path": "Patient.address"
+      }
+    ]
+  },
+  "USCoreObservation": {
+    "name": "US Core Observation Profile",
+    "description": "The US Core Observation Profile is based upon the core FHIR Observation Resource and meets the U.S. Core Data for Interoperability (USCDI) requirements.",
+    "type": "profile",
+    "baseResource": "Observation",
+    "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab",
+    "version": "3.1.1",
+    "status": "active",
+    "mustSupport": true,
+    "elements": [
+      {
+        "name": "status",
+        "type": "code",
+        "cardinality": "1..1",
+        "description": "registered | preliminary | final | amended +",
+        "mustSupport": true,
+        "path": "Observation.status"
+      },
+      {
+        "name": "category",
+        "type": "CodeableConcept",
+        "cardinality": "1..*",
+        "description": "Classification of type of observation",
+        "mustSupport": true,
+        "path": "Observation.category",
+        "constraint": "Must have a category of 'laboratory'"
+      },
+      {
+        "name": "code",
+        "type": "CodeableConcept",
+        "cardinality": "1..1",
+        "description": "Laboratory Test Name",
+        "mustSupport": true,
+        "path": "Observation.code"
+      },
+      {
+        "name": "subject",
+        "type": "Reference(US Core Patient)",
+        "cardinality": "1..1",
+        "description": "Who and/or what the observation is about",
+        "mustSupport": true,
+        "path": "Observation.subject",
+        "constraint": "Must reference US Core Patient"
+      },
+      {
+        "name": "effective[x]",
+        "type": "dateTime | Period",
+        "cardinality": "1..1",
+        "description": "Clinically relevant time/time-period for observation",
+        "mustSupport": true,
+        "path": "Observation.effective[x]"
+      },
+      {
+        "name": "value[x]",
+        "type": "Quantity | CodeableConcept | string",
+        "cardinality": "0..1",
+        "description": "Laboratory Result Value",
+        "mustSupport": true,
+        "path": "Observation.value[x]"
+      }
+    ]
+  },
+  "USCorePractitioner": {
+    "name": "US Core Practitioner Profile",
+    "description": "The US Core Practitioner Profile is based upon the core FHIR Practitioner Resource and meets the U.S. Core Data for Interoperability (USCDI) 'Provider' requirements.",
+    "type": "profile",
+    "baseResource": "Practitioner",
+    "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner",
+    "version": "3.1.1",
+    "status": "active",
+    "mustSupport": true,
+    "elements": [
+      {
+        "name": "identifier",
+        "type": "Identifier",
+        "cardinality": "1..*",
+        "description": "An identifier for the person as this agent (NPI required)",
+        "mustSupport": true,
+        "path": "Practitioner.identifier",
+        "constraint": "Must have NPI identifier"
+      },
+      {
+        "name": "name",
+        "type": "HumanName",
+        "cardinality": "1..*",
+        "description": "The name(s) associated with the practitioner",
+        "mustSupport": true,
+        "path": "Practitioner.name",
+        "constraint": "Must have name"
+      },
+      {
+        "name": "telecom",
+        "type": "ContactPoint",
+        "cardinality": "0..*",
+        "description": "A contact detail for the practitioner",
+        "mustSupport": true,
+        "path": "Practitioner.telecom"
+      }
+    ]
+  }
+}

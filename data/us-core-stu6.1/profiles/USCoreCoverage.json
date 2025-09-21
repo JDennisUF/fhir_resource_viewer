@@ -1,0 +1,2224 @@
+{
+  "id": "us-core-coverage",
+  "name": "USCoreCoverageProfile",
+  "title": "US Core Coverage Profile",
+  "description": "The US Core Coverage Profile is based upon the core FHIR Coverage Resource and implements the US Core Data for Interoperability (USCDI) v3 Health Insurance Information requirements. To promote interoperability and adoption through common implementation, this profile sets minimum expectations for the Coverage resource to record, search, and fetch the \"data related to an individual's insurance coverage for health care\". It identifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains the way the elements are used when using this profile. It provides the floor for standards development for specific use cases.",
+  "type": "profile",
+  "resourceType": "Coverage",
+  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-coverage",
+  "version": "6.1.0",
+  "status": "active",
+  "date": "2022-09-24",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Coverage",
+  "derivation": "constraint",
+  "fhirVersion": "4.0.1",
+  "elements": [
+    {
+      "id": "Coverage.id",
+      "path": "Coverage.id",
+      "name": "id",
+      "short": "Logical id of this artifact",
+      "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.meta",
+      "path": "Coverage.meta",
+      "name": "meta",
+      "short": "Metadata about the resource",
+      "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Meta",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.implicitRules",
+      "path": "Coverage.implicitRules",
+      "name": "implicitRules",
+      "short": "A set of rules under which this content was created",
+      "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.language",
+      "path": "Coverage.language",
+      "name": "language",
+      "short": "Language of the resource content",
+      "description": "The base language in which the resource is written.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.text",
+      "path": "Coverage.text",
+      "name": "text",
+      "short": "Text summary of the resource, for human interpretation",
+      "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Narrative",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "Act.text?"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.contained",
+      "path": "Coverage.contained",
+      "name": "contained",
+      "short": "Contained, inline Resources",
+      "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.extension",
+      "path": "Coverage.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.modifierExtension",
+      "path": "Coverage.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.identifier",
+      "path": "Coverage.identifier",
+      "name": "identifier",
+      "short": "(USCDI) Member ID and other identifiers",
+      "description": "A unique identifier assigned to this coverage.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.identifier"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "cdanetv4",
+          "map": "C02"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-2"
+        },
+        {
+          "identity": "rim",
+          "map": ".id"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.32, C.33, C.39"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.identifier:memberid",
+      "path": "Coverage.identifier",
+      "name": "identifier",
+      "short": "(USCDI) Member ID",
+      "description": "A unique identifier assigned to this coverage.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.identifier"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "cdanetv4",
+          "map": "C02"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-2"
+        },
+        {
+          "identity": "rim",
+          "map": ".id"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.32, C.33, C.39"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.identifier:memberid.id",
+      "path": "Coverage.identifier.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.identifier:memberid.extension",
+      "path": "Coverage.identifier.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.identifier:memberid.use",
+      "path": "Coverage.identifier.use",
+      "name": "use",
+      "short": "usual | official | temp | secondary | old (If known)",
+      "description": "The purpose of this identifier.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Identifies the purpose for this identifier, if known .",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "N/A"
+        },
+        {
+          "identity": "rim",
+          "map": "Role.code or implied by context"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.identifier:memberid.type",
+      "path": "Coverage.identifier.type",
+      "name": "type",
+      "short": "(USCDI) Member Number identifier type",
+      "description": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-type"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.5"
+        },
+        {
+          "identity": "rim",
+          "map": "Role.code or implied by context"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.identifier:memberid.system",
+      "path": "Coverage.identifier.system",
+      "name": "system",
+      "short": "The namespace for the identifier value",
+      "description": "Establishes the namespace for the value - that is, a URL that describes a set values that are unique.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.4 / EI-2-4"
+        },
+        {
+          "identity": "rim",
+          "map": "II.root or Role.id.root"
+        },
+        {
+          "identity": "servd",
+          "map": "./IdentifierType"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.identifier:memberid.value",
+      "path": "Coverage.identifier.value",
+      "name": "value",
+      "short": "The value that is unique",
+      "description": "The portion of the identifier typically relevant to the user and which is unique within the context of the system.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.1 / EI.1"
+        },
+        {
+          "identity": "rim",
+          "map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
+        },
+        {
+          "identity": "servd",
+          "map": "./Value"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.identifier:memberid.period",
+      "path": "Coverage.identifier.period",
+      "name": "period",
+      "short": "Time period when id is/was valid for use",
+      "description": "Time period during which identifier is/was valid for use.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.7 + CX.8"
+        },
+        {
+          "identity": "rim",
+          "map": "Role.effectiveTime or implied by context"
+        },
+        {
+          "identity": "servd",
+          "map": "./StartDate and ./EndDate"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.identifier:memberid.assigner",
+      "path": "Coverage.identifier.assigner",
+      "name": "assigner",
+      "short": "Organization that issued id (may be just text)",
+      "description": "Organization that issued/manages the identifier.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.4 / (CX.4,CX.9,CX.10)"
+        },
+        {
+          "identity": "rim",
+          "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+        },
+        {
+          "identity": "servd",
+          "map": "./IdentifierIssuingAuthority"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.status",
+      "path": "Coverage.status",
+      "name": "status",
+      "short": "(USCDI) active | cancelled | draft | entered-in-error",
+      "description": "The status of the resource instance.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "A code specifying the state of the resource instance.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/fm-status|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.status"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.status"
+        },
+        {
+          "identity": "rim",
+          "map": "Act.status"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.type",
+      "path": "Coverage.type",
+      "name": "type",
+      "short": "(USCDI) Coverage category such as medical or accident",
+      "description": "The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "US Public Health Data Consortium Source of Payment Codes",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.class"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-15"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.policyHolder",
+      "path": "Coverage.policyHolder",
+      "name": "policyHolder",
+      "short": "Owner of the policy",
+      "description": "The party who 'owns' the insurance policy.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject[x]"
+        },
+        {
+          "identity": "cdanetv4",
+          "map": "D01 through D09"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-16, 18,  19-name of insured, address, date of birth"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.35"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.subscriber",
+      "path": "Coverage.subscriber",
+      "name": "subscriber",
+      "short": "Subscriber to the policy",
+      "description": "The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject[x]"
+        },
+        {
+          "identity": "cdanetv4",
+          "map": "D01 through D09"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-16, 18,  19-name of insured, address, date of birth"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.35"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.subscriberId",
+      "path": "Coverage.subscriberId",
+      "name": "subscriberId",
+      "short": "(USCDI) ID assigned to the subscriber",
+      "description": "The insurer assigned ID for the Subscriber.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject[x]"
+        },
+        {
+          "identity": "cdanetv4",
+          "map": "D01 through D09"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-16, 18,  19-name of insured, address, date of birth"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.35"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.beneficiary",
+      "path": "Coverage.beneficiary",
+      "name": "beneficiary",
+      "short": "(USCDI) Plan beneficiary",
+      "description": "The party who benefits from the insurance coverage; the patient when products and/or services are provided.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.subject"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject[x]"
+        },
+        {
+          "identity": "cdanetv4",
+          "map": "D01 through D09"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-16, 18,  19-name of insured, address, date of birth"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.35"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.subject"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.dependent",
+      "path": "Coverage.dependent",
+      "name": "dependent",
+      "short": "Dependent number",
+      "description": "A unique identifier for a dependent under the coverage.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "C17"
+        },
+        {
+          "identity": "v2",
+          "map": "- No exact HL7 v2 equivalent concept seems to exist;"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.relationship",
+      "path": "Coverage.relationship",
+      "name": "relationship",
+      "short": "(USCDI) Beneficiary relationship to the subscriber",
+      "description": "The relationship of beneficiary (patient) to the subscriber.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "extensible",
+        "description": null,
+        "valueSet": "http://hl7.org/fhir/ValueSet/subscriber-relationship"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "C03"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.period",
+      "path": "Coverage.period",
+      "name": "period",
+      "short": "(USCDI) Coverage start and end dates",
+      "description": "Time period during which the coverage is in force. A missing start date indicates the start date isn't known, a missing end date means the coverage is continuing to be in force.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "workflow",
+          "map": "Event.occurrence[x]"
+        },
+        {
+          "identity": "w5",
+          "map": "FiveWs.done[x]"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-12 / IN1-13"
+        },
+        {
+          "identity": "rim",
+          "map": "Act.effectiveTime"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.payor",
+      "path": "Coverage.payor",
+      "name": "payor",
+      "short": "(USCDI) Issuer of the policy",
+      "description": "The program or plan underwriter or payor including both insurance and non-insurance agreements, such as patient-pay agreements.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.author"
+        },
+        {
+          "identity": "cdanetv4",
+          "map": "A05"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-3"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.30"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.class",
+      "path": "Coverage.class",
+      "name": "class",
+      "short": "(USCDI) Additional coverage classifications",
+      "description": "A suite of underwriter specific classifiers.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.class.id",
+      "path": "Coverage.class.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class.extension",
+      "path": "Coverage.class.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class.modifierExtension",
+      "path": "Coverage.class.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class.type",
+      "path": "Coverage.class.type",
+      "name": "type",
+      "short": "Type of class such as 'group' or 'plan'",
+      "description": "The type of classification for which an insurer-specific class label or number and optional name is provided, for example may be used to identify a class of coverage or employer group, Policy, Plan.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "The policy classifications, eg. Group, Plan, Class, etc.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverage-class"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class.value",
+      "path": "Coverage.class.value",
+      "name": "value",
+      "short": "Value associated with the type",
+      "description": "The alphanumeric string value associated with the insurer issued label.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "C11 (Division,Section)"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-8"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.31"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class.name",
+      "path": "Coverage.class.name",
+      "name": "name",
+      "short": "Human readable description of the type and value",
+      "description": "A short description for the class.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "C11 (Division,Section)"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-8"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.31"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class:group",
+      "path": "Coverage.class",
+      "name": "class",
+      "short": "(USCDI) Group",
+      "description": "A suite of underwriter specific classifiers.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.class:group.id",
+      "path": "Coverage.class.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class:group.extension",
+      "path": "Coverage.class.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class:group.modifierExtension",
+      "path": "Coverage.class.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class:group.type",
+      "path": "Coverage.class.type",
+      "name": "type",
+      "short": "Type of class such as 'group' or 'plan'",
+      "description": "The type of classification for which an insurer-specific class label or number and optional name is provided, for example may be used to identify a class of coverage or employer group, Policy, Plan.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "The policy classifications, eg. Group, Plan, Class, etc.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverage-class"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class:group.value",
+      "path": "Coverage.class.value",
+      "name": "value",
+      "short": "(USCDI) Group Number",
+      "description": "The alphanumeric string value associated with the insurer issued label.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "C11 (Division,Section)"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-8"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.31"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.class:group.name",
+      "path": "Coverage.class.name",
+      "name": "name",
+      "short": "(USCDI) Group Name",
+      "description": "A short description for the class.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "C11 (Division,Section)"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-8"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.31"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.class:plan",
+      "path": "Coverage.class",
+      "name": "class",
+      "short": "(USCDI) Plan",
+      "description": "A suite of underwriter specific classifiers.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.class:plan.id",
+      "path": "Coverage.class.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class:plan.extension",
+      "path": "Coverage.class.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class:plan.modifierExtension",
+      "path": "Coverage.class.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class:plan.type",
+      "path": "Coverage.class.type",
+      "name": "type",
+      "short": "Type of class such as 'group' or 'plan'",
+      "description": "The type of classification for which an insurer-specific class label or number and optional name is provided, for example may be used to identify a class of coverage or employer group, Policy, Plan.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "The policy classifications, eg. Group, Plan, Class, etc.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverage-class"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.class:plan.value",
+      "path": "Coverage.class.value",
+      "name": "value",
+      "short": "(USCDI) Plan Number",
+      "description": "The alphanumeric string value associated with the insurer issued label.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "C11 (Division,Section)"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-8"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.31"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.class:plan.name",
+      "path": "Coverage.class.name",
+      "name": "name",
+      "short": "(USCDI) Plan Name",
+      "description": "A short description for the class.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "C11 (Division,Section)"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-8"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.31"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Coverage.order",
+      "path": "Coverage.order",
+      "name": "order",
+      "short": "Relative order of the coverage",
+      "description": "The order of applicability of this coverage relative to other coverages which are currently in force. Note, there may be gaps in the numbering and this does not imply primary, secondary etc. as the specific positioning of coverages depends upon the episode of care.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "positiveInt",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "- No exact HL7 v2 equivalent concept seems to exist;"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.network",
+      "path": "Coverage.network",
+      "name": "network",
+      "short": "Insurer network",
+      "description": "The insurer-specific identifier for the insurer-defined network of providers to which the beneficiary may seek treatment which will be covered at the 'in-network' rate, otherwise 'out of network' terms and conditions apply.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "D10"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary",
+      "path": "Coverage.costToBeneficiary",
+      "name": "costToBeneficiary",
+      "short": "Patient payments for services/products",
+      "description": "A suite of codes indicating the cost category and associated amount which have been detailed in the policy and may have been  included on the health card.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.id",
+      "path": "Coverage.costToBeneficiary.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.extension",
+      "path": "Coverage.costToBeneficiary.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.modifierExtension",
+      "path": "Coverage.costToBeneficiary.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.type",
+      "path": "Coverage.costToBeneficiary.type",
+      "name": "type",
+      "short": "Cost category",
+      "description": "The category of patient centric costs associated with treatment.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "The types of services to which patient copayments are specified.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverage-copay-type"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.value[x]",
+      "path": "Coverage.costToBeneficiary.value[x]",
+      "name": "value[x]",
+      "short": "The amount or percentage due from the beneficiary",
+      "description": "The amount due from the patient for the cost category.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "Quantity(SimpleQuantity) | Money",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "C11 (Division,Section)"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-8"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.31"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception",
+      "path": "Coverage.costToBeneficiary.exception",
+      "name": "exception",
+      "short": "Exceptions for patient payments",
+      "description": "A suite of codes indicating exceptions or reductions to patient costs and their effective periods.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.id",
+      "path": "Coverage.costToBeneficiary.exception.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.extension",
+      "path": "Coverage.costToBeneficiary.exception.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.modifierExtension",
+      "path": "Coverage.costToBeneficiary.exception.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.type",
+      "path": "Coverage.costToBeneficiary.exception.type",
+      "name": "type",
+      "short": "Exception category",
+      "description": "The code for the specific exception.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "example",
+        "description": "The types of exceptions from the part or full value of financial obligations such as copays.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/coverage-financial-exception"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.costToBeneficiary.exception.period",
+      "path": "Coverage.costToBeneficiary.exception.period",
+      "name": "period",
+      "short": "The effective period of the exception",
+      "description": "The timeframe during when the exception is in force.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.subrogation",
+      "path": "Coverage.subrogation",
+      "name": "subrogation",
+      "short": "Reimbursement to insurer",
+      "description": "When 'subrogation=true' this insurance instance has been included not for adjudication but to provide insurers with the details to recover costs.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Coverage.contract",
+      "path": "Coverage.contract",
+      "name": "contract",
+      "short": "Contract details",
+      "description": "The policy(s) which constitute this insurance coverage.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "cdanetv4",
+          "map": "D01 through D09"
+        },
+        {
+          "identity": "v2",
+          "map": "IN1-16, 18,  19"
+        },
+        {
+          "identity": "rim",
+          "map": "n/a"
+        },
+        {
+          "identity": "cpha3pharm",
+          "map": "C.35"
+        }
+      ],
+      "mustSupport": false
+    }
+  ],
+  "statistics": {
+    "elementCount": 65,
+    "requiredElements": 13,
+    "optionalElements": 52,
+    "summaryElements": 40,
+    "modifierElements": 9
+  },
+  "mustSupportCount": 17
+}

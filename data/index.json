@@ -1,0 +1,13 @@
+{
+  "lastUpdated": "2025-01-20T15:30:00.000Z",
+  "fhirVersion": "4.0.1",
+  "usCoreVersion": "3.1.1",
+  "stats": {
+    "fhirResources": 4,
+    "usCoreProfiles": 3
+  },
+  "resources": {
+    "fhir-r4": ["Patient", "Observation", "Practitioner", "Organization"],
+    "us-core": ["USCorePatient", "USCoreObservation", "USCorePractitioner"]
+  }
+}

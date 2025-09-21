@@ -1,0 +1,2249 @@
+{
+  "id": "us-core-practitioner",
+  "name": "USCorePractitionerProfile",
+  "title": "US Core Practitioner Profile",
+  "description": "This profile sets minimum expectations for the Practitioner resource to record, search, and fetch basic demographics and other administrative information about an individual practitioner to promote interoperability and adoption through common implementation.  It identifies which core elements, extensions, vocabularies, and value sets **SHALL** be present and constrains the way the elements are used and constrains the way the elements are used when using the profile.  It provides the floor for standards development for specific use cases.",
+  "type": "profile",
+  "resourceType": "Practitioner",
+  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner",
+  "version": "6.1.0",
+  "status": "active",
+  "date": "2022-04-20",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+  "derivation": "constraint",
+  "fhirVersion": "4.0.1",
+  "elements": [
+    {
+      "id": "Practitioner.id",
+      "path": "Practitioner.id",
+      "name": "id",
+      "short": "Logical id of this artifact",
+      "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.meta",
+      "path": "Practitioner.meta",
+      "name": "meta",
+      "short": "Metadata about the resource",
+      "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Meta",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.implicitRules",
+      "path": "Practitioner.implicitRules",
+      "name": "implicitRules",
+      "short": "A set of rules under which this content was created",
+      "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "uri",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.language",
+      "path": "Practitioner.language",
+      "name": "language",
+      "short": "Language of the resource content",
+      "description": "The base language in which the resource is written.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.text",
+      "path": "Practitioner.text",
+      "name": "text",
+      "short": "Text summary of the resource, for human interpretation",
+      "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Narrative",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "Act.text?"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.contained",
+      "path": "Practitioner.contained",
+      "name": "contained",
+      "short": "Contained, inline Resources",
+      "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Resource",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.extension",
+      "path": "Practitioner.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.modifierExtension",
+      "path": "Practitioner.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored",
+      "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.identifier",
+      "path": "Practitioner.identifier",
+      "name": "identifier",
+      "short": "An identifier for the person as this agent",
+      "description": "An identifier that applies to this person in this role.",
+      "min": 1,
+      "max": "*",
+      "cardinality": "1..*",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "v2",
+          "map": "PRD-7 (or XCN.1)"
+        },
+        {
+          "identity": "rim",
+          "map": "./id"
+        },
+        {
+          "identity": "servd",
+          "map": "./Identifiers"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.identifier.id",
+      "path": "Practitioner.identifier.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.identifier.extension",
+      "path": "Practitioner.identifier.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.identifier.use",
+      "path": "Practitioner.identifier.use",
+      "name": "use",
+      "short": "usual | official | temp | secondary | old (If known)",
+      "description": "The purpose of this identifier.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Identifies the purpose for this identifier, if known .",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "N/A"
+        },
+        {
+          "identity": "rim",
+          "map": "Role.code or implied by context"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.identifier.type",
+      "path": "Practitioner.identifier.type",
+      "name": "type",
+      "short": "Description of identifier",
+      "description": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/identifier-type"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.5"
+        },
+        {
+          "identity": "rim",
+          "map": "Role.code or implied by context"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.identifier.system",
+      "path": "Practitioner.identifier.system",
+      "name": "system",
+      "short": "The namespace for the identifier value",
+      "description": "Establishes the namespace for the value - that is, a URL that describes a set values that are unique.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "uri",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.4 / EI-2-4"
+        },
+        {
+          "identity": "rim",
+          "map": "II.root or Role.id.root"
+        },
+        {
+          "identity": "servd",
+          "map": "./IdentifierType"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.identifier.value",
+      "path": "Practitioner.identifier.value",
+      "name": "value",
+      "short": "The value that is unique",
+      "description": "The portion of the identifier typically relevant to the user and which is unique within the context of the system.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.1 / EI.1"
+        },
+        {
+          "identity": "rim",
+          "map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
+        },
+        {
+          "identity": "servd",
+          "map": "./Value"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.identifier.period",
+      "path": "Practitioner.identifier.period",
+      "name": "period",
+      "short": "Time period when id is/was valid for use",
+      "description": "Time period during which identifier is/was valid for use.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.7 + CX.8"
+        },
+        {
+          "identity": "rim",
+          "map": "Role.effectiveTime or implied by context"
+        },
+        {
+          "identity": "servd",
+          "map": "./StartDate and ./EndDate"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.identifier.assigner",
+      "path": "Practitioner.identifier.assigner",
+      "name": "assigner",
+      "short": "Organization that issued id (may be just text)",
+      "description": "Organization that issued/manages the identifier.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CX.4 / (CX.4,CX.9,CX.10)"
+        },
+        {
+          "identity": "rim",
+          "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+        },
+        {
+          "identity": "servd",
+          "map": "./IdentifierIssuingAuthority"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.identifier:NPI",
+      "path": "Practitioner.identifier",
+      "name": "identifier",
+      "short": "An identifier for the person as this agent",
+      "description": "An identifier that applies to this person in this role.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "us-core-16",
+          "severity": "error",
+          "human": "NPI must be 10 digits",
+          "expression": "value.matches('^[0-9]{10}$')",
+          "xpath": "f:value/f:matches(value,/^[0-9]{10}$/)"
+        },
+        {
+          "key": "us-core-17",
+          "severity": "error",
+          "human": "NPI check digit must be valid (Luhn algorithm check)",
+          "expression": "(((select(value.substring(0,1).toInteger()).select(iif($this<5, $this*2, (($this*2)-9))))+(value.substring(1,1).toInteger())+(select(value.substring(2,1).toInteger()).select(iif($this<5, $this*2, (($this*2)-9))))+(value.substring(3,1).toInteger())+(select(value.substring(4,1).toInteger()).select(iif($this<5, $this*2, (($this*2)-9))))+(value.substring(5,1).toInteger())+(select(value.substring(6,1).toInteger()).select(iif($this<5, $this*2, (($this*2)-9))))+(value.substring(7,1).toInteger())+(select(value.substring(8,1).toInteger()).select(iif($this<5, $this*2, (($this*2)-9))))+(value.substring(9,1).toInteger()) + 24)mod 10=0)",
+          "xpath": null
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.identifier"
+        },
+        {
+          "identity": "v2",
+          "map": "PRD-7 (or XCN.1)"
+        },
+        {
+          "identity": "rim",
+          "map": "./id"
+        },
+        {
+          "identity": "servd",
+          "map": "./Identifiers"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.active",
+      "path": "Practitioner.active",
+      "name": "active",
+      "short": "Whether this practitioner's record is in active use",
+      "description": "Whether this practitioner's record is in active use.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "boolean",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "w5",
+          "map": "FiveWs.status"
+        },
+        {
+          "identity": "rim",
+          "map": "./statusCode"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.name",
+      "path": "Practitioner.name",
+      "name": "name",
+      "short": "The name(s) associated with the practitioner",
+      "description": "The name(s) associated with the practitioner.",
+      "min": 1,
+      "max": "*",
+      "cardinality": "1..*",
+      "type": "HumanName",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XCN Components"
+        },
+        {
+          "identity": "rim",
+          "map": "./name"
+        },
+        {
+          "identity": "servd",
+          "map": "./PreferredName (GivenNames, FamilyName, TitleCode)"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.name.id",
+      "path": "Practitioner.name.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.name.extension",
+      "path": "Practitioner.name.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.name.use",
+      "path": "Practitioner.name.use",
+      "name": "use",
+      "short": "usual | official | temp | nickname | anonymous | old | maiden",
+      "description": "Identifies the purpose for this name.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The use of a human name.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/name-use|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.7, but often indicated by which field contains the name"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./use)"
+        },
+        {
+          "identity": "servd",
+          "map": "./NamePurpose"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.name.text",
+      "path": "Practitioner.name.text",
+      "name": "text",
+      "short": "Text representation of the full name",
+      "description": "Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "implied by XPN.11"
+        },
+        {
+          "identity": "rim",
+          "map": "./formatted"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.name.family",
+      "path": "Practitioner.name.family",
+      "name": "family",
+      "short": "Family name (often called 'Surname')",
+      "description": "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.1/FN.1"
+        },
+        {
+          "identity": "rim",
+          "map": "./part[partType = FAM]"
+        },
+        {
+          "identity": "servd",
+          "map": "./FamilyName"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.name.given",
+      "path": "Practitioner.name.given",
+      "name": "given",
+      "short": "Given names (not always 'first'). Includes middle names",
+      "description": "Given name.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.2 + XPN.3"
+        },
+        {
+          "identity": "rim",
+          "map": "./part[partType = GIV]"
+        },
+        {
+          "identity": "servd",
+          "map": "./GivenNames"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.name.prefix",
+      "path": "Practitioner.name.prefix",
+      "name": "prefix",
+      "short": "Parts that come before the name",
+      "description": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.5"
+        },
+        {
+          "identity": "rim",
+          "map": "./part[partType = PFX]"
+        },
+        {
+          "identity": "servd",
+          "map": "./TitleCode"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.name.suffix",
+      "path": "Practitioner.name.suffix",
+      "name": "suffix",
+      "short": "Parts that come after the name",
+      "description": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN/4"
+        },
+        {
+          "identity": "rim",
+          "map": "./part[partType = SFX]"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.name.period",
+      "path": "Practitioner.name.period",
+      "name": "period",
+      "short": "Time period when name was/is in use",
+      "description": "Indicates the period of time when this name was valid for the named person.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XPN.13 + XPN.14"
+        },
+        {
+          "identity": "rim",
+          "map": "./usablePeriod[type=\"IVL<TS>\"]"
+        },
+        {
+          "identity": "servd",
+          "map": "./StartDate and ./EndDate"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.telecom",
+      "path": "Practitioner.telecom",
+      "name": "telecom",
+      "short": "A contact detail for the practitioner (that apply to all roles)",
+      "description": "A contact detail for the practitioner, e.g. a telephone number or an email address.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "ContactPoint",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PRT-15, STF-10, ROL-12"
+        },
+        {
+          "identity": "rim",
+          "map": "./telecom"
+        },
+        {
+          "identity": "servd",
+          "map": "./ContactPoints"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.telecom.id",
+      "path": "Practitioner.telecom.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.telecom.extension",
+      "path": "Practitioner.telecom.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.telecom.system",
+      "path": "Practitioner.telecom.system",
+      "name": "system",
+      "short": "phone | fax | email | pager | url | sms | other",
+      "description": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Telecommunications form for contact point.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XTN.3"
+        },
+        {
+          "identity": "rim",
+          "map": "./scheme"
+        },
+        {
+          "identity": "servd",
+          "map": "./ContactPointType"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.telecom.value",
+      "path": "Practitioner.telecom.value",
+      "name": "value",
+      "short": "The actual contact point details",
+      "description": "The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XTN.1 (or XTN.12)"
+        },
+        {
+          "identity": "rim",
+          "map": "./url"
+        },
+        {
+          "identity": "servd",
+          "map": "./Value"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.telecom.use",
+      "path": "Practitioner.telecom.use",
+      "name": "use",
+      "short": "home | work | temp | old | mobile - purpose of this contact point",
+      "description": "Identifies the purpose for the contact point.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "Use of contact point.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XTN.2 - but often indicated by field"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./use)"
+        },
+        {
+          "identity": "servd",
+          "map": "./ContactPointPurpose"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.telecom.rank",
+      "path": "Practitioner.telecom.rank",
+      "name": "rank",
+      "short": "Specify preferred order of use (1 = highest)",
+      "description": "Specifies a preferred order in which to use a set of contacts. ContactPoints with lower rank values are more preferred than those with higher rank values.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "positiveInt",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "n/a"
+        },
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.telecom.period",
+      "path": "Practitioner.telecom.period",
+      "name": "period",
+      "short": "Time period when the contact point was/is in use",
+      "description": "Time period when the contact point was/is in use.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "N/A"
+        },
+        {
+          "identity": "rim",
+          "map": "./usablePeriod[type=\"IVL<TS>\"]"
+        },
+        {
+          "identity": "servd",
+          "map": "./StartDate and ./EndDate"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.address",
+      "path": "Practitioner.address",
+      "name": "address",
+      "short": "Address(es) of the practitioner",
+      "description": "Address(es) of the practitioner",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Address",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "ORC-24, STF-11, ROL-11, PRT-14"
+        },
+        {
+          "identity": "rim",
+          "map": "./addr"
+        },
+        {
+          "identity": "servd",
+          "map": "./Addresses"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.address.id",
+      "path": "Practitioner.address.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.address.extension",
+      "path": "Practitioner.address.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.address.use",
+      "path": "Practitioner.address.use",
+      "name": "use",
+      "short": "home | work | temp | old | billing - purpose of this address",
+      "description": "The purpose of this address.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The use of an address.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/address-use|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.7"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./use)"
+        },
+        {
+          "identity": "servd",
+          "map": "./AddressPurpose"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.address.type",
+      "path": "Practitioner.address.type",
+      "name": "type",
+      "short": "postal | physical | both",
+      "description": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The type of an address (physical / postal).",
+        "valueSet": "http://hl7.org/fhir/ValueSet/address-type|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.18"
+        },
+        {
+          "identity": "rim",
+          "map": "unique(./use)"
+        },
+        {
+          "identity": "vcard",
+          "map": "address type parameter"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.address.text",
+      "path": "Practitioner.address.text",
+      "name": "text",
+      "short": "Text representation of the address",
+      "description": "Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.1 + XAD.2 + XAD.3 + XAD.4 + XAD.5 + XAD.6"
+        },
+        {
+          "identity": "rim",
+          "map": "./formatted"
+        },
+        {
+          "identity": "vcard",
+          "map": "address label parameter"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.address.line",
+      "path": "Practitioner.address.line",
+      "name": "line",
+      "short": "Street name, number, direction & P.O. Box etc.",
+      "description": "This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.",
+      "min": 0,
+      "max": "4",
+      "cardinality": "0..4",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.1 + XAD.2 (note: XAD.1 and XAD.2 have different meanings for a company address than for a person address)"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = AL]"
+        },
+        {
+          "identity": "vcard",
+          "map": "street"
+        },
+        {
+          "identity": "servd",
+          "map": "./StreetAddress (newline delimitted)"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.address.city",
+      "path": "Practitioner.address.city",
+      "name": "city",
+      "short": "Name of city, town etc.",
+      "description": "The name of the city, town, suburb, village or other community or delivery center.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.3"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = CTY]"
+        },
+        {
+          "identity": "vcard",
+          "map": "locality"
+        },
+        {
+          "identity": "servd",
+          "map": "./Jurisdiction"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.address.district",
+      "path": "Practitioner.address.district",
+      "name": "district",
+      "short": "District name (aka county)",
+      "description": "The name of the administrative area (county).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.9"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = CNT | CPA]"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.address.state",
+      "path": "Practitioner.address.state",
+      "name": "state",
+      "short": "Sub-unit of country (abbreviations ok)",
+      "description": "Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (e.g. US 2 letter state codes).",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "extensible",
+        "description": "Two letter USPS alphabetic codes.",
+        "valueSet": "http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.4"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = STA]"
+        },
+        {
+          "identity": "vcard",
+          "map": "region"
+        },
+        {
+          "identity": "servd",
+          "map": "./Region"
+        },
+        {
+          "identity": "servd",
+          "map": "./Sites"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.address.postalCode",
+      "path": "Practitioner.address.postalCode",
+      "name": "postalCode",
+      "short": "US Zip Codes",
+      "description": "A postal code designating a region defined by the postal service.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.5"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = ZIP]"
+        },
+        {
+          "identity": "vcard",
+          "map": "code"
+        },
+        {
+          "identity": "servd",
+          "map": "./PostalIdentificationCode"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.address.country",
+      "path": "Practitioner.address.country",
+      "name": "country",
+      "short": "Country (e.g. can be ISO 3166 2 or 3 letter code)",
+      "description": "Country - a nation as commonly understood or generally accepted.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "string",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.6"
+        },
+        {
+          "identity": "rim",
+          "map": "AD.part[parttype = CNT]"
+        },
+        {
+          "identity": "vcard",
+          "map": "country"
+        },
+        {
+          "identity": "servd",
+          "map": "./Country"
+        }
+      ],
+      "mustSupport": true
+    },
+    {
+      "id": "Practitioner.address.period",
+      "path": "Practitioner.address.period",
+      "name": "period",
+      "short": "Time period when address was/is in use",
+      "description": "Time period when address was/is in use.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "XAD.12 / XAD.13 + XAD.14"
+        },
+        {
+          "identity": "rim",
+          "map": "./usablePeriod[type=\"IVL<TS>\"]"
+        },
+        {
+          "identity": "servd",
+          "map": "./StartDate and ./EndDate"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.gender",
+      "path": "Practitioner.gender",
+      "name": "gender",
+      "short": "male | female | other | unknown",
+      "description": "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "code",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": {
+        "strength": "required",
+        "description": "The gender of a person used for administrative purposes.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "STF-5"
+        },
+        {
+          "identity": "rim",
+          "map": "./administrativeGender"
+        },
+        {
+          "identity": "servd",
+          "map": "./GenderCode"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.birthDate",
+      "path": "Practitioner.birthDate",
+      "name": "birthDate",
+      "short": "The date  on which the practitioner was born",
+      "description": "The date of birth for the practitioner.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "date",
+      "isModifier": false,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "STF-6"
+        },
+        {
+          "identity": "rim",
+          "map": "./birthTime"
+        },
+        {
+          "identity": "servd",
+          "map": "(not represented in ServD)"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.photo",
+      "path": "Practitioner.photo",
+      "name": "photo",
+      "short": "Image of the person",
+      "description": "Image of the person.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Attachment",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "./subjectOf/ObservationEvent[code=\"photo\"]/value"
+        },
+        {
+          "identity": "servd",
+          "map": "./ImageURI (only supports the URI reference)"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.qualification",
+      "path": "Practitioner.qualification",
+      "name": "qualification",
+      "short": "Certification, licenses, or training pertaining to the provision of care",
+      "description": "The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "BackboneElement",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "CER?"
+        },
+        {
+          "identity": "rim",
+          "map": ".playingEntity.playingRole[classCode=QUAL].code"
+        },
+        {
+          "identity": "servd",
+          "map": "./Qualifications"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.qualification.id",
+      "path": "Practitioner.qualification.id",
+      "name": "id",
+      "short": "Unique id for inter-element referencing",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "http://hl7.org/fhirpath/System.String",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.qualification.extension",
+      "path": "Practitioner.qualification.extension",
+      "name": "extension",
+      "short": "Additional content defined by implementations",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "n/a"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.qualification.modifierExtension",
+      "path": "Practitioner.qualification.modifierExtension",
+      "name": "modifierExtension",
+      "short": "Extensions that cannot be ignored even if unrecognized",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Extension",
+      "isModifier": true,
+      "isSummary": true,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        },
+        {
+          "key": "ext-1",
+          "severity": "error",
+          "human": "Must have either extensions or value[x], not both",
+          "expression": "extension.exists() != value.exists()",
+          "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": "N/A"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.qualification.identifier",
+      "path": "Practitioner.qualification.identifier",
+      "name": "identifier",
+      "short": "An identifier for this qualification for the practitioner",
+      "description": "An identifier that applies to this person's qualification in this role.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "Identifier",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".playingEntity.playingRole[classCode=QUAL].id"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.qualification.code",
+      "path": "Practitioner.qualification.code",
+      "name": "code",
+      "short": "Coded representation of the qualification",
+      "description": "Coded representation of the qualification.",
+      "min": 1,
+      "max": "1",
+      "cardinality": "1..1",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "example",
+        "description": "Specific qualification the practitioner has to provide a service.",
+        "valueSet": "http://terminology.hl7.org/ValueSet/v2-2.7-0360"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".playingEntity.playingRole[classCode=QUAL].code"
+        },
+        {
+          "identity": "servd",
+          "map": "./Qualifications.Value"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.qualification.period",
+      "path": "Practitioner.qualification.period",
+      "name": "period",
+      "short": "Period during which the qualification is valid",
+      "description": "Period during which the qualification is valid.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Period",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".playingEntity.playingRole[classCode=QUAL].effectiveTime"
+        },
+        {
+          "identity": "servd",
+          "map": "./Qualifications.StartDate and ./Qualifications.EndDate"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.qualification.issuer",
+      "path": "Practitioner.qualification.issuer",
+      "name": "issuer",
+      "short": "Organization that regulates and issues the qualification",
+      "description": "Organization that regulates and issues the qualification.",
+      "min": 0,
+      "max": "1",
+      "cardinality": "0..1",
+      "type": "Reference",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": null,
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "rim",
+          "map": ".playingEntity.playingRole[classCode=QUAL].scoper"
+        }
+      ],
+      "mustSupport": false
+    },
+    {
+      "id": "Practitioner.communication",
+      "path": "Practitioner.communication",
+      "name": "communication",
+      "short": "A language the practitioner can use in patient communication",
+      "description": "A language the practitioner can use in patient communication.",
+      "min": 0,
+      "max": "*",
+      "cardinality": "0..*",
+      "type": "CodeableConcept",
+      "isModifier": false,
+      "isSummary": false,
+      "binding": {
+        "strength": "preferred",
+        "description": "A human language.",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      },
+      "constraints": [
+        {
+          "key": "ele-1",
+          "severity": "error",
+          "human": "All FHIR elements must have a @value or children",
+          "expression": "hasValue() or (children().count() > id.count())",
+          "xpath": "@value|f:*|h:div"
+        }
+      ],
+      "mapping": [
+        {
+          "identity": "v2",
+          "map": "PID-15, NK1-20, LAN-2"
+        },
+        {
+          "identity": "rim",
+          "map": "./languageCommunication"
+        },
+        {
+          "identity": "servd",
+          "map": "./Languages.LanguageSpokenCode"
+        }
+      ],
+      "mustSupport": false
+    }
+  ],
+  "statistics": {
+    "elementCount": 62,
+    "requiredElements": 6,
+    "optionalElements": 56,
+    "summaryElements": 40,
+    "modifierElements": 7
+  },
+  "mustSupportCount": 15
+}

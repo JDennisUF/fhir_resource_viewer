@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Vital Signs Hierarchy</title>
+    <script src="./js/storage.js"></script>
+</head>
+<body>
+    <h1>Debug Vital Signs Hierarchy</h1>
+    <div id="debug-output"></div>
+    
+    <script>
+        async function debugVitalSigns() {
+            const output = document.getElementById('debug-output');
+            output.innerHTML = '<p>Debugging vital signs hierarchy...</p>';
+            
+            try {
+                const storage = new FHIRStorage();
+                await storage.initialize();
+                
+                // Get US Core resources
+                const usCoreResources = await storage.getResourceList('us-core-stu6.1');
+                console.log('US Core resources:', usCoreResources);
+                
+                // Check baseDefinitions
+                const vitalSignsChildren = [];
+                const regularResources = [];
+                
+                for (const resourceName of usCoreResources) {
+                    const resourceInfo = storage.findResourceInfo(resourceName, 'us-core-stu6.1');
+                    console.log(`${resourceName}:`, resourceInfo);
+                    
+                    if (resourceInfo && resourceInfo.baseDefinition === 'us-core-vital-signs') {
+                        vitalSignsChildren.push(resourceName);
+                    } else {
+                        regularResources.push(resourceName);
+                    }
+                }
+                
+                output.innerHTML = `
+                    <div style="font-family: monospace; background: #f5f5f5; padding: 20px;">
+                        <h2>US Core Resource Analysis</h2>
+                        <p><strong>Total US Core Resources:</strong> ${usCoreResources.length}</p>
+                        
+                        <h3>Regular Resources (${regularResources.length})</h3>
+                        <ul>${regularResources.map(r => `<li>${r}</li>`).join('')}</ul>
+                        
+                        <h3>Vital Signs Children (${vitalSignsChildren.length})</h3>
+                        <ul>${vitalSignsChildren.map(r => `<li>${r}</li>`).join('')}</ul>
+                        
+                        <h3>Expected Structure:</h3>
+                        <p>USCoreVitalSigns should contain: ${vitalSignsChildren.join(', ')}</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                output.innerHTML = `
+                    <h2>❌ Debug Failed</h2>
+                    <p style="color: red; font-family: monospace;">
+                        Error: ${error.message}
+                    </p>
+                `;
+                console.error('Debug failed:', error);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', debugVitalSigns);
+    </script>
+</body>
+</html>

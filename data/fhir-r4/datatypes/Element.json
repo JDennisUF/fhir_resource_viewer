@@ -1,0 +1,26 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Element",
+  "name": "Element",
+  "title": "Element",
+  "status": "active",
+  "kind": "complex-type",
+  "abstract": true,
+  "description": "Base definition for all elements in a resource.",
+  "type": "Element",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "name": "id",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
+    },
+    {
+      "name": "extension",
+      "type": "Extension",
+      "cardinality": "0..*",
+      "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions."
+    }
+  ]
+}

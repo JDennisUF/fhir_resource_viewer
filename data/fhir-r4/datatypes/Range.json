@@ -1,0 +1,40 @@
+{
+  "id": "Range",
+  "name": "Range",
+  "title": "Range",
+  "description": "A set of ordered Quantities defined by a low and high limit.",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Range",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "Range",
+      "name": "Range",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "A set of ordered Quantities defined by a low and high limit."
+    },
+    {
+      "path": "Range.low",
+      "name": "low",
+      "cardinality": "0..1",
+      "type": "Quantity",
+      "description": "Low limit"
+    },
+    {
+      "path": "Range.high",
+      "name": "high",
+      "cardinality": "0..1",
+      "type": "Quantity",
+      "description": "High limit"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 3,
+    "hash": "4ad391ed405935af"
+  }
+}

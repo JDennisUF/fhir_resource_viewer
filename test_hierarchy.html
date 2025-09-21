@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hierarchy Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Hierarchy Test</h1>
+    <div id="test-output"></div>
+
+    <script>
+        const testElements = [
+            {
+                name: "id",
+                path: "Encounter.id",
+                type: "id",
+                cardinality: "0..1",
+                description: "Logical id"
+            },
+            {
+                name: "status", 
+                path: "Encounter.status",
+                type: "code",
+                cardinality: "1..1",
+                description: "planned | arrived"
+            },
+            {
+                name: "participant",
+                path: "Encounter.participant",
+                type: "BackboneElement",
+                cardinality: "0..*",
+                description: "List of participants"
+            },
+            {
+                name: "type",
+                path: "Encounter.participant.type",
+                type: "CodeableConcept", 
+                cardinality: "0..*",
+                description: "Role of participant"
+            },
+            {
+                name: "period",
+                path: "Encounter.participant.period",
+                type: "Period",
+                cardinality: "0..1",
+                description: "Period of participation"
+            },
+            {
+                name: "modifierExtension",
+                path: "Encounter.modifierExtension", 
+                type: "Extension",
+                cardinality: "0..*",
+                description: "Top-level modifier"
+            },
+            {
+                name: "modifierExtension",
+                path: "Encounter.participant.modifierExtension",
+                type: "Extension",
+                cardinality: "0..*", 
+                description: "Participant modifier"
+            }
+        ];
+
+        function buildElementHierarchy(elements) {
+            const hierarchy = [];
+            const elementMap = new Map();
+            const addedToHierarchy = new Set();
+            
+            // First pass: create map of all elements by their path
+            elements.forEach(element => {
+                const path = element.path || element.name;
+                elementMap.set(path, {
+                    ...element,
+                    children: [],
+                    fullPath: path
+                });
+            });
+            
+            // Second pass: build hierarchy
+            elements.forEach(element => {
+                const path = element.path || element.name;
+                const pathParts = path.split('.');
+                
+                if (pathParts.length <= 2) {
+                    // Top-level element (e.g., "Encounter.id", "Encounter.status")
+                    const elementNode = elementMap.get(path);
+                    if (elementNode && !addedToHierarchy.has(path)) {
+                        hierarchy.push(elementNode);
+                        addedToHierarchy.add(path);
+                    }
+                } else {
+                    // Child element (e.g., "Encounter.participant.type")
+                    const parentPath = pathParts.slice(0, -1).join('.');
+                    const parent = elementMap.get(parentPath);
+                    if (parent) {
+                        const childNode = elementMap.get(path);
+                        if (childNode) {
+                            parent.children.push(childNode);
+                            addedToHierarchy.add(path);
+                        }
+                    } else {
+                        // If parent not found, treat as top-level (fallback)
+                        const elementNode = elementMap.get(path);
+                        if (elementNode && !addedToHierarchy.has(path)) {
+                            hierarchy.push(elementNode);
+                            addedToHierarchy.add(path);
+                        }
+                    }
+                }
+            });
+            
+            return hierarchy;
+        }
+
+        function renderHierarchy(elements, depth = 0) {
+            return elements.map(element => {
+                const indent = '  '.repeat(depth);
+                let result = `${indent}- ${element.name} (${element.cardinality}) - ${element.description}`;
+                if (element.children && element.children.length > 0) {
+                    result += '\n' + renderHierarchy(element.children, depth + 1);
+                }
+                return result;
+            }).join('\n');
+        }
+
+        const hierarchy = buildElementHierarchy(testElements);
+        document.getElementById('test-output').innerHTML = `
+            <h2>Test Results:</h2>
+            <p>Top-level elements: ${hierarchy.length}</p>
+            <pre>${renderHierarchy(hierarchy)}</pre>
+        `;
+    </script>
+</body>
+</html>

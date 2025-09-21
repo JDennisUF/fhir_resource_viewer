@@ -1,0 +1,68 @@
+{
+  "id": "Identifier",
+  "name": "Identifier",
+  "title": "Identifier",
+  "description": "An identifier intended for computation",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Identifier",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "Identifier",
+      "name": "Identifier",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "An identifier intended for computation"
+    },
+    {
+      "path": "Identifier.use",
+      "name": "use",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "usual | official | temp | secondary | old (If known)"
+    },
+    {
+      "path": "Identifier.type",
+      "name": "type",
+      "cardinality": "0..1",
+      "type": "CodeableConcept",
+      "description": "Description of identifier"
+    },
+    {
+      "path": "Identifier.system",
+      "name": "system",
+      "cardinality": "0..1",
+      "type": "uri",
+      "description": "The namespace for the identifier value"
+    },
+    {
+      "path": "Identifier.value",
+      "name": "value",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "The value that is unique"
+    },
+    {
+      "path": "Identifier.period",
+      "name": "period",
+      "cardinality": "0..1",
+      "type": "Period",
+      "description": "Time period when id is/was valid for use"
+    },
+    {
+      "path": "Identifier.assigner",
+      "name": "assigner",
+      "cardinality": "0..1",
+      "type": "Reference(Organization)",
+      "description": "Organization that issued id (may be just text)"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 7,
+    "hash": "8234960aaf106a91"
+  }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FHIR Resource Viewer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>FHIR Resource Viewer</h1>
+            <div class="header-controls">
+                <input type="text" id="searchInput" placeholder="Search resources..." class="search-input">
+                <button id="toggleTheme" class="theme-toggle" title="Toggle Dark Mode">🌙</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2>Resources</h2>
+                    <div class="filter-controls">
+                        <select id="specFilter" class="spec-filter">
+                            <option value="all">All Specifications</option>
+                            <option value="fhir-r4">FHIR R4</option>
+                            <option value="us-core-stu6.1">US Core</option>
+                            <option value="fhir-datatypes">Data Types</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="resource-tree" id="resourceTree">
+                    <div class="loading">Loading FHIR resources...</div>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <section class="content">
+                <div class="content-header">
+                    <h2 id="resourceTitle">Select a Resource</h2>
+                    <div class="breadcrumb" id="breadcrumb"></div>
+                </div>
+                
+                <div class="resource-content" id="resourceContent">
+                    <div class="welcome-message">
+                        <h3>Welcome to FHIR Resource Viewer</h3>
+                        <p>Select a resource from the sidebar to view its details, elements, and US Core modifications.</p>
+                        <div class="quick-stats" id="quickStats">
+                            <div class="stat">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">FHIR Resources</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">US Core Profiles</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>FHIR R4 Specification | US Core Implementation Guide | Offline Viewer</p>
+        </footer>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Error</h3>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p>Loading FHIR specifications...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/fhir-loader.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "id": "Period",
+  "name": "Period",
+  "title": "Period",
+  "description": "Time range defined by start and end date/time",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Period",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "Period",
+      "name": "Period",
+      "cardinality": "0..1",
+      "type": "Element",
+      "description": "Time range defined by start and end date/time"
+    },
+    {
+      "path": "Period.start",
+      "name": "start",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "description": "Starting time with inclusive boundary"
+    },
+    {
+      "path": "Period.end",
+      "name": "end",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "description": "End time with inclusive boundary, if not ongoing"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 3,
+    "hash": "5c73d1fb0f5e1f8a"
+  }
+}

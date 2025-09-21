@@ -1,0 +1,61 @@
+{
+  "id": "ContactPoint",
+  "name": "ContactPoint",
+  "title": "ContactPoint",
+  "description": "Details for all kinds of technology mediated contact points for a person or organization.",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "ContactPoint",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "ContactPoint",
+      "name": "ContactPoint",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "Details for all kinds of technology mediated contact points."
+    },
+    {
+      "path": "ContactPoint.system",
+      "name": "system",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "phone | fax | email | pager | url | sms | other"
+    },
+    {
+      "path": "ContactPoint.value",
+      "name": "value",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "The actual contact point details"
+    },
+    {
+      "path": "ContactPoint.use",
+      "name": "use",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "home | work | temp | old | mobile - purpose of this contact point"
+    },
+    {
+      "path": "ContactPoint.rank",
+      "name": "rank",
+      "cardinality": "0..1",
+      "type": "positiveInt",
+      "description": "Specify preferred order of use (1 = highest)"
+    },
+    {
+      "path": "ContactPoint.period",
+      "name": "period",
+      "cardinality": "0..1",
+      "type": "Period",
+      "description": "Time period when the contact point was/is in use"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 6,
+    "hash": "adafc388ece47c87"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "FHIR Resource Viewer",
+  "short_name": "FHIR Viewer",
+  "description": "A lightweight viewer for FHIR R4 Resources and US Core modifications with large font, easy navigation interface",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3498db",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["healthcare", "medical", "productivity"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiMzNDk4ZGIiLz4KPHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeD0iMzIiIHk9IjMyIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgo8cGF0aCBkPSJNMTQgMlY4YTMgMyAwIDAgMCAzIDNoNmwtOS05eiIvPgo8cGF0aCBkPSJtMTUgMTUgMyAzLTMgMyIvPgo8cGF0aCBkPSJNMTAgNGgtMWEyIDIgMCAwIDAtMiAydjE0YTIgMiAwIDAgMCAyIDJoN2EyIDIgMCAwIDAgMi0yVjEzaC02eiIvPgo8L3N2Zz4KPC9zdmc+",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Search Resources",
+      "short_name": "Search",
+      "description": "Search FHIR resources and profiles",
+      "url": "/?action=search",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTEiIGN5PSIxMSIgcj0iOCIgU3Ryb2tlPSIjMzQ5OGRiIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0ibTIxIDIxLTQuMzUtNC4zNSIgU3Ryb2tlPSIjMzQ5OGRiIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4=",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "features": [
+    "Cross-platform compatibility",
+    "Large font accessibility",
+    "Offline functionality",
+    "FHIR R4 specification",
+    "US Core profiles"
+  ]
+}

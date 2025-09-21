@@ -1,0 +1,61 @@
+{
+  "id": "Quantity",
+  "name": "Quantity",
+  "title": "Quantity",
+  "description": "A measured amount (or an amount that can potentially be measured).",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Quantity",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "Quantity",
+      "name": "Quantity",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "A measured amount (or an amount that can potentially be measured)."
+    },
+    {
+      "path": "Quantity.value",
+      "name": "value",
+      "cardinality": "0..1",
+      "type": "decimal",
+      "description": "Numerical value (with implicit precision)"
+    },
+    {
+      "path": "Quantity.comparator",
+      "name": "comparator",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "< | <= | >= | > - how to understand the value"
+    },
+    {
+      "path": "Quantity.unit",
+      "name": "unit",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Unit representation"
+    },
+    {
+      "path": "Quantity.system",
+      "name": "system",
+      "cardinality": "0..1",
+      "type": "uri",
+      "description": "System that defines coded unit form"
+    },
+    {
+      "path": "Quantity.code",
+      "name": "code",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "Coded form of the unit"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 6,
+    "hash": "26b6dc7e091bda12"
+  }
+}

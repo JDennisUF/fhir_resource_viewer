@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tree Count Spacing Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Tree Count Spacing Test</h1>
+    
+    <div class="test-section">
+        <h2>Navigation Tree Items with Counts</h2>
+        
+        <div class="tree-item">
+            <span class="tree-icon">📄</span>
+            <span class="tree-label">Patient</span>
+            <span class="tree-count">(47)</span>
+        </div>
+        
+        <div class="tree-item">
+            <span class="tree-icon">⚙️</span>
+            <span class="tree-label">Goal</span>
+            <span class="tree-count">(23)</span>
+        </div>
+        
+        <div class="tree-item">
+            <span class="tree-icon">🧩</span>
+            <span class="tree-label">Address</span>
+            <span class="tree-count">(11)</span>
+        </div>
+        
+        <div class="tree-item">
+            <span class="tree-icon">🇺🇸</span>
+            <span class="tree-label">US Core Profiles</span>
+            <span class="tree-count">(45)</span>
+        </div>
+        
+        <div class="tree-item">
+            <span class="tree-icon">🩺</span>
+            <span class="tree-label">Vital Signs</span>
+            <span class="tree-count">(8 vital signs)</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Before vs After Comparison</h2>
+        <p><strong>Before:</strong> <span class="tree-label">Patient</span>(47) <em>← no spacing</em></p>
+        <p><strong>After:</strong> <span class="tree-label">Patient</span><span class="tree-count">(47)</span> <em>← with 0.5rem margin</em></p>
+    </div>
+</body>
+</html>

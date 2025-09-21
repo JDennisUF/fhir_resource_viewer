@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extension Description Truncation Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .test-result { margin: 10px 0; padding: 10px; background: #f5f5f5; }
+        .before { background: #ffe6e6; }
+        .after { background: #e6ffe6; }
+    </style>
+</head>
+<body>
+    <h1>Extension Description Truncation Test</h1>
+    
+    <div class="test-section">
+        <h2>Before Fix</h2>
+        <div class="test-result before">
+            <strong>extension:</strong> May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+        </div>
+        
+        <div class="test-result before">
+            <strong>modifierExtension:</strong> May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions. Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>After Fix</h2>
+        <div class="test-result after">
+            <strong>extension:</strong> <span title="May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." class="truncated-description">Additional information that is not part of the basic definition of the resource</span>
+        </div>
+        
+        <div class="test-result after">
+            <strong>modifierExtension:</strong> <span title="May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions. Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." class="truncated-description">Extensions that modify the understanding of the element that contains them</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Features</h2>
+        <ul>
+            <li>✅ <strong>Much shorter descriptions</strong> for extension and modifierExtension</li>
+            <li>✅ <strong>Dotted underline</strong> indicates full description available on hover</li>
+            <li>✅ <strong>Help cursor</strong> when hovering over truncated descriptions</li>
+            <li>✅ <strong>Color change on hover</strong> to indicate interactivity</li>
+            <li>✅ <strong>Full tooltip</strong> shows complete FHIR specification text</li>
+        </ul>
+    </div>
+</body>
+</html>

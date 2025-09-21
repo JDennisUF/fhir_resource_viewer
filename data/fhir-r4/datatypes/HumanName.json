@@ -1,0 +1,75 @@
+{
+  "id": "HumanName",
+  "name": "HumanName",
+  "title": "HumanName",
+  "description": "A human name with the ability to identify parts and usage.",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "HumanName",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "HumanName",
+      "name": "HumanName",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "A human name with the ability to identify parts and usage."
+    },
+    {
+      "path": "HumanName.use",
+      "name": "use",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "usual | official | temp | nickname | anonymous | old | maiden"
+    },
+    {
+      "path": "HumanName.text",
+      "name": "text",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Text representation of the full name"
+    },
+    {
+      "path": "HumanName.family",
+      "name": "family",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Family name (often called surname)"
+    },
+    {
+      "path": "HumanName.given",
+      "name": "given",
+      "cardinality": "0..*",
+      "type": "string",
+      "description": "Given names (not always first). Includes middle names"
+    },
+    {
+      "path": "HumanName.prefix",
+      "name": "prefix",
+      "cardinality": "0..*",
+      "type": "string",
+      "description": "Parts that come before the name"
+    },
+    {
+      "path": "HumanName.suffix",
+      "name": "suffix",
+      "cardinality": "0..*",
+      "type": "string",
+      "description": "Parts that come after the name"
+    },
+    {
+      "path": "HumanName.period",
+      "name": "period",
+      "cardinality": "0..1",
+      "type": "Period",
+      "description": "Time period when name was/is in use"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 8,
+    "hash": "7f132f94fc589335"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "Annotation",
+  "name": "Annotation",
+  "title": "Annotation",
+  "description": "A text note which also contains information about who made the statement and when.",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Annotation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "Annotation",
+      "name": "Annotation",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "A text note which also contains information about who made the statement and when."
+    },
+    {
+      "path": "Annotation.author[x]",
+      "name": "author[x]",
+      "cardinality": "0..1",
+      "type": "Reference(Practitioner | Patient | RelatedPerson | Organization) | string",
+      "description": "Individual responsible for the annotation"
+    },
+    {
+      "path": "Annotation.time",
+      "name": "time",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "description": "When the annotation was made"
+    },
+    {
+      "path": "Annotation.text",
+      "name": "text",
+      "cardinality": "1..1",
+      "type": "markdown",
+      "description": "The annotation - text content (as markdown)"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 4,
+    "hash": "3784850f2e6f520f"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "CodeableConcept",
+  "name": "CodeableConcept",
+  "title": "CodeableConcept",
+  "description": "Concept - reference to a terminology or just text",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "CodeableConcept",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "CodeableConcept",
+      "name": "CodeableConcept",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "Concept - reference to a terminology or just text"
+    },
+    {
+      "path": "CodeableConcept.coding",
+      "name": "coding",
+      "cardinality": "0..*",
+      "type": "Coding",
+      "description": "Code defined by a terminology system"
+    },
+    {
+      "path": "CodeableConcept.text",
+      "name": "text",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Plain text representation of the concept"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 3,
+    "hash": "a80b329998a8dbcb"
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "Patient": {
+    "name": "Patient",
+    "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services.",
+    "type": "resource",
+    "url": "http://hl7.org/fhir/StructureDefinition/Patient",
+    "version": "4.0.1",
+    "status": "active",
+    "kind": "resource",
+    "abstract": false,
+    "elements": [
+      {
+        "name": "id",
+        "type": "id",
+        "cardinality": "0..1",
+        "description": "Logical id of this artifact",
+        "path": "Patient.id"
+      },
+      {
+        "name": "meta",
+        "type": "Meta",
+        "cardinality": "0..1",
+        "description": "Metadata about the resource",
+        "path": "Patient.meta"
+      },
+      {
+        "name": "identifier",
+        "type": "Identifier",
+        "cardinality": "0..*",
+        "description": "An identifier for this patient",
+        "path": "Patient.identifier"
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "cardinality": "0..1",
+        "description": "Whether this patient's record is in active use",
+        "path": "Patient.active"
+      },
+      {
+        "name": "name",
+        "type": "HumanName",
+        "cardinality": "0..*",
+        "description": "A name associated with the patient",
+        "path": "Patient.name"
+      },
+      {
+        "name": "telecom",
+        "type": "ContactPoint",
+        "cardinality": "0..*",
+        "description": "A contact detail for the individual",
+        "path": "Patient.telecom"
+      },
+      {
+        "name": "gender",
+        "type": "code",
+        "cardinality": "0..1",
+        "description": "male | female | other | unknown",
+        "path": "Patient.gender",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+        }
+      },
+      {
+        "name": "birthDate",
+        "type": "date",
+        "cardinality": "0..1",
+        "description": "The date of birth for the individual",
+        "path": "Patient.birthDate"
+      },
+      {
+        "name": "deceased[x]",
+        "type": "boolean | dateTime",
+        "cardinality": "0..1",
+        "description": "Indicates if the individual is deceased or not",
+        "path": "Patient.deceased[x]"
+      },
+      {
+        "name": "address",
+        "type": "Address",
+        "cardinality": "0..*",
+        "description": "An address for the individual",
+        "path": "Patient.address"
+      }
+    ]
+  },
+  "Observation": {
+    "name": "Observation",
+    "description": "Measurements and simple assertions made about a patient, device or other subject.",
+    "type": "resource",
+    "url": "http://hl7.org/fhir/StructureDefinition/Observation",
+    "version": "4.0.1",
+    "status": "active",
+    "kind": "resource",
+    "abstract": false,
+    "elements": [
+      {
+        "name": "id",
+        "type": "id",
+        "cardinality": "0..1",
+        "description": "Logical id of this artifact",
+        "path": "Observation.id"
+      },
+      {
+        "name": "status",
+        "type": "code",
+        "cardinality": "1..1",
+        "description": "registered | preliminary | final | amended +",
+        "path": "Observation.status",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/observation-status"
+        }
+      },
+      {
+        "name": "category",
+        "type": "CodeableConcept",
+        "cardinality": "0..*",
+        "description": "Classification of type of observation",
+        "path": "Observation.category"
+      },
+      {
+        "name": "code",
+        "type": "CodeableConcept",
+        "cardinality": "1..1",
+        "description": "Type of observation (code / type)",
+        "path": "Observation.code"
+      },
+      {
+        "name": "subject",
+        "type": "Reference(Patient | Group | Device | Location)",
+        "cardinality": "0..1",
+        "description": "Who and/or what the observation is about",
+        "path": "Observation.subject"
+      },
+      {
+        "name": "encounter",
+        "type": "Reference(Encounter)",
+        "cardinality": "0..1",
+        "description": "Healthcare event during which this observation is made",
+        "path": "Observation.encounter"
+      },
+      {
+        "name": "effective[x]",
+        "type": "dateTime | Period | Timing | instant",
+        "cardinality": "0..1",
+        "description": "Clinically relevant time/time-period for observation",
+        "path": "Observation.effective[x]"
+      },
+      {
+        "name": "value[x]",
+        "type": "Quantity | CodeableConcept | string | boolean | integer | Range | Ratio | SampledData | time | dateTime | Period",
+        "cardinality": "0..1",
+        "description": "Actual result",
+        "path": "Observation.value[x]"
+      }
+    ]
+  },
+  "Practitioner": {
+    "name": "Practitioner",
+    "description": "A person who is directly or indirectly involved in the provisioning of healthcare.",
+    "type": "resource",
+    "url": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+    "version": "4.0.1",
+    "status": "active",
+    "kind": "resource",
+    "abstract": false,
+    "elements": [
+      {
+        "name": "id",
+        "type": "id",
+        "cardinality": "0..1",
+        "description": "Logical id of this artifact",
+        "path": "Practitioner.id"
+      },
+      {
+        "name": "identifier",
+        "type": "Identifier",
+        "cardinality": "0..*",
+        "description": "An identifier for the person as this agent",
+        "path": "Practitioner.identifier"
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "cardinality": "0..1",
+        "description": "Whether this practitioner's record is in active use",
+        "path": "Practitioner.active"
+      },
+      {
+        "name": "name",
+        "type": "HumanName",
+        "cardinality": "0..*",
+        "description": "The name(s) associated with the practitioner",
+        "path": "Practitioner.name"
+      },
+      {
+        "name": "telecom",
+        "type": "ContactPoint",
+        "cardinality": "0..*",
+        "description": "A contact detail for the practitioner",
+        "path": "Practitioner.telecom"
+      }
+    ]
+  },
+  "Organization": {
+    "name": "Organization",
+    "description": "A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.",
+    "type": "resource",
+    "url": "http://hl7.org/fhir/StructureDefinition/Organization",
+    "version": "4.0.1",
+    "status": "active",
+    "kind": "resource",
+    "abstract": false,
+    "elements": [
+      {
+        "name": "id",
+        "type": "id",
+        "cardinality": "0..1",
+        "description": "Logical id of this artifact",
+        "path": "Organization.id"
+      },
+      {
+        "name": "identifier",
+        "type": "Identifier",
+        "cardinality": "0..*",
+        "description": "Identifies this organization across multiple systems",
+        "path": "Organization.identifier"
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "cardinality": "0..1",
+        "description": "Whether the organization's record is still in active use",
+        "path": "Organization.active"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Name used for the organization",
+        "path": "Organization.name"
+      },
+      {
+        "name": "telecom",
+        "type": "ContactPoint",
+        "cardinality": "0..*",
+        "description": "A contact detail for the organization",
+        "path": "Organization.telecom"
+      },
+      {
+        "name": "address",
+        "type": "Address",
+        "cardinality": "0..*",
+        "description": "An address for the organization",
+        "path": "Organization.address"
+      }
+    ]
+  }
+}

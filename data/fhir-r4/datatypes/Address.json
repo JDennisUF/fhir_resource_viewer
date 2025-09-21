@@ -1,0 +1,96 @@
+{
+  "id": "Address",
+  "name": "Address",
+  "title": "Address",
+  "description": "An address expressed using postal conventions (as opposed to GPS or other location definition formats).",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Address",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "Address",
+      "name": "Address",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "An address expressed using postal conventions."
+    },
+    {
+      "path": "Address.use",
+      "name": "use",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "home | work | temp | old | billing - purpose of this address"
+    },
+    {
+      "path": "Address.type",
+      "name": "type",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "postal | physical | both"
+    },
+    {
+      "path": "Address.text",
+      "name": "text",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Text representation of the address"
+    },
+    {
+      "path": "Address.line",
+      "name": "line",
+      "cardinality": "0..*",
+      "type": "string",
+      "description": "Street name, number, direction & P.O. Box etc."
+    },
+    {
+      "path": "Address.city",
+      "name": "city",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Name of city, town etc."
+    },
+    {
+      "path": "Address.district",
+      "name": "district",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "District name (aka county)"
+    },
+    {
+      "path": "Address.state",
+      "name": "state",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Sub-unit of country (abbreviations ok)"
+    },
+    {
+      "path": "Address.postalCode",
+      "name": "postalCode",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Postal code for area"
+    },
+    {
+      "path": "Address.country",
+      "name": "country",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Country (e.g. can be ISO 3166 2 or 3 letter code)"
+    },
+    {
+      "path": "Address.period",
+      "name": "period",
+      "cardinality": "0..1",
+      "type": "Period",
+      "description": "Time period when address was/is in use"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 11,
+    "hash": "58bbb4be4e2a2ff3"
+  }
+}

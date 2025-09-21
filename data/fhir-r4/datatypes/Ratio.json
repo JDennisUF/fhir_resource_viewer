@@ -1,0 +1,40 @@
+{
+  "id": "Ratio",
+  "name": "Ratio",
+  "title": "Ratio",
+  "description": "A relationship of two Quantity values - expressed as a numerator and a denominator.",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Ratio",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "Ratio",
+      "name": "Ratio",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "A relationship of two Quantity values - expressed as a numerator and a denominator."
+    },
+    {
+      "path": "Ratio.numerator",
+      "name": "numerator",
+      "cardinality": "0..1",
+      "type": "Quantity",
+      "description": "Numerator value"
+    },
+    {
+      "path": "Ratio.denominator",
+      "name": "denominator",
+      "cardinality": "0..1",
+      "type": "Quantity",
+      "description": "Denominator value"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 3,
+    "hash": "91ddb239cde0fe60"
+  }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Column Alignment Fix Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Column Alignment Fix Test</h1>
+    
+    <div class="test-section">
+        <h2>FHIR R4 Resource (4 columns)</h2>
+        <div class="element-hierarchy">
+            <div class="element-header">
+                <div class="element-cell element-name-header">Element</div>
+                <div class="element-cell element-type-header">Type</div>
+                <div class="element-cell element-cardinality-header">Cardinality</div>
+                <div class="element-cell element-description-header">Description</div>
+            </div>
+            
+            <div class="element-row">
+                <div class="element-cell element-name">
+                    <span class="element-toggle collapsed">▶</span>
+                    <strong>Patient</strong>
+                    <span class="child-count">(4)</span>
+                </div>
+                <div class="element-cell element-type">
+                    <code>DomainResource</code>
+                </div>
+                <div class="element-cell element-cardinality">
+                    <span></span>
+                </div>
+                <div class="element-cell element-description">
+                    Common fields inherited from DomainResource
+                </div>
+            </div>
+            
+            <div class="element-row element-depth-1">
+                <div class="element-cell element-name">
+                    <span class="element-spacer"></span>
+                    <strong>active</strong>
+                </div>
+                <div class="element-cell element-type">
+                    <code>boolean</code>
+                </div>
+                <div class="element-cell element-cardinality">
+                    <span>0..1</span>
+                </div>
+                <div class="element-cell element-description">
+                    Whether this patient record is in active use
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>US Core Profile (5 columns with Must Support)</h2>
+        <div class="element-hierarchy">
+            <div class="element-header has-must-support">
+                <div class="element-cell element-name-header">Element</div>
+                <div class="element-cell element-type-header">Type</div>
+                <div class="element-cell element-cardinality-header">Cardinality</div>
+                <div class="element-cell element-description-header">Description</div>
+                <div class="element-cell element-must-support-header">Must Support</div>
+            </div>
+            
+            <div class="element-row has-must-support">
+                <div class="element-cell element-name">
+                    <span class="element-toggle collapsed">▶</span>
+                    <strong>Goal</strong>
+                    <span class="child-count">(4)</span>
+                </div>
+                <div class="element-cell element-type">
+                    <code>DomainResource</code>
+                </div>
+                <div class="element-cell element-cardinality">
+                    <span></span>
+                </div>
+                <div class="element-cell element-description">
+                    Common fields inherited from DomainResource
+                </div>
+                <div class="element-cell element-must-support"></div>
+            </div>
+            
+            <div class="element-row has-must-support element-depth-1">
+                <div class="element-cell element-name">
+                    <span class="element-spacer"></span>
+                    <strong class="required-element">lifecycleStatus</strong>
+                </div>
+                <div class="element-cell element-type">
+                    <code>code</code>
+                </div>
+                <div class="element-cell element-cardinality">
+                    <span class="required-cardinality">1..1</span>
+                </div>
+                <div class="element-cell element-description">
+                    proposed | planned | accepted | active | on-hold | completed | cancelled | entered-in-error | rejected
+                </div>
+                <div class="element-cell element-must-support">✓</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Column Width Summary</h2>
+        <h3>4-Column Layout (FHIR R4 Resources):</h3>
+        <ul>
+            <li><strong>Element:</strong> 3fr (wider for expansion + indentation)</li>
+            <li><strong>Type:</strong> 1.5fr</li>
+            <li><strong>Cardinality:</strong> 0.7fr (narrower, just for "0..1" etc.)</li>
+            <li><strong>Description:</strong> 3fr</li>
+        </ul>
+        
+        <h3>5-Column Layout (US Core Profiles):</h3>
+        <ul>
+            <li><strong>Element:</strong> 3fr (same width)</li>
+            <li><strong>Type:</strong> 1.5fr</li>
+            <li><strong>Cardinality:</strong> 0.7fr (same narrow width)</li>
+            <li><strong>Description:</strong> 2.5fr (reduced to make room for Must Support)</li>
+            <li><strong>Must Support:</strong> 0.8fr (small, just for checkmarks)</li>
+        </ul>
+    </div>
+</body>
+</html>

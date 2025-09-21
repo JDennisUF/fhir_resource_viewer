@@ -1,0 +1,82 @@
+{
+  "id": "Attachment",
+  "name": "Attachment",
+  "title": "Attachment",
+  "description": "For referring to data content defined in other formats.",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Attachment",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "elements": [
+    {
+      "path": "Attachment",
+      "name": "Attachment",
+      "cardinality": "0..*",
+      "type": "Element",
+      "description": "Content in a format defined elsewhere"
+    },
+    {
+      "path": "Attachment.contentType",
+      "name": "contentType",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "Mime type of the content, with charset etc."
+    },
+    {
+      "path": "Attachment.language",
+      "name": "language",
+      "cardinality": "0..1",
+      "type": "code",
+      "description": "Human language of the content (BCP-47)"
+    },
+    {
+      "path": "Attachment.data",
+      "name": "data",
+      "cardinality": "0..1",
+      "type": "base64Binary",
+      "description": "Data inline, base64ed"
+    },
+    {
+      "path": "Attachment.url",
+      "name": "url",
+      "cardinality": "0..1",
+      "type": "url",
+      "description": "Uri where the data can be found"
+    },
+    {
+      "path": "Attachment.size",
+      "name": "size",
+      "cardinality": "0..1",
+      "type": "unsignedInt",
+      "description": "Number of bytes of content (if url provided)"
+    },
+    {
+      "path": "Attachment.hash",
+      "name": "hash",
+      "cardinality": "0..1",
+      "type": "base64Binary",
+      "description": "Hash of the data (sha-1, base64ed)"
+    },
+    {
+      "path": "Attachment.title",
+      "name": "title",
+      "cardinality": "0..1",
+      "type": "string",
+      "description": "Label to display in place of the data"
+    },
+    {
+      "path": "Attachment.creation",
+      "name": "creation",
+      "cardinality": "0..1",
+      "type": "dateTime",
+      "description": "Date attachment was first created"
+    }
+  ],
+  "_metadata": {
+    "downloaded": false,
+    "created": true,
+    "source": "FHIR R4 Specification",
+    "elementCount": 9,
+    "hash": "60c23511de2dc775"
+  }
+}
