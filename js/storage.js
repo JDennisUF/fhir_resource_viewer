@@ -19,7 +19,6 @@ class FHIRStorage {
         if (this.isInitialized) return;
         
         const startTime = performance.now();
-        console.log('Initializing FHIR Storage System...');
         
         try {
             // Clear cache to ensure fresh data
@@ -33,17 +32,14 @@ class FHIRStorage {
             
             // Load master index first
             this.masterIndex = await this.loadJSON('data/index/master.json');
-            console.log('Master index loaded:', this.masterIndex);
             
             // Force reload of resources index
-            console.log('Loading resources index with cache busting...');
             
             // Load core indexes
             await this.loadIndexes();
             
             this.isInitialized = true;
             const loadTime = performance.now() - startTime;
-            console.log(`Storage system initialized in ${loadTime.toFixed(2)}ms`);
             
         } catch (error) {
             console.error('Failed to initialize storage system:', error);
@@ -56,16 +52,12 @@ class FHIRStorage {
             async ([name, path]) => {
                 try {
                     this.indexes[name] = await this.loadJSON(`data/${path}`);
-                    console.log(`Index '${name}' loaded`);
                     
                     // Debug resources index
                     if (name === 'resources') {
-                        console.log('Resources count:', this.indexes[name].statistics);
-                        console.log('FHIR R4 resources:', this.indexes[name].bySpec['fhir-r4']?.length);
                         const hasNewResources = ['Claim', 'Invoice', 'EnrollmentRequest'].some(r => 
                             this.indexes[name].bySpec['fhir-r4']?.includes(r)
                         );
-                        console.log('Has new financial resources:', hasNewResources);
                     }
                 } catch (error) {
                     console.warn(`Failed to load index '${name}':`, error);
@@ -134,18 +126,14 @@ class FHIRStorage {
             throw new Error(`Resource '${name}' not found`);
         }
         
-        console.log(`Storage loading file: data/${resourceInfo.file}`);
         const resource = await this.loadJSON(`data/${resourceInfo.file}`);
         
         // Check if this is a raw StructureDefinition that needs processing
         if (resource.resourceType === 'StructureDefinition' && !resource.elements) {
-            console.log(`Processing raw StructureDefinition for ${name}`);
             const processedResource = this.processStructureDefinition(resource);
-            console.log(`Processed resource with ${processedResource.elements?.length || 0} elements`);
             return processedResource;
         }
         
-        console.log(`Storage loaded resource with ${resource?.elements?.length || 0} elements`);
         return resource;
     }
 
@@ -374,7 +362,6 @@ class FHIRStorage {
         const sourceElements = structureDefinition.differential?.element || 
                               structureDefinition.snapshot?.element || [];
         
-        console.log(`Processing ${sourceElements.length} elements from StructureDefinition`);
         
         sourceElements.forEach((element, index) => {
             // Skip the root element (usually just the resource type itself)
@@ -455,7 +442,6 @@ class FHIRStorage {
     // Cache Management
     clearCache() {
         this.cache.clear();
-        console.log('Storage cache cleared');
     }
 
     getCacheStats() {
@@ -481,7 +467,6 @@ class FHIRStorage {
         );
         
         await Promise.all(preloadPromises);
-        console.log('Frequent resources preloaded');
     }
 
     // Utility Methods
@@ -531,7 +516,6 @@ class FHIRStorage {
         });
         
         this.metrics = importData.metrics || this.metrics;
-        console.log(`Cache imported from ${importData.timestamp}`);
     }
 }
 

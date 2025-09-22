@@ -656,7 +656,6 @@ class NavigationManager {
                     }
                 });
             } catch (e) {
-                console.warn('Failed to restore expanded state:', e);
             }
         }
     }

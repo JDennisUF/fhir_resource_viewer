@@ -1,0 +1,235 @@
+{
+  "metadata": {
+    "description": "Index of FHIR resource examples from US Core Implementation Guide",
+    "totalExamples": 77,
+    "lastUpdated": "2024-09-22",
+    "source": "US Core STU 6.1 Implementation Guide"
+  },
+  "examplesByResourceType": {
+    "AllergyIntolerance": [
+      {
+        "id": "example",
+        "title": "AllergyIntolerance Example",
+        "file": "AllergyIntolerance-example.json",
+        "description": "Example of an allergy intolerance resource"
+      }
+    ],
+    "Bundle": [
+      {
+        "id": "docref-example-1",
+        "title": "Document Reference Bundle Example 1",
+        "file": "Bundle-docref-example-1.json",
+        "description": "Example document reference bundle"
+      },
+      {
+        "id": "docref-example-2", 
+        "title": "Document Reference Bundle Example 2",
+        "file": "Bundle-docref-example-2.json",
+        "description": "Another document reference bundle example"
+      }
+    ],
+    "CareTeam": [
+      {
+        "id": "example",
+        "title": "CareTeam Example",
+        "file": "CareTeam-example.json",
+        "description": "Example of a care team"
+      },
+      {
+        "id": "missing-coded-data-example",
+        "title": "CareTeam with Missing Data",
+        "file": "CareTeam-missing-coded-data-example.json",
+        "description": "Care team example demonstrating missing coded data patterns"
+      }
+    ],
+    "Condition": [
+      {
+        "id": "condition-SDOH-example",
+        "title": "Social Determinants Condition",
+        "file": "Condition-condition-SDOH-example.json",
+        "description": "Condition example for social determinants of health"
+      },
+      {
+        "id": "encounter-diagnosis-example1",
+        "title": "Encounter Diagnosis Example 1",
+        "file": "Condition-encounter-diagnosis-example1.json",
+        "description": "Condition as encounter diagnosis"
+      },
+      {
+        "id": "encounter-diagnosis-example2",
+        "title": "Encounter Diagnosis Example 2", 
+        "file": "Condition-encounter-diagnosis-example2.json",
+        "description": "Another encounter diagnosis example"
+      },
+      {
+        "id": "health-concern-example",
+        "title": "Health Concern Example",
+        "file": "Condition-health-concern-example.json",
+        "description": "Condition representing a health concern"
+      }
+    ],
+    "Coverage": [
+      {
+        "id": "coverage-example",
+        "title": "Coverage Example",
+        "file": "Coverage-coverage-example.json",
+        "description": "Example of insurance coverage"
+      }
+    ],
+    "Encounter": [
+      {
+        "id": "example-1",
+        "title": "Encounter Example",
+        "file": "Encounter-example-1.json",
+        "description": "Example of a patient encounter"
+      }
+    ],
+    "MedicationDispense": [
+      {
+        "id": "medicationdispense-example",
+        "title": "Medication Dispense Example",
+        "file": "MedicationDispense-medicationdispense-example.json",
+        "description": "Example of medication dispensing"
+      }
+    ],
+    "Observation": [
+      {
+        "id": "AHC-HRSN-item-example-68517-2",
+        "title": "AHC HRSN Screening Item",
+        "file": "Observation-AHC-HRSN-item-example-68517-2.json",
+        "description": "Accountable Health Communities Health-Related Social Needs screening item"
+      },
+      {
+        "id": "HVS-panel-example-88121-9",
+        "title": "Hunger Vital Sign Panel",
+        "file": "Observation-HVS-panel-example-88121-9.json",
+        "description": "Hunger vital sign screening panel"
+      },
+      {
+        "id": "pediatric-bmi-example",
+        "title": "Pediatric BMI Example",
+        "file": "Observation-pediatric-bmi-example.json",
+        "description": "Pediatric BMI observation"
+      },
+      {
+        "id": "pediatric-wt-example", 
+        "title": "Pediatric Weight Example",
+        "file": "Observation-pediatric-wt-example.json",
+        "description": "Pediatric weight observation"
+      },
+      {
+        "id": "PHQ9-panel-example-44249-1",
+        "title": "PHQ-9 Depression Screening Panel",
+        "file": "Observation-PHQ9-panel-example-44249-1.json",
+        "description": "PHQ-9 depression screening panel"
+      },
+      {
+        "id": "sexual-orientation-example",
+        "title": "Sexual Orientation Example",
+        "file": "Observation-sexual-orientation-example.json",
+        "description": "Sexual orientation observation"
+      }
+    ],
+    "Organization": [
+      {
+        "id": "example-organization-2",
+        "title": "Organization Example",
+        "file": "Organization-example-organization-2.json",
+        "description": "Example healthcare organization"
+      }
+    ],
+    "Patient": [
+      {
+        "id": "child-example",
+        "title": "Child Patient Example",
+        "file": "Patient-child-example.json",
+        "description": "Example of a pediatric patient"
+      },
+      {
+        "id": "deceased-example",
+        "title": "Deceased Patient Example", 
+        "file": "Patient-deceased-example.json",
+        "description": "Example of a deceased patient"
+      },
+      {
+        "id": "infant-example",
+        "title": "Infant Patient Example",
+        "file": "Patient-infant-example.json", 
+        "description": "Example of an infant patient"
+      },
+      {
+        "id": "example",
+        "title": "Basic Patient Example",
+        "file": "Patient-example.json",
+        "description": "Basic adult patient example"
+      },
+      {
+        "id": "example-targeted-provenance",
+        "title": "Patient with Provenance",
+        "file": "Patient-example-targeted-provenance.json",
+        "description": "Patient example demonstrating targeted provenance"
+      }
+    ],
+    "Provenance": [
+      {
+        "id": "example",
+        "title": "Provenance Example",
+        "file": "Provenance-example.json",
+        "description": "Example of data provenance tracking"
+      }
+    ],
+    "Questionnaire": [
+      {
+        "id": "hunger-vital-sign-example",
+        "title": "Hunger Vital Sign Questionnaire",
+        "file": "Questionnaire-hunger-vital-sign-example.json",
+        "description": "Hunger vital sign screening questionnaire"
+      },
+      {
+        "id": "phq-9-example",
+        "title": "PHQ-9 Depression Questionnaire",
+        "file": "Questionnaire-phq-9-example.json",
+        "description": "PHQ-9 depression screening questionnaire"
+      },
+      {
+        "id": "prapare-example",
+        "title": "PRAPARE Social Determinants Questionnaire",
+        "file": "Questionnaire-prapare-example.json",
+        "description": "PRAPARE social determinants of health questionnaire"
+      }
+    ],
+    "QuestionnaireResponse": [
+      {
+        "id": "hunger-vital-sign-example",
+        "title": "Hunger Vital Sign Response",
+        "file": "QuestionnaireResponse-hunger-vital-sign-example.json",
+        "description": "Response to hunger vital sign questionnaire"
+      },
+      {
+        "id": "phq-9-example",
+        "title": "PHQ-9 Depression Response",
+        "file": "QuestionnaireResponse-phq-9-example.json",
+        "description": "Response to PHQ-9 depression questionnaire"
+      },
+      {
+        "id": "prapare-example",
+        "title": "PRAPARE Social Determinants Response",
+        "file": "QuestionnaireResponse-prapare-example.json",
+        "description": "Response to PRAPARE social determinants questionnaire"
+      }
+    ],
+    "Specimen": [
+      {
+        "id": "specimen-example-serum",
+        "title": "Serum Specimen Example",
+        "file": "Specimen-specimen-example-serum.json",
+        "description": "Example serum laboratory specimen"
+      }
+    ]
+  },
+  "categories": {
+    "clinical": ["AllergyIntolerance", "Condition", "Encounter", "MedicationDispense", "Observation", "Specimen"],
+    "administrative": ["CareTeam", "Coverage", "Organization", "Patient", "Provenance"],
+    "workflow": ["Bundle", "Questionnaire", "QuestionnaireResponse"]
+  }
+}

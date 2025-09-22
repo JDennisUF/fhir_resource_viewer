@@ -46,6 +46,17 @@
                 <div class="content-header">
                     <h2 id="resourceTitle"></h2>
                     <div class="breadcrumb" id="breadcrumb"></div>
+                    
+                    <!-- Tab Navigation -->
+                    <div class="tab-navigation" id="tabNavigation" style="display: none;">
+                        <button class="tab-button active" data-tab="definition" id="definitionTab">
+                            📋 Definition
+                        </button>
+                        <button class="tab-button" data-tab="examples" id="examplesTab">
+                            💡 Examples
+                            <span class="examples-count" id="examplesCount" style="display: none;"></span>
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="resource-content" id="resourceContent">
@@ -53,6 +64,11 @@
                         <h3>Welcome to the Greenway FHIR Viewer</h3>
                         <p>Select a resource from the sidebar to view its details, elements, and US Core modifications.</p>
                     </div>
+                </div>
+                
+                <!-- Examples Content (initially hidden) -->
+                <div class="examples-content" id="examplesContent" style="display: none;">
+                    <div class="examples-loading">Loading examples...</div>
                 </div>
             </section>
         </main>
@@ -81,6 +97,7 @@
     <!-- Scripts -->
     <script src="js/storage.js"></script>
     <script src="js/uscore-links.js"></script>
+    <script src="js/examples-loader.js"></script>
     <script src="js/app.js"></script>
     <script src="js/fhir-loader.js"></script>
     <script src="js/navigation.js"></script>

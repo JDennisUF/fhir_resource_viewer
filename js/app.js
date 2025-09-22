@@ -1,29 +1,28 @@
 // Main Application Controller
 class FHIRViewer {
     constructor() {
-        this.currentTheme = localStorage.getItem('theme') || 'light';
+        const savedTheme = localStorage.getItem('theme');
+        this.currentTheme = (savedTheme === 'light' || savedTheme === 'dark') ? savedTheme : 'light';
         this.currentFontSize = localStorage.getItem('fontSize') || 'normal';
         this.fhirData = null;
         this.filteredData = null;
         this.currentResource = null;
         this.storage = new FHIRStorage();
         this.usCoreLinks = new USCoreLinks();
+        this.examplesLoader = new ExamplesLoader(this);
         
         this.init();
     }
 
     async init() {
-        console.log('Initializing FHIR Viewer...');
         this.setupTheme();
         this.setupEventListeners();
         this.showLoading();
         
         // Initialize managers first
         try {
-            console.log('Creating navigation and search managers...');
             this.navigationManager = new NavigationManager(this);
             this.searchManager = new SearchManager(this);
-            console.log('Managers created successfully');
         } catch (error) {
             console.error('Error creating managers:', error);
             this.hideLoading();
@@ -32,7 +31,6 @@ class FHIRViewer {
         }
         
         try {
-            console.log('Initializing storage system...');
             
             // Force clear browser cache for fresh data
             if ('serviceWorker' in navigator) {
@@ -44,21 +42,22 @@ class FHIRViewer {
             
             await this.storage.initialize();
             
-            console.log('Loading FHIR data using new storage system...');
             await this.loadFHIRDataFromStorage();
-            console.log('FHIR data loaded:', this.fhirData);
             this.hideLoading();
             
             // Show welcome message
             this.showWelcomeMessage();
             
             // Initialize search index after data is loaded
-            console.log('Building search index...');
             this.searchManager.buildSearchIndex(this.fhirData);
             
-            console.log('Rendering resource tree...');
+            await this.examplesLoader.initialize();
+            
             this.renderResourceTree();
-            console.log('Initialization complete!');
+            
+            // Make available globally for examples loader
+            window.fhirViewer = window.fhirViewer || {};
+            window.fhirViewer.examplesLoader = this.examplesLoader;
         } catch (error) {
             console.error('Error during initialization:', error);
             this.hideLoading();
@@ -112,7 +111,7 @@ class FHIRViewer {
     }
 
     toggleTheme() {
-        const themes = ['light', 'dark', 'blue', 'high-contrast'];
+        const themes = ['light', 'dark'];
         const currentIndex = themes.indexOf(this.currentTheme);
         this.currentTheme = themes[(currentIndex + 1) % themes.length];
         
@@ -146,7 +145,6 @@ class FHIRViewer {
                 'StructureMap', 'Task', 'TerminologyCapabilities', 'TestReport', 'TestScript', 'ValueSet', 'VisionPrescription'
             ];
             
-            console.log(`Loading ${resourceFiles.length} FHIR R4 resources directly from files`);
             
             for (const resourceName of resourceFiles) {
                 try {
@@ -160,15 +158,13 @@ class FHIRViewer {
                         // Will be loaded on demand
                         elements: []
                     };
-                    console.log(`  Added ${resourceName} (${resourceData.elements?.length || 0} elements)`);
                 } catch (error) {
-                    console.warn(`  Failed to load ${resourceName}: ${error.message}`);
+                    // Silently continue if resource fails to load
                 }
             }
             
             // Load US Core profiles using existing index
             const usCoreResources = await this.storage.getResourceList('us-core-stu6.1');
-            console.log(`Loading ${usCoreResources.length} US Core profiles from index:`, usCoreResources);
             
             for (const resourceName of usCoreResources) {
                 const resourceInfo = this.storage.findResourceInfo(resourceName, 'us-core-stu6.1');
@@ -189,7 +185,6 @@ class FHIRViewer {
             
             // Load FHIR R4 data types for search functionality
             const dataTypeNames = await this.storage.getResourcesByType('datatype', 'fhir-r4');
-            console.log(`Loading ${dataTypeNames.length} FHIR R4 data types for search`);
             
             for (const dataTypeName of dataTypeNames) {
                 try {
@@ -203,9 +198,8 @@ class FHIRViewer {
                         // Will be loaded on demand
                         elements: []
                     };
-                    console.log(`  Added data type ${dataTypeName} (${dataTypeData.elements?.length || 0} elements)`);
                 } catch (error) {
-                    console.warn(`  Failed to load data type ${dataTypeName}: ${error.message}`);
+                    // Silently continue if data type fails to load
                 }
             }
             
@@ -216,7 +210,6 @@ class FHIRViewer {
         this.filteredData = this.fhirData;
         const r4Count = Object.keys(this.fhirData['fhir-r4']).length;
         const usCoreCount = Object.keys(this.fhirData['us-core-stu6.1']).length;
-        console.log(`Total loaded: ${r4Count} R4 resources/datatypes, ${usCoreCount} US Core profiles`);
     }
 
 
@@ -295,27 +288,21 @@ class FHIRViewer {
 
     async loadFullResourceContent(resourceName, spec) {
         try {
-            console.log(`Loading full content for ${resourceName} from ${spec}`);
-            
             // Handle data types specially - they're not in fhirData structure
             const resourceInfo = this.storage.findResourceInfo(resourceName, spec);
-            console.log(`Resource info for ${resourceName}:`, resourceInfo);
             
             if (resourceInfo?.type === 'datatype') {
                 // Load data type directly from storage
                 const fullResource = await this.storage.getResource(resourceName, spec);
                 // Store it temporarily for rendering
                 this.currentResourceData = fullResource;
-                console.log(`Loaded data type ${resourceName} with ${fullResource.elements?.length || 0} elements`);
                 return;
             }
             
             // Check if we already have full content for regular resources
             const currentResource = this.fhirData[spec][resourceName];
-            console.log(`Current resource in fhirData[${spec}][${resourceName}]:`, currentResource);
             
             if (currentResource && currentResource.elements && currentResource.elements.length > 0) {
-                console.log('Full content already loaded');
                 return;
             }
             
@@ -330,9 +317,7 @@ class FHIRViewer {
                 }
             } else {
                 // Use storage system for US Core and other specs
-                console.log(`Loading ${resourceName} from storage system...`);
                 fullResource = await this.storage.getResource(resourceName, spec);
-                console.log(`Storage returned resource with ${fullResource?.elements?.length || 0} elements:`, fullResource);
             }
             
             // Update the resource in our data structure, preserving cleaned name
@@ -344,7 +329,6 @@ class FHIRViewer {
                 name: cleanedName || fullResource.name
             };
             
-            console.log(`Loaded ${fullResource.elements?.length || 0} elements for ${resourceName}`);
             
         } catch (error) {
             console.error(`Failed to load full content for ${resourceName}:`, error);
@@ -484,6 +468,9 @@ class FHIRViewer {
         }
         
         document.getElementById('breadcrumb').innerHTML = breadcrumbHTML;
+        
+        // Show tabs for this resource
+        this.examplesLoader.showTabsForResource(name);
         
         // Render content
         const contentContainer = document.getElementById('resourceContent');
@@ -796,11 +783,6 @@ class FHIRViewer {
             }
         });
         
-        // Debug logging
-        console.log('Built hierarchy with', hierarchy.length, 'top-level elements');
-        hierarchy.forEach(element => {
-            console.log(`- ${element.name} (${element.fullPath}) has ${element.children.length} children`);
-        });
         
         return hierarchy;
     }
@@ -1013,6 +995,7 @@ class FHIRViewer {
     showWelcomeMessage() {
         document.getElementById('resourceTitle').textContent = '';
         document.getElementById('breadcrumb').innerHTML = '';
+        this.examplesLoader.hideTabsForWelcome();
         document.getElementById('resourceContent').innerHTML = `
             <div class="welcome-message">
                 <h3>Welcome to the Greenway FHIR Viewer</h3>
@@ -1071,7 +1054,6 @@ class FHIRViewer {
 
     showLoading() {
         const overlay = document.getElementById('loadingOverlay');
-        console.log('showLoading - overlay element:', overlay);
         if (overlay) {
             overlay.classList.remove('hidden');
         }
@@ -1079,10 +1061,8 @@ class FHIRViewer {
 
     hideLoading() {
         const overlay = document.getElementById('loadingOverlay');
-        console.log('hideLoading - overlay element:', overlay);
         if (overlay) {
             overlay.classList.add('hidden');
-            console.log('Loading overlay hidden');
         } else {
             console.error('Loading overlay element not found!');
         }
