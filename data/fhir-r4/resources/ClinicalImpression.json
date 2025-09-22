@@ -1,0 +1,196 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ClinicalImpression",
+  "url": "http://hl7.org/fhir/StructureDefinition/ClinicalImpression",
+  "version": "4.0.1",
+  "name": "ClinicalImpression",
+  "title": "ClinicalImpression",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Care)",
+  "description": "A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ClinicalImpression",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "ClinicalImpression",
+      "name": "ClinicalImpression",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A record of a clinical assessment performed to determine what problem(s) may affect the patient.",
+      "level": 0
+    },
+    {
+      "path": "ClinicalImpression.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Business identifiers assigned to this clinical impression by the performer or other systems which remain constant as the resource is updated and propagates from server to server.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Identifies the workflow status of the assessment.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.statusReason",
+      "name": "statusReason",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Captures the reason for the current state of the ClinicalImpression.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.code",
+      "name": "code",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Categorizes the type of clinical assessment performed.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.description",
+      "name": "description",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A summary of the context and/or cause of the assessment - why / where it was performed, and what patient events/status prompted it.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The patient or group of individuals assessed as part of this record.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.encounter",
+      "name": "encounter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The Encounter during which this ClinicalImpression was created or to which the creation of this record is tightly associated.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.effectiveDateTime",
+      "name": "effectiveDateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The point in time or period over which the subject was assessed.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.effectivePeriod",
+      "name": "effectivePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The point in time or period over which the subject was assessed.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "Indicates when the documentation of the assessment was complete.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.assessor",
+      "name": "assessor",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The clinician performing the assessment.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.previous",
+      "name": "previous",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A reference to the last assessment that was conducted on this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions change.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.problem",
+      "name": "problem",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "A list of the relevant problems/conditions for a patient.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.investigation",
+      "name": "investigation",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "One or more sets of investigations (signs, symptoms, etc.). The actual grouping of investigations varies greatly depending on the type and context of the assessment.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.protocol",
+      "name": "protocol",
+      "type": "uri",
+      "cardinality": "0..*",
+      "description": "Reference to a specific published clinical protocol that was followed during this assessment, and/or that provides evidence in support of the diagnosis.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.summary",
+      "name": "summary",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A text summary of the investigations and the diagnosis.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.finding",
+      "name": "finding",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Specific findings or diagnoses that were considered likely or relevant to ongoing treatment.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.prognosisCodeableConcept",
+      "name": "prognosisCodeableConcept",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Estimate of likely outcome.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.prognosisReference",
+      "name": "prognosisReference",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "RiskAssessment expressing likely outcome.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.supportingInfo",
+      "name": "supportingInfo",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Information supporting the clinical impression.",
+      "level": 1
+    },
+    {
+      "path": "ClinicalImpression.note",
+      "name": "note",
+      "type": "Annotation",
+      "cardinality": "0..*",
+      "description": "Commentary about the impression, typically recorded after the impression itself was made, though supplemental notes by the original author could also appear.",
+      "level": 1
+    }
+  ]
+}

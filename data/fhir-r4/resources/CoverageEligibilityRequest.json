@@ -1,0 +1,148 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CoverageEligibilityRequest",
+  "url": "http://hl7.org/fhir/StructureDefinition/CoverageEligibilityRequest",
+  "version": "4.0.1",
+  "name": "CoverageEligibilityRequest",
+  "title": "CoverageEligibilityRequest",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "CoverageEligibilityRequest",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "CoverageEligibilityRequest",
+      "name": "CoverageEligibilityRequest",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond.",
+      "level": 0
+    },
+    {
+      "path": "CoverageEligibilityRequest.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A unique identifier assigned to this coverage eligibility request.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the resource instance.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.priority",
+      "name": "priority",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "When the requestor expects the processor to complete processing.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.purpose",
+      "name": "purpose",
+      "type": "code",
+      "cardinality": "1..*",
+      "description": "Code to specify whether requesting: prior authorization requirements for some service categories or billing codes; benefits for coverages specified or discovered; discovery and return of coverages for the patient; and/or validation that the specified coverage is in-force at the date/period specified or 'now' if not specified.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The party who is the beneficiary of the supplied coverage and for whom eligibility is sought.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.servicedDate",
+      "name": "servicedDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date or dates when the enclosed suite of services were performed or completed.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.servicedPeriod",
+      "name": "servicedPeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The date or dates when the enclosed suite of services were performed or completed.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The date when this resource was created.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.enterer",
+      "name": "enterer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Person who created the request.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.provider",
+      "name": "provider",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The provider which is responsible for the request.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.insurer",
+      "name": "insurer",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The Insurer who issued the coverage in question and is the recipient of the request.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.facility",
+      "name": "facility",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Facility where the services are intended to be provided.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.supportingInfo",
+      "name": "supportingInfo",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Additional information codes regarding exceptions, special considerations, the condition, situation, prior or concurrent issues.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.insurance",
+      "name": "insurance",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Financial instruments for reimbursement for the health care products and services.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityRequest.item",
+      "name": "item",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Service categories or billable services for which benefit details and/or an authorization prior to service delivery may be required by the payor.",
+      "level": 1
+    }
+  ]
+}

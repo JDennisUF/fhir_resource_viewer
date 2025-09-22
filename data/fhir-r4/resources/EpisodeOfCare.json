@@ -1,0 +1,124 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EpisodeOfCare",
+  "url": "http://hl7.org/fhir/StructureDefinition/EpisodeOfCare",
+  "version": "4.0.1",
+  "name": "EpisodeOfCare",
+  "title": "EpisodeOfCare",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "EpisodeOfCare",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "EpisodeOfCare",
+      "name": "EpisodeOfCare",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur.",
+      "level": 0
+    },
+    {
+      "path": "EpisodeOfCare.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "The EpisodeOfCare may be known by different identifiers for different contexts of use, such as when an external agency is tracking the Episode for funding purposes.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "planned | waitlist | active | onhold | finished | cancelled.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.statusHistory",
+      "name": "statusHistory",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A classification of the type of episode of care; e.g. specialist referral, disease management, type of funded care.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.diagnosis",
+      "name": "diagnosis",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The list of diagnosis relevant to this episode of care.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The patient who is the focus of this episode of care.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.managingOrganization",
+      "name": "managingOrganization",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The organization that has assumed the specific responsibilities for the specified duration.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.period",
+      "name": "period",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The interval during which the managing organization assumes the defined responsibility.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.referralRequest",
+      "name": "referralRequest",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.careManager",
+      "name": "careManager",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The practitioner that is the care manager/care coordinator for this patient.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.team",
+      "name": "team",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The list of practitioners that may be facilitating this episode of care for specific purposes.",
+      "level": 1
+    },
+    {
+      "path": "EpisodeOfCare.account",
+      "name": "account",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The set of accounts that may be used for billing for this EpisodeOfCare.",
+      "level": 1
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "VisionPrescription",
+  "url": "http://hl7.org/fhir/StructureDefinition/VisionPrescription",
+  "version": "4.0.1",
+  "name": "VisionPrescription",
+  "title": "VisionPrescription",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "An authorization for the provision of glasses and/or contact lenses to a patient.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "VisionPrescription",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "VisionPrescription",
+      "name": "VisionPrescription",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "An authorization for the provision of glasses and/or contact lenses to a patient.",
+      "level": 0
+    },
+    {
+      "path": "VisionPrescription.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A unique identifier assigned to this vision prescription.",
+      "level": 1
+    },
+    {
+      "path": "VisionPrescription.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the resource instance.",
+      "level": 1
+    },
+    {
+      "path": "VisionPrescription.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The date this resource was created.",
+      "level": 1
+    },
+    {
+      "path": "VisionPrescription.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "A resource reference to the person to whom the vision prescription applies.",
+      "level": 1
+    },
+    {
+      "path": "VisionPrescription.encounter",
+      "name": "encounter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A reference to a resource that identifies the particular occurrence of contact between patient and health care provider during which the prescription was issued.",
+      "level": 1
+    },
+    {
+      "path": "VisionPrescription.dateWritten",
+      "name": "dateWritten",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The date (and perhaps time) when the prescription was written.",
+      "level": 1
+    },
+    {
+      "path": "VisionPrescription.prescriber",
+      "name": "prescriber",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The healthcare professional responsible for authorizing the prescription.",
+      "level": 1
+    },
+    {
+      "path": "VisionPrescription.lensSpecification",
+      "name": "lensSpecification",
+      "type": "BackboneElement",
+      "cardinality": "1..*",
+      "description": "Contain the details of the individual lens specifications and serves as the authorization for the fulfilment by certified professionals.",
+      "level": 1
+    }
+  ]
+}

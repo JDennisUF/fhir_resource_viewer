@@ -1,0 +1,164 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "GuidanceResponse",
+  "url": "http://hl7.org/fhir/StructureDefinition/GuidanceResponse",
+  "version": "4.0.1",
+  "name": "GuidanceResponse",
+  "title": "GuidanceResponse",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Clinical Decision Support)",
+  "description": "A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "GuidanceResponse",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "GuidanceResponse",
+      "name": "GuidanceResponse",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A guidance response is the formal response to a guidance request.",
+      "level": 0
+    },
+    {
+      "path": "GuidanceResponse.requestIdentifier",
+      "name": "requestIdentifier",
+      "type": "Identifier",
+      "cardinality": "0..1",
+      "description": "The identifier of the request associated with this response. If an identifier was given as part of the request, it will be reproduced here to enable the requester to more easily identify the response in a multi-request scenario.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Allows a service to provide  unique, business identifiers for the response.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.moduleUri",
+      "name": "moduleUri",
+      "type": "uri",
+      "cardinality": "0..1",
+      "description": "An identifier, CodeableConcept or canonical reference to the guidance that was requested.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.moduleCanonical",
+      "name": "moduleCanonical",
+      "type": "canonical",
+      "cardinality": "0..1",
+      "description": "An identifier, CodeableConcept or canonical reference to the guidance that was requested.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.moduleCodeableConcept",
+      "name": "moduleCodeableConcept",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "An identifier, CodeableConcept or canonical reference to the guidance that was requested.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the response. If the evaluation is completed successfully, the status will indicate success. However, in order to complete the evaluation, the engine may require more information. In this case, the status will be data-required, and the response will contain a description of the additional required information. If the evaluation completed successfully, but the engine determines that a potentially more accurate response could be provided if more data was available, the status will be data-requested, and the response will contain a description of the additional requested information.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The patient for which the request was processed.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.encounter",
+      "name": "encounter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The encounter during which this response was created or to which the creation of this record is tightly associated.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.occurrenceDateTime",
+      "name": "occurrenceDateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "Indicates when the guidance response was processed.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.performer",
+      "name": "performer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Provides a reference to the device that performed the guidance.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.reasonCode",
+      "name": "reasonCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Describes the reason for the guidance response in coded or textual form.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.reasonReference",
+      "name": "reasonReference",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Indicates the reason the request was initiated. This is typically provided as a parameter to the evaluation and echoed by the service, although for some use cases, such as subscription- or event-based scenarios, it may provide an indication of the cause for the response.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.note",
+      "name": "note",
+      "type": "Annotation",
+      "cardinality": "0..*",
+      "description": "Provides a mechanism to communicate additional information about the response.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.evaluationMessage",
+      "name": "evaluationMessage",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Messages resulting from the evaluation of the artifact or artifacts. As part of evaluating the request, the engine may produce informational or warning messages. These messages will be provided by this element.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.outputParameters",
+      "name": "outputParameters",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The output parameters of the evaluation, if any. Many modules will result in the return of specific resources such as procedure or communication requests that are returned as part of the operation result. However, modules may define specific outputs that would be returned as the result of the evaluation, and these would be returned in this element.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.result",
+      "name": "result",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The actions, if any, produced by the evaluation of the artifact.",
+      "level": 1
+    },
+    {
+      "path": "GuidanceResponse.dataRequirement",
+      "name": "dataRequirement",
+      "type": "DataRequirement",
+      "cardinality": "0..*",
+      "description": "If the evaluation could not be completed due to lack of information, or if a potentially more accurate response could be provided if more data was available, this element will a description of the data required in order to proceed with the evaluation. A subsequent request to the service should include this data.",
+      "level": 1
+    }
+  ]
+}

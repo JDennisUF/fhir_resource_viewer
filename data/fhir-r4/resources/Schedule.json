@@ -1,0 +1,92 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Schedule",
+  "url": "http://hl7.org/fhir/StructureDefinition/Schedule",
+  "version": "4.0.1",
+  "name": "Schedule",
+  "title": "Schedule",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "A container for slots of time that may be available for booking appointments.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Schedule",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Schedule",
+      "name": "Schedule",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A container for slots of time that may be available for booking appointments.",
+      "level": 0
+    },
+    {
+      "path": "Schedule.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "External Ids for this item.",
+      "level": 1
+    },
+    {
+      "path": "Schedule.active",
+      "name": "active",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "Whether this schedule record is in active use or should not be used (such as was entered in error).",
+      "level": 1
+    },
+    {
+      "path": "Schedule.serviceCategory",
+      "name": "serviceCategory",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A broad categorization of the service that is to be performed during this appointment.",
+      "level": 1
+    },
+    {
+      "path": "Schedule.serviceType",
+      "name": "serviceType",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The specific service that is to be performed during this appointment.",
+      "level": 1
+    },
+    {
+      "path": "Schedule.specialty",
+      "name": "specialty",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The specialty of a practitioner that would be required to perform the service requested in this appointment.",
+      "level": 1
+    },
+    {
+      "path": "Schedule.actor",
+      "name": "actor",
+      "type": "Reference",
+      "cardinality": "1..*",
+      "description": "Slots that reference this schedule resource provide the availability details to these referenced resource(s).",
+      "level": 1
+    },
+    {
+      "path": "Schedule.planningHorizon",
+      "name": "planningHorizon",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period of time that the slots that reference this Schedule resource cover (even if none exist).",
+      "level": 1
+    },
+    {
+      "path": "Schedule.comment",
+      "name": "comment",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Comments on the availability to describe any extended information.",
+      "level": 1
+    }
+  ]
+}

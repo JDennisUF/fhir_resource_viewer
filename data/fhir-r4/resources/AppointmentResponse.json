@@ -1,0 +1,92 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "AppointmentResponse",
+  "url": "http://hl7.org/fhir/StructureDefinition/AppointmentResponse",
+  "version": "4.0.1",
+  "name": "AppointmentResponse",
+  "title": "AppointmentResponse",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "AppointmentResponse",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "AppointmentResponse",
+      "name": "AppointmentResponse",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.",
+      "level": 0
+    },
+    {
+      "path": "AppointmentResponse.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "External Ids for this item.",
+      "level": 1
+    },
+    {
+      "path": "AppointmentResponse.appointment",
+      "name": "appointment",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "Appointment that this response is replying to.",
+      "level": 1
+    },
+    {
+      "path": "AppointmentResponse.start",
+      "name": "start",
+      "type": "instant",
+      "cardinality": "0..1",
+      "description": "Date/Time that the appointment is to take place, or requested new start time.",
+      "level": 1
+    },
+    {
+      "path": "AppointmentResponse.end",
+      "name": "end",
+      "type": "instant",
+      "cardinality": "0..1",
+      "description": "This may be either the same as the appointment request to confirm the details of the appointment, or alternately a new time to request a re-negotiation of the end time.",
+      "level": 1
+    },
+    {
+      "path": "AppointmentResponse.participantType",
+      "name": "participantType",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Role of participant in the appointment.",
+      "level": 1
+    },
+    {
+      "path": "AppointmentResponse.actor",
+      "name": "actor",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A Person, Location/HealthcareService or Device that is participating in the appointment.",
+      "level": 1
+    },
+    {
+      "path": "AppointmentResponse.participantStatus",
+      "name": "participantStatus",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Participation status of the participant. When the status is declined or tentative if the start/end times are different to the appointment, then these times should be interpreted as a requested time change.",
+      "level": 1
+    },
+    {
+      "path": "AppointmentResponse.comment",
+      "name": "comment",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Additional comments about the appointment.",
+      "level": 1
+    }
+  ]
+}

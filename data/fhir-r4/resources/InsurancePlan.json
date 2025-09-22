@@ -1,0 +1,140 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "InsurancePlan",
+  "url": "http://hl7.org/fhir/StructureDefinition/InsurancePlan",
+  "version": "4.0.1",
+  "name": "InsurancePlan",
+  "title": "InsurancePlan",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "Details of a Health Insurance product/plan provided by an organization.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "InsurancePlan",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "InsurancePlan",
+      "name": "InsurancePlan",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Details of a Health Insurance product/plan provided by an organization.",
+      "level": 0
+    },
+    {
+      "path": "InsurancePlan.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Business identifiers assigned to this health insurance plan which remain constant as the resource is updated and propagates from server to server.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "The current state of the health insurance plan.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The kind of health insurance plan.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Official name of the health insurance plan.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.alias",
+      "name": "alias",
+      "type": "string",
+      "cardinality": "0..*",
+      "description": "A list of alternate names that the product is known as, or was known as in the past.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.period",
+      "name": "period",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period of time that the health insurance plan is available.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.ownedBy",
+      "name": "ownedBy",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The entity that is providing the health insurance plan.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.administeredBy",
+      "name": "administeredBy",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "An organization which administer other services such as underwriting, customer service and/or claims processing on behalf of the health insurance plan's ownedBy.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.coverageArea",
+      "name": "coverageArea",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The geographic region in which a health insurance plan's benefits apply.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.contact",
+      "name": "contact",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The contact for the health insurance plan.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.endpoint",
+      "name": "endpoint",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The technical endpoints providing access to services operated for the health insurance plan.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.network",
+      "name": "network",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Reference to the network included in the health insurance plan.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.coverage",
+      "name": "coverage",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Details about the coverage offered by the insurance product.",
+      "level": 1
+    },
+    {
+      "path": "InsurancePlan.plan",
+      "name": "plan",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Details about an insurance plan.",
+      "level": 1
+    }
+  ]
+}

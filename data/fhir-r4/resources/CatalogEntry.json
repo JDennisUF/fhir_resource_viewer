@@ -1,0 +1,132 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CatalogEntry",
+  "url": "http://hl7.org/fhir/StructureDefinition/CatalogEntry",
+  "version": "4.0.1",
+  "name": "CatalogEntry",
+  "title": "CatalogEntry",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Orders and Observations)",
+  "description": "Catalog entries are wrappers that contextualize items included in a catalog.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "CatalogEntry",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "CatalogEntry",
+      "name": "CatalogEntry",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Catalog entries are wrappers that contextualize items included in a catalog.",
+      "level": 0
+    },
+    {
+      "path": "CatalogEntry.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Business identifier uniquely assigned to the catalog entry.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The type of item - medication, device, service, protocol or other.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.orderable",
+      "name": "orderable",
+      "type": "boolean",
+      "cardinality": "1..1",
+      "description": "Whether the entry represents an orderable item.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.referencedItem",
+      "name": "referencedItem",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The item in a catalog or definition.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.additionalIdentifier",
+      "name": "additionalIdentifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Used in supporting different identifiers for the same product, e.g. manufacturer code and retailer code.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.classification",
+      "name": "classification",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Classes of devices, or ATC for medication.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Used to support catalog exchange even for unsupported products, e.g. getting list of medications even if not prescribable.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.validityPeriod",
+      "name": "validityPeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The time period in which this catalog entry is expected to be active.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.validTo",
+      "name": "validTo",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date until which this catalog entry is expected to be active.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.lastUpdated",
+      "name": "lastUpdated",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "Typically date of issue is different from the beginning of the validity. This can be used to see when an item was last updated.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.additionalCharacteristic",
+      "name": "additionalCharacteristic",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Used for examplefor Out of Formulary, or any specifics.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.additionalClassification",
+      "name": "additionalClassification",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "User for example for ATC classification, or.",
+      "level": 1
+    },
+    {
+      "path": "CatalogEntry.relatedEntry",
+      "name": "relatedEntry",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Used for example, to point to a substance, or to a device used to administer a medication.",
+      "level": 1
+    }
+  ]
+}

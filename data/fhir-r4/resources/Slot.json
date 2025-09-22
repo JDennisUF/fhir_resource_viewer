@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Slot",
+  "url": "http://hl7.org/fhir/StructureDefinition/Slot",
+  "version": "4.0.1",
+  "name": "Slot",
+  "title": "Slot",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "A slot of time on a schedule that may be available for booking appointments.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Slot",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Slot",
+      "name": "Slot",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A slot of time on a schedule that may be available for booking appointments.",
+      "level": 0
+    },
+    {
+      "path": "Slot.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "External Ids for this item.",
+      "level": 1
+    },
+    {
+      "path": "Slot.serviceCategory",
+      "name": "serviceCategory",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A broad categorization of the service that is to be performed during this appointment.",
+      "level": 1
+    },
+    {
+      "path": "Slot.serviceType",
+      "name": "serviceType",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself).",
+      "level": 1
+    },
+    {
+      "path": "Slot.specialty",
+      "name": "specialty",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The specialty of a practitioner that would be required to perform the service requested in this appointment.",
+      "level": 1
+    },
+    {
+      "path": "Slot.appointmentType",
+      "name": "appointmentType",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The style of appointment or patient that may be booked in the slot (not service type).",
+      "level": 1
+    },
+    {
+      "path": "Slot.schedule",
+      "name": "schedule",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The schedule resource that this slot defines an interval of status information.",
+      "level": 1
+    },
+    {
+      "path": "Slot.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "busy | free | busy-unavailable | busy-tentative | entered-in-error.",
+      "level": 1
+    },
+    {
+      "path": "Slot.start",
+      "name": "start",
+      "type": "instant",
+      "cardinality": "1..1",
+      "description": "Date/Time that the slot is to begin.",
+      "level": 1
+    },
+    {
+      "path": "Slot.end",
+      "name": "end",
+      "type": "instant",
+      "cardinality": "1..1",
+      "description": "Date/Time that the slot is to conclude.",
+      "level": 1
+    },
+    {
+      "path": "Slot.overbooked",
+      "name": "overbooked",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "This slot has already been overbooked, appointments are unlikely to be accepted for this time.",
+      "level": 1
+    },
+    {
+      "path": "Slot.comment",
+      "name": "comment",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Comments on the slot to describe any extended information.",
+      "level": 1
+    }
+  ]
+}

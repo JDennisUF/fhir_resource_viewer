@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Vital Signs Processing</title>
+    <script src="js/storage.js"></script>
+</head>
+<body>
+    <h1>Testing Vital Signs Element Processing</h1>
+    <div id="output"></div>
+    
+    <script>
+        async function testVitalSigns() {
+            const output = document.getElementById('output');
+            const storage = new FHIRStorage();
+            
+            try {
+                await storage.initialize();
+                
+                const testProfiles = [
+                    'USCoreBMI',
+                    'USCoreHeadCircumference', 
+                    'USCorePulseOximetry',
+                    'USCorePediatricBMIForAge'
+                ];
+                
+                for (const profileName of testProfiles) {
+                    output.innerHTML += `<h3>Testing ${profileName}:</h3>`;
+                    
+                    try {
+                        const resource = await storage.getResource(profileName, 'us-core-stu6.1');
+                        output.innerHTML += `<p>✅ Loaded ${resource.elements?.length || 0} elements</p>`;
+                        
+                        if (resource.elements && resource.elements.length > 0) {
+                            output.innerHTML += `<p>First few elements: ${resource.elements.slice(0, 3).map(e => e.name).join(', ')}</p>`;
+                        }
+                    } catch (error) {
+                        output.innerHTML += `<p>❌ Error: ${error.message}</p>`;
+                    }
+                }
+                
+            } catch (error) {
+                output.innerHTML += `<p>❌ Storage initialization error: ${error.message}</p>`;
+            }
+        }
+        
+        // Run test when page loads
+        testVitalSigns();
+    </script>
+</body>
+</html>

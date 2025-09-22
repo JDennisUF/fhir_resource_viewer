@@ -22,9 +22,21 @@ class FHIRStorage {
         console.log('Initializing FHIR Storage System...');
         
         try {
+            // Clear cache to ensure fresh data
+            this.cache.clear();
+            
+            // Clear any browser cache for index files
+            if ('caches' in window) {
+                const cacheNames = await caches.keys();
+                await Promise.all(cacheNames.map(name => caches.delete(name)));
+            }
+            
             // Load master index first
             this.masterIndex = await this.loadJSON('data/index/master.json');
             console.log('Master index loaded:', this.masterIndex);
+            
+            // Force reload of resources index
+            console.log('Loading resources index with cache busting...');
             
             // Load core indexes
             await this.loadIndexes();
@@ -45,6 +57,16 @@ class FHIRStorage {
                 try {
                     this.indexes[name] = await this.loadJSON(`data/${path}`);
                     console.log(`Index '${name}' loaded`);
+                    
+                    // Debug resources index
+                    if (name === 'resources') {
+                        console.log('Resources count:', this.indexes[name].statistics);
+                        console.log('FHIR R4 resources:', this.indexes[name].bySpec['fhir-r4']?.length);
+                        const hasNewResources = ['Claim', 'Invoice', 'EnrollmentRequest'].some(r => 
+                            this.indexes[name].bySpec['fhir-r4']?.includes(r)
+                        );
+                        console.log('Has new financial resources:', hasNewResources);
+                    }
                 } catch (error) {
                     console.warn(`Failed to load index '${name}':`, error);
                     this.indexes[name] = {};
@@ -85,7 +107,9 @@ class FHIRStorage {
         const startTime = performance.now();
         
         try {
-            const response = await fetch(`./${path}`);
+            // Add cache busting for index files to ensure fresh data
+            const cacheBuster = path.includes('index/') ? `?t=${Date.now()}&r=${Math.random()}` : '';
+            const response = await fetch(`./${path}${cacheBuster}`);
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
@@ -110,7 +134,19 @@ class FHIRStorage {
             throw new Error(`Resource '${name}' not found`);
         }
         
-        return await this.loadJSON(`data/${resourceInfo.file}`);
+        console.log(`Storage loading file: data/${resourceInfo.file}`);
+        const resource = await this.loadJSON(`data/${resourceInfo.file}`);
+        
+        // Check if this is a raw StructureDefinition that needs processing
+        if (resource.resourceType === 'StructureDefinition' && !resource.elements) {
+            console.log(`Processing raw StructureDefinition for ${name}`);
+            const processedResource = this.processStructureDefinition(resource);
+            console.log(`Processed resource with ${processedResource.elements?.length || 0} elements`);
+            return processedResource;
+        }
+        
+        console.log(`Storage loaded resource with ${resource?.elements?.length || 0} elements`);
+        return resource;
     }
 
     async getResourceList(spec = null) {
@@ -328,6 +364,92 @@ class FHIRStorage {
         }
         
         return modifications;
+    }
+
+    // Process raw StructureDefinition JSON into application format
+    processStructureDefinition(structureDefinition) {
+        const elements = [];
+        
+        // Use differential elements if available, otherwise use snapshot
+        const sourceElements = structureDefinition.differential?.element || 
+                              structureDefinition.snapshot?.element || [];
+        
+        console.log(`Processing ${sourceElements.length} elements from StructureDefinition`);
+        
+        sourceElements.forEach((element, index) => {
+            // Skip the root element (usually just the resource type itself)
+            if (element.path && !element.path.includes('.')) {
+                return;
+            }
+            
+            const processedElement = {
+                path: element.path || '',
+                name: this.extractElementName(element.path),
+                cardinality: this.formatCardinality(element.min, element.max),
+                type: this.extractElementType(element),
+                description: element.short || element.definition || '',
+                mustSupport: element.mustSupport || false,
+                binding: element.binding ? {
+                    strength: element.binding.strength,
+                    valueSet: element.binding.valueSet
+                } : null,
+                constraints: element.constraint || [],
+                slicing: element.slicing || null,
+                isExtension: element.path?.includes('extension'),
+                level: this.calculateElementLevel(element.path)
+            };
+            
+            elements.push(processedElement);
+        });
+        
+        // Create the processed resource in application format
+        // Determine if this is a profile by checking the URL or baseDefinition
+        const isUSCoreProfile = structureDefinition.url?.includes('/us/core/') || 
+                               structureDefinition.baseDefinition?.includes('/us/core/') ||
+                               structureDefinition.name?.includes('USCore') ||
+                               structureDefinition.id?.includes('us-core');
+        
+        return {
+            name: structureDefinition.name || structureDefinition.id,
+            title: structureDefinition.title || structureDefinition.name,
+            description: structureDefinition.description,
+            type: isUSCoreProfile ? 'profile' : (structureDefinition.kind === 'resource' ? 'resource' : 'profile'),
+            baseDefinition: structureDefinition.baseDefinition,
+            elements: elements,
+            mustSupportCount: elements.filter(el => el.mustSupport).length,
+            fhirVersion: structureDefinition.fhirVersion,
+            url: structureDefinition.url
+        };
+    }
+
+    extractElementName(path) {
+        if (!path) return '';
+        const parts = path.split('.');
+        return parts[parts.length - 1];
+    }
+
+    formatCardinality(min, max) {
+        if (min === undefined && max === undefined) return '';
+        const minStr = min !== undefined ? min.toString() : '0';
+        const maxStr = max === '*' ? '*' : (max !== undefined ? max.toString() : '1');
+        return `${minStr}..${maxStr}`;
+    }
+
+    extractElementType(element) {
+        if (!element.type || element.type.length === 0) return '';
+        
+        // Handle multiple types
+        if (element.type.length === 1) {
+            const type = element.type[0];
+            return type.code + (type.profile ? ` (${type.profile.split('/').pop()})` : '');
+        } else {
+            return element.type.map(t => t.code).join(' | ');
+        }
+    }
+
+    calculateElementLevel(path) {
+        if (!path) return 0;
+        return path.split('.').length - 1;
     }
 
     // Cache Management

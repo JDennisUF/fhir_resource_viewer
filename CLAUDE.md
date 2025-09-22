@@ -1,4 +1,4 @@
-# FHIR Resource Viewer
+# Greenway FHIR Viewer
 
 A lightweight HTML/CSS/JavaScript application for viewing FHIR R4 Resources and US Core modifications with a large font, easy-to-navigate interface.
 
@@ -56,7 +56,7 @@ This application provides an intuitive way to browse and explore FHIR R4 specifi
    open index.html
    
    # Option 2: Local server (recommended for development)
-   python -m http.server 8000
+   python3 -m http.server 8000
    # Then visit: http://localhost:8000
    
    # Option 3: VS Code Live Server
@@ -106,13 +106,13 @@ This application provides an intuitive way to browse and explore FHIR R4 specifi
 - **Local network**: Run local server and access from other devices
 - **Offline usage**: Works completely offline once loaded
 
-## Commands
-
 ### Development
-- `python -m http.server 8000` - Start local development server
+- `python3 -m http.server 8000` - Start local development server
 - `node scripts/download_specs.js` - Update FHIR specifications
 - `python scripts/download_specs.py` - Update FHIR specifications (Python version)
 
+### Debugging
+- `
 ### Validation
 - Open browser developer tools to check for JavaScript errors
 - Test in multiple browsers for compatibility

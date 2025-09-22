@@ -1,0 +1,132 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "DetectedIssue",
+  "url": "http://hl7.org/fhir/StructureDefinition/DetectedIssue",
+  "version": "4.0.1",
+  "name": "DetectedIssue",
+  "title": "DetectedIssue",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Clinical Decision Support)",
+  "description": "Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "DetectedIssue",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "DetectedIssue",
+      "name": "DetectedIssue",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient.",
+      "level": 0
+    },
+    {
+      "path": "DetectedIssue.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Business identifier associated with the detected issue record.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Indicates the status of the detected issue.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.code",
+      "name": "code",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Identifies the general type of issue identified.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.severity",
+      "name": "severity",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Indicates the degree of importance associated with the identified issue based on the potential impact on the patient.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Indicates the patient whose record the detected issue is associated with.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.identifiedDateTime",
+      "name": "identifiedDateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date or period when the detected issue was initially identified.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.identifiedPeriod",
+      "name": "identifiedPeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The date or period when the detected issue was initially identified.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.author",
+      "name": "author",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Individual or device responsible for the issue being raised. For example, a decision support application or a pharmacist conducting a medication review.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.implicated",
+      "name": "implicated",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Indicates the resource representing the current activity or proposed activity that is potentially problematic.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.evidence",
+      "name": "evidence",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Supporting evidence or manifestations that provide the basis for identifying the detected issue such as a GuidanceResponse or MeasureReport.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.detail",
+      "name": "detail",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A textual explanation of the detected issue.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.reference",
+      "name": "reference",
+      "type": "uri",
+      "cardinality": "0..1",
+      "description": "The literature, knowledge-base or similar reference that describes the propensity for the detected issue identified.",
+      "level": 1
+    },
+    {
+      "path": "DetectedIssue.mitigation",
+      "name": "mitigation",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Indicates an action that has been taken or is committed to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.",
+      "level": 1
+    }
+  ]
+}

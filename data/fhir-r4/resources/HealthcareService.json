@@ -1,0 +1,220 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HealthcareService",
+  "url": "http://hl7.org/fhir/StructureDefinition/HealthcareService",
+  "version": "4.0.1",
+  "name": "HealthcareService",
+  "title": "HealthcareService",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "The details of a healthcare service available at a location.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "HealthcareService",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "HealthcareService",
+      "name": "HealthcareService",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "The details of a healthcare service available at a location.",
+      "level": 0
+    },
+    {
+      "path": "HealthcareService.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "External identifiers for this item.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.active",
+      "name": "active",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "This flag is used to mark the record to not be used. This is not used when a centre is closed for maintenance, or for holidays, the notAvailable period is to be used for this.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.providedBy",
+      "name": "providedBy",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The organization that provides this healthcare service.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.category",
+      "name": "category",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Identifies the broad category of service being performed or delivered.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The specific type of service that may be delivered or performed.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.specialty",
+      "name": "specialty",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Collection of specialties handled by the service site. This is more of a medical term.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.location",
+      "name": "location",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The location(s) where this healthcare service may be provided.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Further description of the service as it would be presented to a consumer while searching.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.comment",
+      "name": "comment",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Any additional description of the service and/or any specific issues not covered by the other attributes, which can be displayed as further detail under the serviceName.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.extraDetails",
+      "name": "extraDetails",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "Extra details about the service that can't be placed in the other fields.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.photo",
+      "name": "photo",
+      "type": "Attachment",
+      "cardinality": "0..1",
+      "description": "If there is a photo/symbol associated with this HealthcareService, it may be included here to facilitate quick identification of the service in a list.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.telecom",
+      "name": "telecom",
+      "type": "ContactPoint",
+      "cardinality": "0..*",
+      "description": "List of contacts related to this specific healthcare service.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.coverageArea",
+      "name": "coverageArea",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The location(s) that this service is available to (not where the service is provided).",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.serviceProvisionCode",
+      "name": "serviceProvisionCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The code(s) that detail the conditions under which the healthcare service is available/offered.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.eligibility",
+      "name": "eligibility",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Does this service have specific eligibility requirements that need to be met in order to use the service?",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.program",
+      "name": "program",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Programs that this service is applicable to.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.characteristic",
+      "name": "characteristic",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Collection of characteristics (attributes).",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.communication",
+      "name": "communication",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Some services are specifically made available in multiple languages, this property permits a directory to declare the languages this is offered in.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.referralMethod",
+      "name": "referralMethod",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Ways that the service accepts referrals, if this is not provided then it is implied that no referral is required.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.appointmentRequired",
+      "name": "appointmentRequired",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "Indicates whether or not a prospective consumer will require an appointment for a particular service at a site to be provided by the Organization.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.availableTime",
+      "name": "availableTime",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A collection of times that the Service Site is available.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.notAvailable",
+      "name": "notAvailable",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The HealthcareService is not available during this period of time due to the provided reason.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.availabilityExceptions",
+      "name": "availabilityExceptions",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A description of site availability exceptions, e.g. public holiday availability.",
+      "level": 1
+    },
+    {
+      "path": "HealthcareService.endpoint",
+      "name": "endpoint",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Technical endpoints providing access to services operated for the specific healthcare services defined at this resource.",
+      "level": 1
+    }
+  ]
+}

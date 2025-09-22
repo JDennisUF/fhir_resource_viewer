@@ -1,18 +1,18 @@
 {
-  "version": "1.0.0",
-  "lastUpdated": "2025-09-20T21:53:54.000Z",
+  "version": "1.0.1",
+  "lastUpdated": "2025-09-22T15:30:00.000Z",
   "specifications": {
     "fhir-r4": {
       "version": "4.0.1",
       "title": "FHIR R4 Base Specification",
-      "resourceCount": 20,
+      "resourceCount": 27,
       "path": "fhir-r4/metadata.json",
       "baseUrl": "https://hl7.org/fhir/R4/"
     },
     "us-core-stu6.1": {
       "version": "6.1.0",
       "title": "US Core Implementation Guide STU6.1",
-      "profileCount": 13,
+      "profileCount": 36,
       "path": "us-core-stu6.1/metadata.json",
       "baseUrl": "https://hl7.org/fhir/us/core/STU6.1/"
     }
@@ -22,12 +22,12 @@
     "elements": "index/elements.json"
   },
   "stats": {
-    "totalResources": 55,
-    "totalElements": 1725,
-    "fhirResourcesDownloaded": 20,
-    "usCoreProfilesDownloaded": 13,
+    "totalResources": 86,
+    "totalElements": 2038,
+    "fhirResourcesDownloaded": 27,
+    "usCoreProfilesDownloaded": 36,
     "errors": 2,
-    "dataTypesCreated": 15
+    "dataTypesCreated": 16
   },
   "performance": {
     "targets": {

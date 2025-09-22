@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Account",
+  "url": "http://hl7.org/fhir/StructureDefinition/Account",
+  "version": "4.0.1",
+  "name": "Account",
+  "title": "Account",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "A financial tool for tracking value accrued for a particular purpose. In the healthcare field, used to track charges for a patient, cost centers, etc.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Account",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Account",
+      "name": "Account",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A financial tool for tracking value accrued for a particular purpose.",
+      "level": 0
+    },
+    {
+      "path": "Account.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Unique identifier used to reference the account.",
+      "level": 1
+    },
+    {
+      "path": "Account.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Indicates whether the account is presently used/usable or not.",
+      "level": 1
+    },
+    {
+      "path": "Account.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Categorizes the account for reporting and searching purposes.",
+      "level": 1
+    },
+    {
+      "path": "Account.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Name used for the account when displaying it to humans in reports, etc.",
+      "level": 1
+    },
+    {
+      "path": "Account.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Identifies the entity which incurs the expenses. While the immediate recipients of services or goods might be entities related to the subject, the expenses were ultimately incurred by the subject of the Account.",
+      "level": 1
+    },
+    {
+      "path": "Account.servicePeriod",
+      "name": "servicePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The date range of services associated with this account.",
+      "level": 1
+    },
+    {
+      "path": "Account.coverage",
+      "name": "coverage",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account.",
+      "level": 1
+    },
+    {
+      "path": "Account.owner",
+      "name": "owner",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Indicates the service area, hospital, department, etc. with responsibility for managing the Account.",
+      "level": 1
+    },
+    {
+      "path": "Account.description",
+      "name": "description",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Provides additional information about what the account tracks and how it is used.",
+      "level": 1
+    },
+    {
+      "path": "Account.guarantor",
+      "name": "guarantor",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The parties responsible for balancing the account if other payment options fall short.",
+      "level": 1
+    },
+    {
+      "path": "Account.partOf",
+      "name": "partOf",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Reference to a parent Account.",
+      "level": 1
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FHIR Resource Viewer</title>
+    <title>Greenway FHIR Viewer</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/themes.css">
     <link rel="manifest" href="manifest.json">
@@ -12,9 +12,12 @@
     <div id="app">
         <!-- Header -->
         <header class="app-header">
-            <h1>FHIR Resource Viewer</h1>
+            <h1>Greenway FHIR Viewer</h1>
             <div class="header-controls">
-                <input type="text" id="searchInput" placeholder="Search resources..." class="search-input">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search resources..." class="search-input">
+                    <button id="clearSearch" class="clear-search-button" title="Clear search">✕</button>
+                </div>
                 <button id="toggleTheme" class="theme-toggle" title="Toggle Dark Mode">🌙</button>
             </div>
         </header>
@@ -30,7 +33,6 @@
                             <option value="all">All Specifications</option>
                             <option value="fhir-r4">FHIR R4</option>
                             <option value="us-core-stu6.1">US Core</option>
-                            <option value="fhir-datatypes">Data Types</option>
                         </select>
                     </div>
                 </div>
@@ -42,24 +44,14 @@
             <!-- Content Area -->
             <section class="content">
                 <div class="content-header">
-                    <h2 id="resourceTitle">Select a Resource</h2>
+                    <h2 id="resourceTitle"></h2>
                     <div class="breadcrumb" id="breadcrumb"></div>
                 </div>
                 
                 <div class="resource-content" id="resourceContent">
                     <div class="welcome-message">
-                        <h3>Welcome to FHIR Resource Viewer</h3>
+                        <h3>Welcome to the Greenway FHIR Viewer</h3>
                         <p>Select a resource from the sidebar to view its details, elements, and US Core modifications.</p>
-                        <div class="quick-stats" id="quickStats">
-                            <div class="stat">
-                                <span class="stat-value">0</span>
-                                <span class="stat-label">FHIR Resources</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">0</span>
-                                <span class="stat-label">US Core Profiles</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -88,6 +80,7 @@
 
     <!-- Scripts -->
     <script src="js/storage.js"></script>
+    <script src="js/uscore-links.js"></script>
     <script src="js/app.js"></script>
     <script src="js/fhir-loader.js"></script>
     <script src="js/navigation.js"></script>

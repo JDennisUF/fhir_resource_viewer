@@ -1,0 +1,92 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Flag",
+  "url": "http://hl7.org/fhir/StructureDefinition/Flag",
+  "version": "4.0.1",
+  "name": "Flag",
+  "title": "Flag",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Care)",
+  "description": "Prospective warnings of potential issues when providing care to the patient.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Flag",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Flag",
+      "name": "Flag",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Prospective warnings of potential issues when providing care to the patient.",
+      "level": 0
+    },
+    {
+      "path": "Flag.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Business identifiers assigned to this flag by the performer or other systems which remain constant as the resource is updated and propagates from server to server.",
+      "level": 1
+    },
+    {
+      "path": "Flag.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Supports basic workflow.",
+      "level": 1
+    },
+    {
+      "path": "Flag.category",
+      "name": "category",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Allows a flag to be divided into different categories like clinical, administrative etc.",
+      "level": 1
+    },
+    {
+      "path": "Flag.code",
+      "name": "code",
+      "type": "CodeableConcept",
+      "cardinality": "1..1",
+      "description": "The coded value or textual component of the flag to display to the user.",
+      "level": 1
+    },
+    {
+      "path": "Flag.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The patient, location, group, organization, or practitioner etc. this is about record this flag is associated with.",
+      "level": 1
+    },
+    {
+      "path": "Flag.period",
+      "name": "period",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period of time from the activation of the flag to inactivation of the flag.",
+      "level": 1
+    },
+    {
+      "path": "Flag.encounter",
+      "name": "encounter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "This alert is only relevant during the encounter.",
+      "level": 1
+    },
+    {
+      "path": "Flag.author",
+      "name": "author",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The person, organization or device that created the flag.",
+      "level": 1
+    }
+  ]
+}

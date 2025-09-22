@@ -1,0 +1,92 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ResearchSubject",
+  "url": "http://hl7.org/fhir/StructureDefinition/ResearchSubject",
+  "version": "4.0.1",
+  "name": "ResearchSubject",
+  "title": "ResearchSubject",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Biomedical Research and Regulation)",
+  "description": "A physical entity which is the primary unit of operational and/or administrative interest in a study.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ResearchSubject",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "ResearchSubject",
+      "name": "ResearchSubject",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A physical entity which is the primary unit of operational and/or administrative interest in a study.",
+      "level": 0
+    },
+    {
+      "path": "ResearchSubject.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Identifiers assigned to this research subject for a study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchSubject.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The current state of the subject.",
+      "level": 1
+    },
+    {
+      "path": "ResearchSubject.period",
+      "name": "period",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The dates the subject began and ended their participation in the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchSubject.study",
+      "name": "study",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "Reference to the study the subject is participating in.",
+      "level": 1
+    },
+    {
+      "path": "ResearchSubject.individual",
+      "name": "individual",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The record of the person or animal who is involved in the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchSubject.assignedArm",
+      "name": "assignedArm",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The name of the arm in the study the subject is expected to follow as part of this study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchSubject.actualArm",
+      "name": "actualArm",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The name of the arm in the study the subject actually followed as part of this study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchSubject.consent",
+      "name": "consent",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A record of the patient's informed agreement to participate in the study.",
+      "level": 1
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "RiskAssessment",
+  "url": "http://hl7.org/fhir/StructureDefinition/RiskAssessment",
+  "version": "4.0.1",
+  "name": "RiskAssessment",
+  "title": "RiskAssessment",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Care)",
+  "description": "An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "RiskAssessment",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "RiskAssessment",
+      "name": "RiskAssessment",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.",
+      "level": 0
+    },
+    {
+      "path": "RiskAssessment.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Business identifier assigned to the risk assessment.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.basedOn",
+      "name": "basedOn",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A reference to the request that is fulfilled by this risk assessment.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.parent",
+      "name": "parent",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A reference to a resource that this risk assessment is part of, such as a Procedure.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the RiskAssessment, using the same statuses as an Observation.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.method",
+      "name": "method",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The algorithm, process or mechanism used to evaluate the risk.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.code",
+      "name": "code",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The type of the risk assessment performed.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The patient or group the risk assessment applies to.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.encounter",
+      "name": "encounter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The encounter where the assessment was performed.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.occurrenceDateTime",
+      "name": "occurrenceDateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date (and possibly time) the risk assessment was performed.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.occurrencePeriod",
+      "name": "occurrencePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The date (and possibly time) the risk assessment was performed.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.condition",
+      "name": "condition",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "For assessments or prognosis specific to a particular condition, indicates the condition being assessed.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.performer",
+      "name": "performer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The provider or software application that performed the assessment.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.reasonCode",
+      "name": "reasonCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The reason the risk assessment was performed.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.reasonReference",
+      "name": "reasonReference",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Resources supporting the reason the risk assessment was performed.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.basis",
+      "name": "basis",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Indicates the source data considered as part of the assessment (for example, FamilyHistory, Observations, Procedures, Conditions, etc.).",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.prediction",
+      "name": "prediction",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Describes the expected outcome of the assessment.",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.mitigation",
+      "name": "mitigation",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A description of the steps that might be taken to reduce the identified risk(s).",
+      "level": 1
+    },
+    {
+      "path": "RiskAssessment.note",
+      "name": "note",
+      "type": "Annotation",
+      "cardinality": "0..*",
+      "description": "Additional comments about the risk assessment.",
+      "level": 1
+    }
+  ]
+}

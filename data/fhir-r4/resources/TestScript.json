@@ -1,0 +1,236 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "TestScript",
+  "url": "http://hl7.org/fhir/StructureDefinition/TestScript",
+  "version": "4.0.1",
+  "name": "TestScript",
+  "title": "TestScript",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (FHIR Infrastructure)",
+  "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "TestScript",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "TestScript",
+      "name": "TestScript",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "level": 0
+    },
+    {
+      "path": "TestScript.url",
+      "name": "url",
+      "type": "uri",
+      "cardinality": "1..1",
+      "description": "An absolute URI that is used to identify this test script when it is referenced in a specification, model, design or an instance.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..1",
+      "description": "A formal identifier that is used to identify this test script when it is represented in other formats.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.version",
+      "name": "version",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The identifier that is used to identify this version of the test script when it is referenced in a specification, model, design or instance.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "1..1",
+      "description": "A natural language name identifying the test script.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.title",
+      "name": "title",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A short, descriptive, user-friendly title for the test script.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of this test script. Enables tracking the life-cycle of the content.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.experimental",
+      "name": "experimental",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "A Boolean value to indicate that this test script is authored for testing purposes and is not intended to be used for genuine usage.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date (and optionally time) when the test script was published.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.publisher",
+      "name": "publisher",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The name of the organization or individual that published the test script.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.contact",
+      "name": "contact",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "Contact details to assist a user in finding and communicating with the publisher.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.description",
+      "name": "description",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A free text natural language description of the test script from a consumer's perspective.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.useContext",
+      "name": "useContext",
+      "type": "UsageContext",
+      "cardinality": "0..*",
+      "description": "The content was developed with a focus and intent of supporting the contexts that are listed.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.jurisdiction",
+      "name": "jurisdiction",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A legal or geographic region in which the test script is intended to be used.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.purpose",
+      "name": "purpose",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "Explanation of why this test script is needed and why it has been designed as it has.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.copyright",
+      "name": "copyright",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A copyright statement relating to the test script and/or its contents.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.origin",
+      "name": "origin",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "An abstract server used in operations within this test script in the origin element.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.destination",
+      "name": "destination",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "An abstract server used in operations within this test script in the destination element.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.metadata",
+      "name": "metadata",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "The required capability must exist and are assumed to function correctly on the FHIR server being tested.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.fixture",
+      "name": "fixture",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Fixture in the test script - by reference (uri).",
+      "level": 1
+    },
+    {
+      "path": "TestScript.profile",
+      "name": "profile",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Reference to the profile to be used for validation.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.variable",
+      "name": "variable",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Variable is set based either on element value in response body or on header field value in the response headers.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.rule",
+      "name": "rule",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Assert rule to be used in one or more asserts within the test script.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.ruleset",
+      "name": "ruleset",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Contains one or more rules. Offers a way to group rules so assertions could reference the group of rules and have them all applied.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.setup",
+      "name": "setup",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "A series of required setup operations before tests are executed.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.test",
+      "name": "test",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A test in this script.",
+      "level": 1
+    },
+    {
+      "path": "TestScript.teardown",
+      "name": "teardown",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "A series of operations required to clean up after all the tests are executed.",
+      "level": 1
+    }
+  ]
+}

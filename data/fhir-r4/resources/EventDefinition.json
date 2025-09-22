@@ -1,0 +1,260 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EventDefinition",
+  "url": "http://hl7.org/fhir/StructureDefinition/EventDefinition",
+  "version": "4.0.1",
+  "name": "EventDefinition",
+  "title": "EventDefinition",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Clinical Decision Support)",
+  "description": "The EventDefinition resource provides a reusable description of when a particular event can occur.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "EventDefinition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "EventDefinition",
+      "name": "EventDefinition",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "The EventDefinition resource provides a reusable description of when a particular event can occur.",
+      "level": 0
+    },
+    {
+      "path": "EventDefinition.url",
+      "name": "url",
+      "type": "uri",
+      "cardinality": "0..1",
+      "description": "An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A formal identifier that is used to identify this event definition when it is represented in other formats.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.version",
+      "name": "version",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The identifier that is used to identify this version of the event definition when it is referenced in a specification, model, design or instance.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A natural language name identifying the event definition.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.title",
+      "name": "title",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A short, descriptive, user-friendly title for the event definition.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.subtitle",
+      "name": "subtitle",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "An explanatory or alternate title for the event definition giving additional information about its content.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of this event definition. Enables tracking the life-cycle of the content.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.experimental",
+      "name": "experimental",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "A Boolean value to indicate that this event definition is authored for testing purposes and is not intended to be used for genuine usage.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.subjectCodeableConcept",
+      "name": "subjectCodeableConcept",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code or group definition that describes the intended subject of the event definition.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.subjectReference",
+      "name": "subjectReference",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A reference to a group definition that describes the intended subject of the event definition.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date on which the resource content was last reviewed.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.publisher",
+      "name": "publisher",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The name of the organization or individual that published the event definition.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.contact",
+      "name": "contact",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "Contact details to assist a user in finding and communicating with the publisher.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.description",
+      "name": "description",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A free text natural language description of the event definition from a consumer's perspective.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.useContext",
+      "name": "useContext",
+      "type": "UsageContext",
+      "cardinality": "0..*",
+      "description": "The content was developed with a focus and intent of supporting the contexts that are listed.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.jurisdiction",
+      "name": "jurisdiction",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A legal or geographic region in which the event definition is intended to be used.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.purpose",
+      "name": "purpose",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "Explanation of why this event definition is needed and why it has been designed as it has.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.usage",
+      "name": "usage",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A detailed description of how the event definition is used from a clinical perspective.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.copyright",
+      "name": "copyright",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A copyright statement relating to the event definition and/or its contents.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.approvalDate",
+      "name": "approvalDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date on which the resource content was approved by the publisher.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.lastReviewDate",
+      "name": "lastReviewDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date on which the resource content was last reviewed.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.effectivePeriod",
+      "name": "effectivePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period during which the event definition content was or is planned to be in active use.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.topic",
+      "name": "topic",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Descriptive topics related to the content of the event definition.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.author",
+      "name": "author",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individiual or organization primarily involved in the creation and maintenance of the content.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.editor",
+      "name": "editor",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individual or organization primarily responsible for internal coherence of the content.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.reviewer",
+      "name": "reviewer",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individual or organization primarily responsible for review of some aspect of the content.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.endorser",
+      "name": "endorser",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individual or organization responsible for officially endorsing the content for use in some setting.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.relatedArtifact",
+      "name": "relatedArtifact",
+      "type": "RelatedArtifact",
+      "cardinality": "0..*",
+      "description": "Related artifacts such as additional documentation, justification, or bibliographic references.",
+      "level": 1
+    },
+    {
+      "path": "EventDefinition.trigger",
+      "name": "trigger",
+      "type": "TriggerDefinition",
+      "cardinality": "1..*",
+      "description": "The trigger element defines when the event occurs. If more than one trigger condition is specified, the event fires whenever any one of the trigger conditions is met.",
+      "level": 1
+    }
+  ]
+}

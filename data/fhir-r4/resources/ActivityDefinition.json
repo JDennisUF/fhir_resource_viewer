@@ -1,0 +1,452 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ActivityDefinition",
+  "url": "http://hl7.org/fhir/StructureDefinition/ActivityDefinition",
+  "version": "4.0.1",
+  "name": "ActivityDefinition",
+  "title": "ActivityDefinition",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Clinical Decision Support)",
+  "description": "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ActivityDefinition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "ActivityDefinition",
+      "name": "ActivityDefinition",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.",
+      "level": 0
+    },
+    {
+      "path": "ActivityDefinition.url",
+      "name": "url",
+      "type": "uri",
+      "cardinality": "0..1",
+      "description": "An absolute URI that is used to identify this activity definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A formal identifier that is used to identify this activity definition when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.version",
+      "name": "version",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The identifier that is used to identify this version of the activity definition when it is referenced in a specification, model, design or instance.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A natural language name identifying the activity definition.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.title",
+      "name": "title",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A short, descriptive, user-friendly title for the activity definition.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.subtitle",
+      "name": "subtitle",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "An explanatory or alternate title for the activity definition giving additional information about its content.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of this activity definition. Enables tracking the life-cycle of the content.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.experimental",
+      "name": "experimental",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "A Boolean value to indicate that this activity definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.subjectCodeableConcept",
+      "name": "subjectCodeableConcept",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code or group definition that describes the intended subject of the activity being defined.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.subjectReference",
+      "name": "subjectReference",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A reference to a Group that describes the intended subject of the activity being defined.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date (and optionally time) when the activity definition was published.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.publisher",
+      "name": "publisher",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The name of the organization or individual that published the activity definition.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.contact",
+      "name": "contact",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "Contact details to assist a user in finding and communicating with the publisher.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.description",
+      "name": "description",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A free text natural language description of the activity definition from a consumer's perspective.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.useContext",
+      "name": "useContext",
+      "type": "UsageContext",
+      "cardinality": "0..*",
+      "description": "The content was developed with a focus and intent of supporting the contexts that are listed.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.jurisdiction",
+      "name": "jurisdiction",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A legal or geographic region in which the activity definition is intended to be used.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.purpose",
+      "name": "purpose",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "Explanation of why this activity definition is needed and why it has been designed as it has.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.usage",
+      "name": "usage",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A detailed description of how the activity definition is used from a clinical perspective.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.copyright",
+      "name": "copyright",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A copyright statement relating to the activity definition and/or its contents.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.approvalDate",
+      "name": "approvalDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date on which the resource content was approved by the publisher.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.lastReviewDate",
+      "name": "lastReviewDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date on which the resource content was last reviewed.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.effectivePeriod",
+      "name": "effectivePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period during which the activity definition content was or is planned to be in active use.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.topic",
+      "name": "topic",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Descriptive topics related to the content of the activity.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.author",
+      "name": "author",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individiual or organization primarily involved in the creation and maintenance of the content.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.editor",
+      "name": "editor",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individual or organization primarily responsible for internal coherence of the content.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.reviewer",
+      "name": "reviewer",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individual or organization primarily responsible for review of some aspect of the content.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.endorser",
+      "name": "endorser",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individual or organization responsible for officially endorsing the content for use in some setting.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.relatedArtifact",
+      "name": "relatedArtifact",
+      "type": "RelatedArtifact",
+      "cardinality": "0..*",
+      "description": "Related artifacts such as additional documentation, justification, or bibliographic references.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.library",
+      "name": "library",
+      "type": "canonical",
+      "cardinality": "0..*",
+      "description": "A reference to a Library resource containing any formal logic used by the activity definition.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.kind",
+      "name": "kind",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "A description of the kind of resource the activity definition is representing.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.profile",
+      "name": "profile",
+      "type": "canonical",
+      "cardinality": "0..1",
+      "description": "A profile to which the target of the activity definition is expected to conform.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.code",
+      "name": "code",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Detailed description of the type of activity; e.g. What lab test, what procedure, what kind of encounter.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.intent",
+      "name": "intent",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Indicates the level of authority/intentionality associated with the activity and where the request should fit into the workflow chain.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.priority",
+      "name": "priority",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Indicates how quickly the activity should be addressed with respect to other requests.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.doNotPerform",
+      "name": "doNotPerform",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "Set this to true if the definition is to indicate that a particular activity should NOT be performed.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.timingTiming",
+      "name": "timingTiming",
+      "type": "Timing",
+      "cardinality": "0..1",
+      "description": "The period, timing or frequency upon which the described activity is to occur.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.timingDateTime",
+      "name": "timingDateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The period, timing or frequency upon which the described activity is to occur.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.timingAge",
+      "name": "timingAge",
+      "type": "Age",
+      "cardinality": "0..1",
+      "description": "The period, timing or frequency upon which the described activity is to occur.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.timingPeriod",
+      "name": "timingPeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period, timing or frequency upon which the described activity is to occur.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.timingRange",
+      "name": "timingRange",
+      "type": "Range",
+      "cardinality": "0..1",
+      "description": "The period, timing or frequency upon which the described activity is to occur.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.timingDuration",
+      "name": "timingDuration",
+      "type": "Duration",
+      "cardinality": "0..1",
+      "description": "The period, timing or frequency upon which the described activity is to occur.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.location",
+      "name": "location",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.participant",
+      "name": "participant",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Indicates who should participate in performing the action described.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.productReference",
+      "name": "productReference",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Identifies the food, drug or other product being consumed or supplied in the activity.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.productCodeableConcept",
+      "name": "productCodeableConcept",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Identifies the food, drug or other product being consumed or supplied in the activity.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.quantity",
+      "name": "quantity",
+      "type": "Quantity",
+      "cardinality": "0..1",
+      "description": "Identifies the quantity expected to be consumed at once (per dose, per meal, etc.).",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.dosage",
+      "name": "dosage",
+      "type": "Dosage",
+      "cardinality": "0..*",
+      "description": "Provides detailed dosage instructions in the same way that they are described for MedicationRequest resources.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.bodySite",
+      "name": "bodySite",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Indicates the sites on the subject's body where the procedure should be performed (I.e. the target sites).",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.specimenRequirement",
+      "name": "specimenRequirement",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Defines specimen requirements for the action to be performed, such as required specimens for a lab test.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.observationRequirement",
+      "name": "observationRequirement",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Defines observation requirements for the action to be performed, such as body weight or surface area.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.observationResultRequirement",
+      "name": "observationResultRequirement",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Defines the observations that are expected to be produced by the action.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.transform",
+      "name": "transform",
+      "type": "canonical",
+      "cardinality": "0..1",
+      "description": "A reference to a StructureMap resource that defines a transform that can be executed to produce the intent resource using the ActivityDefinition instance as the input.",
+      "level": 1
+    },
+    {
+      "path": "ActivityDefinition.dynamicValue",
+      "name": "dynamicValue",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Dynamic values that will be evaluated to produce values for elements of the resulting resource.",
+      "level": 1
+    }
+  ]
+}

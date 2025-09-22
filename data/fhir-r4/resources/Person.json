@@ -1,0 +1,108 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Person",
+  "url": "http://hl7.org/fhir/StructureDefinition/Person",
+  "version": "4.0.1",
+  "name": "Person",
+  "title": "Person",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "Demographics and administrative information about a person independent of a specific health-related context.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Person",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Person",
+      "name": "Person",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Demographics and administrative information about a person independent of a specific health-related context.",
+      "level": 0
+    },
+    {
+      "path": "Person.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Identifier for a person within a particular scope.",
+      "level": 1
+    },
+    {
+      "path": "Person.name",
+      "name": "name",
+      "type": "HumanName",
+      "cardinality": "0..*",
+      "description": "A name associated with the person.",
+      "level": 1
+    },
+    {
+      "path": "Person.telecom",
+      "name": "telecom",
+      "type": "ContactPoint",
+      "cardinality": "0..*",
+      "description": "A contact detail for the person, e.g. a telephone number or an email address.",
+      "level": 1
+    },
+    {
+      "path": "Person.gender",
+      "name": "gender",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Administrative Gender.",
+      "level": 1
+    },
+    {
+      "path": "Person.birthDate",
+      "name": "birthDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The birth date for the person.",
+      "level": 1
+    },
+    {
+      "path": "Person.address",
+      "name": "address",
+      "type": "Address",
+      "cardinality": "0..*",
+      "description": "One or more addresses for the person.",
+      "level": 1
+    },
+    {
+      "path": "Person.photo",
+      "name": "photo",
+      "type": "Attachment",
+      "cardinality": "0..1",
+      "description": "An image that can be displayed as a thumbnail of the person to enhance the identification of the individual.",
+      "level": 1
+    },
+    {
+      "path": "Person.managingOrganization",
+      "name": "managingOrganization",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The organization that is the custodian of the person record.",
+      "level": 1
+    },
+    {
+      "path": "Person.active",
+      "name": "active",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "Whether this person record is in active use.",
+      "level": 1
+    },
+    {
+      "path": "Person.link",
+      "name": "link",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Link to a resource that concerns the same actual person.",
+      "level": 1
+    }
+  ]
+}

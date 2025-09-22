@@ -1,0 +1,156 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CoverageEligibilityResponse",
+  "url": "http://hl7.org/fhir/StructureDefinition/CoverageEligibilityResponse",
+  "version": "4.0.1",
+  "name": "CoverageEligibilityResponse",
+  "title": "CoverageEligibilityResponse",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "This resource provides eligibility and plan details from the processing of an CoverageEligibilityRequest resource.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "CoverageEligibilityResponse",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "CoverageEligibilityResponse",
+      "name": "CoverageEligibilityResponse",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "This resource provides eligibility and plan details from the processing of an CoverageEligibilityRequest resource.",
+      "level": 0
+    },
+    {
+      "path": "CoverageEligibilityResponse.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A unique identifier assigned to this coverage eligibility request.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the resource instance.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.purpose",
+      "name": "purpose",
+      "type": "code",
+      "cardinality": "1..*",
+      "description": "Code to specify whether requesting: prior authorization requirements for some service categories or billing codes; benefits for coverages specified or discovered; discovery and return of coverages for the patient; and/or validation that the specified coverage is in-force at the date/period specified or 'now' if not specified.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The party who is the beneficiary of the supplied coverage and for whom eligibility is sought.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.servicedDate",
+      "name": "servicedDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date or dates when the enclosed suite of services were performed or completed.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.servicedPeriod",
+      "name": "servicedPeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The date or dates when the enclosed suite of services were performed or completed.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The date this resource was created.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.requestor",
+      "name": "requestor",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The provider which is responsible for the request.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.request",
+      "name": "request",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "Reference to the original request resource.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.outcome",
+      "name": "outcome",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The outcome of the request processing.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.disposition",
+      "name": "disposition",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A human readable description of the status of the adjudication.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.insurer",
+      "name": "insurer",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The Insurer who issued the coverage in question and is the author of the response.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.insurance",
+      "name": "insurance",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Financial instruments for reimbursement for the health care products and services.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.preAuthRef",
+      "name": "preAuthRef",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A reference from the Insurer to which a provider may quote to when submitting claims to that insurer.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.form",
+      "name": "form",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code for the form to be used for printing the content.",
+      "level": 1
+    },
+    {
+      "path": "CoverageEligibilityResponse.error",
+      "name": "error",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Errors encountered during the processing of the request.",
+      "level": 1
+    }
+  ]
+}

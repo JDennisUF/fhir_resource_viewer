@@ -16,6 +16,7 @@ class SearchManager {
 
     setupSearch() {
         const searchInput = document.getElementById('searchInput');
+        const clearButton = document.getElementById('clearSearch');
         
         // Debounced search
         let searchTimeout;
@@ -23,6 +24,7 @@ class SearchManager {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 this.performSearch(e.target.value);
+                this.toggleClearButton(e.target.value);
             }, 300);
         });
         
@@ -49,10 +51,18 @@ class SearchManager {
             }
         });
         
+        // Clear button
+        clearButton.addEventListener('click', () => {
+            this.clearSearch();
+        });
+        
         // Spec filter
         document.getElementById('specFilter').addEventListener('change', (e) => {
             this.updateFilter('spec', e.target.value);
         });
+        
+        // Initialize clear button visibility
+        this.toggleClearButton('');
     }
 
     buildSearchIndex(data) {
@@ -138,7 +148,6 @@ class SearchManager {
         
         const results = this.search(this.currentQuery);
         this.displaySearchResults(results);
-        this.highlightSearchTerms(this.currentQuery);
     }
 
     search(query) {
@@ -278,13 +287,18 @@ class SearchManager {
         // Show search results summary
         this.showSearchSummary(results.length);
         
+        // Highlight search terms after navigation tree is rendered
+        setTimeout(() => {
+            this.highlightSearchTerms(this.currentQuery);
+        }, 200);
+        
         // Auto-select first result if only one match
         if (results.length === 1) {
             const result = results[0];
             setTimeout(() => {
                 this.app.selectResource(result.resource, result.spec);
                 this.app.navigationManager.highlightNode(result.resource, result.spec);
-            }, 100);
+            }, 300);
         }
     }
 
@@ -292,10 +306,13 @@ class SearchManager {
         const filtered = {};
         
         results.forEach(result => {
-            if (!filtered[result.spec]) {
-                filtered[result.spec] = {};
+            // All results stay in their original spec section
+            const targetSpec = result.spec;
+            
+            if (!filtered[targetSpec]) {
+                filtered[targetSpec] = {};
             }
-            filtered[result.spec][result.resource] = result.data;
+            filtered[targetSpec][result.resource] = result.data;
         });
         
         return filtered;
@@ -356,9 +373,19 @@ class SearchManager {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
+    toggleClearButton(query) {
+        const clearButton = document.getElementById('clearSearch');
+        if (query && query.trim()) {
+            clearButton.classList.add('visible');
+        } else {
+            clearButton.classList.remove('visible');
+        }
+    }
+
     clearSearch() {
         document.getElementById('searchInput').value = '';
         this.currentQuery = '';
+        this.toggleClearButton('');
         this.clearSearchResults();
     }
 
@@ -396,6 +423,7 @@ class SearchManager {
         const filtered = {};
         
         Object.keys(data).forEach(spec => {
+            // Spec filter
             if (this.filters.spec !== 'all' && spec !== this.filters.spec) {
                 return;
             }

@@ -3,69 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Debug Vital Signs Hierarchy</title>
-    <script src="./js/storage.js"></script>
+    <title>Debug Vital Signs - FHIR Resource Viewer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <h1>Debug Vital Signs Hierarchy</h1>
-    <div id="debug-output"></div>
-    
+    <div class="container">
+        <header>
+            <h1>🩺 FHIR Resource Viewer - Debug Vital Signs</h1>
+            <nav id="breadcrumb">
+                <a href="#" onclick="app.clearSelection()">Home</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <aside class="sidebar" id="sidebar">
+                <div class="search-section">
+                    <input type="text" id="searchInput" placeholder="Search resources..." />
+                    <div class="filter-section">
+                        <select id="specFilter">
+                            <option value="">All Specifications</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="tree-container">
+                    <div id="resourceTree" class="resource-tree">
+                        <div class="loading">Loading resources...</div>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="content-area">
+                <div id="resourceContent" class="resource-content">
+                    <div class="welcome-message">
+                        <h2>🔧 Debug Mode - Testing Vital Signs Element Processing</h2>
+                        <p>This page will automatically test loading the vital signs profiles that were having issues.</p>
+                        <div id="debug-output"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <\!-- Loading scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/us-core-links.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/app.js"></script>
+
     <script>
+        // Debug script to test vital signs processing
         async function debugVitalSigns() {
-            const output = document.getElementById('debug-output');
-            output.innerHTML = '<p>Debugging vital signs hierarchy...</p>';
+            const debugOutput = document.getElementById("debug-output");
+            
+            debugOutput.innerHTML = "<h3>🔍 Testing Vital Signs Profile Processing</h3>";
             
             try {
-                const storage = new FHIRStorage();
-                await storage.initialize();
+                // Initialize the app
+                debugOutput.innerHTML += "<p>Initializing FHIR Viewer...</p>";
+                window.app = new FHIRViewer();
+                await app.initialize();
                 
-                // Get US Core resources
-                const usCoreResources = await storage.getResourceList('us-core-stu6.1');
-                console.log('US Core resources:', usCoreResources);
+                const testProfiles = [
+                    "USCoreBMI",
+                    "USCoreHeadCircumference", 
+                    "USCorePulseOximetry",
+                    "USCorePediatricBMIForAge",
+                    "USCorePediatricWeightForHeight",
+                    "USCorePediatricHeadOccipitalFrontalCircumferencePercentile"
+                ];
                 
-                // Check baseDefinitions
-                const vitalSignsChildren = [];
-                const regularResources = [];
+                debugOutput.innerHTML += "<h4>Testing each vital signs profile:</h4>";
                 
-                for (const resourceName of usCoreResources) {
-                    const resourceInfo = storage.findResourceInfo(resourceName, 'us-core-stu6.1');
-                    console.log(`${resourceName}:`, resourceInfo);
+                for (const profileName of testProfiles) {
+                    debugOutput.innerHTML += `<h5>Testing ${profileName}:</h5>`;
                     
-                    if (resourceInfo && resourceInfo.baseDefinition === 'us-core-vital-signs') {
-                        vitalSignsChildren.push(resourceName);
-                    } else {
-                        regularResources.push(resourceName);
+                    try {
+                        // Load the resource using storage
+                        const resource = await app.storage.getResource(profileName, "us-core-stu6.1");
+                        
+                        const elementCount = resource.elements?.length || 0;
+                        const mustSupportCount = resource.elements?.filter(e => e.mustSupport).length || 0;
+                        
+                        if (elementCount > 0) {
+                            debugOutput.innerHTML += `<p style="color: green;">✅ SUCCESS: Loaded ${elementCount} elements (${mustSupportCount} must support)</p>`;
+                            
+                            // Show first few elements
+                            const firstElements = resource.elements.slice(0, 5);
+                            debugOutput.innerHTML += "<ul style=\"margin-left: 20px; font-size: 0.9em;\">";
+                            firstElements.forEach(element => {
+                                const mustSupportFlag = element.mustSupport ? " [S]" : "";
+                                debugOutput.innerHTML += `<li>${element.path || element.name}: ${element.type}${mustSupportFlag}</li>`;
+                            });
+                            debugOutput.innerHTML += "</ul>";
+                            
+                        } else {
+                            debugOutput.innerHTML += `<p style="color: red;">❌ FAILED: Loaded 0 elements</p>`;
+                        }
+                        
+                        // Test selecting the resource in the app
+                        debugOutput.innerHTML += `<p><button onclick="app.selectResource(\\"${profileName}\\", \\"us-core-stu6.1\\")" style="margin: 5px; padding: 5px 10px;">Select ${profileName} in App</button></p>`;
+                        
+                    } catch (error) {
+                        debugOutput.innerHTML += `<p style="color: red;">❌ ERROR: ${error.message}</p>`;
                     }
                 }
                 
-                output.innerHTML = `
-                    <div style="font-family: monospace; background: #f5f5f5; padding: 20px;">
-                        <h2>US Core Resource Analysis</h2>
-                        <p><strong>Total US Core Resources:</strong> ${usCoreResources.length}</p>
-                        
-                        <h3>Regular Resources (${regularResources.length})</h3>
-                        <ul>${regularResources.map(r => `<li>${r}</li>`).join('')}</ul>
-                        
-                        <h3>Vital Signs Children (${vitalSignsChildren.length})</h3>
-                        <ul>${vitalSignsChildren.map(r => `<li>${r}</li>`).join('')}</ul>
-                        
-                        <h3>Expected Structure:</h3>
-                        <p>USCoreVitalSigns should contain: ${vitalSignsChildren.join(', ')}</p>
-                    </div>
-                `;
+                debugOutput.innerHTML += "<h4>🎯 Debug Complete - Now test by clicking the buttons above or navigating to vital signs in the tree</h4>";
                 
             } catch (error) {
-                output.innerHTML = `
-                    <h2>❌ Debug Failed</h2>
-                    <p style="color: red; font-family: monospace;">
-                        Error: ${error.message}
-                    </p>
-                `;
-                console.error('Debug failed:', error);
+                debugOutput.innerHTML += `<p style="color: red;">❌ App initialization error: ${error.message}</p>`;
             }
         }
         
-        document.addEventListener('DOMContentLoaded', debugVitalSigns);
+        // Run debug test when page loads
+        window.addEventListener("load", debugVitalSigns);
     </script>
 </body>
 </html>

@@ -1,0 +1,148 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Composition",
+  "url": "http://hl7.org/fhir/StructureDefinition/Composition",
+  "version": "4.0.1",
+  "name": "Composition",
+  "title": "Composition",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Structured Documents)",
+  "description": "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Composition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Composition",
+      "name": "Composition",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A set of healthcare-related information that is assembled together into a single logical package.",
+      "level": 0
+    },
+    {
+      "path": "Composition.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..1",
+      "description": "A version-independent identifier for the Composition.",
+      "level": 1
+    },
+    {
+      "path": "Composition.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The workflow/clinical status of this composition.",
+      "level": 1
+    },
+    {
+      "path": "Composition.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "1..1",
+      "description": "Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note).",
+      "level": 1
+    },
+    {
+      "path": "Composition.category",
+      "name": "category",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A categorization for the type of the composition - helps for indexing and searching.",
+      "level": 1
+    },
+    {
+      "path": "Composition.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Who or what the composition is about.",
+      "level": 1
+    },
+    {
+      "path": "Composition.encounter",
+      "name": "encounter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Describes the clinical encounter or type of care this documentation is associated with.",
+      "level": 1
+    },
+    {
+      "path": "Composition.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The composition editing time, when the composition was last logically changed by the author.",
+      "level": 1
+    },
+    {
+      "path": "Composition.author",
+      "name": "author",
+      "type": "Reference",
+      "cardinality": "1..*",
+      "description": "Identifies who is responsible for the information in the composition, not necessarily who typed it in.",
+      "level": 1
+    },
+    {
+      "path": "Composition.title",
+      "name": "title",
+      "type": "string",
+      "cardinality": "1..1",
+      "description": "Official human-readable label for the composition.",
+      "level": 1
+    },
+    {
+      "path": "Composition.confidentiality",
+      "name": "confidentiality",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "The code specifying the level of confidentiality of the Composition.",
+      "level": 1
+    },
+    {
+      "path": "Composition.attester",
+      "name": "attester",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A participant who has attested to the accuracy of the composition/document.",
+      "level": 1
+    },
+    {
+      "path": "Composition.custodian",
+      "name": "custodian",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Identifies the organization or group who is responsible for ongoing maintenance of and access to the composition/document information.",
+      "level": 1
+    },
+    {
+      "path": "Composition.relatesTo",
+      "name": "relatesTo",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Relationships that this composition has with other compositions or documents that already exist.",
+      "level": 1
+    },
+    {
+      "path": "Composition.event",
+      "name": "event",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The clinical service, such as a colonoscopy or an appendectomy, being documented.",
+      "level": 1
+    },
+    {
+      "path": "Composition.section",
+      "name": "section",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The root of the sections that make up the composition.",
+      "level": 1
+    }
+  ]
+}

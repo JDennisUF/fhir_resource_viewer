@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "QuestionnaireResponse",
+  "url": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+  "version": "4.0.1",
+  "name": "QuestionnaireResponse",
+  "title": "QuestionnaireResponse",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (FHIR Infrastructure)",
+  "description": "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "QuestionnaireResponse",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "QuestionnaireResponse",
+      "name": "QuestionnaireResponse",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A structured set of questions and their answers.",
+      "level": 0
+    },
+    {
+      "path": "QuestionnaireResponse.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..1",
+      "description": "A business identifier assigned to a particular completed (or partially completed) questionnaire.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.basedOn",
+      "name": "basedOn",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The order, proposal or plan that is fulfilled in whole or in part by this QuestionnaireResponse.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.partOf",
+      "name": "partOf",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "A procedure or observation that this questionnaire was performed as part of the execution of.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.questionnaire",
+      "name": "questionnaire",
+      "type": "canonical",
+      "cardinality": "0..1",
+      "description": "The Questionnaire that defines and organizes the questions for which answers are being provided.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The position of the questionnaire response within its overall lifecycle.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The subject of the questionnaire response.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.encounter",
+      "name": "encounter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The Encounter during which this questionnaire response was created or to which the creation of this record is tightly associated.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.authored",
+      "name": "authored",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date and/or time that this set of answers were last changed.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.author",
+      "name": "author",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Person who received the answers to the questions in the QuestionnaireResponse and recorded them in the system.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.source",
+      "name": "source",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The person who answered the questions about the subject.",
+      "level": 1
+    },
+    {
+      "path": "QuestionnaireResponse.item",
+      "name": "item",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A group or question item from the original questionnaire for which answers are provided.",
+      "level": 1
+    }
+  ]
+}

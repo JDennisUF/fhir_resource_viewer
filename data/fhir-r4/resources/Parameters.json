@@ -1,0 +1,36 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Parameters",
+  "url": "http://hl7.org/fhir/StructureDefinition/Parameters",
+  "version": "4.0.1",
+  "name": "Parameters",
+  "title": "Parameters",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (FHIR Infrastructure)",
+  "description": "This resource is a non-persisted resource used to pass information into and back from an operation. It has no other use, and there is no RESTful endpoint associated with it.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Parameters",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Resource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Parameters",
+      "name": "Parameters",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "This resource is a non-persisted resource used to pass information into and back from an operation.",
+      "level": 0
+    },
+    {
+      "path": "Parameters.parameter",
+      "name": "parameter",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A parameter passed to or received from the operation.",
+      "level": 1
+    }
+  ]
+}

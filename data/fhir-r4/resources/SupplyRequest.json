@@ -1,0 +1,172 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "SupplyRequest",
+  "url": "http://hl7.org/fhir/StructureDefinition/SupplyRequest",
+  "version": "4.0.1",
+  "name": "SupplyRequest",
+  "title": "SupplyRequest",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Orders and Observations)",
+  "description": "A record of a request for a medication, substance or device used in the healthcare setting.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "SupplyRequest",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "SupplyRequest",
+      "name": "SupplyRequest",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A record of a request for a medication, substance or device used in the healthcare setting.",
+      "level": 0
+    },
+    {
+      "path": "SupplyRequest.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Business identifiers assigned to this SupplyRequest by the author and/or other systems.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Status of the supply request.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.category",
+      "name": "category",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Category of supply, e.g. central, non-stock, etc.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.priority",
+      "name": "priority",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Indicates how quickly this SupplyRequest should be addressed with respect to other requests.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.itemCodeableConcept",
+      "name": "itemCodeableConcept",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The item that is requested to be supplied.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.itemReference",
+      "name": "itemReference",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The item that is requested to be supplied.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.quantity",
+      "name": "quantity",
+      "type": "Quantity",
+      "cardinality": "1..1",
+      "description": "The amount that is being ordered of the indicated item.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.parameter",
+      "name": "parameter",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Specific parameters for the ordered item.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.occurrenceDateTime",
+      "name": "occurrenceDateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "When the request should be fulfilled.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.occurrencePeriod",
+      "name": "occurrencePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "When the request should be fulfilled.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.occurrenceTiming",
+      "name": "occurrenceTiming",
+      "type": "Timing",
+      "cardinality": "0..1",
+      "description": "When the request should be fulfilled.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.authoredOn",
+      "name": "authoredOn",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "When the request was made.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.requester",
+      "name": "requester",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The device, practitioner, etc. who initiated the request.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.supplier",
+      "name": "supplier",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Who is intended to fulfill the request.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.reasonCode",
+      "name": "reasonCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The reason why the supply item was requested.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.reasonReference",
+      "name": "reasonReference",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The reason why the supply item was requested.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.deliverFrom",
+      "name": "deliverFrom",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Where the supply is expected to come from.",
+      "level": 1
+    },
+    {
+      "path": "SupplyRequest.deliverTo",
+      "name": "deliverTo",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Where the supply is destined to go.",
+      "level": 1
+    }
+  ]
+}

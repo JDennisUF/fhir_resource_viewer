@@ -1,0 +1,244 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "DeviceRequest",
+  "url": "http://hl7.org/fhir/StructureDefinition/DeviceRequest",
+  "version": "4.0.1",
+  "name": "DeviceRequest",
+  "title": "DeviceRequest",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Orders and Observations)",
+  "description": "Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "DeviceRequest",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "DeviceRequest",
+      "name": "DeviceRequest",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Represents a request for a patient to employ a medical device.",
+      "level": 0
+    },
+    {
+      "path": "DeviceRequest.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Identifiers assigned to this order by the orderer or by the order fulfiller.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.instantiatesCanonical",
+      "name": "instantiatesCanonical",
+      "type": "canonical",
+      "cardinality": "0..*",
+      "description": "The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this DeviceRequest.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.instantiatesUri",
+      "name": "instantiatesUri",
+      "type": "uri",
+      "cardinality": "0..*",
+      "description": "The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this DeviceRequest.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.basedOn",
+      "name": "basedOn",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Plan/proposal/order fulfilled by this request.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.priorRequest",
+      "name": "priorRequest",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The request takes the place of the referenced completed or terminated request(s).",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.groupIdentifier",
+      "name": "groupIdentifier",
+      "type": "Identifier",
+      "cardinality": "0..1",
+      "description": "Composite request this is part of.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "The status of the request.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.intent",
+      "name": "intent",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Whether the request is a proposal, plan, an original order or a reflex order.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.priority",
+      "name": "priority",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Indicates how quickly the device request should be addressed with respect to other requests.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.codeReference",
+      "name": "codeReference",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The details of the device to be used.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.codeCodeableConcept",
+      "name": "codeCodeableConcept",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The details of the device to be used.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.parameter",
+      "name": "parameter",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Specific parameters for the ordered device.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The patient who will use the device.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.encounter",
+      "name": "encounter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "An encounter that provides additional context in which this request is made.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.occurrenceDateTime",
+      "name": "occurrenceDateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The timing or schedule for the use of the device.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.occurrencePeriod",
+      "name": "occurrencePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The timing or schedule for the use of the device.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.occurrenceTiming",
+      "name": "occurrenceTiming",
+      "type": "Timing",
+      "cardinality": "0..1",
+      "description": "The timing or schedule for the use of the device.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.authoredOn",
+      "name": "authoredOn",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "When the request transitioned to being actionable.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.requester",
+      "name": "requester",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The individual who initiated the request and has responsibility for its activation.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.performerType",
+      "name": "performerType",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Desired type of performer for doing the diagnostic testing.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.performer",
+      "name": "performer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The desired performer for doing the diagnostic testing.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.reasonCode",
+      "name": "reasonCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Reason or justification for the use of this device.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.reasonReference",
+      "name": "reasonReference",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Reason or justification for the use of this device.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.insurance",
+      "name": "insurance",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be required for delivering the requested service.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.supportingInfo",
+      "name": "supportingInfo",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Additional clinical information about the patient that may influence the request fulfilment.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.note",
+      "name": "note",
+      "type": "Annotation",
+      "cardinality": "0..*",
+      "description": "Details about this request that were not represented at all or sufficiently in one of the attributes provided in a class.",
+      "level": 1
+    },
+    {
+      "path": "DeviceRequest.relevantHistory",
+      "name": "relevantHistory",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Key events in the history of the request.",
+      "level": 1
+    }
+  ]
+}

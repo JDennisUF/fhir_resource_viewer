@@ -1,0 +1,124 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "TestReport",
+  "url": "http://hl7.org/fhir/StructureDefinition/TestReport",
+  "version": "4.0.1",
+  "name": "TestReport",
+  "title": "TestReport",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (FHIR Infrastructure)",
+  "description": "A summary of information based on the results of executing a TestScript.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "TestReport",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "TestReport",
+      "name": "TestReport",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A summary of information based on the results of executing a TestScript.",
+      "level": 0
+    },
+    {
+      "path": "TestReport.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..1",
+      "description": "Identifier for the TestScript assigned for external purposes outside the context of FHIR.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A free text natural language name identifying the executed TestScript.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The current state of this test report.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.testScript",
+      "name": "testScript",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "Ideally this is an absolute URL that is used to identify the version-specific TestScript that was executed, matching the TestScript.url.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.result",
+      "name": "result",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The overall result from the execution of the TestScript.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.score",
+      "name": "score",
+      "type": "decimal",
+      "cardinality": "0..1",
+      "description": "The final score (percentage of tests passed) resulting from the execution of the TestScript.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.tester",
+      "name": "tester",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Name of the tester producing this report (Organization or individual).",
+      "level": 1
+    },
+    {
+      "path": "TestReport.issued",
+      "name": "issued",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "When the TestScript was executed and this TestReport was generated.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.participant",
+      "name": "participant",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A participant in the test execution, either the execution engine, a client, or a server.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.setup",
+      "name": "setup",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "The results of the series of required setup operations before the tests were executed.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.test",
+      "name": "test",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A test executed from the test script.",
+      "level": 1
+    },
+    {
+      "path": "TestReport.teardown",
+      "name": "teardown",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "The results of the series of operations required to clean up after all the tests were executed.",
+      "level": 1
+    }
+  ]
+}

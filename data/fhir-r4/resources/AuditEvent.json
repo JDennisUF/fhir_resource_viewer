@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "AuditEvent",
+  "url": "http://hl7.org/fhir/StructureDefinition/AuditEvent",
+  "version": "4.0.1",
+  "name": "AuditEvent",
+  "title": "AuditEvent",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Security)",
+  "description": "A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "AuditEvent",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "AuditEvent",
+      "name": "AuditEvent",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A record of an event made for purposes of maintaining a security log.",
+      "level": 0
+    },
+    {
+      "path": "AuditEvent.type",
+      "name": "type",
+      "type": "Coding",
+      "cardinality": "1..1",
+      "description": "Identifier for a family of the event. For example, a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.subtype",
+      "name": "subtype",
+      "type": "Coding",
+      "cardinality": "0..*",
+      "description": "Identifier for the category of event.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.action",
+      "name": "action",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Indicator for type of action performed during the event that generated the audit.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.period",
+      "name": "period",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period during which the activity occurred.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.recorded",
+      "name": "recorded",
+      "type": "instant",
+      "cardinality": "1..1",
+      "description": "The time when the event was recorded.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.outcome",
+      "name": "outcome",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Indicates whether the event succeeded or failed.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.outcomeDesc",
+      "name": "outcomeDesc",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A free text description of the outcome of the event.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.purposeOfEvent",
+      "name": "purposeOfEvent",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The purposeOfUse (reason) that was used during the event being recorded.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.agent",
+      "name": "agent",
+      "type": "BackboneElement",
+      "cardinality": "1..*",
+      "description": "An actor taking an active role in the event or activity that is logged.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.source",
+      "name": "source",
+      "type": "BackboneElement",
+      "cardinality": "1..1",
+      "description": "The system that is reporting the event.",
+      "level": 1
+    },
+    {
+      "path": "AuditEvent.entity",
+      "name": "entity",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Specific instances of data or objects that have been accessed.",
+      "level": 1
+    }
+  ]
+}

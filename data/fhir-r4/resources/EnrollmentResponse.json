@@ -1,0 +1,92 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EnrollmentResponse",
+  "url": "http://hl7.org/fhir/StructureDefinition/EnrollmentResponse",
+  "version": "4.0.1",
+  "name": "EnrollmentResponse",
+  "title": "EnrollmentResponse",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "EnrollmentResponse",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "EnrollmentResponse",
+      "name": "EnrollmentResponse",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.",
+      "level": 0
+    },
+    {
+      "path": "EnrollmentResponse.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "The Response business identifier.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentResponse.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the resource instance.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentResponse.request",
+      "name": "request",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Original request resource reference.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentResponse.outcome",
+      "name": "outcome",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Processing status: error, complete.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentResponse.disposition",
+      "name": "disposition",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A description of the status of the adjudication.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentResponse.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The date when the enclosed suite of services were performed or completed.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentResponse.organization",
+      "name": "organization",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The Insurer who produced this adjudicated response.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentResponse.requestProvider",
+      "name": "requestProvider",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The practitioner who is responsible for the services rendered to the patient.",
+      "level": 1
+    }
+  ]
+}

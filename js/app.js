@@ -7,6 +7,7 @@ class FHIRViewer {
         this.filteredData = null;
         this.currentResource = null;
         this.storage = new FHIRStorage();
+        this.usCoreLinks = new USCoreLinks();
         
         this.init();
     }
@@ -32,13 +33,24 @@ class FHIRViewer {
         
         try {
             console.log('Initializing storage system...');
+            
+            // Force clear browser cache for fresh data
+            if ('serviceWorker' in navigator) {
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                for (let registration of registrations) {
+                    await registration.unregister();
+                }
+            }
+            
             await this.storage.initialize();
             
             console.log('Loading FHIR data using new storage system...');
             await this.loadFHIRDataFromStorage();
             console.log('FHIR data loaded:', this.fhirData);
             this.hideLoading();
-            this.updateStats();
+            
+            // Show welcome message
+            this.showWelcomeMessage();
             
             // Initialize search index after data is loaded
             console.log('Building search index...');
@@ -122,16 +134,16 @@ class FHIRViewer {
         try {
             // Load all FHIR R4 resource files
             const resourceFiles = [
-                'AllergyIntolerance', 'Basic', 'Binary', 'Bundle', 'CapabilityStatement', 
-                'CarePlan', 'CareTeam', 'CodeSystem', 'CompartmentDefinition', 'ConceptMap',
-                'Condition', 'Coverage', 'Device', 'DiagnosticReport', 'DocumentReference',
-                'Encounter', 'ExampleScenario', 'Goal', 'GraphDefinition', 'Immunization',
-                'ImplementationGuide', 'Linkage', 'Location', 'Medication', 'MedicationAdministration',
-                'MedicationDispense', 'MedicationRequest', 'MedicationStatement', 'MessageDefinition',
-                'NamingSystem', 'Observation', 'OperationDefinition', 'Organization', 'Patient',
-                'Practitioner', 'PractitionerRole', 'Procedure', 'Provenance', 'RelatedPerson',
-                'Resource', 'SearchParameter', 'ServiceRequest', 'Specimen', 'StructureDefinition',
-                'StructureMap', 'TerminologyCapabilities', 'ValueSet'
+                'Account', 'ActivityDefinition', 'AdverseEvent', 'AllergyIntolerance', 'Appointment', 'AppointmentResponse', 'AuditEvent', 'Basic', 'Binary', 'BiologicallyDerivedProduct', 'BodyStructure', 'Bundle', 'CapabilityStatement', 
+                'CarePlan', 'CareTeam', 'CatalogEntry', 'ChargeItem', 'ChargeItemDefinition', 'Claim', 'ClaimResponse', 'ClinicalImpression', 'CodeSystem', 'Communication', 'CommunicationRequest', 'CompartmentDefinition', 'Composition', 'ConceptMap', 'Consent', 'Contract',
+                'Condition', 'Coverage', 'CoverageEligibilityRequest', 'CoverageEligibilityResponse', 'DetectedIssue', 'Device', 'DeviceRequest', 'DeviceUseStatement', 'DiagnosticReport', 'DocumentReference',
+                'Encounter', 'Endpoint', 'EnrollmentRequest', 'EnrollmentResponse', 'EpisodeOfCare', 'EventDefinition', 'ExampleScenario', 'ExplanationOfBenefit', 'FamilyMemberHistory', 'Flag', 'Goal', 'GraphDefinition', 'Group', 'GuidanceResponse', 'HealthcareService', 'ImagingStudy', 'Immunization', 'InsurancePlan',
+                'ImplementationGuide', 'Invoice', 'Library', 'Linkage', 'List', 'Location', 'Measure', 'MeasureReport', 'Media', 'Medication', 'MedicationAdministration',
+                'MedicationDispense', 'MedicationRequest', 'MedicationStatement', 'MessageDefinition', 'MolecularSequence',
+                'NamingSystem', 'Observation', 'OperationDefinition', 'Organization', 'Parameters', 'Patient', 'Person',
+                'PaymentNotice', 'PaymentReconciliation', 'PlanDefinition', 'Practitioner', 'PractitionerRole', 'Procedure', 'Provenance', 'Questionnaire', 'QuestionnaireResponse', 'RelatedPerson', 'RequestGroup', 'ResearchStudy', 'ResearchSubject', 'RiskAssessment',
+                'Resource', 'Schedule', 'SearchParameter', 'ServiceRequest', 'Slot', 'Specimen', 'StructureDefinition', 'Substance', 'SupplyDelivery', 'SupplyRequest',
+                'StructureMap', 'Task', 'TerminologyCapabilities', 'TestReport', 'TestScript', 'ValueSet', 'VisionPrescription'
             ];
             
             console.log(`Loading ${resourceFiles.length} FHIR R4 resources directly from files`);
@@ -156,7 +168,7 @@ class FHIRViewer {
             
             // Load US Core profiles using existing index
             const usCoreResources = await this.storage.getResourceList('us-core-stu6.1');
-            console.log(`Loading ${usCoreResources.length} US Core profiles from index`);
+            console.log(`Loading ${usCoreResources.length} US Core profiles from index:`, usCoreResources);
             
             for (const resourceName of usCoreResources) {
                 const resourceInfo = this.storage.findResourceInfo(resourceName, 'us-core-stu6.1');
@@ -175,26 +187,40 @@ class FHIRViewer {
                 };
             }
             
+            // Load FHIR R4 data types for search functionality
+            const dataTypeNames = await this.storage.getResourcesByType('datatype', 'fhir-r4');
+            console.log(`Loading ${dataTypeNames.length} FHIR R4 data types for search`);
+            
+            for (const dataTypeName of dataTypeNames) {
+                try {
+                    const dataTypeData = await this.storage.loadJSON(`data/fhir-r4/datatypes/${dataTypeName}.json`);
+                    this.fhirData['fhir-r4'][dataTypeName] = {
+                        name: dataTypeName,
+                        description: dataTypeData.description || `FHIR R4 ${dataTypeName} data type`,
+                        type: 'datatype',
+                        elementCount: dataTypeData.elements?.length || 0,
+                        kind: dataTypeData.kind || 'complex-type',
+                        // Will be loaded on demand
+                        elements: []
+                    };
+                    console.log(`  Added data type ${dataTypeName} (${dataTypeData.elements?.length || 0} elements)`);
+                } catch (error) {
+                    console.warn(`  Failed to load data type ${dataTypeName}: ${error.message}`);
+                }
+            }
+            
         } catch (error) {
             console.error('Failed to load FHIR data:', error);
         }
         
         this.filteredData = this.fhirData;
-        console.log(`Total loaded: ${Object.keys(this.fhirData['fhir-r4']).length} R4 resources, ${Object.keys(this.fhirData['us-core-stu6.1']).length} US Core profiles`);
+        const r4Count = Object.keys(this.fhirData['fhir-r4']).length;
+        const usCoreCount = Object.keys(this.fhirData['us-core-stu6.1']).length;
+        console.log(`Total loaded: ${r4Count} R4 resources/datatypes, ${usCoreCount} US Core profiles`);
     }
 
 
 
-    updateStats() {
-        const fhirCount = Object.keys(this.fhirData['fhir-r4'] || {}).length;
-        const usCoreCount = Object.keys(this.fhirData['us-core-stu6.1'] || {}).length;
-        
-        const stats = document.querySelectorAll('.stat-value');
-        if (stats.length >= 2) {
-            stats[0].textContent = fhirCount;
-            stats[1].textContent = usCoreCount;
-        }
-    }
 
     renderResourceTree() {
         if (this.navigationManager) {
@@ -273,6 +299,8 @@ class FHIRViewer {
             
             // Handle data types specially - they're not in fhirData structure
             const resourceInfo = this.storage.findResourceInfo(resourceName, spec);
+            console.log(`Resource info for ${resourceName}:`, resourceInfo);
+            
             if (resourceInfo?.type === 'datatype') {
                 // Load data type directly from storage
                 const fullResource = await this.storage.getResource(resourceName, spec);
@@ -284,6 +312,8 @@ class FHIRViewer {
             
             // Check if we already have full content for regular resources
             const currentResource = this.fhirData[spec][resourceName];
+            console.log(`Current resource in fhirData[${spec}][${resourceName}]:`, currentResource);
+            
             if (currentResource && currentResource.elements && currentResource.elements.length > 0) {
                 console.log('Full content already loaded');
                 return;
@@ -300,7 +330,9 @@ class FHIRViewer {
                 }
             } else {
                 // Use storage system for US Core and other specs
+                console.log(`Loading ${resourceName} from storage system...`);
                 fullResource = await this.storage.getResource(resourceName, spec);
+                console.log(`Storage returned resource with ${fullResource?.elements?.length || 0} elements:`, fullResource);
             }
             
             // Update the resource in our data structure, preserving cleaned name
@@ -345,10 +377,11 @@ class FHIRViewer {
         return displayName;
     }
 
-    truncateToTwoRows(text, maxCharsPerRow = 80) {
+    truncateToTwoRows(text, maxCharsPerRow = 70) {
         if (!text || text.length === 0) return text;
         
         // Estimate characters that fit in 2 rows (accounting for word boundaries)
+        // Set to 60 chars per row to prevent 3-line wrapping
         const maxChars = maxCharsPerRow * 2;
         
         if (text.length <= maxChars) {
@@ -435,10 +468,18 @@ class FHIRViewer {
                 ${cleanDisplayName}
             `;
         } else {
+            const specDisplayName = type === 'fhir-r4' ? 'FHIR R4' : type === 'us-core-stu6.1' ? 'US Core' : type;
+            let resourceBreadcrumb = cleanDisplayName;
+            
+            // For US Core profiles, create a link to the local documentation
+            if (type === 'us-core-stu6.1' && this.usCoreLinks.hasProfileLink(cleanDisplayName)) {
+                resourceBreadcrumb = this.usCoreLinks.createProfileLink(cleanDisplayName);
+            }
+            
             breadcrumbHTML = `
                 <a href="#" onclick="app.clearSelection()">Home</a> > 
-                <a href="#" onclick="app.showTypeResources('${type}')">${type === 'fhir-r4' ? 'FHIR R4' : type === 'us-core-stu6.1' ? 'US Core' : type}</a> > 
-                ${cleanDisplayName}
+                <a href="#" onclick="app.showTypeResources('${type}')">${specDisplayName}</a> > 
+                ${resourceBreadcrumb}
             `;
         }
         
@@ -447,6 +488,9 @@ class FHIRViewer {
         // Render content
         const contentContainer = document.getElementById('resourceContent');
         contentContainer.innerHTML = this.generateResourceHTML(resource);
+        
+        // Sync element toggle states after rendering
+        this.syncElementToggles();
     }
 
     createTypeLinks(typeString) {
@@ -600,7 +644,7 @@ class FHIRViewer {
                             <div class="element-cell element-type-header">Type</div>
                             <div class="element-cell element-cardinality-header">Cardinality</div>
                             <div class="element-cell element-description-header">Description</div>
-                            ${isProfile ? '<div class="element-cell element-must-support-header">Must Support</div>' : ''}
+                            ${isProfile ? '<div class="element-cell element-must-support-header">S?</div>' : ''}
                         </div>
                         ${this.renderElementHierarchy(hierarchicalElements, isProfile)}
                     </div>
@@ -801,7 +845,7 @@ class FHIRViewer {
                 <div class="element-cell element-description">
                     ${this.renderElementDescription(element)}
                 </div>
-                ${showMustSupport ? `<div class="element-cell element-must-support">${element.mustSupport ? '✓' : ''}</div>` : ''}
+                ${showMustSupport ? `<div class="element-cell element-must-support${element.mustSupport ? ' has-support' : ''}">${element.mustSupport ? 'S' : ''}</div>` : ''}
             </div>
         `;
         
@@ -817,19 +861,52 @@ class FHIRViewer {
         return html;
     }
 
+    // Ensure element toggles are properly synchronized with their children state
+    syncElementToggles() {
+        // Find all element toggles and sync them with their children containers
+        document.querySelectorAll('.element-toggle').forEach(toggle => {
+            const onclickAttr = toggle.getAttribute('onclick');
+            if (onclickAttr) {
+                const match = onclickAttr.match(/toggleElementChildren\('([^']+)'\)/);
+                if (match) {
+                    const elementId = match[1];
+                    const childrenContainer = document.getElementById(elementId);
+                    
+                    if (childrenContainer) {
+                        const isChildrenCollapsed = childrenContainer.classList.contains('collapsed');
+                        
+                        if (isChildrenCollapsed) {
+                            // Children are collapsed, toggle should show ▶
+                            toggle.classList.remove('expanded');
+                            toggle.classList.add('collapsed');
+                            toggle.textContent = '▶';
+                        } else {
+                            // Children are visible, toggle should show ▼
+                            toggle.classList.remove('collapsed');
+                            toggle.classList.add('expanded');
+                            toggle.textContent = '▼';
+                        }
+                    }
+                }
+            }
+        });
+    }
+
     toggleElementChildren(elementId) {
         const childrenContainer = document.getElementById(elementId);
         const toggle = document.querySelector(`[onclick="app.toggleElementChildren('${elementId}')"]`);
         
         if (childrenContainer && toggle) {
-            const isCollapsed = childrenContainer.classList.contains('collapsed');
+            const isCurrentlyCollapsed = childrenContainer.classList.contains('collapsed');
             
-            if (isCollapsed) {
+            if (isCurrentlyCollapsed) {
+                // Expand: remove collapsed from children, set toggle to expanded
                 childrenContainer.classList.remove('collapsed');
                 toggle.classList.remove('collapsed');
                 toggle.classList.add('expanded');
                 toggle.textContent = '▼';
             } else {
+                // Collapse: add collapsed to children, set toggle to collapsed
                 childrenContainer.classList.add('collapsed');
                 toggle.classList.remove('expanded');
                 toggle.classList.add('collapsed');
@@ -934,21 +1011,59 @@ class FHIRViewer {
     }
 
     showWelcomeMessage() {
-        document.getElementById('resourceTitle').textContent = 'Select a Resource';
+        document.getElementById('resourceTitle').textContent = '';
         document.getElementById('breadcrumb').innerHTML = '';
         document.getElementById('resourceContent').innerHTML = `
             <div class="welcome-message">
-                <h3>Welcome to FHIR Resource Viewer</h3>
+                <h3>Welcome to the Greenway FHIR Viewer</h3>
                 <p>Select a resource from the sidebar to view its details, elements, and US Core modifications.</p>
-                <div class="quick-stats" id="quickStats">
-                    <div class="stat">
-                        <span class="stat-value">${Object.keys(this.fhirData['fhir-r4'] || {}).length}</span>
-                        <span class="stat-label">FHIR Resources</span>
+                
+
+                <div class="spec-panels">
+                    <div class="spec-panel fhir-panel">
+                        <div class="panel-header">
+                            <h4>🔗 FHIR R4 Base Specification</h4>
+                            <span class="panel-version">v4.0.1</span>
+                        </div>
+                        <div class="panel-content">
+                            <p>The foundational FHIR R4 specification defines core resource structures, data types, and implementation guidance for healthcare interoperability.</p>
+                            <div class="panel-features">
+                                <span class="feature">✓ Core Resources</span>
+                                <span class="feature">✓ Data Types</span>
+                                <span class="feature">✓ Implementation Guide</span>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <a href="https://hl7.org/fhir/R4/" target="_blank" class="spec-link primary">
+                                View Official Specification 🔥
+                            </a>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <span class="stat-value">${Object.keys(this.fhirData['us-core-stu6.1'] || {}).length}</span>
-                        <span class="stat-label">US Core Profiles</span>
+
+                    <div class="spec-panel uscore-panel">
+                        <div class="panel-header">
+                            <h4>🇺🇸 US Core Implementation Guide</h4>
+                            <span class="panel-version">STU6.1</span>
+                        </div>
+                        <div class="panel-content">
+                            <p>US Core profiles constrain FHIR R4 resources for use in the United States, defining must-support elements and implementation requirements.</p>
+                            <div class="panel-features">
+                                <span class="feature">✓ US Core Profiles</span>
+                                <span class="feature">✓ Must Support Elements</span>
+                                <span class="feature">✓ USCDI Compliance</span>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <a href="https://hl7.org/fhir/us/core/STU6.1/" target="_blank" class="spec-link primary">
+                                View Official Implementation Guide 🔥
+                            </a>
+                        </div>
                     </div>
+                </div>
+
+                <div class="getting-started">
+                    <h4>Getting Started</h4>
+                    <p>Navigate through the resource tree on the left to explore FHIR R4 base resources and US Core profiles. Each resource shows its elements, data types, cardinality constraints, and US Core must-support requirements.</p>
                 </div>
             </div>
         `;

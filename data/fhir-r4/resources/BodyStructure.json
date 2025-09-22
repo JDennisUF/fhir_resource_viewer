@@ -1,0 +1,92 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "BodyStructure",
+  "url": "http://hl7.org/fhir/StructureDefinition/BodyStructure",
+  "version": "4.0.1",
+  "name": "BodyStructure",
+  "title": "BodyStructure",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Orders and Observations)",
+  "description": "Record details about an anatomical structure. This resource may be used when a coded concept does not provide the necessary detail needed for the use case.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "BodyStructure",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "BodyStructure",
+      "name": "BodyStructure",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Record details about an anatomical structure.",
+      "level": 0
+    },
+    {
+      "path": "BodyStructure.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Identifier for this instance of the anatomical structure.",
+      "level": 1
+    },
+    {
+      "path": "BodyStructure.active",
+      "name": "active",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "Whether this body site is in active use.",
+      "level": 1
+    },
+    {
+      "path": "BodyStructure.morphology",
+      "name": "morphology",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The kind of structure being represented by the body structure at location. This can define both normal and abnormal morphologies.",
+      "level": 1
+    },
+    {
+      "path": "BodyStructure.location",
+      "name": "location",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The anatomical location or region of the specimen, lesion, or body structure.",
+      "level": 1
+    },
+    {
+      "path": "BodyStructure.locationQualifier",
+      "name": "locationQualifier",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Qualifier to refine the anatomical location.",
+      "level": 1
+    },
+    {
+      "path": "BodyStructure.description",
+      "name": "description",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A summary, characterization or explanation of the body structure.",
+      "level": 1
+    },
+    {
+      "path": "BodyStructure.image",
+      "name": "image",
+      "type": "Attachment",
+      "cardinality": "0..*",
+      "description": "Image or images used to identify a location.",
+      "level": 1
+    },
+    {
+      "path": "BodyStructure.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The person to which the body site belongs.",
+      "level": 1
+    }
+  ]
+}

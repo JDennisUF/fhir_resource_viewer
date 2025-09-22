@@ -1,0 +1,236 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "FamilyMemberHistory",
+  "url": "http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory",
+  "version": "4.0.1",
+  "name": "FamilyMemberHistory",
+  "title": "FamilyMemberHistory",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Care)",
+  "description": "Significant health conditions for a person related to the patient relevant in the context of care for the patient.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "FamilyMemberHistory",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "FamilyMemberHistory",
+      "name": "FamilyMemberHistory",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Significant health conditions for a person related to the patient relevant in the context of care for the patient.",
+      "level": 0
+    },
+    {
+      "path": "FamilyMemberHistory.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Business identifiers assigned to this family member history by the performer or other systems which remain constant as the resource is updated and propagates from server to server.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.instantiatesCanonical",
+      "name": "instantiatesCanonical",
+      "type": "canonical",
+      "cardinality": "0..*",
+      "description": "The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this FamilyMemberHistory.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.instantiatesUri",
+      "name": "instantiatesUri",
+      "type": "uri",
+      "cardinality": "0..*",
+      "description": "The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this FamilyMemberHistory.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "A code specifying the status of the record of the family member history of a specific family member.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.dataAbsentReason",
+      "name": "dataAbsentReason",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Describes why the family member history is not available.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The person who this history concerns.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date (and possibly time) when the family member history was recorded or last updated.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "This will either be a name or a description of the family member.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.relationship",
+      "name": "relationship",
+      "type": "CodeableConcept",
+      "cardinality": "1..1",
+      "description": "The type of relationship this person has to the patient (father, mother, brother etc.).",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.sex",
+      "name": "sex",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The birth sex of the family member.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.bornPeriod",
+      "name": "bornPeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The actual or approximate date of birth of the family member.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.bornDate",
+      "name": "bornDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The actual or approximate date of birth of the family member.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.bornString",
+      "name": "bornString",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The actual or approximate date of birth of the family member.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.ageAge",
+      "name": "ageAge",
+      "type": "Age",
+      "cardinality": "0..1",
+      "description": "The age of the family member at the time of death or at the time the family member history is recorded.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.ageRange",
+      "name": "ageRange",
+      "type": "Range",
+      "cardinality": "0..1",
+      "description": "The age of the family member at the time of death or at the time the family member history is recorded.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.ageString",
+      "name": "ageString",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The age of the family member at the time of death or at the time the family member history is recorded.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.estimatedAge",
+      "name": "estimatedAge",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "If true, indicates that the age value specified is an estimated value.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.deceasedBoolean",
+      "name": "deceasedBoolean",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "Deceased flag or the actual or approximate age of the family member at the time of death for the family member history record.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.deceasedAge",
+      "name": "deceasedAge",
+      "type": "Age",
+      "cardinality": "0..1",
+      "description": "Deceased flag or the actual or approximate age of the family member at the time of death for the family member history record.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.deceasedRange",
+      "name": "deceasedRange",
+      "type": "Range",
+      "cardinality": "0..1",
+      "description": "Deceased flag or the actual or approximate age of the family member at the time of death for the family member history record.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.deceasedDate",
+      "name": "deceasedDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "Deceased flag or the actual or approximate age of the family member at the time of death for the family member history record.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.deceasedString",
+      "name": "deceasedString",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Deceased flag or the actual or approximate age of the family member at the time of death for the family member history record.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.reasonCode",
+      "name": "reasonCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Describes why the family member history is being performed.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.reasonReference",
+      "name": "reasonReference",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Indicates a Condition, Observation, AllergyIntolerance, or QuestionnaireResponse that justifies this family member history event.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.note",
+      "name": "note",
+      "type": "Annotation",
+      "cardinality": "0..*",
+      "description": "This property allows a non condition-specific note to the made about the related person.",
+      "level": 1
+    },
+    {
+      "path": "FamilyMemberHistory.condition",
+      "name": "condition",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The significant Conditions (or condition) that the family member had.",
+      "level": 1
+    }
+  ]
+}

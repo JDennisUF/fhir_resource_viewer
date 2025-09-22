@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Endpoint",
+  "url": "http://hl7.org/fhir/StructureDefinition/Endpoint",
+  "version": "4.0.1",
+  "name": "Endpoint",
+  "title": "Endpoint",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Endpoint",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Endpoint",
+      "name": "Endpoint",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "The technical details of an endpoint that can be used for electronic services.",
+      "level": 0
+    },
+    {
+      "path": "Endpoint.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Identifier for the organization that is used to identify the endpoint across multiple disparate systems.",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "active | suspended | error | off | test.",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.connectionType",
+      "name": "connectionType",
+      "type": "Coding",
+      "cardinality": "1..1",
+      "description": "A coded value that represents the technical details of the usage of this endpoint, such as what WSDLs should be used in what way.",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A friendly name that this endpoint can be referred to with.",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.managingOrganization",
+      "name": "managingOrganization",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The organization that manages this endpoint (even if technically another organization is hosting this in the cloud, it is the organization associated with the data).",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.contact",
+      "name": "contact",
+      "type": "ContactPoint",
+      "cardinality": "0..*",
+      "description": "Contact details for a human to contact about the subscription.",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.period",
+      "name": "period",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The interval during which the endpoint is expected to be operational.",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.payloadType",
+      "name": "payloadType",
+      "type": "CodeableConcept",
+      "cardinality": "1..*",
+      "description": "The payload type describes the acceptable content that can be communicated on the endpoint.",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.payloadMimeType",
+      "name": "payloadMimeType",
+      "type": "code",
+      "cardinality": "0..*",
+      "description": "The mime type to send the payload in - e.g. application/fhir+xml, application/fhir+json.",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.address",
+      "name": "address",
+      "type": "url",
+      "cardinality": "1..1",
+      "description": "The uri that describes the actual end-point to connect to.",
+      "level": 1
+    },
+    {
+      "path": "Endpoint.header",
+      "name": "header",
+      "type": "string",
+      "cardinality": "0..*",
+      "description": "Additional headers / information to send as part of the notification.",
+      "level": 1
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "MeasureReport",
+  "url": "http://hl7.org/fhir/StructureDefinition/MeasureReport",
+  "version": "4.0.1",
+  "name": "MeasureReport",
+  "title": "MeasureReport",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Clinical Quality Information)",
+  "description": "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "MeasureReport",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "MeasureReport",
+      "name": "MeasureReport",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "The MeasureReport resource contains the results of the calculation of a measure.",
+      "level": 0
+    },
+    {
+      "path": "MeasureReport.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A formal identifier that is used to identify this MeasureReport when it is represented in other formats or referenced in a specification, model, design or an instance.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The MeasureReport status. No data will be available until the MeasureReport status is complete.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.type",
+      "name": "type",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The type of measure report. This may be an individual report, which provides the score for the measure for an individual member of the population; a subject-listing, which returns the list of members that meet the various criteria in the measure; a summary report, which returns a population count for each of the criteria in the measure; or a data-collection, which enables the MeasureReport to be used to exchange the data-of-interest for a quality measure.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.measure",
+      "name": "measure",
+      "type": "canonical",
+      "cardinality": "1..1",
+      "description": "A reference to the Measure that was calculated to produce this report.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Optional subject identifying the individual or individuals the report is for.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date this measure report was generated.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.reporter",
+      "name": "reporter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The individual, location, or organization that is reporting the data.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.period",
+      "name": "period",
+      "type": "Period",
+      "cardinality": "1..1",
+      "description": "The reporting period for which the report was calculated.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.improvementNotation",
+      "name": "improvementNotation",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Whether improvement in the measure is noted by an increase or decrease in the measure score.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.group",
+      "name": "group",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The results of the calculation, one for each population group in the measure.",
+      "level": 1
+    },
+    {
+      "path": "MeasureReport.evaluatedResource",
+      "name": "evaluatedResource",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "A reference to a Bundle containing the Resources that were used in the calculation of this measure.",
+      "level": 1
+    }
+  ]
+}

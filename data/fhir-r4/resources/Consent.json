@@ -1,0 +1,140 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Consent",
+  "url": "http://hl7.org/fhir/StructureDefinition/Consent",
+  "version": "4.0.1",
+  "name": "Consent",
+  "title": "Consent",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Community Based Collaborative Care)",
+  "description": "A record of a healthcare consumer's choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Consent",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Consent",
+      "name": "Consent",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A record of a healthcare consumer's choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions.",
+      "level": 0
+    },
+    {
+      "path": "Consent.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Unique identifier for this copy of the Consent Statement.",
+      "level": 1
+    },
+    {
+      "path": "Consent.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Indicates the current state of this consent.",
+      "level": 1
+    },
+    {
+      "path": "Consent.scope",
+      "name": "scope",
+      "type": "CodeableConcept",
+      "cardinality": "1..1",
+      "description": "A selector of the type of consent being presented: ADR, Privacy, Treatment, Research.",
+      "level": 1
+    },
+    {
+      "path": "Consent.category",
+      "name": "category",
+      "type": "CodeableConcept",
+      "cardinality": "1..*",
+      "description": "A classification of the type of consents found in the statement.",
+      "level": 1
+    },
+    {
+      "path": "Consent.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The patient/healthcare consumer to whom this consent applies.",
+      "level": 1
+    },
+    {
+      "path": "Consent.dateTime",
+      "name": "dateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "When this Consent was created or indexed.",
+      "level": 1
+    },
+    {
+      "path": "Consent.performer",
+      "name": "performer",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Either the Grantor, which is the entity responsible for granting the rights listed in a Consent Directive or the Grantee, which is the entity responsible for complying with the Consent Directive.",
+      "level": 1
+    },
+    {
+      "path": "Consent.organization",
+      "name": "organization",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The organization that manages the consent, and the framework within which it is executed.",
+      "level": 1
+    },
+    {
+      "path": "Consent.sourceAttachment",
+      "name": "sourceAttachment",
+      "type": "Attachment",
+      "cardinality": "0..1",
+      "description": "The source on which this consent statement is based.",
+      "level": 1
+    },
+    {
+      "path": "Consent.sourceReference",
+      "name": "sourceReference",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A reference to a consent that links back to such a source.",
+      "level": 1
+    },
+    {
+      "path": "Consent.policy",
+      "name": "policy",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The references to the policies that are included in this consent scope.",
+      "level": 1
+    },
+    {
+      "path": "Consent.policyRule",
+      "name": "policyRule",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A reference to the specific base computable regulation or policy.",
+      "level": 1
+    },
+    {
+      "path": "Consent.verification",
+      "name": "verification",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Whether a treatment instruction (e.g. artificial respiration yes or no) was verified with the patient, his/her family or another authorized person.",
+      "level": 1
+    },
+    {
+      "path": "Consent.provision",
+      "name": "provision",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "An exception to the base policy of this consent.",
+      "level": 1
+    }
+  ]
+}

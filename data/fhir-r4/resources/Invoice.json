@@ -1,0 +1,156 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Invoice",
+  "url": "http://hl7.org/fhir/StructureDefinition/Invoice",
+  "version": "4.0.1",
+  "name": "Invoice",
+  "title": "Invoice",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Invoice",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Invoice",
+      "name": "Invoice",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.",
+      "level": 0
+    },
+    {
+      "path": "Invoice.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Identifier of this Invoice, often used for reference in correspondence about this invoice or for tracking of payments.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The current state of the Invoice.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.cancelledReason",
+      "name": "cancelledReason",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "In case of Invoice cancellation a reason must be given (entered in error, superseded by corrected invoice etc.).",
+      "level": 1
+    },
+    {
+      "path": "Invoice.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Type of Invoice depending on domain, realm an usage (e.g. internal/external, dental, preliminary).",
+      "level": 1
+    },
+    {
+      "path": "Invoice.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The individual or set of individuals receiving the goods and services billed in this invoice.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.recipient",
+      "name": "recipient",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The individual or Organization responsible for balancing of this invoice.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "Date/time(s) of when this Invoice was posted.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.participant",
+      "name": "participant",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Indicates who or what performed or participated in the charged service.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.issuer",
+      "name": "issuer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The organizationissuing the Invoice.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.account",
+      "name": "account",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Account which is supposed to be balanced with this Invoice.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.lineItem",
+      "name": "lineItem",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Each line item represents one charge for goods and services rendered. Details such as date, code and amount are found in the referenced ChargeItem resource.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.totalPriceComponent",
+      "name": "totalPriceComponent",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The total amount for the Invoice may be calculated as the sum of the line items with surcharges/deductions that apply in certain conditions.  The priceComponent element can be used to offer transparency to the recipient of the Invoice of how the total price was calculated.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.totalNet",
+      "name": "totalNet",
+      "type": "Money",
+      "cardinality": "0..1",
+      "description": "Invoice total , taxes excluded.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.totalGross",
+      "name": "totalGross",
+      "type": "Money",
+      "cardinality": "0..1",
+      "description": "Invoice total, tax included.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.paymentTerms",
+      "name": "paymentTerms",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "Payment details such as banking details, period of payment, deductibles, methods of payment.",
+      "level": 1
+    },
+    {
+      "path": "Invoice.note",
+      "name": "note",
+      "type": "Annotation",
+      "cardinality": "0..*",
+      "description": "Comments made about the invoice by the issuer, subject, or other participants.",
+      "level": 1
+    }
+  ]
+}

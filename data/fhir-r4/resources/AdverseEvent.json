@@ -1,0 +1,188 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "AdverseEvent",
+  "url": "http://hl7.org/fhir/StructureDefinition/AdverseEvent",
+  "version": "4.0.1",
+  "name": "AdverseEvent",
+  "title": "AdverseEvent",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Safety)",
+  "description": "Actual or potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "AdverseEvent",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "AdverseEvent",
+      "name": "AdverseEvent",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Actual or potential/avoided event causing unintended physical injury resulting from or contributed to by medical care.",
+      "level": 0
+    },
+    {
+      "path": "AdverseEvent.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..1",
+      "description": "Business identifiers assigned to this adverse event by the performer or other systems which remain constant as the resource is updated and propagates from server to server.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.actuality",
+      "name": "actuality",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Whether the event actually happened, or just had the potential to happen. Note that this is independent of whether anyone was affected or harmed or how severely.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.category",
+      "name": "category",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The overall type of event, intended for search and filtering purposes.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.event",
+      "name": "event",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "This element defines the specific type of event that occurred or that was prevented from occurring.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "This subject or group impacted by the event.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.encounter",
+      "name": "encounter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The Encounter during which AdverseEvent was created or to which the creation of this record is tightly associated.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date (and perhaps time) when the adverse event occurred.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.detected",
+      "name": "detected",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "Estimated or actual date the AdverseEvent began, in the opinion of the reporter.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.recordedDate",
+      "name": "recordedDate",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date on which the existence of the AdverseEvent was first recorded.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.resultingCondition",
+      "name": "resultingCondition",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Includes information about the reaction that occurred as a result of exposure to a substance (for example, a drug or a chemical).",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.location",
+      "name": "location",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The information about where the adverse event occurred.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.seriousness",
+      "name": "seriousness",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Assessment whether this event was of real importance.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.severity",
+      "name": "severity",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Describes the severity of the adverse event, in relation to the subject. Contrast to AdverseEvent.seriousness - a severe rash might not be serious, but a mild heart problem might be.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.outcome",
+      "name": "outcome",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Describes the type of outcome from the adverse event.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.recorder",
+      "name": "recorder",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Information on who recorded the adverse event.  May be the patient or a practitioner.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.contributor",
+      "name": "contributor",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Parties that may or should contribute or have contributed information to the adverse event, which can consist of one or more activities.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.suspectEntity",
+      "name": "suspectEntity",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Describes the entity that is suspected to have caused the adverse event.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.subjectMedicalHistory",
+      "name": "subjectMedicalHistory",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "AdverseEvent.subjectMedicalHistory.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.referenceDocument",
+      "name": "referenceDocument",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "AdverseEvent.referenceDocument.",
+      "level": 1
+    },
+    {
+      "path": "AdverseEvent.study",
+      "name": "study",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "AdverseEvent.study.",
+      "level": 1
+    }
+  ]
+}

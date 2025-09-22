@@ -1,0 +1,148 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "PaymentReconciliation",
+  "url": "http://hl7.org/fhir/StructureDefinition/PaymentReconciliation",
+  "version": "4.0.1",
+  "name": "PaymentReconciliation",
+  "title": "PaymentReconciliation",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "This resource provides the details including amount of a payment and allocates the payment items being paid.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "PaymentReconciliation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "PaymentReconciliation",
+      "name": "PaymentReconciliation",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "This resource provides the details including amount of a payment and allocates the payment items being paid.",
+      "level": 0
+    },
+    {
+      "path": "PaymentReconciliation.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A unique identifier assigned to this payment reconciliation.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the resource instance.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.period",
+      "name": "period",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period of time for which payments have been gathered into this bulk payment for settlement.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The date when the resource was created.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.paymentIssuer",
+      "name": "paymentIssuer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The party who generated the payment.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.request",
+      "name": "request",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Original request resource reference.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.requestor",
+      "name": "requestor",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The practitioner who is responsible for the services rendered to the patient.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.outcome",
+      "name": "outcome",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The outcome of a request for a reconciliation.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.disposition",
+      "name": "disposition",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A human readable description of the status of the request for the reconciliation.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.paymentDate",
+      "name": "paymentDate",
+      "type": "date",
+      "cardinality": "1..1",
+      "description": "The date of payment as indicated on the financial instrument.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.paymentAmount",
+      "name": "paymentAmount",
+      "type": "Money",
+      "cardinality": "1..1",
+      "description": "Total payment amount as indicated on the financial instrument.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.paymentIdentifier",
+      "name": "paymentIdentifier",
+      "type": "Identifier",
+      "cardinality": "0..1",
+      "description": "Issuer's unique identifier for the payment instrument.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.detail",
+      "name": "detail",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Distribution of the payment amount for a previously acknowledged payable.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.formCode",
+      "name": "formCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code for the form to be used for printing the content.",
+      "level": 1
+    },
+    {
+      "path": "PaymentReconciliation.processNote",
+      "name": "processNote",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A note that describes or explains the processing in a human readable form.",
+      "level": 1
+    }
+  ]
+}

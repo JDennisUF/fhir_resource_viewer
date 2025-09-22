@@ -1,0 +1,204 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Appointment",
+  "url": "http://hl7.org/fhir/StructureDefinition/Appointment",
+  "version": "4.0.1",
+  "name": "Appointment",
+  "title": "Appointment",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Appointment",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Appointment",
+      "name": "Appointment",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time.",
+      "level": 0
+    },
+    {
+      "path": "Appointment.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "External Ids for this item.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.cancelationReason",
+      "name": "cancelationReason",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The coded reason that this appointment is being cancelled. This is often used in reporting/billing/futher processing to determine if further actions are required, or specific fees apply.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.serviceCategory",
+      "name": "serviceCategory",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A broad categorization of the service that is to be performed during this appointment.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.serviceType",
+      "name": "serviceType",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The specific service that is to be performed during this appointment.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.specialty",
+      "name": "specialty",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The specialty of a practitioner that would be required to perform the service requested in this appointment.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.appointmentType",
+      "name": "appointmentType",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The style of appointment or patient that has been booked in the slot (not service type).",
+      "level": 1
+    },
+    {
+      "path": "Appointment.reasonCode",
+      "name": "reasonCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The coded reason that this appointment is being scheduled. This is more clinical than administrative.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.reasonReference",
+      "name": "reasonReference",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Reason the appointment has been scheduled to take place, as specified using information from another resource.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.priority",
+      "name": "priority",
+      "type": "unsignedInt",
+      "cardinality": "0..1",
+      "description": "The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.description",
+      "name": "description",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The brief description of the appointment as would be shown on a subject line in a meeting request, or appointment list.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.supportingInformation",
+      "name": "supportingInformation",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Additional information to support the appointment provided when making the appointment.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.start",
+      "name": "start",
+      "type": "instant",
+      "cardinality": "0..1",
+      "description": "Date/Time that the appointment is to take place.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.end",
+      "name": "end",
+      "type": "instant",
+      "cardinality": "0..1",
+      "description": "Date/Time that the appointment is to conclude.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.minutesDuration",
+      "name": "minutesDuration",
+      "type": "positiveInt",
+      "cardinality": "0..1",
+      "description": "Number of minutes that the appointment is to take. This can be less than the duration between the start and end times.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.slot",
+      "name": "slot",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The slots from the participants' schedules that will be filled by the appointment.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date that this appointment was initially created.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.comment",
+      "name": "comment",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Additional comments about the appointment.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.patientInstruction",
+      "name": "patientInstruction",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "While Appointment.comment contains information for internal use, Appointment.patientInstructions is used to capture patient facing information about the Appointment.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.basedOn",
+      "name": "basedOn",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The service request this appointment is allocated to assess (e.g. incoming referral or procedure request).",
+      "level": 1
+    },
+    {
+      "path": "Appointment.participant",
+      "name": "participant",
+      "type": "BackboneElement",
+      "cardinality": "1..*",
+      "description": "List of participants involved in the appointment.",
+      "level": 1
+    },
+    {
+      "path": "Appointment.requestedPeriod",
+      "name": "requestedPeriod",
+      "type": "Period",
+      "cardinality": "0..*",
+      "description": "A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within.",
+      "level": 1
+    }
+  ]
+}

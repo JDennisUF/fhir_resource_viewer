@@ -1,0 +1,244 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Claim",
+  "url": "http://hl7.org/fhir/StructureDefinition/Claim",
+  "version": "4.0.1",
+  "name": "Claim",
+  "title": "Claim",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Claim",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Claim",
+      "name": "Claim",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.",
+      "level": 0
+    },
+    {
+      "path": "Claim.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A unique identifier assigned to this claim.",
+      "level": 1
+    },
+    {
+      "path": "Claim.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the resource instance.",
+      "level": 1
+    },
+    {
+      "path": "Claim.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "1..1",
+      "description": "The category of claim, e.g. oral, pharmacy, vision, institutional, professional.",
+      "level": 1
+    },
+    {
+      "path": "Claim.subType",
+      "name": "subType",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A finer grained suite of claim type codes which may convey additional information such as Inpatient vs Outpatient and/or a specialty service.",
+      "level": 1
+    },
+    {
+      "path": "Claim.use",
+      "name": "use",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "A code to indicate whether the nature of the request is: to request adjudication of products and services previously rendered; or requesting authorization and adjudication for provision in the future; or requesting the non-binding adjudication of the listed products and services which could be provided in the future.",
+      "level": 1
+    },
+    {
+      "path": "Claim.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for whom payment is being sought.",
+      "level": 1
+    },
+    {
+      "path": "Claim.billablePeriod",
+      "name": "billablePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period for which charges are being submitted.",
+      "level": 1
+    },
+    {
+      "path": "Claim.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The date this resource was created.",
+      "level": 1
+    },
+    {
+      "path": "Claim.enterer",
+      "name": "enterer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Individual who created the claim, predetermination or preauthorization.",
+      "level": 1
+    },
+    {
+      "path": "Claim.insurer",
+      "name": "insurer",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The Insurer who is target of the request.",
+      "level": 1
+    },
+    {
+      "path": "Claim.provider",
+      "name": "provider",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The provider which is responsible for the claim, predetermination or preauthorization.",
+      "level": 1
+    },
+    {
+      "path": "Claim.priority",
+      "name": "priority",
+      "type": "CodeableConcept",
+      "cardinality": "1..1",
+      "description": "The provider-required urgency of processing the request.",
+      "level": 1
+    },
+    {
+      "path": "Claim.fundsReserve",
+      "name": "fundsReserve",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code to indicate whether and for whom funds are to be reserved for future claims.",
+      "level": 1
+    },
+    {
+      "path": "Claim.related",
+      "name": "related",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Other claims which are related to this claim such as prior submissions or claims for related services or for the same event.",
+      "level": 1
+    },
+    {
+      "path": "Claim.prescription",
+      "name": "prescription",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Prescription to support the dispensing of pharmacy, device or vision products.",
+      "level": 1
+    },
+    {
+      "path": "Claim.originalPrescription",
+      "name": "originalPrescription",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Original prescription which has been superseded by this prescription to support the dispensing of pharmacy services, medications or products.",
+      "level": 1
+    },
+    {
+      "path": "Claim.payee",
+      "name": "payee",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "The party to be reimbursed for cost of the products and services according to the terms of the policy.",
+      "level": 1
+    },
+    {
+      "path": "Claim.referral",
+      "name": "referral",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A reference to a referral resource.",
+      "level": 1
+    },
+    {
+      "path": "Claim.facility",
+      "name": "facility",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Facility where the services were provided.",
+      "level": 1
+    },
+    {
+      "path": "Claim.careTeam",
+      "name": "careTeam",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The members of the team who provided the products and services.",
+      "level": 1
+    },
+    {
+      "path": "Claim.supportingInfo",
+      "name": "supportingInfo",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Additional information codes regarding exceptions, special considerations, the condition, situation, prior or concurrent issues.",
+      "level": 1
+    },
+    {
+      "path": "Claim.diagnosis",
+      "name": "diagnosis",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Information about diagnoses relevant to the claim items.",
+      "level": 1
+    },
+    {
+      "path": "Claim.procedure",
+      "name": "procedure",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Procedures performed on the patient relevant to the billing items with the claim.",
+      "level": 1
+    },
+    {
+      "path": "Claim.insurance",
+      "name": "insurance",
+      "type": "BackboneElement",
+      "cardinality": "1..*",
+      "description": "Financial instruments for reimbursement for the health care products and services specified on the claim.",
+      "level": 1
+    },
+    {
+      "path": "Claim.accident",
+      "name": "accident",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "Details of an accident which resulted in injuries which required the products and services listed in the claim.",
+      "level": 1
+    },
+    {
+      "path": "Claim.item",
+      "name": "item",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A claim line. Either a simple product or service or a 'group' of details which can each be a simple items or groups of sub-details.",
+      "level": 1
+    },
+    {
+      "path": "Claim.total",
+      "name": "total",
+      "type": "Money",
+      "cardinality": "0..1",
+      "description": "The total value of the all the items in the claim.",
+      "level": 1
+    }
+  ]
+}

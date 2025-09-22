@@ -1,0 +1,108 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Group",
+  "url": "http://hl7.org/fhir/StructureDefinition/Group",
+  "version": "4.0.1",
+  "name": "Group",
+  "title": "Group",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (FHIR Infrastructure)",
+  "description": "Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Group",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Group",
+      "name": "Group",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Represents a defined collection of entities that may be discussed or acted upon collectively.",
+      "level": 0
+    },
+    {
+      "path": "Group.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A unique business identifier for this group.",
+      "level": 1
+    },
+    {
+      "path": "Group.active",
+      "name": "active",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "Indicates whether the record for the group is available for use or is merely being retained for historical purposes.",
+      "level": 1
+    },
+    {
+      "path": "Group.type",
+      "name": "type",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "Identifies the broad classification of the kind of resources the group includes.",
+      "level": 1
+    },
+    {
+      "path": "Group.actual",
+      "name": "actual",
+      "type": "boolean",
+      "cardinality": "1..1",
+      "description": "If true, indicates that the resource refers to a specific group of real individuals.",
+      "level": 1
+    },
+    {
+      "path": "Group.code",
+      "name": "code",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Provides a specific type of resource the group includes; e.g. \"cow\", \"syringe\", etc.",
+      "level": 1
+    },
+    {
+      "path": "Group.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A label assigned to the group for human identification and communication.",
+      "level": 1
+    },
+    {
+      "path": "Group.quantity",
+      "name": "quantity",
+      "type": "unsignedInt",
+      "cardinality": "0..1",
+      "description": "A count of the number of resource instances that are part of the group.",
+      "level": 1
+    },
+    {
+      "path": "Group.managingEntity",
+      "name": "managingEntity",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Entity responsible for defining and maintaining Group characteristics and/or registered members.",
+      "level": 1
+    },
+    {
+      "path": "Group.characteristic",
+      "name": "characteristic",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Identifies traits whose presence r absence is shared by members of the group.",
+      "level": 1
+    },
+    {
+      "path": "Group.member",
+      "name": "member",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Identifies the resource instances that are members of the group.",
+      "level": 1
+    }
+  ]
+}

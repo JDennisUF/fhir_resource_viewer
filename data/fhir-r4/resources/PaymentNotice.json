@@ -1,0 +1,124 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "PaymentNotice",
+  "url": "http://hl7.org/fhir/StructureDefinition/PaymentNotice",
+  "version": "4.0.1",
+  "name": "PaymentNotice",
+  "title": "PaymentNotice",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "This resource provides the status of the payment for goods and services rendered, and the request and response resource references.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "PaymentNotice",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "PaymentNotice",
+      "name": "PaymentNotice",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "This resource provides the status of the payment for goods and services rendered, and the request and response resource references.",
+      "level": 0
+    },
+    {
+      "path": "PaymentNotice.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A unique identifier assigned to this payment notice.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the resource instance.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.request",
+      "name": "request",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Reference of resource for which payment is being made.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.response",
+      "name": "response",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Reference of response to resource for which payment is being made.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The date when this resource was created.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.provider",
+      "name": "provider",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The practitioner who is responsible for the services rendered to the patient.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.payment",
+      "name": "payment",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "A reference to the payment which is the subject of this notice.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.paymentDate",
+      "name": "paymentDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date when the above payment action occurred.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.payee",
+      "name": "payee",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The party who will receive or has received payment that is the subject of this notification.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.recipient",
+      "name": "recipient",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The party who is notified of the payment status.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.amount",
+      "name": "amount",
+      "type": "Money",
+      "cardinality": "1..1",
+      "description": "The amount sent to the payee.",
+      "level": 1
+    },
+    {
+      "path": "PaymentNotice.paymentStatus",
+      "name": "paymentStatus",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code indicating whether payment has been sent or cleared.",
+      "level": 1
+    }
+  ]
+}

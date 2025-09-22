@@ -1,0 +1,156 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "MolecularSequence",
+  "url": "http://hl7.org/fhir/StructureDefinition/MolecularSequence",
+  "version": "4.0.1",
+  "name": "MolecularSequence",
+  "title": "MolecularSequence",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Clinical Genomics)",
+  "description": "Raw data describing a biological sequence.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "MolecularSequence",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "MolecularSequence",
+      "name": "MolecularSequence",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Raw data describing a biological sequence.",
+      "level": 0
+    },
+    {
+      "path": "MolecularSequence.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A unique identifier for this particular sequence instance.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.type",
+      "name": "type",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Amino Acid Sequence/ DNA Sequence / RNA Sequence.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.coordinateSystem",
+      "name": "coordinateSystem",
+      "type": "integer",
+      "cardinality": "1..1",
+      "description": "Whether the sequence is numbered starting at 0 (0-based numbering or coordinates, inclusive start, exclusive end) or starting at 1 (1-based numbering, inclusive start and inclusive end).",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The patient whose sequencing results are described by this resource.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.specimen",
+      "name": "specimen",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Specimen used for sequencing.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.device",
+      "name": "device",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The method for sequencing, for example, chip information.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.performer",
+      "name": "performer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The organization or lab that should be responsible for this result.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.quantity",
+      "name": "quantity",
+      "type": "Quantity",
+      "cardinality": "0..1",
+      "description": "The number of copies of the sequence of interest.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.referenceSeq",
+      "name": "referenceSeq",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "A sequence that is used as a reference to describe variants that are present in a sequence analyzed.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.variant",
+      "name": "variant",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The definition of variant here originates from Sequence ontology ([variant_of](http://www.sequenceontology.org/browser/current_svn/term/variant_of)).",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.observedSeq",
+      "name": "observedSeq",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Sequence that was observed.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.quality",
+      "name": "quality",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "An experimental feature attribute that defines the quality of the feature in a quantitative way, such as a phred quality score ([SO:0001686](http://www.sequenceontology.org/browser/current_svn/term/SO:0001686)).",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.readCoverage",
+      "name": "readCoverage",
+      "type": "integer",
+      "cardinality": "0..1",
+      "description": "Coverage (read depth or depth) is the average number of reads representing a given nucleotide in the reconstructed sequence.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.repository",
+      "name": "repository",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Configurations of the external repository.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.pointer",
+      "name": "pointer",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Pointer to next atomic sequence which at most contains one variant.",
+      "level": 1
+    },
+    {
+      "path": "MolecularSequence.structureVariant",
+      "name": "structureVariant",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Information about chromosome structure variation.",
+      "level": 1
+    }
+  ]
+}

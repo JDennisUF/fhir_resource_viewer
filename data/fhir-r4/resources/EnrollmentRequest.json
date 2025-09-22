@@ -1,0 +1,84 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EnrollmentRequest",
+  "url": "http://hl7.org/fhir/StructureDefinition/EnrollmentRequest",
+  "version": "4.0.1",
+  "name": "EnrollmentRequest",
+  "title": "EnrollmentRequest",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "This resource provides the insurance enrollment details to the insurer regarding a specified coverage.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "EnrollmentRequest",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "EnrollmentRequest",
+      "name": "EnrollmentRequest",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "This resource provides the insurance enrollment details to the insurer regarding a specified coverage.",
+      "level": 0
+    },
+    {
+      "path": "EnrollmentRequest.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "The Response business identifier.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentRequest.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the resource instance.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentRequest.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date when this resource was created.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentRequest.insurer",
+      "name": "insurer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The Insurer who is target of the request.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentRequest.provider",
+      "name": "provider",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The practitioner who is responsible for the services rendered to the patient.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentRequest.candidate",
+      "name": "candidate",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "Patient Resource.",
+      "level": 1
+    },
+    {
+      "path": "EnrollmentRequest.coverage",
+      "name": "coverage",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Reference to the program or plan identification, underwriter or payor.",
+      "level": 1
+    }
+  ]
+}

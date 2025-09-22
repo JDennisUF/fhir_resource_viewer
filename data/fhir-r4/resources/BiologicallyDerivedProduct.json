@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "BiologicallyDerivedProduct",
+  "url": "http://hl7.org/fhir/StructureDefinition/BiologicallyDerivedProduct",
+  "version": "4.0.1",
+  "name": "BiologicallyDerivedProduct",
+  "title": "BiologicallyDerivedProduct",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Orders and Observations)",
+  "description": "A material substance originating from a biological entity intended to be transplanted or infused into another (possibly the same) biological entity.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "BiologicallyDerivedProduct",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "BiologicallyDerivedProduct",
+      "name": "BiologicallyDerivedProduct",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A material substance originating from a biological entity intended to be transplanted or infused.",
+      "level": 0
+    },
+    {
+      "path": "BiologicallyDerivedProduct.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "This records identifiers associated with this biologically derived product instance that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate.",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.productCategory",
+      "name": "productCategory",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Broad category of this product.",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.productCode",
+      "name": "productCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code that identifies the kind of this biologically derived product (SNOMED CT code).",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "Whether the product is currently available.",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.request",
+      "name": "request",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Procedure request to obtain this biologically derived product.",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.quantity",
+      "name": "quantity",
+      "type": "integer",
+      "cardinality": "0..1",
+      "description": "Number of discrete units within this product.",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.parent",
+      "name": "parent",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Parent product (if any).",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.collection",
+      "name": "collection",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "How this product was collected.",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.processing",
+      "name": "processing",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Any processing of the product during the collection or manufacturing.",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.manipulation",
+      "name": "manipulation",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "Any manipulation of product post-collection.",
+      "level": 1
+    },
+    {
+      "path": "BiologicallyDerivedProduct.storage",
+      "name": "storage",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Product storage.",
+      "level": 1
+    }
+  ]
+}

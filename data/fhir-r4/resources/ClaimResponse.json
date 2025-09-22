@@ -1,0 +1,244 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ClaimResponse",
+  "url": "http://hl7.org/fhir/StructureDefinition/ClaimResponse",
+  "version": "4.0.1",
+  "name": "ClaimResponse",
+  "title": "ClaimResponse",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Financial Management)",
+  "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ClaimResponse",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "ClaimResponse",
+      "name": "ClaimResponse",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "level": 0
+    },
+    {
+      "path": "ClaimResponse.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A unique identifier assigned to this claim response.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of the resource instance.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "1..1",
+      "description": "A finer grained suite of claim type codes which may convey additional information such as Inpatient vs Outpatient and/or a specialty service.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.subType",
+      "name": "subType",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A finer grained suite of claim type codes which may convey additional information such as Inpatient vs Outpatient and/or a specialty service.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.use",
+      "name": "use",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "A code to indicate whether the nature of the request is: to request adjudication of products and services previously rendered; or requesting authorization and adjudication for provision in the future; or requesting the non-binding adjudication of the listed products and services which could be provided in the future.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for whom payment is being sought.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.created",
+      "name": "created",
+      "type": "dateTime",
+      "cardinality": "1..1",
+      "description": "The date this resource was created.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.insurer",
+      "name": "insurer",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The party responsible for authorization, adjudication and reimbursement.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.requestor",
+      "name": "requestor",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The provider which is responsible for the claim, predetermination or preauthorization.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.request",
+      "name": "request",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Original request resource reference.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.outcome",
+      "name": "outcome",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The outcome of the claim, predetermination, or preauthorization processing.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.disposition",
+      "name": "disposition",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A human readable description of the status of the adjudication.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.preAuthRef",
+      "name": "preAuthRef",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "Reference from the Insurer which is used in later communications which refers to this adjudication.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.preAuthPeriod",
+      "name": "preAuthPeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The time frame during which this authorization is effective.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.payeeType",
+      "name": "payeeType",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Type of Party to be reimbursed: Subscriber, provider, other.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.item",
+      "name": "item",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A claim line. Either a simple (a product or service) or a 'group' of details which can also be a simple items or groups of sub-details.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.addItem",
+      "name": "addItem",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The first-tier service adjudications for payor added product or service lines.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.adjudication",
+      "name": "adjudication",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "The adjudication results which are presented at the header level rather than at the line-item or add-item levels.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.total",
+      "name": "total",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Categorized monetary totals for the adjudication.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.payment",
+      "name": "payment",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "Payment details for the adjudication of the claim.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.fundsReserve",
+      "name": "fundsReserve",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code, used only on a response to a preauthorization, to indicate whether the benefits payable have been reserved and for whom.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.formCode",
+      "name": "formCode",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code for the form to be used for printing the content.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.form",
+      "name": "form",
+      "type": "Attachment",
+      "cardinality": "0..1",
+      "description": "The actual form, by reference or inclusion, for printing the content or an EOB.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.processNote",
+      "name": "processNote",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A note that describes or explains adjudication results in a human readable form.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.communicationRequest",
+      "name": "communicationRequest",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Request for additional information.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.insurance",
+      "name": "insurance",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Financial instruments for reimbursement for the health care products and services specified on the claim.",
+      "level": 1
+    },
+    {
+      "path": "ClaimResponse.error",
+      "name": "error",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Errors encountered during the processing of the adjudication.",
+      "level": 1
+    }
+  ]
+}

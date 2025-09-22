@@ -1,0 +1,220 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ResearchStudy",
+  "url": "http://hl7.org/fhir/StructureDefinition/ResearchStudy",
+  "version": "4.0.1",
+  "name": "ResearchStudy",
+  "title": "ResearchStudy",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Biomedical Research and Regulation)",
+  "description": "A process where a researcher or organization plans and then executes a series of steps intended to increase the field of healthcare-related knowledge.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ResearchStudy",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "ResearchStudy",
+      "name": "ResearchStudy",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "A process where a researcher or organization plans and then executes a series of steps intended to increase the field of healthcare-related knowledge.",
+      "level": 0
+    },
+    {
+      "path": "ResearchStudy.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Identifiers assigned to this research study by the sponsor or other systems.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.title",
+      "name": "title",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A short, descriptive user-friendly label for the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.protocol",
+      "name": "protocol",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The set of steps expected to be performed as part of the execution of the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.partOf",
+      "name": "partOf",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "A larger research study of which this particular study is a component or step.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The current state of the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.primaryPurposeType",
+      "name": "primaryPurposeType",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The type of study based upon the intent of the study's activities.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.phase",
+      "name": "phase",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The stage in the progression of a therapy from initial experimental use in humans in clinical trials to post-market evaluation.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.category",
+      "name": "category",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Codes categorizing the type of study such as investigational vs. observational, type of blinding, type of randomization, safety vs. efficacy, etc.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.focus",
+      "name": "focus",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The medication(s), food(s), therapy(ies), device(s) or other concerns or interventions that the study is seeking to gain more information about.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.condition",
+      "name": "condition",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The condition that is the focus of the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.contact",
+      "name": "contact",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "Contact details to assist a user in learning more about or engaging with the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.relatedArtifact",
+      "name": "relatedArtifact",
+      "type": "RelatedArtifact",
+      "cardinality": "0..*",
+      "description": "Citations, references and other related documents.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.keyword",
+      "name": "keyword",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Key terms to aid in searching for or filtering the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.location",
+      "name": "location",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Indicates a country, state or other region where the study is taking place.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.description",
+      "name": "description",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A full description of how the study is being conducted.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.enrollment",
+      "name": "enrollment",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Reference to a Group that defines the criteria for and quantity of subjects participating in the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.period",
+      "name": "period",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "Identifies the start date and the expected (or actual, depending on status) end date for the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.sponsor",
+      "name": "sponsor",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "An organization that initiates the investigation and is legally responsible for the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.principalInvestigator",
+      "name": "principalInvestigator",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A researcher in a study who oversees multiple aspects of the study, such as concept development, protocol writing, protocol submission for IRB review, participant recruitment, informed consent, data collection, analysis, interpretation and presentation.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.site",
+      "name": "site",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "A facility where study activities are conducted.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.reasonStopped",
+      "name": "reasonStopped",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A description and/or code explaining the premature termination of the study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.note",
+      "name": "note",
+      "type": "Annotation",
+      "cardinality": "0..*",
+      "description": "Comments made about the study by the performer, subject or other participants.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.arm",
+      "name": "arm",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Describes an expected sequence of events for one of the participants of a study.",
+      "level": 1
+    },
+    {
+      "path": "ResearchStudy.objective",
+      "name": "objective",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study.",
+      "level": 1
+    }
+  ]
+}

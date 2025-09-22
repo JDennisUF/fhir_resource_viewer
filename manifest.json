@@ -1,5 +1,5 @@
 {
-  "name": "FHIR Resource Viewer",
+  "name": "Greenway FHIR Viewer",
   "short_name": "FHIR Viewer",
   "description": "A lightweight viewer for FHIR R4 Resources and US Core modifications with large font, easy navigation interface",
   "version": "1.0.0",

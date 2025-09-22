@@ -6,6 +6,8 @@ class NavigationManager {
         this.selectedNode = null;
         this.breadcrumbHistory = [];
         this.listenersSetup = false;
+        this.usCoreLinks = new USCoreLinks();
+        this.fhirR4Links = new FHIRR4Links();
         
         this.setupKeyboardNavigation();
     }
@@ -82,12 +84,7 @@ class NavigationManager {
             container.appendChild(specNode);
         });
         
-        // Add data types section if we have FHIR R4 data or if filtering for data types
-        if (data['fhir-r4'] || Object.keys(data).length === 0) {
-            this.createDataTypesSection().then(dataTypesNode => {
-                container.appendChild(dataTypesNode);
-            });
-        }
+        // Data types are now included in the FHIR R4 section, no separate section needed
         
         return container;
     }
@@ -128,52 +125,6 @@ class NavigationManager {
         return specNode;
     }
 
-    async createDataTypesSection() {
-        // Create a separate section for FHIR data types
-        const specNode = document.createElement('div');
-        specNode.className = 'tree-node spec-node';
-        specNode.dataset.type = 'spec';
-        specNode.dataset.spec = 'fhir-datatypes';
-        
-        const header = document.createElement('div');
-        header.className = 'tree-item tree-header';
-        header.setAttribute('tabindex', '0');
-        header.innerHTML = `
-            <span class="tree-toggle" data-toggle="fhir-datatypes">▶</span>
-            <span class="tree-icon">🧩</span>
-            <span class="tree-label">FHIR Data Types</span>
-            <span class="tree-count">(16)</span>
-        `;
-        
-        const children = document.createElement('div');
-        children.className = 'tree-children';
-        children.id = 'children-fhir-datatypes';
-        
-        // Load data types from storage
-        try {
-            const dataTypes = await this.app.storage.getResourcesByType('datatype', 'fhir-r4');
-            dataTypes.sort().forEach(dataTypeName => {
-                const resourceInfo = this.app.storage.findResourceInfo(dataTypeName, 'fhir-r4');
-                if (resourceInfo) {
-                    const dataTypeData = {
-                        name: dataTypeName,
-                        type: 'datatype',
-                        elementCount: resourceInfo.elementCount
-                    };
-                    const resourceNode = this.createResourceNode(dataTypeName, dataTypeData, 'fhir-r4');
-                    resourceNode.classList.add('datatype-item');
-                    children.appendChild(resourceNode);
-                }
-            });
-        } catch (error) {
-            console.warn('Failed to load data types:', error);
-        }
-        
-        specNode.appendChild(header);
-        specNode.appendChild(children);
-        
-        return specNode;
-    }
 
     createUSCoreHierarchy(resources, container, specType) {
         // Organize US Core resources with vital signs hierarchy
@@ -183,7 +134,8 @@ class NavigationManager {
         // Separate vital signs children from regular resources
         Object.keys(resources).forEach(resourceName => {
             const resource = resources[resourceName];
-            if (resource.baseDefinition === 'us-core-vital-signs') {
+            if (resource.baseDefinition === 'us-core-vital-signs' || 
+                resource.baseDefinition === 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs') {
                 vitalSignsChildren.push(resourceName);
             } else {
                 regularResources[resourceName] = resource;
@@ -248,10 +200,39 @@ class NavigationManager {
         const item = document.createElement('div');
         item.className = 'tree-item';
         item.setAttribute('tabindex', '0');
+        
+        // Add documentation link icon for both FHIR R4 and US Core
+        let docLink = '';
+        const cleanName = resourceData.name || resourceName;
+        
+        if (specType === 'us-core-stu6.1') {
+            // Check for US Core profile link
+            if (this.usCoreLinks.hasProfileLink(cleanName)) {
+                const linkUrl = this.usCoreLinks.getProfileLink(cleanName);
+                docLink = `<a href="${linkUrl}" target="_blank" class="doc-link" title="View ${cleanName} official US Core documentation" onclick="event.stopPropagation();">🔥</a>`;
+            }
+        } else if (specType === 'fhir-r4') {
+            // Different icons and links for resources vs data types
+            if (resourceData.type === 'datatype') {
+                // Data type icon
+                if (this.fhirR4Links.hasResourceLink(cleanName, 'datatype')) {
+                    const linkUrl = this.fhirR4Links.getResourceLink(cleanName, 'datatype');
+                    docLink = `<a href="${linkUrl}" target="_blank" class="doc-link datatype-link" title="View ${cleanName} official FHIR R4 data type documentation" onclick="event.stopPropagation();">🔡</a>`;
+                }
+            } else {
+                // Fire icon for resources
+                if (this.fhirR4Links.hasResourceLink(cleanName, 'resource')) {
+                    const linkUrl = this.fhirR4Links.getResourceLink(cleanName, 'resource');
+                    docLink = `<a href="${linkUrl}" target="_blank" class="doc-link" title="View ${cleanName} official FHIR R4 documentation" onclick="event.stopPropagation();">🔥</a>`;
+                }
+            }
+        }
+        
         item.innerHTML = `
             <span class="tree-icon">${this.getResourceIcon(resourceData.type, resourceName)}</span>
             <span class="tree-label">${resourceData.name || resourceName}</span>
             ${resourceData.elementCount ? `<span class="tree-count">(${resourceData.elementCount})</span>` : ''}
+            ${docLink}
         `;
         
         resourceNode.appendChild(item);
@@ -277,6 +258,104 @@ class NavigationManager {
     }
 
     getResourceIcon(type, resourceName = '') {
+        // Healthcare-specific FHIR resources with meaningful icons
+        if (resourceName.includes('Patient')) return '🤒';
+        if (resourceName.includes('PractitionerRole')) return '🎓';
+        if (resourceName.includes('Practitioner')) return '🧑‍⚕️';
+        if (resourceName.includes('Organization')) return '🏥';
+        if (resourceName.includes('Location')) return '📍';
+        if (resourceName.includes('Encounter')) return '🤝';
+        if (resourceName.includes('Observation')) return '🔬';
+        if (resourceName.includes('Condition')) return '🩹';
+        if (resourceName.includes('Procedure')) return '🔬';
+        if (resourceName.includes('MedicationAdministration')) return '💉';
+        if (resourceName.includes('MedicationDispense')) return '📦';
+        if (resourceName.includes('MedicationRequest')) return '📝';
+        if (resourceName.includes('MedicationStatement')) return '🗒️';
+        if (resourceName.includes('Medication')) return '💊';
+        if (resourceName.includes('Immunization')) return '💉';
+        if (resourceName.includes('AllergyIntolerance') || resourceName.includes('Allergyintolerance')) return '🤧';
+        if (resourceName.includes('DiagnosticReport') || resourceName.includes('Diagnosticreport')) return '📋';
+        if (resourceName.includes('DocumentReference') || resourceName.includes('Documentreference')) return '📄';
+        if (resourceName.includes('Goal')) return '🎯';
+        if (resourceName.includes('CarePlan') || resourceName.includes('Careplan')) return '📅';
+        if (resourceName.includes('CareTeam') || resourceName.includes('Careteam')) return '👥';
+        if (resourceName.includes('Coverage')) return '🛡️';
+        if (resourceName.includes('Device') || resourceName.includes('ImplantableDevice')) return '🔧';
+        if (resourceName.includes('Specimen')) return '🧪';
+        if (resourceName.includes('Provenance')) return '📜';
+        if (resourceName.includes('RelatedPerson')) return '👨‍👩‍👧‍👦';
+        
+        // Common workflow and communication resources
+        if (resourceName.includes('Appointment') && !resourceName.includes('Response')) return '📅';
+        if (resourceName.includes('AppointmentResponse')) return '✉️';
+        if (resourceName.includes('Communication') && !resourceName.includes('Request')) return '💬';
+        if (resourceName.includes('CommunicationRequest')) return '📞';
+        if (resourceName.includes('Task')) return '✅';
+        if (resourceName.includes('List')) return '📄';
+        if (resourceName.includes('Questionnaire') && !resourceName.includes('Response')) return '❓';
+        if (resourceName.includes('QuestionnaireResponse')) return '✅';
+        
+        // Financial and administrative resources
+        if (resourceName.includes('Account')) return '💳';
+        if (resourceName.includes('Claim') && !resourceName.includes('Response')) return '🫴';
+        if (resourceName.includes('ClaimResponse')) return '⚖️';
+        if (resourceName.includes('EnrollmentRequest')) return '📝';
+        if (resourceName.includes('EnrollmentResponse')) return '📬';
+        if (resourceName.includes('Invoice')) return '🧾';
+        if (resourceName.includes('PaymentNotice')) return '💰';
+        if (resourceName.includes('PaymentReconciliation')) return '🔄';
+        if (resourceName.includes('ChargeItem') && !resourceName.includes('Definition')) return '💰';
+        if (resourceName.includes('ChargeItemDefinition')) return '💲';
+        
+        // Core clinical resources
+        if (resourceName.includes('AdverseEvent')) return '⚠️';
+        if (resourceName.includes('ClinicalImpression')) return '🩺';
+        if (resourceName.includes('DetectedIssue')) return '🚨';
+        if (resourceName.includes('AuditEvent')) return '📋';
+        if (resourceName.includes('ActivityDefinition')) return '📋';
+        if (resourceName.includes('BiologicallyDerivedProduct')) return '🧬';
+        if (resourceName.includes('BodyStructure')) return '🦴';
+        if (resourceName.includes('CatalogEntry')) return '📇';
+        if (resourceName.includes('Composition')) return '📄';
+        if (resourceName.includes('Consent')) return '👍';
+        if (resourceName.includes('Contract')) return '📝';
+        if (resourceName.includes('CoverageEligibilityRequest')) return '📋';
+        if (resourceName.includes('CoverageEligibilityResponse')) return '📬';
+        if (resourceName.includes('ExplanationOfBenefit')) return '📄';
+        if (resourceName.includes('InsurancePlan')) return '🛡️';
+        if (resourceName.includes('FamilyMemberHistory')) return '👨‍👩‍👧‍👦';
+        if (resourceName.includes('ImagingStudy')) return '🖼️';
+        if (resourceName.includes('DeviceRequest')) return '🔧';
+        if (resourceName.includes('EpisodeOfCare')) return '📖';
+        if (resourceName.includes('Flag')) return '🚩';
+        if (resourceName.includes('Schedule')) return '📅';
+        if (resourceName.includes('Slot')) return '🕐';
+        if (resourceName.includes('Group')) return '👥';
+        if (resourceName.includes('HealthcareService')) return '🏥';
+        if (resourceName.includes('Endpoint')) return '🔌';
+        if (resourceName.includes('RiskAssessment')) return '⚠️';
+        if (resourceName.includes('Media')) return '🖼️';
+        if (resourceName.includes('MolecularSequence')) return '🧬';
+        if (resourceName.includes('VisionPrescription')) return '👓';
+        if (resourceName.includes('DeviceUseStatement')) return '📱';
+        if (resourceName.includes('SupplyRequest')) return '📦';
+        if (resourceName.includes('SupplyDelivery')) return '🚚';
+        if (resourceName.includes('RequestGroup')) return '📋';
+        if (resourceName.includes('Library')) return '📚';
+        if (resourceName.includes('Measure') && !resourceName.includes('Report')) return '📊';
+        if (resourceName.includes('MeasureReport')) return '📈';
+        if (resourceName.includes('GuidanceResponse')) return '💡';
+        if (resourceName.includes('Person')) return '👤';
+        if (resourceName.includes('PlanDefinition')) return '📋';
+        if (resourceName.includes('Substance')) return '🧪';
+        if (resourceName.includes('EventDefinition')) return '⚡';
+        if (resourceName.includes('Parameters')) return '⚙️';
+        if (resourceName.includes('TestScript')) return '🧪';
+        if (resourceName.includes('TestReport')) return '📊';
+        if (resourceName.includes('ResearchStudy')) return '🔬';
+        if (resourceName.includes('ResearchSubject')) return '👤';
+        
         // Special icons for vital signs
         if (resourceName.includes('VitalSigns')) return '🩺';
         if (resourceName.includes('BloodPressure')) return '🫀';
@@ -285,10 +364,40 @@ class NavigationManager {
         if (resourceName.includes('Temperature')) return '🌡️';
         if (resourceName.includes('HeartRate')) return '💓';
         if (resourceName.includes('RespiratoryRate')) return '🫁';
+        if (resourceName.includes('BMI')) return '📊';
+        if (resourceName.includes('HeadCircumference')) return '📐';
+        if (resourceName.includes('PulseOximetry')) return '🫁';
+        if (resourceName.includes('Pediatric')) return '👶';
         
-        // Special icons for data types
+        // Administrative and infrastructure resources
+        if (resourceName.includes('Bundle')) return '📦';
+        if (resourceName.includes('Basic')) return '📋';
+        if (resourceName.includes('Binary')) return '💾';
+        if (resourceName.includes('Linkage')) return '🔗';
+        if (resourceName.includes('Resource')) return '📄';
+        
+        // Terminology and knowledge resources
+        if (resourceName.includes('CodeSystem')) return '📚';
+        if (resourceName.includes('ValueSet')) return '📖';
+        if (resourceName.includes('ConceptMap')) return '🗺️';
+        if (resourceName.includes('NamingSystem')) return '🏷️';
+        
+        // Technical and conformance resources
+        if (resourceName.includes('CapabilityStatement')) return '💪';
+        if (resourceName.includes('StructureDefinition')) return '🏗️';
+        if (resourceName.includes('ImplementationGuide')) return '📘';
+        if (resourceName.includes('SearchParameter')) return '🔍';
+        if (resourceName.includes('OperationDefinition')) return '⚙️';
+        if (resourceName.includes('MessageDefinition')) return '📨';
+        if (resourceName.includes('CompartmentDefinition')) return '🏠';
+        if (resourceName.includes('StructureMap')) return '🗺️';
+        if (resourceName.includes('GraphDefinition')) return '📊';
+        if (resourceName.includes('ExampleScenario')) return '📝';
+        if (resourceName.includes('TerminologyCapabilities')) return '🎛️';
+        
+        // Special icons for data types (keep existing good ones)
         if (type === 'datatype') {
-            if (resourceName === 'Extension') return '🔗';
+            if (resourceName === 'Extension') return '🔌';
             if (resourceName === 'Meta') return 'ℹ️';
             if (resourceName === 'Identifier') return '🆔';
             if (resourceName === 'Coding') return '🏷️';
@@ -307,6 +416,7 @@ class NavigationManager {
             return '🧩'; // Default data type icon
         }
         
+        // Default fallback icons by type
         const icons = {
             'resource': '📄',
             'profile': '⚙️',

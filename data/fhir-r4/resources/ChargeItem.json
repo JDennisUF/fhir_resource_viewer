@@ -1,0 +1,260 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ChargeItem",
+  "url": "http://hl7.org/fhir/StructureDefinition/ChargeItem",
+  "version": "4.0.1",
+  "name": "ChargeItem",
+  "title": "ChargeItem",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "The resource ChargeItem describes the provision of healthcare provider products for a certain patient, therefore referring not only to the product, but containing in addition details of the provision, like date, time, amounts and participating organizations and persons.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ChargeItem",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "ChargeItem",
+      "name": "ChargeItem",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "The resource ChargeItem describes the provision of healthcare provider products for a certain patient.",
+      "level": 0
+    },
+    {
+      "path": "ChargeItem.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Identifiers assigned to this event performer or other systems.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.definitionUri",
+      "name": "definitionUri",
+      "type": "uri",
+      "cardinality": "0..*",
+      "description": "References the (external) source of pricing information, rules of application for the code this ChargeItem uses.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.definitionCanonical",
+      "name": "definitionCanonical",
+      "type": "canonical",
+      "cardinality": "0..*",
+      "description": "References the source of pricing information, rules of application for the code this ChargeItem uses.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The current state of the ChargeItem.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.partOf",
+      "name": "partOf",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "ChargeItems can be grouped to larger ChargeItems covering the whole set.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.code",
+      "name": "code",
+      "type": "CodeableConcept",
+      "cardinality": "1..1",
+      "description": "A code that identifies the charge, like a billing code.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.subject",
+      "name": "subject",
+      "type": "Reference",
+      "cardinality": "1..1",
+      "description": "The individual or set of individuals the action is being or was performed on.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.context",
+      "name": "context",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The encounter or episode of care that establishes the context for this event.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.occurrenceDateTime",
+      "name": "occurrenceDateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "Date/time(s) or duration when the charged service was applied.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.occurrencePeriod",
+      "name": "occurrencePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "Date/time(s) or duration when the charged service was applied.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.occurrenceTiming",
+      "name": "occurrenceTiming",
+      "type": "Timing",
+      "cardinality": "0..1",
+      "description": "Date/time(s) or duration when the charged service was applied.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.performer",
+      "name": "performer",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Indicates who or what performed or participated in the charged service.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.performingOrganization",
+      "name": "performingOrganization",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The organization requesting the service.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.requestingOrganization",
+      "name": "requestingOrganization",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The organization performing the service.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.costCenter",
+      "name": "costCenter",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The financial cost center permits the tracking of charge attribution.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.quantity",
+      "name": "quantity",
+      "type": "Quantity",
+      "cardinality": "0..1",
+      "description": "Quantity of which the charge item has been serviced.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.bodysite",
+      "name": "bodysite",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "The anatomical location where the related service has been applied.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.factorOverride",
+      "name": "factorOverride",
+      "type": "decimal",
+      "cardinality": "0..1",
+      "description": "Factor overriding the factor determined by the rules associated with the code.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.priceOverride",
+      "name": "priceOverride",
+      "type": "Money",
+      "cardinality": "0..1",
+      "description": "Total price of the charge overriding the list price associated with the code.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.overrideReason",
+      "name": "overrideReason",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "If the list price or the rule-based factor associated with the code is overridden, this attribute can capture a text to indicate the reason for this action.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.enterer",
+      "name": "enterer",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The device, practitioner, etc. who entered the charge item.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.enteredDate",
+      "name": "enteredDate",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "Date the charge item was entered.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.reason",
+      "name": "reason",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Describes why the event occurred in coded or textual form.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.service",
+      "name": "service",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Indicated the rendered service that caused this charge.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.productReference",
+      "name": "productReference",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Identifies the device, food, drug or other product being charged either by type code or reference to an instance.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.productCodeableConcept",
+      "name": "productCodeableConcept",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Identifies the device, food, drug or other product being charged either by type code or reference to an instance.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.account",
+      "name": "account",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Account into which this ChargeItems belongs.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.note",
+      "name": "note",
+      "type": "Annotation",
+      "cardinality": "0..*",
+      "description": "Comments made about the event by the performer, subject or other participants.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItem.supportingInformation",
+      "name": "supportingInformation",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Further information supporting this charge.",
+      "level": 1
+    }
+  ]
+}

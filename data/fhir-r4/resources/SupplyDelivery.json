@@ -1,0 +1,132 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "SupplyDelivery",
+  "url": "http://hl7.org/fhir/StructureDefinition/SupplyDelivery",
+  "version": "4.0.1",
+  "name": "SupplyDelivery",
+  "title": "SupplyDelivery",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Orders and Observations)",
+  "description": "Record of delivery of what was requested/ordered and provides evidence of delivery.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "SupplyDelivery",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "SupplyDelivery",
+      "name": "SupplyDelivery",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "Record of delivery of what was requested/ordered and provides evidence of delivery.",
+      "level": 0
+    },
+    {
+      "path": "SupplyDelivery.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "Identifier for the supply delivery event that is used to identify it across multiple disparate systems.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.basedOn",
+      "name": "basedOn",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "A plan, proposal or order that is fulfilled in whole or in part by this delivery.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.partOf",
+      "name": "partOf",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "A larger event of which this particular event is a component or step.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "0..1",
+      "description": "A code specifying the state of the delivery.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.patient",
+      "name": "patient",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A link to a resource representing the person whom the delivered item is for.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "Indicates the type of dispensing event that is performed.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.suppliedItem",
+      "name": "suppliedItem",
+      "type": "BackboneElement",
+      "cardinality": "0..1",
+      "description": "The item that is being delivered or has been supplied.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.occurrenceDateTime",
+      "name": "occurrenceDateTime",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date or time(s) the activity occurred.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.occurrencePeriod",
+      "name": "occurrencePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The date or time(s) the activity occurred.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.occurrenceTiming",
+      "name": "occurrenceTiming",
+      "type": "Timing",
+      "cardinality": "0..1",
+      "description": "The date or time(s) the activity occurred.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.supplier",
+      "name": "supplier",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "The individual responsible for dispensing the medication, supplier or device.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.destination",
+      "name": "destination",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "Identification of the facility/location where the Supply was shipped to, as part of the dispense event.",
+      "level": 1
+    },
+    {
+      "path": "SupplyDelivery.receiver",
+      "name": "receiver",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "Identifies the person who picked up the Supply.",
+      "level": 1
+    }
+  ]
+}

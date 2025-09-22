@@ -1,0 +1,284 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "Library",
+  "url": "http://hl7.org/fhir/StructureDefinition/Library",
+  "version": "4.0.1",
+  "name": "Library",
+  "title": "Library",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Clinical Decision Support)",
+  "description": "The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Library",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "Library",
+      "name": "Library",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "The Library resource is a general-purpose container for knowledge asset definitions.",
+      "level": 0
+    },
+    {
+      "path": "Library.url",
+      "name": "url",
+      "type": "uri",
+      "cardinality": "0..1",
+      "description": "An absolute URI that is used to identify this library when it is referenced in a specification, model, design or an instance; also called its canonical identifier.",
+      "level": 1
+    },
+    {
+      "path": "Library.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A formal identifier that is used to identify this library when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+      "level": 1
+    },
+    {
+      "path": "Library.version",
+      "name": "version",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The identifier that is used to identify this version of the library when it is referenced in a specification, model, design or instance.",
+      "level": 1
+    },
+    {
+      "path": "Library.name",
+      "name": "name",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A natural language name identifying the library.",
+      "level": 1
+    },
+    {
+      "path": "Library.title",
+      "name": "title",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A short, descriptive, user-friendly title for the library.",
+      "level": 1
+    },
+    {
+      "path": "Library.subtitle",
+      "name": "subtitle",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "An explanatory or alternate title for the library giving additional information about its content.",
+      "level": 1
+    },
+    {
+      "path": "Library.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The status of this library. Enables tracking the life-cycle of the content.",
+      "level": 1
+    },
+    {
+      "path": "Library.experimental",
+      "name": "experimental",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "A Boolean value to indicate that this library is authored for testing purposes and is not intended to be used for genuine usage.",
+      "level": 1
+    },
+    {
+      "path": "Library.type",
+      "name": "type",
+      "type": "CodeableConcept",
+      "cardinality": "1..1",
+      "description": "Identifies the type of library such as a Logic Library, Model Definition, Asset Collection, or Module Definition.",
+      "level": 1
+    },
+    {
+      "path": "Library.subjectCodeableConcept",
+      "name": "subjectCodeableConcept",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "A code or group definition that describes the intended subject of the contents of the library.",
+      "level": 1
+    },
+    {
+      "path": "Library.subjectReference",
+      "name": "subjectReference",
+      "type": "Reference",
+      "cardinality": "0..1",
+      "description": "A reference to a Group that describes the intended subject of the contents of the library.",
+      "level": 1
+    },
+    {
+      "path": "Library.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date (and optionally time) when the library was published.",
+      "level": 1
+    },
+    {
+      "path": "Library.publisher",
+      "name": "publisher",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The name of the organization or individual that published the library.",
+      "level": 1
+    },
+    {
+      "path": "Library.contact",
+      "name": "contact",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "Contact details to assist a user in finding and communicating with the publisher.",
+      "level": 1
+    },
+    {
+      "path": "Library.description",
+      "name": "description",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A free text natural language description of the library from a consumer's perspective.",
+      "level": 1
+    },
+    {
+      "path": "Library.useContext",
+      "name": "useContext",
+      "type": "UsageContext",
+      "cardinality": "0..*",
+      "description": "The content was developed with a focus and intent of supporting the contexts that are listed.",
+      "level": 1
+    },
+    {
+      "path": "Library.jurisdiction",
+      "name": "jurisdiction",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A legal or geographic region in which the library is intended to be used.",
+      "level": 1
+    },
+    {
+      "path": "Library.purpose",
+      "name": "purpose",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "Explanation of why this library is needed and why it has been designed as it has.",
+      "level": 1
+    },
+    {
+      "path": "Library.usage",
+      "name": "usage",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A detailed description of how the library is used from a clinical perspective.",
+      "level": 1
+    },
+    {
+      "path": "Library.copyright",
+      "name": "copyright",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A copyright statement relating to the library and/or its contents.",
+      "level": 1
+    },
+    {
+      "path": "Library.approvalDate",
+      "name": "approvalDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date on which the resource content was approved by the publisher.",
+      "level": 1
+    },
+    {
+      "path": "Library.lastReviewDate",
+      "name": "lastReviewDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date on which the resource content was last reviewed.",
+      "level": 1
+    },
+    {
+      "path": "Library.effectivePeriod",
+      "name": "effectivePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period during which the library content was or is planned to be in active use.",
+      "level": 1
+    },
+    {
+      "path": "Library.topic",
+      "name": "topic",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "Descriptive topics related to the content of the library.",
+      "level": 1
+    },
+    {
+      "path": "Library.author",
+      "name": "author",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individiual or organization primarily involved in the creation and maintenance of the content.",
+      "level": 1
+    },
+    {
+      "path": "Library.editor",
+      "name": "editor",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individual or organization primarily responsible for internal coherence of the content.",
+      "level": 1
+    },
+    {
+      "path": "Library.reviewer",
+      "name": "reviewer",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individual or organization primarily responsible for review of some aspect of the content.",
+      "level": 1
+    },
+    {
+      "path": "Library.endorser",
+      "name": "endorser",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "An individual or organization responsible for officially endorsing the content for use in some setting.",
+      "level": 1
+    },
+    {
+      "path": "Library.relatedArtifact",
+      "name": "relatedArtifact",
+      "type": "RelatedArtifact",
+      "cardinality": "0..*",
+      "description": "Related artifacts such as additional documentation, justification, or bibliographic references.",
+      "level": 1
+    },
+    {
+      "path": "Library.parameter",
+      "name": "parameter",
+      "type": "ParameterDefinition",
+      "cardinality": "0..*",
+      "description": "The parameter element defines parameters used by the library.",
+      "level": 1
+    },
+    {
+      "path": "Library.dataRequirement",
+      "name": "dataRequirement",
+      "type": "DataRequirement",
+      "cardinality": "0..*",
+      "description": "Describes a set of data that must be provided in order to be able to successfully perform the computations defined by the library.",
+      "level": 1
+    },
+    {
+      "path": "Library.content",
+      "name": "content",
+      "type": "Attachment",
+      "cardinality": "0..*",
+      "description": "The content of the library as an Attachment.",
+      "level": 1
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ChargeItemDefinition",
+  "url": "http://hl7.org/fhir/StructureDefinition/ChargeItemDefinition",
+  "version": "4.0.1",
+  "name": "ChargeItemDefinition",
+  "title": "ChargeItemDefinition",
+  "status": "active",
+  "date": "2019-11-01T09:29:23+11:00",
+  "publisher": "Health Level Seven International (Patient Administration)",
+  "description": "The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices. The properties may differ largely depending on type and realm, therefore this resource gives only a rough structure and requires profiling for each type of billing code system.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ChargeItemDefinition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DomainResource",
+  "derivation": "specialization",
+  "elements": [
+    {
+      "path": "ChargeItemDefinition",
+      "name": "ChargeItemDefinition",
+      "type": "Resource",
+      "cardinality": "",
+      "description": "The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices.",
+      "level": 0
+    },
+    {
+      "path": "ChargeItemDefinition.url",
+      "name": "url",
+      "type": "uri",
+      "cardinality": "1..1",
+      "description": "An absolute URI that is used to identify this charge item definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.identifier",
+      "name": "identifier",
+      "type": "Identifier",
+      "cardinality": "0..*",
+      "description": "A formal identifier that is used to identify this charge item definition when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.version",
+      "name": "version",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The identifier that is used to identify this version of the charge item definition when it is referenced in a specification, model, design or instance.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.title",
+      "name": "title",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "A short, descriptive, user-friendly title for the charge item definition.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.derivedFromUri",
+      "name": "derivedFromUri",
+      "type": "uri",
+      "cardinality": "0..*",
+      "description": "The URL pointing to an externally-defined charge item definition that is adhered to in whole or in part by this definition.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.partOf",
+      "name": "partOf",
+      "type": "canonical",
+      "cardinality": "0..*",
+      "description": "A larger definition of which this particular definition is a component or step.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.replaces",
+      "name": "replaces",
+      "type": "canonical",
+      "cardinality": "0..*",
+      "description": "As new versions of a protocol or guideline are defined, allows identification of what versions are replaced by a new instance.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.status",
+      "name": "status",
+      "type": "code",
+      "cardinality": "1..1",
+      "description": "The current state of this charge item definition.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.experimental",
+      "name": "experimental",
+      "type": "boolean",
+      "cardinality": "0..1",
+      "description": "A Boolean value to indicate that this charge item definition is authored for testing purposes and is not intended to be used for genuine usage.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.date",
+      "name": "date",
+      "type": "dateTime",
+      "cardinality": "0..1",
+      "description": "The date (and optionally time) when the charge item definition was published.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.publisher",
+      "name": "publisher",
+      "type": "string",
+      "cardinality": "0..1",
+      "description": "The name of the organization or individual that published the charge item definition.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.contact",
+      "name": "contact",
+      "type": "ContactDetail",
+      "cardinality": "0..*",
+      "description": "Contact details to assist a user in finding and communicating with the publisher.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.description",
+      "name": "description",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A free text natural language description of the charge item definition from a consumer's perspective.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.useContext",
+      "name": "useContext",
+      "type": "UsageContext",
+      "cardinality": "0..*",
+      "description": "The content was developed with a focus and intent of supporting the contexts that are listed.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.jurisdiction",
+      "name": "jurisdiction",
+      "type": "CodeableConcept",
+      "cardinality": "0..*",
+      "description": "A legal or geographic region in which the charge item definition is intended to be used.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.copyright",
+      "name": "copyright",
+      "type": "markdown",
+      "cardinality": "0..1",
+      "description": "A copyright statement relating to the charge item definition and/or its contents.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.approvalDate",
+      "name": "approvalDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date on which the resource content was approved by the publisher.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.lastReviewDate",
+      "name": "lastReviewDate",
+      "type": "date",
+      "cardinality": "0..1",
+      "description": "The date on which the resource content was last reviewed.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.effectivePeriod",
+      "name": "effectivePeriod",
+      "type": "Period",
+      "cardinality": "0..1",
+      "description": "The period during which the charge item definition content was or is planned to be in active use.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.code",
+      "name": "code",
+      "type": "CodeableConcept",
+      "cardinality": "0..1",
+      "description": "The defined billing details in this resource pertain to the given billing code.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.instance",
+      "name": "instance",
+      "type": "Reference",
+      "cardinality": "0..*",
+      "description": "The defined billing details in this resource pertain to the given product instance(s).",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.applicability",
+      "name": "applicability",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Expressions that describe applicability criteria for the billing code.",
+      "level": 1
+    },
+    {
+      "path": "ChargeItemDefinition.propertyGroup",
+      "name": "propertyGroup",
+      "type": "BackboneElement",
+      "cardinality": "0..*",
+      "description": "Group of properties which are applicable under the same conditions.",
+      "level": 1
+    }
+  ]
+}
