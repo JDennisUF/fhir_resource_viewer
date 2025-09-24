@@ -10,12 +10,17 @@ class FHIRViewer {
         this.storage = new FHIRStorage();
         this.usCoreLinks = new USCoreLinks();
         this.examplesLoader = new ExamplesLoader(this);
+        this.favoritesManager = new FavoritesManager();
+        
+        // Make favorites manager globally available for HTML onclick handlers
+        window.favoritesManager = this.favoritesManager;
         
         this.init();
     }
 
     async init() {
         this.setupTheme();
+        this.setupFavorites();
         this.setupEventListeners();
         this.showLoading();
         
@@ -55,6 +60,9 @@ class FHIRViewer {
             
             this.renderResourceTree();
             
+            // Update favorites UI now that all managers and data are loaded
+            this.favoritesManager.updateFavoritesUI();
+            
             // Make available globally for examples loader
             window.fhirViewer = window.fhirViewer || {};
             window.fhirViewer.examplesLoader = this.examplesLoader;
@@ -74,33 +82,67 @@ class FHIRViewer {
         themeToggle.textContent = this.currentTheme === 'dark' ? '☀️' : '🌙';
     }
 
+    setupFavorites() {
+        // Initialize favorites UI state
+        const favoritesCollapsed = localStorage.getItem('favoritesCollapsed') === 'true';
+        const container = document.getElementById('favoritesContainer');
+        const toggle = document.getElementById('favoritesToggle');
+        
+        if (container && toggle) {
+            if (favoritesCollapsed) {
+                container.classList.add('collapsed');
+                toggle.textContent = '▲';
+            } else {
+                container.classList.remove('collapsed');
+                toggle.textContent = '▼';
+            }
+        }
+        
+        // Note: Favorites UI will be updated after managers and data are loaded
+    }
+
     setupEventListeners() {
         // Theme toggle
-        document.getElementById('toggleTheme').addEventListener('click', () => {
-            this.toggleTheme();
-        });
+        const themeToggle = document.getElementById('toggleTheme');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                this.toggleTheme();
+            });
+        }
 
         // Search functionality
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            this.handleSearch(e.target.value);
-        });
-
-        // Spec filter
-        document.getElementById('specFilter').addEventListener('change', (e) => {
-            this.handleSpecFilter(e.target.value);
-        });
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.handleSearch(e.target.value);
+            });
+        }
 
         // Modal close
-        document.querySelector('.close').addEventListener('click', () => {
-            this.hideError();
-        });
+        const closeButton = document.querySelector('.close');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                this.hideError();
+            });
+        }
+
+        // Favorites toggle
+        const favoritesToggle = document.getElementById('favoritesToggle');
+        if (favoritesToggle) {
+            favoritesToggle.addEventListener('click', () => {
+                this.toggleFavoritesSection();
+            });
+        }
 
         // Click outside modal to close
-        document.getElementById('errorModal').addEventListener('click', (e) => {
-            if (e.target.id === 'errorModal') {
-                this.hideError();
-            }
-        });
+        const errorModal = document.getElementById('errorModal');
+        if (errorModal) {
+            errorModal.addEventListener('click', (e) => {
+                if (e.target.id === 'errorModal') {
+                    this.hideError();
+                }
+            });
+        }
 
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
@@ -123,6 +165,20 @@ class FHIRViewer {
         themeToggle.textContent = this.currentTheme === 'dark' ? '☀️' : '🌙';
     }
 
+    toggleFavoritesSection() {
+        const container = document.getElementById('favoritesContainer');
+        const toggle = document.getElementById('favoritesToggle');
+        
+        if (container && toggle) {
+            const isCollapsed = container.classList.contains('collapsed');
+            container.classList.toggle('collapsed');
+            toggle.textContent = isCollapsed ? '▼' : '▲';
+            
+            // Save state
+            localStorage.setItem('favoritesCollapsed', !isCollapsed);
+        }
+    }
+
     async loadFHIRDataFromStorage() {
         // Load all available resource files directly since the index is incomplete
         this.fhirData = {
@@ -135,7 +191,7 @@ class FHIRViewer {
             const resourceFiles = [
                 'Account', 'ActivityDefinition', 'AdverseEvent', 'AllergyIntolerance', 'Appointment', 'AppointmentResponse', 'AuditEvent', 'Basic', 'Binary', 'BiologicallyDerivedProduct', 'BodyStructure', 'Bundle', 'CapabilityStatement', 
                 'CarePlan', 'CareTeam', 'CatalogEntry', 'ChargeItem', 'ChargeItemDefinition', 'Claim', 'ClaimResponse', 'ClinicalImpression', 'CodeSystem', 'Communication', 'CommunicationRequest', 'CompartmentDefinition', 'Composition', 'ConceptMap', 'Consent', 'Contract',
-                'Condition', 'Coverage', 'CoverageEligibilityRequest', 'CoverageEligibilityResponse', 'DetectedIssue', 'Device', 'DeviceRequest', 'DeviceUseStatement', 'DiagnosticReport', 'DocumentReference',
+                'Condition', 'Coverage', 'CoverageEligibilityRequest', 'CoverageEligibilityResponse', 'DetectedIssue', 'Device', 'DeviceRequest', 'DeviceUseStatement', 'DiagnosticReport', 'DocumentReference', 'DomainResource',
                 'Encounter', 'Endpoint', 'EnrollmentRequest', 'EnrollmentResponse', 'EpisodeOfCare', 'EventDefinition', 'ExampleScenario', 'ExplanationOfBenefit', 'FamilyMemberHistory', 'Flag', 'Goal', 'GraphDefinition', 'Group', 'GuidanceResponse', 'HealthcareService', 'ImagingStudy', 'Immunization', 'InsurancePlan',
                 'ImplementationGuide', 'Invoice', 'Library', 'Linkage', 'List', 'Location', 'Measure', 'MeasureReport', 'Media', 'Medication', 'MedicationAdministration',
                 'MedicationDispense', 'MedicationRequest', 'MedicationStatement', 'MessageDefinition', 'MolecularSequence',
@@ -269,7 +325,7 @@ class FHIRViewer {
         }
     }
 
-    async selectResource(resourceName, type) {
+    async selectResource(resourceName, type, event = null) {
         // Remove active class from all items
         document.querySelectorAll('.tree-item').forEach(item => {
             item.classList.remove('active');
@@ -277,13 +333,45 @@ class FHIRViewer {
         
         // Add active class to selected item
         if (event && event.target) {
-            event.target.closest('.tree-item').classList.add('active');
+            const treeItem = event.target.closest('.tree-item');
+            if (treeItem) {
+                treeItem.classList.add('active');
+            }
+        } else {
+            // When called from favorites or programmatically, find the tree item by resource name
+            const resourceNodeContainer = document.querySelector(`[data-resource="${resourceName}"][data-spec="${type}"]`);
+            if (resourceNodeContainer) {
+                const treeItem = resourceNodeContainer.querySelector('.tree-item');
+                if (treeItem) {
+                    treeItem.classList.add('active');
+                    
+                    // Ensure parent nodes are expanded
+                    this.expandParentNodes(resourceNodeContainer);
+                }
+            }
         }
         
         // Load full resource content on demand
         this.currentResource = { name: resourceName, type: type };
         await this.loadFullResourceContent(resourceName, type);
         this.renderResourceContent();
+    }
+
+    expandParentNodes(node) {
+        // Expand any collapsed parent containers to make the selected node visible
+        let currentNode = node.parentElement;
+        while (currentNode) {
+            if (currentNode.classList && currentNode.classList.contains('tree-children') && currentNode.classList.contains('collapsed')) {
+                currentNode.classList.remove('collapsed');
+                
+                // Update the toggle icon
+                const toggleIcon = currentNode.previousElementSibling?.querySelector('.tree-toggle');
+                if (toggleIcon) {
+                    toggleIcon.textContent = '▼';
+                }
+            }
+            currentNode = currentNode.parentElement;
+        }
     }
 
     async loadFullResourceContent(resourceName, spec) {
@@ -441,33 +529,10 @@ class FHIRViewer {
         }
         document.getElementById('resourceTitle').textContent = displayTitle;
         
-        // Create appropriate breadcrumb using cleaned display name
-        const cleanDisplayName = this.getCurrentResourceDisplayName();
-        let breadcrumbHTML;
-        const resourceInfo = this.storage.findResourceInfo(name, type);
-        if (resourceInfo?.type === 'datatype') {
-            breadcrumbHTML = `
-                <a href="#" onclick="app.clearSelection()">Home</a> > 
-                <span>FHIR Data Types</span> > 
-                ${cleanDisplayName}
-            `;
-        } else {
-            const specDisplayName = type === 'fhir-r4' ? 'FHIR R4' : type === 'us-core-stu6.1' ? 'US Core' : type;
-            let resourceBreadcrumb = cleanDisplayName;
-            
-            // For US Core profiles, create a link to the local documentation
-            if (type === 'us-core-stu6.1' && this.usCoreLinks.hasProfileLink(cleanDisplayName)) {
-                resourceBreadcrumb = this.usCoreLinks.createProfileLink(cleanDisplayName);
-            }
-            
-            breadcrumbHTML = `
-                <a href="#" onclick="app.clearSelection()">Home</a> > 
-                <a href="#" onclick="app.showTypeResources('${type}')">${specDisplayName}</a> > 
-                ${resourceBreadcrumb}
-            `;
+        // Use navigation manager's breadcrumb system for consistency
+        if (this.navigationManager) {
+            this.navigationManager.updateBreadcrumb(type, name);
         }
-        
-        document.getElementById('breadcrumb').innerHTML = breadcrumbHTML;
         
         // Show tabs for this resource
         this.examplesLoader.showTabsForResource(name);
@@ -493,7 +558,7 @@ class FHIRViewer {
         const fhirResources = [
             'AllergyIntolerance', 'Basic', 'Binary', 'Bundle', 'CapabilityStatement', 
             'CarePlan', 'CareTeam', 'CodeSystem', 'CompartmentDefinition', 'ConceptMap',
-            'Condition', 'Coverage', 'Device', 'DiagnosticReport', 'DocumentReference',
+            'Condition', 'Coverage', 'Device', 'DiagnosticReport', 'DocumentReference', 'DomainResource',
             'Encounter', 'ExampleScenario', 'Goal', 'GraphDefinition', 'Immunization',
             'ImplementationGuide', 'Linkage', 'Location', 'Medication', 'MedicationAdministration',
             'MedicationDispense', 'MedicationRequest', 'MedicationStatement', 'MessageDefinition',
@@ -521,15 +586,21 @@ class FHIRViewer {
             // Clean up the type (remove Reference(...) wrappers, etc.)
             const cleanType = this.extractCleanTypeName(trimmedType);
             
-            // Check if this is a FHIR resource that should link to R4 spec
-            if (fhirResources.includes(cleanType)) {
-                const fhirUrl = `https://hl7.org/fhir/R4/${cleanType.toLowerCase()}.html`;
-                return `<a href="${fhirUrl}" target="_blank" class="fhir-resource-link" title="View ${cleanType} in FHIR R4 specification">${trimmedType}</a>`;
+            // First check if this is a resource we have internally - prioritize internal navigation
+            const internalResources = Object.keys(this.fhirData['fhir-r4'] || {});
+            if (internalResources.includes(cleanType)) {
+                return `<a href="#" onclick="app.selectResource('${cleanType}', 'fhir-r4')" class="fhir-resource-link" title="View ${cleanType} definition">${trimmedType}</a>`;
             }
             
             // Check if this is a data type we have
             if (availableDataTypes.includes(cleanType)) {
                 return `<a href="#" onclick="app.selectDataType('${cleanType}')" class="datatype-link" title="View ${cleanType} definition">${trimmedType}</a>`;
+            }
+            
+            // Fallback: Check if this is a FHIR resource that should link to external R4 spec
+            if (fhirResources.includes(cleanType)) {
+                const fhirUrl = `https://hl7.org/fhir/R4/${cleanType.toLowerCase()}.html`;
+                return `<a href="${fhirUrl}" target="_blank" class="fhir-resource-link" title="View ${cleanType} in FHIR R4 specification">${trimmedType}</a>`;
             }
             
             return trimmedType;
@@ -605,7 +676,6 @@ class FHIRViewer {
     generateResourceHTML(resource) {
         let html = `
             <div class="resource-section">
-                <h3>Description</h3>
                 <p>${resource.description}</p>
             </div>
         `;
@@ -624,7 +694,6 @@ class FHIRViewer {
             const isProfile = resource.type === 'profile';
             html += `
                 <div class="resource-section">
-                    <h3>Elements</h3>
                     <div class="element-hierarchy">
                         <div class="element-header${isProfile ? ' has-must-support' : ''}">
                             <div class="element-cell element-name-header">Element</div>
@@ -782,7 +851,6 @@ class FHIRViewer {
                 }
             }
         });
-        
         
         return hierarchy;
     }
@@ -1005,7 +1073,7 @@ class FHIRViewer {
                 <div class="spec-panels">
                     <div class="spec-panel fhir-panel">
                         <div class="panel-header">
-                            <h4>🔗 FHIR R4 Base Specification</h4>
+                            <h4>🌐 FHIR R4 Base Specification</h4>
                             <span class="panel-version">v4.0.1</span>
                         </div>
                         <div class="panel-content">

@@ -145,6 +145,14 @@ class ExamplesLoader {
 
             examplesContent.innerHTML = this.renderExamples(validExamples, resourceType);
             
+            // Apply Prism.js syntax highlighting
+            if (window.Prism) {
+                window.Prism.highlightAll();
+            }
+            
+            // Set up event delegation for copy buttons
+            this.setupCopyButtonHandlers();
+            
         } catch (error) {
             examplesContent.innerHTML = this.renderExampleError(error);
         }
@@ -219,13 +227,13 @@ class ExamplesLoader {
                 </div>
                 
                 <div class="example-content">
-                    <div class="example-json">${this.escapeHtml(jsonString)}</div>
+                    <pre class="example-json"><code class="language-json">${this.escapeHtml(jsonString)}</code></pre>
                     ${cleanedData.text && cleanedData.text.div && cleanedData.text.div.includes('[HTML content hidden') ? 
                         '<p class="narrative-note"><small>💡 <strong>Note:</strong> This example contains a <code>text.div</code> field with HTML narrative content (hidden for readability). The narrative provides a human-readable summary of the resource data.</small></p>' : ''}
                 </div>
                 
                 <div class="example-actions">
-                    <button class="example-button primary" onclick="window.fhirViewer.examplesLoader.copyToClipboard('${example.id}')">
+                    <button class="example-button primary" data-example-id="${example.id}" data-action="copy">
                         📋 Copy JSON
                     </button>
                 </div>
@@ -258,22 +266,88 @@ class ExamplesLoader {
             // Find the example in our loaded data
             const example = this.findExampleById(exampleId);
             if (!example) {
-                throw new Error('Example not found');
+                console.error('Example not found for ID:', exampleId);
+                console.error('Available examples:', Array.from(this.cachedExamples.keys()));
+                throw new Error(`Example not found: ${exampleId}`);
             }
 
             const jsonString = JSON.stringify(example.data, null, 2);
-            await navigator.clipboard.writeText(jsonString);
+            
+            // Try modern clipboard API first
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(jsonString);
+            } else {
+                // Fallback for older browsers or non-HTTPS
+                this.fallbackCopyToClipboard(jsonString);
+            }
             
             // Show success feedback
             this.showCopyFeedback(exampleId, true);
         } catch (error) {
+            console.error('Copy to clipboard failed:', error);
             this.showCopyFeedback(exampleId, false);
         }
     }
 
+    fallbackCopyToClipboard(text) {
+        // Create a temporary textarea element
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            const successful = document.execCommand('copy');
+            if (!successful) {
+                throw new Error('Fallback copy failed');
+            }
+        } finally {
+            document.body.removeChild(textArea);
+        }
+    }
+
+    setupCopyButtonHandlers() {
+        const examplesContent = document.getElementById('examplesContent');
+        if (!examplesContent) return;
+        
+        // Remove any existing listeners to prevent duplicates
+        examplesContent.removeEventListener('click', this.handleCopyButtonClick);
+        
+        // Add event delegation for copy buttons
+        this.handleCopyButtonClick = (event) => {
+            const button = event.target.closest('[data-action="copy"]');
+            if (button) {
+                event.preventDefault();
+                const exampleId = button.getAttribute('data-example-id');
+                if (exampleId) {
+                    this.copyToClipboard(exampleId);
+                }
+            }
+        };
+        
+        examplesContent.addEventListener('click', this.handleCopyButtonClick);
+    }
 
     findExampleById(exampleId) {
-        // Search through all loaded examples to find the one with matching ID
+        // First, try to find it by directly looking through all resource types in the index
+        if (this.examplesIndex && this.examplesIndex.examplesByResourceType) {
+            for (const [resourceType, examples] of Object.entries(this.examplesIndex.examplesByResourceType)) {
+                const exampleMeta = examples.find(e => e.id === exampleId);
+                if (exampleMeta) {
+                    // Get the cached data for this example
+                    const cachedData = this.cachedExamples.get(exampleMeta.file);
+                    if (cachedData) {
+                        return { ...exampleMeta, data: cachedData };
+                    }
+                }
+            }
+        }
+        
+        // Fallback: Search through cached examples (old method)
         for (const [key, data] of this.cachedExamples) {
             // Get the resource type from the filename
             const resourceType = key.split('-')[0];
@@ -284,12 +358,14 @@ class ExamplesLoader {
                 return { ...exampleMeta, data };
             }
         }
+        
+        console.error('Could not find example with ID:', exampleId);
         return null;
     }
 
     showCopyFeedback(exampleId, success) {
         // Find the copy button and show feedback
-        const button = document.querySelector(`[onclick*="${exampleId}"]`);
+        const button = document.querySelector(`[data-example-id="${exampleId}"][data-action="copy"]`);
         if (button && button.textContent.includes('Copy')) {
             const originalText = button.textContent;
             button.textContent = success ? '✅ Copied!' : '❌ Failed';

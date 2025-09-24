@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlan Detail Display Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CarePlan Detail Field Display Test</h1>
+        <div id="test-container">
+            <div class="element-hierarchy">
+                <div class="element-header">
+                    <div class="element-cell">Element</div>
+                    <div class="element-cell">Type</div>
+                    <div class="element-cell">Cardinality</div>
+                    <div class="element-cell">Description</div>
+                </div>
+                <div id="activity-test"></div>
+            </div>
+        </div>
+        <div id="debug-info"></div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    
+    <script>
+        async function testCarePlanDisplay() {
+            try {
+                // Load CarePlan data
+                const response = await fetch('./data/fhir-r4/resources/CarePlan.json');
+                const carePlanData = await response.json();
+                
+                // Create a minimal app instance for testing
+                const app = new FHIRViewer();
+                app.currentResource = { name: 'CarePlan', type: 'fhir-r4' };
+                app.currentResourceData = carePlanData;
+                
+                // Build hierarchy
+                const hierarchy = app.buildElementHierarchy(carePlanData.elements);
+                
+                // Find activity element
+                const activityElement = hierarchy.find(h => h.name === 'activity');
+                
+                if (activityElement) {
+                    // Render just the activity element and its children
+                    const html = app.renderElementNode(activityElement, false, 0);
+                    document.getElementById('activity-test').innerHTML = html;
+                    
+                    // Add debug info
+                    const detailElement = activityElement.children?.find(c => c.name === 'detail');
+                    const debugInfo = `
+                        <h3>Debug Information</h3>
+                        <p>Activity element children: ${activityElement.children?.length || 0}</p>
+                        <p>Detail element found: ${!!detailElement}</p>
+                        <p>Detail element children: ${detailElement?.children?.length || 0}</p>
+                        <h4>Detail Children List:</h4>
+                        <ol>
+                            ${detailElement?.children?.map(c => `<li>${c.name} (${c.type})</li>`).join('') || 'None'}
+                        </ol>
+                    `;
+                    document.getElementById('debug-info').innerHTML = debugInfo;
+                } else {
+                    document.getElementById('activity-test').innerHTML = '<p>Activity element not found</p>';
+                }
+                
+                // Make toggleElementChildren available globally for the HTML
+                window.app = app;
+                
+            } catch (error) {
+                document.getElementById('test-container').innerHTML = `<p>Error: ${error.message}</p>`;
+                console.error('Error:', error);
+            }
+        }
+        
+        // Run test when page loads
+        testCarePlanDisplay();
+    </script>
+</body>
+</html>

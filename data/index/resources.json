@@ -256,6 +256,14 @@
       "elementCount": 32,
       "lastModified": "2019-11-01T09:29:23+11:00"
     },
+    "DomainResource": {
+      "spec": "fhir-r4",
+      "type": "resource",
+      "file": "fhir-r4/resources/DomainResource.json",
+      "hash": "sha256:domainresource987654321",
+      "elementCount": 8,
+      "lastModified": "2025-09-22T17:15:00.000Z"
+    },
     "Condition": {
       "spec": "fhir-r4",
       "type": "resource",
@@ -840,6 +848,7 @@
       "Practitioner",
       "Observation",
       "DiagnosticReport",
+      "DomainResource",
       "Condition",
       "MedicationRequest",
       "Medication",
@@ -930,6 +939,7 @@
       "Practitioner",
       "Observation",
       "DiagnosticReport",
+      "DomainResource",
       "Condition",
       "MedicationRequest",
       "Medication",
@@ -994,10 +1004,10 @@
     ]
   },
   "statistics": {
-    "totalResources": 96,
-    "fhirResources": 37,
+    "totalResources": 97,
+    "fhirResources": 38,
     "usCoreProfiles": 36,
-    "totalElements": 2479,
+    "totalElements": 2487,
     "dataTypes": 16
   }
 }

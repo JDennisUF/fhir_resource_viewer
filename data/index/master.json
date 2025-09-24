@@ -1,11 +1,11 @@
 {
-  "version": "1.0.1",
-  "lastUpdated": "2025-09-22T15:30:00.000Z",
+  "version": "1.0.3",
+  "lastUpdated": "2025-09-22T17:15:00.000Z",
   "specifications": {
     "fhir-r4": {
       "version": "4.0.1",
       "title": "FHIR R4 Base Specification",
-      "resourceCount": 27,
+      "resourceCount": 38,
       "path": "fhir-r4/metadata.json",
       "baseUrl": "https://hl7.org/fhir/R4/"
     },
@@ -22,9 +22,9 @@
     "elements": "index/elements.json"
   },
   "stats": {
-    "totalResources": 86,
-    "totalElements": 2038,
-    "fhirResourcesDownloaded": 27,
+    "totalResources": 97,
+    "totalElements": 2484,
+    "fhirResourcesDownloaded": 38,
     "usCoreProfilesDownloaded": 36,
     "errors": 2,
     "dataTypesCreated": 16

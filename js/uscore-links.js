@@ -21,6 +21,7 @@ class FHIRR4Links {
             'Device': 'https://hl7.org/fhir/R4/device.html',
             'DiagnosticReport': 'https://hl7.org/fhir/R4/diagnosticreport.html',
             'DocumentReference': 'https://hl7.org/fhir/R4/documentreference.html',
+            'DomainResource': 'https://hl7.org/fhir/R4/domainresource.html',
             'Encounter': 'https://hl7.org/fhir/R4/encounter.html',
             'ExampleScenario': 'https://hl7.org/fhir/R4/examplescenario.html',
             'Goal': 'https://hl7.org/fhir/R4/goal.html',

@@ -18,6 +18,11 @@ class SearchManager {
         const searchInput = document.getElementById('searchInput');
         const clearButton = document.getElementById('clearSearch');
         
+        if (!searchInput || !clearButton) {
+            console.error('Search elements not found');
+            return;
+        }
+        
         // Debounced search
         let searchTimeout;
         searchInput.addEventListener('input', (e) => {
@@ -56,10 +61,7 @@ class SearchManager {
             this.clearSearch();
         });
         
-        // Spec filter
-        document.getElementById('specFilter').addEventListener('change', (e) => {
-            this.updateFilter('spec', e.target.value);
-        });
+        // Spec filter removed - no longer needed
         
         // Initialize clear button visibility
         this.toggleClearButton('');
@@ -340,8 +342,10 @@ class SearchManager {
             const summary = document.createElement('div');
             summary.className = 'search-summary';
             summary.innerHTML = `
-                <p>Found ${count} result${count !== 1 ? 's' : ''} for "${this.currentQuery}"</p>
-                <button onclick="app.searchManager.clearSearch()" class="clear-search">Clear Search</button>
+                <div class="search-results-header">
+                    <span class="search-results-text">Found ${count} result${count !== 1 ? 's' : ''} for "${this.currentQuery}"</span>
+                    <button onclick="app.searchManager.clearSearch()" class="clear-search-circular" title="Clear Search">⊗</button>
+                </div>
             `;
             
             document.getElementById('resourceTree').prepend(summary);

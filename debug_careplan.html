@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlan Debug</title>
+</head>
+<body>
+    <h1>CarePlan Element Hierarchy Debug</h1>
+    <div id="results"></div>
+
+    <script>
+        async function debugCarePlan() {
+            try {
+                // Load CarePlan data
+                const response = await fetch('./data/fhir-r4/resources/CarePlan.json');
+                const carePlanData = await response.json();
+                
+                const results = document.getElementById('results');
+                
+                // Count total elements
+                results.innerHTML += `<h2>Total Elements: ${carePlanData.elements.length}</h2>`;
+                
+                // Find activity-related elements
+                const activityElements = carePlanData.elements.filter(e => 
+                    e.path && e.path.includes('activity')
+                );
+                
+                results.innerHTML += `<h2>Activity Elements: ${activityElements.length}</h2>`;
+                
+                // Find activity.detail elements specifically
+                const activityDetailElements = carePlanData.elements.filter(e => 
+                    e.path && e.path.includes('activity.detail')
+                );
+                
+                results.innerHTML += `<h2>Activity.Detail Elements: ${activityDetailElements.length}</h2>`;
+                
+                // Show all activity.detail paths
+                results.innerHTML += '<h3>Activity.Detail Paths:</h3><ul>';
+                activityDetailElements.forEach(e => {
+                    results.innerHTML += `<li>${e.path} (${e.name})</li>`;
+                });
+                results.innerHTML += '</ul>';
+                
+                // Test the hierarchy building logic with only activity.detail elements
+                const hierarchy = buildElementHierarchy(activityDetailElements);
+                results.innerHTML += `<h2>Built Hierarchy Nodes: ${hierarchy.length}</h2>`;
+                
+                // Show hierarchy structure
+                results.innerHTML += '<h3>Hierarchy Structure:</h3>';
+                hierarchy.forEach(node => {
+                    showNode(node, 0);
+                });
+                
+            } catch (error) {
+                document.getElementById('results').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+        
+        function showNode(node, depth) {
+            const results = document.getElementById('results');
+            const indent = '&nbsp;'.repeat(depth * 4);
+            results.innerHTML += `<div>${indent}${node.name} (${node.children ? node.children.length : 0} children)</div>`;
+            
+            if (node.children && node.children.length > 0) {
+                node.children.forEach(child => showNode(child, depth + 1));
+            }
+        }
+        
+        function buildElementHierarchy(elements) {
+            const hierarchy = [];
+            const elementMap = new Map();
+            const addedToHierarchy = new Set();
+            
+            // First pass: create map of all elements by their path
+            elements.forEach(element => {
+                const path = element.path || element.name;
+                elementMap.set(path, {
+                    ...element,
+                    children: [],
+                    fullPath: path
+                });
+            });
+            
+            // Second pass: build hierarchy
+            elements.forEach(element => {
+                const path = element.path || element.name;
+                const pathParts = path.split('.');
+                
+                if (pathParts.length <= 3) {
+                    // Top-level for this subset (e.g., "CarePlan.activity.detail")
+                    const elementNode = elementMap.get(path);
+                    if (elementNode && !addedToHierarchy.has(path)) {
+                        hierarchy.push(elementNode);
+                        addedToHierarchy.add(path);
+                    }
+                } else {
+                    // Child element (e.g., "CarePlan.activity.detail.kind")
+                    const parentPath = pathParts.slice(0, -1).join('.');
+                    const parent = elementMap.get(parentPath);
+                    if (parent) {
+                        const childNode = elementMap.get(path);
+                        if (childNode) {
+                            parent.children.push(childNode);
+                            addedToHierarchy.add(path);
+                        }
+                    } else {
+                        // If parent not found, treat as top-level (fallback)
+                        const elementNode = elementMap.get(path);
+                        if (elementNode && !addedToHierarchy.has(path)) {
+                            hierarchy.push(elementNode);
+                            addedToHierarchy.add(path);
+                        }
+                    }
+                }
+            });
+            
+            return hierarchy;
+        }
+        
+        // Run the debug when page loads
+        debugCarePlan();
+    </script>
+</body>
+</html>

@@ -17,12 +17,28 @@
     --item-hover-bg: #f8f9fa;
     --table-header-bg: #f8f9fa;
     --footer-bg: #f8f9fa;
-    --code-bg: #f8f9fa;
+    --code-bg: #ffffff;
     --tag-bg: #e9ecef;
     --tag-text: #495057;
     --success-color: #27ae60;
     --warning-color: #f39c12;
     --danger-color: #e74c3c;
+    --error-color: #e74c3c;
+    
+    /* Panel and card styling */
+    --card-bg: #ffffff;
+    
+    /* Info section styling */
+    --info-bg: #d1ecf1;
+    --info-border: #bee5eb;
+    --info-text: #0c5460;
+    
+    /* Panel header gradients */
+    --fhir-panel-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --uscore-panel-gradient: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    
+    /* Type link colors */
+    --type-link-color: #0066cc;
 }
 
 /* Dark Theme */
@@ -44,12 +60,28 @@
     --item-hover-bg: #404040;
     --table-header-bg: #404040;
     --footer-bg: #2d2d2d;
-    --code-bg: #2d2d2d;
+    --code-bg: #0d1117;
     --tag-bg: #404040;
     --tag-text: #e8e8e8;
     --success-color: #2ecc71;
     --warning-color: #f1c40f;
     --danger-color: #e67e22;
+    --error-color: #e67e22;
+    
+    /* Panel and card styling */
+    --card-bg: #2d2d2d;
+    
+    /* Info section styling */
+    --info-bg: #2d4a3d;
+    --info-border: #404040;
+    --info-text: #a8d8a8;
+    
+    /* Panel header gradients */
+    --fhir-panel-gradient: linear-gradient(135deg, #404040 0%, #505050 100%);
+    --uscore-panel-gradient: linear-gradient(135deg, #4a4020 0%, #5a5030 100%);
+    
+    /* Type link colors */
+    --type-link-color: #bb88ff;
 }
 
 /* High Contrast Theme */

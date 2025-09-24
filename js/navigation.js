@@ -73,6 +73,11 @@ class NavigationManager {
         
         // Set up tree item event listeners
         this.setupTreeEventListeners();
+        
+        // Update favorite button states
+        if (window.favoritesManager) {
+            window.favoritesManager.updateFavoriteButtons();
+        }
     }
 
     createTreeStructure(data) {
@@ -167,6 +172,7 @@ class NavigationManager {
         item.setAttribute('tabindex', '0');
         item.innerHTML = `
             <span class="tree-toggle" data-toggle="${resourceName}">▶</span>
+            <button class="favorite-button" data-resource="${resourceName}" data-spec="${specType}" title="Add to favorites" onclick="event.stopPropagation(); window.favoritesManager.toggleFavorite('${resourceName}', '${specType}', 'resource', '${resourceData.name || resourceName}');">☆</button>
             <span class="tree-icon">${this.getResourceIcon(resourceData.type, resourceName)}</span>
             <span class="tree-label">${resourceData.name || resourceName}</span>
             <span class="tree-count">(${childrenNames.length} vital signs)</span>
@@ -229,6 +235,7 @@ class NavigationManager {
         }
         
         item.innerHTML = `
+            <button class="favorite-button" data-resource="${resourceName}" data-spec="${specType}" title="Add to favorites" onclick="event.stopPropagation(); window.favoritesManager.toggleFavorite('${resourceName}', '${specType}', 'resource', '${resourceData.name || resourceName}');">☆</button>
             <span class="tree-icon">${this.getResourceIcon(resourceData.type, resourceName)}</span>
             <span class="tree-label">${resourceData.name || resourceName}</span>
             ${resourceData.elementCount ? `<span class="tree-count">(${resourceData.elementCount})</span>` : ''}
@@ -241,7 +248,7 @@ class NavigationManager {
 
     getSpecIcon(specType) {
         const icons = {
-            'fhir-r4': '🔗',
+            'fhir-r4': '🌐',
             'us-core': '🇺🇸',
             'us-core-stu6.1': '🇺🇸'
         };
@@ -264,7 +271,7 @@ class NavigationManager {
         if (resourceName.includes('Practitioner')) return '🧑‍⚕️';
         if (resourceName.includes('Organization')) return '🏥';
         if (resourceName.includes('Location')) return '📍';
-        if (resourceName.includes('Encounter')) return '🤝';
+        if (resourceName.includes('Encounter')) return '⚕️';
         if (resourceName.includes('Observation')) return '🔬';
         if (resourceName.includes('Condition')) return '🩹';
         if (resourceName.includes('Procedure')) return '🔬';
@@ -625,11 +632,71 @@ class NavigationManager {
         
         if (specType) {
             const specName = this.getSpecDisplayName(specType);
-            parts.push(`<a href="#" onclick="app.navigationManager.selectSpec('${specType}')">${specName}</a>`);
+            
+            // Create external links for spec types
+            let specLink;
+            if (specType === 'fhir-r4') {
+                specLink = `<a href="https://hl7.org/fhir/R4/" target="_blank">${specName}</a>`;
+            } else if (specType === 'us-core-stu6.1') {
+                specLink = `<a href="https://hl7.org/fhir/us/core/STU6.1/" target="_blank">${specName}</a>`;
+            } else {
+                // Fallback to internal navigation for unknown specs
+                specLink = `<a href="#" onclick="app.navigationManager.selectSpec('${specType}')">${specName}</a>`;
+            }
+            parts.push(specLink);
         }
         
         if (resourceName) {
-            parts.push(`<span>${resourceName}</span>`);
+            // Check if this is a data type
+            const resourceInfo = this.app.storage.findResourceInfo(resourceName, specType);
+            if (resourceInfo?.type === 'datatype') {
+                // Special breadcrumb for data types with proper links
+                if (resourceName === 'Meta') {
+                    // Meta is a special case - it's part of Resource, not general data types
+                    parts.push('<a href="https://hl7.org/fhir/R4/resource.html" target="_blank">FHIR Resource</a>');
+                    parts.push(`<a href="https://hl7.org/fhir/R4/resource.html#Meta" target="_blank">${resourceName}</a>`);
+                } else {
+                    // Regular data types go to the data types page
+                    parts.push('<a href="https://hl7.org/fhir/R4/datatypes.html" target="_blank">FHIR Data Types</a>');
+                    parts.push(`<a href="https://hl7.org/fhir/R4/datatypes.html#${resourceName}" target="_blank">${resourceName}</a>`);
+                }
+            } else {
+                // Make resource name clickable and link to official documentation
+                let resourceLink;
+                if (specType === 'fhir-r4') {
+                    // Link to FHIR R4 resource documentation
+                    if (this.fhirR4Links && this.fhirR4Links.hasResourceLink(resourceName, 'resource')) {
+                        const linkUrl = this.fhirR4Links.getResourceLink(resourceName, 'resource');
+                        resourceLink = `<a href="${linkUrl}" target="_blank">${resourceName}</a>`;
+                    } else if (this.fhirR4Links && this.fhirR4Links.hasResourceLink(resourceName, 'datatype')) {
+                        // Try data type link
+                        const linkUrl = this.fhirR4Links.getResourceLink(resourceName, 'datatype');
+                        resourceLink = `<a href="${linkUrl}" target="_blank">${resourceName}</a>`;
+                    } else {
+                        // Fallback to just text if no link available
+                        resourceLink = `<span>${resourceName}</span>`;
+                    }
+                } else if (specType === 'us-core-stu6.1') {
+                    // Clean the US Core profile name for display and linking
+                    let cleanedName = resourceName;
+                    if (resourceName.startsWith('USCore')) {
+                        cleanedName = resourceName.replace(/^USCore/, '').replace(/Profile.*$/, '');
+                    }
+                    
+                    // Link to US Core profile documentation using cleaned name
+                    if (this.usCoreLinks && this.usCoreLinks.hasProfileLink(cleanedName)) {
+                        const linkUrl = this.usCoreLinks.getProfileLink(cleanedName);
+                        resourceLink = `<a href="${linkUrl}" target="_blank">${cleanedName}</a>`;
+                    } else {
+                        // Fallback to just text if no link available, but still use cleaned name
+                        resourceLink = `<span>${cleanedName}</span>`;
+                    }
+                } else {
+                    // Default to span for unknown spec types
+                    resourceLink = `<span>${resourceName}</span>`;
+                }
+                parts.push(resourceLink);
+            }
         }
         
         breadcrumb.innerHTML = parts.join(' > ');

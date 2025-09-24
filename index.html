@@ -6,6 +6,8 @@
     <title>Greenway FHIR Viewer</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/themes.css">
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -14,10 +16,6 @@
         <header class="app-header">
             <h1>Greenway FHIR Viewer</h1>
             <div class="header-controls">
-                <div class="search-container">
-                    <input type="text" id="searchInput" placeholder="Search resources..." class="search-input">
-                    <button id="clearSearch" class="clear-search-button" title="Clear search">✕</button>
-                </div>
                 <button id="toggleTheme" class="theme-toggle" title="Toggle Dark Mode">🌙</button>
             </div>
         </header>
@@ -27,15 +25,26 @@
             <!-- Sidebar Navigation -->
             <aside class="sidebar">
                 <div class="sidebar-header">
-                    <h2>Resources</h2>
-                    <div class="filter-controls">
-                        <select id="specFilter" class="spec-filter">
-                            <option value="all">All Specifications</option>
-                            <option value="fhir-r4">FHIR R4</option>
-                            <option value="us-core-stu6.1">US Core</option>
-                        </select>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search resources..." class="search-input">
+                        <button id="clearSearch" class="clear-search-button" title="Clear search">✕</button>
                     </div>
                 </div>
+                
+                <!-- Favorites Section -->
+                <div class="favorites-section" id="favoritesSection">
+                    <div class="favorites-header">
+                        <h3>⭐ Favorites <span class="favorites-count" id="favoritesCount">0</span></h3>
+                        <button class="favorites-toggle" id="favoritesToggle" title="Toggle favorites section">▼</button>
+                    </div>
+                    <div class="favorites-container" id="favoritesContainer">
+                        <div class="no-favorites">
+                            <p>No favorites yet</p>
+                            <p class="favorites-hint">Click the ⭐ icon next to any resource to add it to your favorites.</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="resource-tree" id="resourceTree">
                     <div class="loading">Loading FHIR resources...</div>
                 </div>
@@ -95,8 +104,14 @@
     </div>
 
     <!-- Scripts -->
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    
     <script src="js/storage.js"></script>
     <script src="js/uscore-links.js"></script>
+    <script src="js/favorites.js"></script>
     <script src="js/examples-loader.js"></script>
     <script src="js/app.js"></script>
     <script src="js/fhir-loader.js"></script>
